@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e515e3e37bc52234688456c7ee65fffc, type: 3}
+  m_Name: Confusion
+  m_EditorClassIdentifier: 
+  Name: Confusion
+  Artist: 
+  puzzleTexture: {fileID: 2800000, guid: baae31d3a9c50454cbee68f34980f5d1, type: 3}
+  MascotStatement: If you're feeling confused, look up your heirarchy toward the
+    most wise to ask for help! If you don't have someone like that in your life,
+    I have some recommendations!

@@ -1,0 +1,2 @@
+0, LeftGrab
+10, Anger 100

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b456d9b8036ccf47a609c1c0c153344, type: 3}
+  m_Name: VeryEasy
+  m_EditorClassIdentifier: 
+  DifficultyNames: Egg
+  CharacterVideo: {fileID: 32900000, guid: 2770c4fee3680834aac588f3344b9e37, type: 3}
+  SpeechSound: {fileID: 8300000, guid: f6cb5a7e7d55dac459f698ca12020ca3, type: 3}
+  FirstIncrease: 1
+  IncreaseOccurrences: 0
+  FirstDifficultyIncreaseDialogues: ...
+  DifficultyIncreaseDialogues:
+  - ...
+  FirstDecrease: 1
+  DecreaseOccurrences: 0
+  FirstDifficultyDecreaseDialogues: ...
+  DifficultyDecreaseDialogues:
+  - ...
+  ClickOccurrences: 0
+  ClickDialogues:
+  - ...
+  SpamCloseOccurances: 0
+  SpamCloseDialogues: []
+  SetSolutionDialogues: []
+  TimeDialogues: []
+  DifficultyReminder: '(The egg can not speak. However, it wiggles eagerly, as if
+    it is ready to hatch.)<n>
+
+    (You could help it out!!!)<n>
+
+    (You unlocked
+    a new difficulty just a second ago, in blessings! Now, the ''difficulty up''
+    button is glowing and waiting for you!)<n>
+
+    (You won''t make much money if
+    you''re not ready to challenge yourself! Up the difficulty and let the money
+    flow in!)'

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d46e34a99873a94eb00a30085e018fe, type: 3}
+  m_Name: PAsItIsAbove
+  m_EditorClassIdentifier: 
+  ID: 6acc701a95cebdf4fba18567f5765647
+  SetName: AsItIsAbove
+  ForceSelection: 0
+  PrayerOptions:
+  - ParentID: 
+    Option: I had a lottery ticket in my apartment you swallowed that had a 12 million
+      Krona jackpot on it. So you owe me 12 million Krona, asshole!
+    AuthorName: WouldBeMilletionare
+    GoodPrayer: 0
+    SpecialResponseChainVL: []
+    SpecialResponseChainString:
+    - Assets/Resources/VoiceLines/RageBaitPrayers/AsItIsAbove/AsItIsAboveVL.asset
+    TriggerDialogue: 
+    TriggerActivation: 
+    TopicTarget: {fileID: 0}

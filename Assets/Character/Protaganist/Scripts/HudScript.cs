@@ -1,0 +1,170 @@
+using PixelCrushers.DialogueSystem;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class HudScript : MonoBehaviour
+{
+    [Header("Cursors")]
+    public Texture2D DefaultCursor;
+    public Texture2D ClickCursor;
+
+    [Header("General Hud")]
+    public GameObject Reticle;
+
+    [Header("Tutorial Settings")]
+    public GameObject MoveArrow;
+    public GameObject LookArrow;
+    public GameObject InteractArrow;
+    public ActivatableObjectScript ShutterButton;
+
+    private static bool ContinueTutorial = false;
+
+    public int LastTutorialQuestIndex = 3;
+    public Coroutine TutorialCoroutine;
+
+    public GameObject QuestPanel;
+    public GameObject SubtitlePanel;
+
+    public static HudScript instance;
+
+    public void OnClick(InputAction.CallbackContext ctx)
+    {
+        if(ctx.phase == InputActionPhase.Started)
+        {
+            Cursor.SetCursor(ClickCursor, new Vector2(0.1f, 0.9f), CursorMode.Auto);
+        }
+        if (ctx.phase == InputActionPhase.Canceled)
+        {
+            Cursor.SetCursor(DefaultCursor, new Vector2(0.1f, 0.9f), CursorMode.Auto);
+        }
+    }
+
+    public static void SetQuestVisiblity(bool questVisible)
+    {
+        instance.QuestPanel.SetActive(questVisible);
+    }
+    public static void SetSubtitleVisiblity(bool subtitleVisible)
+    {
+        instance.SubtitlePanel.SetActive(subtitleVisible);
+    }
+
+    public static void SetReticleOpacity(float reticleOpacity)
+    {
+        instance.Reticle.GetComponent<Image>().color = new Color(1, 1, 1, reticleOpacity);
+    }
+
+    public void Awake()
+    {
+        instance = this;
+
+        MoveArrow.SetActive(false);
+        LookArrow.SetActive(false);
+        InteractArrow.SetActive(false);
+
+        Lua.RegisterFunction("MovementTutorial", this, SymbolExtensions.GetMethodInfo(() => ShowMoveTutorial()));
+    }
+
+    public void OnEnable()
+    {
+        PhonePositionScript.PhoneToggled += ShowReticle;
+    }
+    public void OnDisable()
+    {
+        PhonePositionScript.PhoneToggled -= ShowReticle;
+    }
+    public void ShowMoveTutorial()
+    {
+        TutorialCoroutine = StartCoroutine(Tutorial());
+    }
+
+    public void ShowReticle(bool show)
+    {
+        Reticle.SetActive(!show);
+    }
+
+    #region Tutorial
+    public static void SetContinueTutorial()
+    {
+        ContinueTutorial = true;
+    }
+    public IEnumerator WaitForContinue()
+    {
+        while(!ContinueTutorial) yield return null;
+        ContinueTutorial = false;
+    }
+
+    public void SkipTutorial()
+    {
+        if(TutorialCoroutine!= null) StopCoroutine(TutorialCoroutine);
+
+        ShutterButton.ObjectEnabled = true;
+
+        if(MoveArrow != null)
+        {
+            Destroy(MoveArrow);
+        }
+        if (LookArrow != null)
+        {
+            Destroy(LookArrow);
+        }
+        if (InteractArrow != null)
+        {
+            Destroy(InteractArrow);
+        }
+
+        if (QuestManager.currentQuestIndex <= LastTutorialQuestIndex)
+        {
+            QuestManager.SetQuestByIndex(LastTutorialQuestIndex + 1);
+        }
+    }
+
+    public IEnumerator Tutorial()
+    {
+        ShutterButton.ObjectEnabled = false;
+        QuestManager.SetQuestByIndex(0);
+
+        MoveArrow.SetActive(true);
+
+        LookArrow.SetActive(false);
+
+        InteractArrow.SetActive(false);
+
+        yield return StartCoroutine(WaitForContinue());
+
+        Destroy(MoveArrow);
+        LookArrow.SetActive(true);
+
+        QuestManager.IncrementQuest();
+
+        yield return StartCoroutine(WaitForContinue());
+
+        Destroy(LookArrow);
+
+        QuestManager.CompleteQuest(QuestManager.currentQuest);
+
+        while (!ConversationManagerScript.WaitingForEvent)
+        {
+            yield return null;
+        }
+
+        InteractArrow.SetActive(true);
+        ShutterButton.ObjectEnabled = true;
+
+        QuestManager.IncrementQuest();
+
+        yield return StartCoroutine(WaitForContinue());
+
+        ConversationManagerScript.instance.ForceNextDialogue();
+
+        Destroy(InteractArrow);
+
+        QuestManager.IncrementQuest();
+
+        yield return StartCoroutine(WaitForContinue());
+
+        QuestManager.IncrementQuest();
+    }
+    #endregion
+}

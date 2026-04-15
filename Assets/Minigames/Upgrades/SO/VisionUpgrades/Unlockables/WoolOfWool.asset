@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77e722c68c55004aa573fa91d35666a, type: 3}
+  m_Name: WoolOfWool
+  m_EditorClassIdentifier: 
+  Prioirty: 4
+  UpgradeID: 8d0e69f1af0151343886a59221b8737e
+  UpgradeName: WoolOfWool
+  UpgradeIcon: {fileID: 2106267085, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: Most objects in life are redundant and thus useless. Receive
+    a visual reminder of such horrors.
+  MascotDialogue: 'Still no birds. >:C
+
+    I hate art now.'
+  Credits: 0.0000781
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  UpgradeBought: 0
+  AssociatedMinigame: 0
+  AutoBuy: 0
+  TriggerOnLoadBuy: 0
+  PosterName: WoolOfWool

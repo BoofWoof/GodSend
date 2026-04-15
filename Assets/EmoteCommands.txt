@@ -1,0 +1,11 @@
+<smile>
+<peace>
+<laughing>
+<upset>
+<sad>
+<confused>
+<dread>
+
+Variable["MiloLike"] = Variable["MiloLike"] + 1
+
+Remove bad sounds

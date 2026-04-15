@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d46e34a99873a94eb00a30085e018fe, type: 3}
+  m_Name: PrayerLR
+  m_EditorClassIdentifier: 
+  ID: 0ab481ddd2451db468ad9d942f289afd
+  SetName: LongRelationship
+  ForceSelection: 0
+  PrayerOptions:
+  - ParentID: 
+    Option: "You\u2019ve ruined dating for me since nobody here compares to you!"
+    AuthorName: EenieMeenieGoat
+    GoodPrayer: 1
+    SpecialResponseChainVL: []
+    SpecialResponseChainString:
+    - Assets/Resources/VoiceLines/SpecialPrayers/LongRelationship/LongRelationship.asset
+    TriggerDialogue: 
+    TriggerActivation: 
+    TopicTarget: {fileID: 0}

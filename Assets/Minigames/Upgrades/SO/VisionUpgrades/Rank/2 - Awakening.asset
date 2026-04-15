@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1aa6bb3e2c4f5b41a12f66407372851, type: 3}
+  m_Name: 2 - Awakening
+  m_EditorClassIdentifier: 
+  Prioirty: 2
+  UpgradeID: 1733799aeee9bd34b943d441950ea99a
+  UpgradeName: Awakening
+  UpgradeIcon: {fileID: -632570387, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  DialogueToTrigger: V-Awakening
+  CompleteQuest: 1
+  ProgressQuest: 0
+  UpgradeDescription: The lies of the body have begun to crack. Each puzzle now earns
+    you more credits.
+  MascotDialogue: 'This is an amazing occassion!<n>
+
+    Not everyone gets this far!<n>
+
+    A
+    lot of them uninstall the app before we even get to talk. :c<n>
+
+    But now
+    our momentum can finally grow, because we''re both learning!<n>
+
+    You''re
+    going to get some paperwork to your device soon, and I''m going to need you to
+    do your best to fill it out!<n>
+
+    I know it can be boring, but it''s going
+    to help both our futures!<n>
+
+    We got this!'
+  Credits: 0.000000375
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  UpgradeBought: 0
+  AssociatedMinigame: 0
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1
+  MultiplyReward: 5
+  DisplayColor: {r: 0, g: 1, b: 0, a: 1}

@@ -1,0 +1,129 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PhonePositionScript : MonoBehaviour
+{
+    [Header("Objects")]
+    public Transform phone;
+    public GameObject screen;
+
+    [Header("Tuning")]
+    public float movement_speed = 0.1f;
+    public float rotation_speed = 180f;
+
+    public Transform raised_transfom;
+    public Transform lowered_transform;
+    public Vector3 scale = new Vector3(0.03622f, 0.03622f, -0.061263f);
+
+    [HideInInspector]
+    public bool moving = false;
+    public static bool raised = false;
+
+    public delegate void PhoneStateCallback(bool raised);
+    static public event PhoneStateCallback PhoneToggled;
+
+    public static bool AllowPhoneToggle = false;
+    public static bool FirstPhoneRaise = true;
+
+    public static PhonePositionScript instance;
+
+    public static void LockPhoneDown()
+    {
+        if (raised) instance.StartCoroutine(instance.LowerPhone());
+        AllowPhoneToggle = false;
+        Debug.Log("Locking Phone");
+    }
+
+    public static void UnlockPhone()
+    {
+        AllowPhoneToggle = true;
+        Debug.Log("Unlocking Phone");
+    }
+
+    private void OnEnable()
+    {
+        instance = this;
+        InputManager.PlayerInputs.Overworld.TogglePhone.performed += TogglePhone;
+        InputManager.PlayerInputs.Phone.TogglePhone.performed += TogglePhone;
+    }
+    private void OnDisable()
+    {
+        InputManager.PlayerInputs.Overworld.TogglePhone.performed -= TogglePhone;
+        InputManager.PlayerInputs.Phone.TogglePhone.performed -= TogglePhone;
+    }
+
+    private void TogglePhone(InputAction.CallbackContext ctx)
+    {
+        if (!AllowPhoneToggle) return;
+        if (raised) StartCoroutine(LowerPhone());
+        else StartCoroutine(RaisePhone());
+    }
+    public IEnumerator RaisePhone()
+    {
+        if (FirstPhoneRaise)
+        {
+            HudScript.SetContinueTutorial();
+            FirstPhoneRaise = false;
+        }
+
+        if (moving)
+        {
+            yield break;
+        }
+        PhoneToggled.Invoke(true);
+        moving = true;
+        raised = true;
+        while (phone.localPosition != raised_transfom.localPosition || phone.localRotation != raised_transfom.localRotation)
+        {
+            phone.localRotation = Quaternion.RotateTowards(phone.localRotation, raised_transfom.localRotation, rotation_speed * Time.deltaTime);
+            if (Vector3.Distance(phone.localRotation.eulerAngles, raised_transfom.localRotation.eulerAngles) < 0.01f)
+            {
+                phone.localRotation = raised_transfom.localRotation;
+            }
+            phone.localPosition = Vector3.MoveTowards(phone.localPosition, raised_transfom.localPosition, movement_speed * Time.deltaTime);
+            if (Vector3.Distance(phone.localPosition, raised_transfom.localPosition) < 0.001f)
+            {
+                phone.localPosition = raised_transfom.localPosition;
+            }
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.2f);
+        moving = false;
+    }
+
+    public IEnumerator LowerPhone()
+    {
+        if (moving)
+        {
+            yield break;
+        }
+        PhoneToggled.Invoke(false);
+        moving = true;
+        raised = false;
+        yield return new WaitForSeconds(0.2f);
+
+        bool reachedDestination = false;
+
+        while (!reachedDestination)
+        {
+            // Move and Rotate
+            phone.localRotation = Quaternion.RotateTowards(phone.localRotation, lowered_transform.localRotation, rotation_speed * Time.deltaTime);
+            phone.localPosition = Vector3.MoveTowards(phone.localPosition, lowered_transform.localPosition, movement_speed * Time.deltaTime);
+
+            // Check if we are "close enough" to snap and finish
+            float dist = Vector3.Distance(phone.localPosition, lowered_transform.localPosition);
+            float angle = Quaternion.Angle(phone.localRotation, lowered_transform.localRotation);
+
+            if (dist < 0.001f && angle < 0.05f)
+            {
+                phone.localPosition = lowered_transform.localPosition;
+                phone.localRotation = lowered_transform.localRotation;
+                reachedDestination = true;
+            }
+
+            yield return null;
+        }
+        moving = false;
+    }
+}
