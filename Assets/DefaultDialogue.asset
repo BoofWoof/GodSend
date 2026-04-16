@@ -301,6 +301,44 @@ MonoBehaviour:
     spritePortrait: {fileID: 21300000, guid: 4d93bd65679505c43b6e010366b27b4f, type: 3}
     alternatePortraits: []
     spritePortraits: []
+  - id: 15
+    fields:
+    - title: Name
+      value: MacroAlesssandro
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Pictures
+      value: '[]'
+      type: 3
+      typeString: CustomFieldType_Files
+    - title: Description
+      value: BigBossSnake
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: IsPlayer
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: IsMacro
+      value: True
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: IsRadio
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: SkipThem
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: WaitThem
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    portrait: {fileID: 0}
+    spritePortrait: {fileID: 0}
+    alternatePortraits: []
+    spritePortraits: []
   - id: 3
     fields:
     - title: Name
@@ -10221,7 +10259,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 4774.999}
+    canvasScrollPosition: {x: 0, y: 4429.6865}
     canvasZoom: 0.64000064
   - id: 8
     fields:
@@ -64065,7 +64103,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       conversationID: 27
-      isRoot: 0
+      isRoot: 1
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
@@ -64205,8 +64243,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 229
-        y: 223
+        x: 211
+        y: 242
         width: 160
         height: 30
     - id: 9
@@ -64262,8 +64300,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 273
-        y: 332
+        x: 229
+        y: 326
         width: 160
         height: 30
     entryGroups: []
@@ -64359,7 +64397,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       conversationID: 28
-      isRoot: 0
+      isRoot: 1
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
@@ -64369,7 +64407,7 @@ MonoBehaviour:
       - originConversationID: 28
         originDialogueID: 0
         destinationConversationID: 28
-        destinationDialogueID: 14
+        destinationDialogueID: 16
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -64380,7 +64418,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 80
-        y: 50
+        y: 50.943405
         width: 160
         height: 30
     - id: 1
@@ -65089,8 +65127,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
-        y: 218
+        x: 81.886795
+        y: 228.37735
         width: 160
         height: 30
     - id: 13
@@ -65201,20 +65239,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'StartWalkTo("MacroAries", 11)
-
-        SetWaitStation(11)
-
-        SetAttention()
-
-        SetForceEvent()'
+      userScript: SetWaitStation(11)
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
-        y: 132.63013
+        x: 116.79245
+        y: 166.661
         width: 160
         height: 30
     - id: 15
@@ -65276,9 +65308,72 @@ MonoBehaviour:
         y: 1313.5
         width: 160
         height: 30
+    - id: 16
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: Assets/Resources/VoiceLines/Aries/MakingACall/M-ListenKitty.asset
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 28
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 28
+        originDialogueID: 16
+        destinationConversationID: 28
+        destinationDialogueID: 14
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 'StartWalkTo("MacroAries", 11)
+
+        SetAttention()
+
+        SetForceEvent()'
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 258.30182
+        y: 98.11319
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 718.18115}
-    canvasZoom: 0.5500005
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 1.0600001
   - id: 29
     fields:
     - title: Title
@@ -73787,7 +73882,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       conversationID: 31
-      isRoot: 0
+      isRoot: 1
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
@@ -74979,7 +75074,7 @@ MonoBehaviour:
       - originConversationID: 31
         originDialogueID: 20
         destinationConversationID: 31
-        destinationDialogueID: 25
+        destinationDialogueID: 26
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -75173,13 +75268,242 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 81.25667
-        y: 1987.2004
+        x: 85.20404
+        y: 2122.7268
+        width: 160
+        height: 30
+    - id: 26
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: Assets/Resources/VoiceLines/Sid/Delivery/Milo/RamIsGone.asset
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Take A Break
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 31
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 31
+        originDialogueID: 26
+        destinationConversationID: 31
+        destinationDialogueID: 25
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 107.770874
+        y: 2005.7959
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 1597.3683}
     canvasZoom: 0.7600003
+  - id: 32
+    fields:
+    - title: Title
+      value: SssTest
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Actor
+      value: 4
+      type: 5
+      typeString: CustomFieldType_Actor
+    - title: Conversant
+      value: 15
+      type: 5
+      typeString: CustomFieldType_Actor
+    - title: IsMacro
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: AllowRepeat
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    overrideSettings:
+      useOverrides: 0
+      overrideSubtitleSettings: 0
+      showNPCSubtitlesDuringLine: 1
+      showNPCSubtitlesWithResponses: 1
+      showPCSubtitlesDuringLine: 0
+      skipPCSubtitleAfterResponseMenu: 0
+      subtitleCharsPerSecond: 30
+      minSubtitleSeconds: 2
+      continueButton: 0
+      overrideSequenceSettings: 0
+      defaultSequence: 
+      defaultPlayerSequence: 
+      defaultResponseMenuSequence: 
+      overrideInputSettings: 0
+      alwaysForceResponseMenu: 1
+      includeInvalidEntries: 0
+      responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
+      cancelSubtitle:
+        key: 27
+        buttonName: 
+      cancelConversation:
+        key: 27
+        buttonName: 
+      actorSubtitlePanelOverrides: []
+    nodeColor: 
+    dialogueEntries:
+    - id: 0
+      fields:
+      - title: Title
+        value: START
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: VoiceLinesSO
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 15
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: None()
+        type: 0
+        typeString: 
+      conversationID: 32
+      isRoot: 1
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 32
+        originDialogueID: 0
+        destinationConversationID: 32
+        destinationDialogueID: 1
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 160
+        y: 30
+        width: 160
+        height: 30
+    - id: 1
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: Assets/Resources/VoiceLines/Alesssandro/Test/MyOhMy.asset
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 15
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 32
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 178
+        y: 209
+        width: 160
+        height: 30
+    entryGroups: []
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 1
   syncInfo:
     syncActors: 0
     syncItems: 0

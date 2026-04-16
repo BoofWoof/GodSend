@@ -16,6 +16,8 @@ public class TruePieceHolderScript : MonoBehaviour
     public Button LeftButton;
     public Button RightButton;
 
+    public AudioSource ObjectStorageSound;
+
     public void Awake()
     {
         instance = this;
@@ -50,8 +52,10 @@ public class TruePieceHolderScript : MonoBehaviour
         selectedPiece.gameObject.SetActive(false);
     }
 
-    public void StorePiece(PieceHolderScript Piece)
+    public void StorePiece(PieceHolderScript Piece, bool PlaySound = false)
     {
+        if(PlaySound) ObjectStorageSound.Play();
+
         if (Pieces.Contains(Piece)) {
             MovePieceToCenter(Piece);
             return;
@@ -64,6 +68,8 @@ public class TruePieceHolderScript : MonoBehaviour
             SelectedPiece = 0;
             MovePieceToCenter();
             PieceHolderScript.PieceHolderRestraint = true;
+
+            PieceHolderScript.SafetyCheckAllPositions();
         } else
         {
             Piece.gameObject.SetActive(false);

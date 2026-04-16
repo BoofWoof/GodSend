@@ -9,6 +9,7 @@ TagManager:
   - Grabable
   - ViewBlock
   - NoZoom
+  - ADThreat
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - FireworkText
   - PhoneUI
   - Outline
-  - 
-  - 
+  - NoZoom
+  - VentPiece
   - 
   - 
   - 

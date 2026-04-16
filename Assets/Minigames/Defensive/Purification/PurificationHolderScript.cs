@@ -8,7 +8,8 @@ public class PurificationHolderScript : MonoBehaviour
     public PurificationLevelPacksSO AssociatedLevels;
     public List<BroadcastStruct> HallucinationResets;
 
-    public string VoiceLinePath;
+    public string StartingVoiceLinePath;
+    public string EndingVoiceLinePath;
 
     public static Dictionary<string, PurificationHolderScript> LevelHolders;
 

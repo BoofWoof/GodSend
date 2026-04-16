@@ -31,7 +31,7 @@ public class ReleasePointNode : Saver
     public override string RecordData()
     {
         ReleasePonintSaveData saveData = new ReleasePonintSaveData();
-        if(heldObject == null)
+        if(heldObject == null || heldObject.ObjectName.ToLower() == "city")
         {
             saveData.containedObjectID = -1;
         } else

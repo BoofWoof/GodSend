@@ -23,6 +23,26 @@ public class PieceHolderScript : MonoBehaviour
     private bool isDragging;
     private Vector2 offset;
 
+    public static List<PieceHolderScript> PieceList = new List<PieceHolderScript>();
+
+    public void Start()
+    {
+        PieceList.Add(this);
+    }
+
+    public void OnDestroy()
+    {
+        PieceList.Remove(this);
+    }
+
+    public static void SafetyCheckAllPositions()
+    {
+        foreach(PieceHolderScript piece in PieceList)
+        {
+            if (!piece.PieceInValidZone()) piece.SendToPieceHolder();
+        }
+    }
+
     public void SetSeedPiece(TurkCubeScript targetPiece)
     {
         SeedPiece = targetPiece;
@@ -108,13 +128,19 @@ public class PieceHolderScript : MonoBehaviour
             if (TurkPuzzleScript.IsCoordinateInsideGrid(oldCord.x, oldCord.y)) TurkPuzzleScript.holeGrid[oldCord.x, oldCord.y].GetComponent<TurkHoleScript>().EmptyHole();
             fillers.Add(puzzlePiece.GetComponent<TurkCubeScript>());
         }
-        foreach (TurkCubeScript filler in fillers)
+        FillHoles();
+        return true;
+    }
+
+    public void FillHoles()
+    {
+        foreach (TurkCubeScript filler in Pieces)
         {
             Vector2Int cord = filler.cord;
             if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y)) TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler);
         }
-        return true;
     }
+
     public void OnEnable()
     {
         PhonePositionScript.PhoneToggled += InterruptDrag;
@@ -171,6 +197,8 @@ public class PieceHolderScript : MonoBehaviour
     {
         if (!isDragging) return;
         if (!RotationEnabled) return;
+
+        TurkPuzzleScript.instance.PlayRotateSound();
 
         Rotations = (Rotations + 1) % 4;
 
@@ -242,7 +270,7 @@ public class PieceHolderScript : MonoBehaviour
         if (StorePiece)
         {
             TurkPuzzleScript.instance.Drop.Play();
-            SendToPieceHolder();
+            SendToPieceHolder(true);
             return;
         }
 
@@ -270,18 +298,26 @@ public class PieceHolderScript : MonoBehaviour
         if (successfulUpdate)
         {
             TurkPuzzleScript.instance.Drop.Play();
+            PreviousValidRotations = Rotations;
         }
         else
         {
             TurkPuzzleScript.instance.DropBad.Play();
+            int RestoreRotations = PreviousValidRotations - Rotations;
+            if (RestoreRotations < 0) RestoreRotations += 4;
+            for(int i = 0; i < RestoreRotations; i++)
+            {
+                CenterRotate();
+            }
             GetComponent<RectTransform>().anchoredPosition = TurkPuzzleScript.GridIdxToPos(SeedPiece.cord);
+            TurkPuzzleScript.CheckWin();
             return;
         }
 
         if (TurkPuzzleScript.CheckWin()) return;
     }
 
-    public void SendToPieceHolder()
+    public void SendToPieceHolder(bool PlaySounds = false)
     {
         ClearAllMat();
 
@@ -294,9 +330,10 @@ public class PieceHolderScript : MonoBehaviour
                 puzzlePiece.GetComponent<TurkCubeScript>().cord = new Vector2Int(-99, -99);
             }
         }
+        PreviousValidRotations = Rotations;
 
         FirstRelease = true;
-        TruePieceHolderScript.instance.StorePiece(this);
+        TruePieceHolderScript.instance.StorePiece(this, PlaySounds);
     }
     #endregion
 

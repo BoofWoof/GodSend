@@ -70,6 +70,15 @@ public class PurificationGameScript : MonoBehaviour
     public static void SetLevelSet(PurificationLevelPacksSO newLevelPack)
     {
         instance.CurrentLevelPack = newLevelPack;
+        instance.PlayStartingDialogue();
+    }
+
+    public void PlayStartingDialogue()
+    {
+        if (!string.IsNullOrEmpty(associatedLevelHolder.StartingVoiceLinePath))
+        {
+            CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.StartingVoiceLinePath);
+        }
     }
 
     public void StartGame()
@@ -328,6 +337,10 @@ public class PurificationGameScript : MonoBehaviour
             if (associatedLevelHolder != null && associatedLevelHolder.HallucinationResets.Count > 0)
             {
                 PlayerBlinkScript.StartBlink(associatedLevelHolder.HallucinationResets);
+            }
+            if (!string.IsNullOrEmpty(associatedLevelHolder.EndingVoiceLinePath))
+            {
+                CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.EndingVoiceLinePath);
             }
 
             LevelRunning = false;

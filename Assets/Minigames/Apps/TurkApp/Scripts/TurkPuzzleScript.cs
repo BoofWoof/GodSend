@@ -58,6 +58,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public AudioSource Drop;
     public AudioSource DropBad;
     public AudioSource NewPuzzleSound;
+    public AudioSource RotateSound;
 
     public GameObject EmptyTile;
     public Material ConstMat;
@@ -188,6 +189,11 @@ public class TurkPuzzleScript : MonoBehaviour
         {
             BestTimeText.text = "<b>Fastest Time:</b> " + System.TimeSpan.FromSeconds(TimeRecords[CurrentDifficutly]).ToString("m\\:ss");
         }
+    }
+
+    public void PlayRotateSound()
+    {
+        RotateSound.Play();
     }
 
     public void UnlockNewDifficulty()

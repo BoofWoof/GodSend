@@ -417,7 +417,7 @@ public class PipeStackScript : MonoBehaviour
         if (isGoal) SinkParticles.SetActive(lightActive);
         if (isSource || fanSpinning) FanLayer.transform.Rotate(0, 0, - Time.deltaTime * 1000f);
 
-        int mask = ~(1 << LayerMask.NameToLayer("ZoomRaycast"));
+        int mask = (1 << LayerMask.NameToLayer("VentPiece"));
         if (Input.GetMouseButtonDown(0)) // Right click
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

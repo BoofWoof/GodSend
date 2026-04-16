@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
-using UnityEngine.Audio;
 
 public class CharacterSpeechScript : MonoBehaviour
 {
@@ -125,11 +124,29 @@ public class CharacterSpeechScript : MonoBehaviour
         StartCoroutine(Speak(voiceLine));
     }
 
+    public void StartBroadcastSpeechAttempt(string name, string voiceLinePath)
+    {
+        StartCoroutine(BroadcastSpeechAttempt(name, voiceLinePath));
+    }
+    public IEnumerator BroadcastSpeechAttempt(string name, string voiceLinePath)
+    {
+        ResourceRequest request = Resources.LoadAsync<VoiceLineSO>(voiceLinePath.CleanResourcePath()); // Replace GameObject with your asset type
+
+        yield return request;
+
+        VoiceLineSO voiceLine = request.asset as VoiceLineSO;
+
+        if (voiceLine == null) yield break;
+
+        foreach (CharacterSpeechScript c in CharacterSpeechInstances)
+        {
+            if (!string.IsNullOrEmpty(voiceLine.SpeakerOverride)) name = voiceLine.SpeakerOverride;
+            c.PlaySpeech(name, voiceLine);
+        }
+    }
+
     public static void BroadcastSpeechAttempt(string name, VoiceLineSO voiceLine)
     {
-        Debug.Log(name);
-        Debug.Log(voiceLine);
-        Debug.Log(voiceLine.SpeakerOverride);
         foreach (CharacterSpeechScript c in CharacterSpeechInstances)
         {
             if (!string.IsNullOrEmpty(voiceLine.SpeakerOverride)) name = voiceLine.SpeakerOverride;
@@ -180,8 +197,8 @@ public class CharacterSpeechScript : MonoBehaviour
 
         SpeechCleanup();
 
-        yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
         if (RadioSpeech) RadioObject.SetActive(false);
+        yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
 
         GameStateMonitor.RemoveSpeakingSource(this);
     }
@@ -205,8 +222,8 @@ public class CharacterSpeechScript : MonoBehaviour
 
         SpeechCleanup();
 
-        yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
         if (RadioSpeech) RadioObject.SetActive(false);
+        yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
 
         (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
 
