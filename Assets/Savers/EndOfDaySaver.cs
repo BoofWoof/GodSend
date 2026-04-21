@@ -14,6 +14,7 @@ public class EndOfDaySaver : Saver
         public float StartingAriesLike;
         public float StartingAriesDislike;
         public float TotalVentTime;
+        public bool EndOfDayEnabled;
 
         public EndOfDaySaveData FromEndOfDay(EndOfDayScript eofData)
         {
@@ -22,6 +23,7 @@ public class EndOfDaySaver : Saver
             StartingAriesLike = eofData.StartingAriesLike;
             StartingAriesDislike = eofData.StartingAriesDislike;
             TotalVentTime = PurificationGameScript.TotalTime;
+            EndOfDayEnabled = DayInfo.DayEndEnabled;
 
             return this;
         }
@@ -33,6 +35,7 @@ public class EndOfDaySaver : Saver
             eofData.StartingAriesLike = StartingAriesLike;
             eofData.StartingAriesDislike = StartingAriesDislike;
             PurificationGameScript.TotalTime = TotalVentTime;
+            DayInfo.DayEndEnabled = EndOfDayEnabled;
         }
     }
 

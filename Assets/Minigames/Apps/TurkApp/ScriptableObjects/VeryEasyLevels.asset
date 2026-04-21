@@ -24,4 +24,4 @@ MonoBehaviour:
   MiloRecord: 5
   MinPieces: 5
   MaxPieces: 5
-  RotationEnabled: 1
+  RotationEnabled: 0

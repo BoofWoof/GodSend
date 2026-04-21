@@ -17,6 +17,12 @@ public class ConversationManagerScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        ConversationOngoing = false;
+        isMacroConvo = false;
+        WaitingForEvent = false;
+
+        BannedDialogues = new List<string>();
     }
 
     public void ForceNextDialogue()

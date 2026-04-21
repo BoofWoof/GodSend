@@ -13,11 +13,17 @@ public class NotificationMenuScript : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        Notifications = new Dictionary<string, Sprite>();
+
+
+        GenerateNotifications();
     }
 
     public void GenerateNotifications()
     {
         ClearNotifications();
+
+        GetComponent<Image>().enabled = Notifications.Count > 0;
 
         foreach (KeyValuePair<string, Sprite> notificationData in Notifications)
         {

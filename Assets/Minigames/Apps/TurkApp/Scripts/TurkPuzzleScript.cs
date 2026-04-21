@@ -21,6 +21,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public TrukAppScript AssociatedApp;
 
+    public UnityEvent OnBeforePuzzleGenerate;
     public UnityEvent OnPuzzleGenerate;
     public UnityEvent OnPuzzleFinish;
     public UnityEvent<int> OnDifficultyUp;
@@ -268,6 +269,9 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void GeneratePuzzle()
     {
+        PieceHolderScript.ClearPieces();
+        OnBeforePuzzleGenerate?.Invoke();
+
         PuzzleEarningsText.gameObject.SetActive(false);
         UpdatePuzzleIdx();
 
@@ -348,6 +352,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public IEnumerator WinCutscene()
     {
+        PieceHolderScript.ClearPieces();
         InteractionBlocker.SetActive(true);
 
         OnPuzzleFinish?.Invoke();

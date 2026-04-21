@@ -5419,7 +5419,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: The worshippers anonymously submit their prayers over the prayer network!
+        value: The worshippers anonymously submit their prayers over the <b>PRAYER</b>
+          network!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10259,7 +10260,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 4429.6865}
+    canvasScrollPosition: {x: 968, y: 0}
     canvasZoom: 0.64000064
   - id: 8
     fields:
@@ -15128,7 +15129,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: There are panaceas far beyond our walls that could treat his disease.,
+        value: There are panaceas far beyond our walls that could treat his disease,
           but they're not ones that mortal hands could ever gather.
         type: 0
         typeString: CustomFieldType_Text
@@ -15512,7 +15513,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 3300.0012}
+    canvasScrollPosition: {x: 0, y: 3028}
     canvasZoom: 0.7600002
   - id: 12
     fields:
@@ -30069,7 +30070,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("StartVentTutorial")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -30727,7 +30728,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
+        x: 81.85185
         y: 5258
         width: 160
         height: 30
@@ -33597,8 +33598,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 4942.1167}
-    canvasZoom: 0.5700001
+    canvasScrollPosition: {x: 0, y: 3879.5122}
+    canvasZoom: 0.54000014
   - id: 20
     fields:
     - title: Title
@@ -58342,7 +58343,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 3120.5476}
+    canvasScrollPosition: {x: 2.739746, y: 2873.971}
     canvasZoom: 0.73
   - id: 24
     fields:
@@ -65060,7 +65061,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("PrayerAfterCall")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -65245,8 +65246,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 116.79245
-        y: 166.661
+        x: 97.92453
+        y: 163.8308
         width: 160
         height: 30
     - id: 15
@@ -65296,15 +65297,13 @@ MonoBehaviour:
 
         ReleaseAttention()
 
-        ReleaseForceEvent()
-
-        BroadcastActivate("PrayerAfterCall")'
+        ReleaseForceEvent()'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 84.6875
+        x: 83.58859
         y: 1313.5
         width: 160
         height: 30
@@ -65367,13 +65366,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 258.30182
-        y: 98.11319
+        x: 92.2641
+        y: 102.83017
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1.0600001
+    canvasScrollPosition: {x: 0, y: 964.83484}
+    canvasZoom: 0.91000015
   - id: 29
     fields:
     - title: Title

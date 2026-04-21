@@ -5071,6 +5071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95ea3766da10cf43b1d207173360577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentReleaseNode: {fileID: 0}
+  ObjectID: -1
   ObjectName: Soda
   ObjectActivate:
     m_PersistentCalls:
@@ -5111,6 +5113,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  City: 0
+  DoNotSaveOrLoadPosition: 1
   LightColor: {r: 0, g: 1, b: 0.97360396, a: 0}
 --- !u!1 &7302432212559839719
 GameObject:

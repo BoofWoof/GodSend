@@ -58,7 +58,7 @@ public static class GameStateMonitor
 
     public delegate void OnEventChangeDelegate(bool EventActive);
     public static OnEventChangeDelegate OnEventChange;
-    private static bool PrevEventActive = false;
+    public static bool PrevEventActive = false;
 
     public static void CheckEventChange()
     {

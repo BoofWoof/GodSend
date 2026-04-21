@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1317177045429528257}
   - component: {fileID: 2496955825329414836}
-  - component: {fileID: 5953692159428518341}
   m_Layer: 0
   m_Name: SidCardCarryable
   m_TagString: Untagged
@@ -47,31 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentReleaseNode: {fileID: 0}
-  ObjectID: 0
+  ObjectID: -1
   ObjectName: SidCard
   ObjectActivate:
     m_PersistentCalls:
       m_Calls: []
   City: 0
   LightColor: {r: 0, g: 1, b: 0.97360396, a: 0}
---- !u!114 &5953692159428518341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3651126869086201035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b53215ca8f81324a91d5cb66da8d6ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Day0: 1
-  Day1: 0
-  Day2: 0
-  Day3: 0
-  Day4: 0
-  Day5: 0
 --- !u!1001 &1231425328128191740
 PrefabInstance:
   m_ObjectHideFlags: 0
