@@ -42,8 +42,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c79523c82b186fb4eb9853d8c4e326d0, type: 2}
   DarknessModifier: 1.4
   OpennessModifier: -0.05
-  FalconSpeed: 20
-  MiloRecord: 9
+  FalconSpeed: 30
+  MiloRecord: 13
   MinPieces: 6
   MaxPieces: 6
   RotationEnabled: 0

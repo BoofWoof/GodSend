@@ -639,7 +639,7 @@ MonoBehaviour:
   DescriptionText: {fileID: 3546948776954499168}
   CostText: {fileID: 4491685005444474037}
   UpgradeImage: {fileID: 1178814682292695881}
-  duration: 2
+  Duration: 1
 --- !u!114 &5434549827888444988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 48a57664d2be63a43b550cf38e352e57, type: 2}
-  m_Color: {r: 0.15076537, g: 0.3664821, b: 0.41509432, a: 1}
+  m_Color: {r: 0.14901961, g: 0.3647059, b: 0.41568628, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

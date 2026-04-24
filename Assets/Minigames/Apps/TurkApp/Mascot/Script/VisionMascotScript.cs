@@ -223,7 +223,7 @@ public class VisionMascotScript : MonoBehaviour
             {
                 VisionCompletionMascotText textData = currentDifficultyDialogue.SolutionDialogues[triggerValue];
 
-                if (!textData.Triggered)
+                if (!textData.Triggered && textData.TriggerOnDay == DayInfo.CurrentDay)
                 {
                     textData.Triggered = true;
                     MascotSayText(textData.SolutionDialogues);
@@ -345,7 +345,7 @@ public class VisionMascotScript : MonoBehaviour
         }
         if (newName.ToLower() == "saleos")
         {
-            ShowText("Perhaps you know more than you let on... But humor me. Might you take a different name?<name>");
+            ShowText("Perhaps you know more than you let on... But humor me. Might you pick a different name?<name>");
             return;
         }
         if (newName.ToLower().Contains("egg"))
@@ -356,6 +356,21 @@ public class VisionMascotScript : MonoBehaviour
         if (newName.ToLower() == "sy")
         {
             ShowText("That name's a bit too out of this world for me. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "fop")
+        {
+            ShowText("I think you misspelled fox. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "Alesssan")
+        {
+            ShowText("That name doesn't even fit the prompt, let alone this room. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "Sid")
+        {
+            ShowText("You can afford a better name than that! Maybe you should pick something else.<name>");
             return;
         }
 
@@ -448,7 +463,7 @@ public class VisionMascotScript : MonoBehaviour
 
         UpdateCharacter();
 
-        if (currentDifficultyDialogue.FirstIncrease)
+        if (currentDifficultyDialogue.FirstIncrease && currentDifficultyDialogue.TriggerFirstIncreaseOnDay == DayInfo.CurrentDay)
         {
             currentDifficultyDialogue.FirstIncrease = false;
             MascotSayText(currentDifficultyDialogue.FirstDifficultyIncreaseDialogues);
@@ -473,7 +488,7 @@ public class VisionMascotScript : MonoBehaviour
 
         UpdateCharacter();
 
-        if (currentDifficultyDialogue.FirstDecrease)
+        if (currentDifficultyDialogue.FirstDecrease && currentDifficultyDialogue.TriggerFirstDecreaseOnDay == DayInfo.CurrentDay)
         {
             currentDifficultyDialogue.FirstDecrease = false;
             MascotSayText(currentDifficultyDialogue.FirstDifficultyDecreaseDialogues);

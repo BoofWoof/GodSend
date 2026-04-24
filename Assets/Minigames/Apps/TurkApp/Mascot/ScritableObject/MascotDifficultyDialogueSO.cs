@@ -9,6 +9,7 @@ public class VisionCompletionMascotText
     public string CompletionName;
     public int CompletionCount;
     [TextArea] public string SolutionDialogues;
+    public int TriggerOnDay = 1;
     [HideInInspector] public bool Triggered;
 }
 [Serializable]
@@ -31,11 +32,13 @@ public class MascotDifficultyDialogueSO : ScriptableObject
     public AudioClip SpeechSound;
 
     [Header("Difficulty Increase")]
+    public int TriggerFirstIncreaseOnDay = 1;
     [HideInInspector] public bool FirstIncrease = true;
     public int IncreaseOccurrences = 0;
     [TextArea] public string FirstDifficultyIncreaseDialogues;
     [TextArea] public List<string> DifficultyIncreaseDialogues;
 
+    public int TriggerFirstDecreaseOnDay = 1;
     [Header("Difficulty Decrease")]
     [HideInInspector] public bool FirstDecrease = true;
     public int DecreaseOccurrences = 0;

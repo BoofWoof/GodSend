@@ -23,6 +23,7 @@ public class UpgradeItemScript : MonoBehaviour
         DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
         CostText.text = AssociatedUpgrade.CostToText();
         UpgradeImage.sprite = AssociatedUpgrade.UpgradeIcon;
+        if(AssociatedUpgrade.GoldenUpgrade) GetComponent<Image>().color = new Color(0.7f, 0.6f, 0.22f);
     }
 
     public void SetUpgrade(UpgradesAbstract associatedUpgrade)

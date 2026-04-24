@@ -24,4 +24,4 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
-  DifficultyCompletion: 0
+  DifficultyCompletion: 1

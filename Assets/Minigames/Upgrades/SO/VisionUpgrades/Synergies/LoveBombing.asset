@@ -22,8 +22,12 @@ MonoBehaviour:
   UpgradeDescription: In a lonely world, love can be addictive. Make sure to love
     your Flock. (Positive prayer fireworks complete a <color=green>Very Easy</color>
     Vision puzzle.)
-  MascotDialogue: This one seems pretty useless, doesn't it! Maybe it will come in
-    handy later???
+  MascotDialogue: This blessing is specifically made for <b>VIP<b>s like you. It
+    plays well with your special perks.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: This one seems pretty useless, doesn't it! Maybe it will
+      come in handy later???
   Credits: 0.0000156
   FlockRenown: 0
   FoundationRenown: 0

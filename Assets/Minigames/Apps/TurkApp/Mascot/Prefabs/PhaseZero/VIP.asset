@@ -15,13 +15,15 @@ MonoBehaviour:
   DifficultyNames: VIP Lounge
   CharacterVideo: {fileID: 32900000, guid: eea8d0f47970c154e9ff855ca12c41f9, type: 3}
   SpeechSound: {fileID: 8300000, guid: 8f199d5b3a5b637419180fc02ae6447a, type: 3}
+  TriggerFirstIncreaseOnDay: 1
   FirstIncrease: 1
   IncreaseOccurrences: 0
   FirstDifficultyIncreaseDialogues: ...
   DifficultyIncreaseDialogues:
   - ...
+  TriggerFirstDecreaseOnDay: 2
   FirstDecrease: 1
-  DecreaseOccurrences: 0
+  DecreaseOccurrences: 1
   FirstDifficultyDecreaseDialogues: 'Oh thank goodness.<n>
 
     I didn''t get installed
@@ -56,7 +58,7 @@ MonoBehaviour:
   - I'd tell you which ones, but I'm not allowed to advertise in <b>VIP</b> spaces.
   - '[SINKS BENEATH THE WATER]'
   - '[BLOWS BUBBLES]'
-  SpamCloseOccurances: 0
+  SpamCloseOccurances: 1
   SpamCloseDialogues:
   - Ugh, we should really turn those off.
   - Thanks for getting that out of the way, it was blocking my sun.
@@ -73,16 +75,16 @@ MonoBehaviour:
 
       Amazing what people do with free will
       these days.'
+    TriggerOnDay: 1
     Triggered: 0
   TimeDialogues:
   - TimeName: SlowMoving
     TimePassed: 30
     AllowRetrigger: 1
     SolutionDialogues:
-    - I get it, take your time, you're probably make far more money elsewhere.
-    - Fun fact, the simulation has pruning turned off, so I can stay in here all
-      day.
+    - I get it, take your time, you're probably making far more money elsewhere.
+    - Fun fact, my simulation has pruning turned off, so I can stay in here all day.
     - 'It''s weird... why do I actually like looking at the stars? Is what I feel
-      ''liking'' something? Am I feeling things or just simu- [PROCESS TERMINATED]'
-    TriggerOccurances: 0
+      actually ''liking'' something? Am I feeling things or just simu- [PROCESS TERMINATED]'
+    TriggerOccurances: 1
   DifficultyReminder: ...

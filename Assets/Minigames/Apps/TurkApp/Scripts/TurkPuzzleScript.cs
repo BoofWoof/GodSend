@@ -168,7 +168,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void Update()
     {
-        if (CurrentDifficutly >= MaxAvailableDifficutly - 1)
+        if (CurrentDifficutly >= MaxAvailableDifficutly || CurrentDifficutly == 0)
         {
             NewDifficultyUnlockGlow.SetActive(false);
         }
@@ -438,7 +438,14 @@ public class TurkPuzzleScript : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
         }
 
-        CurrencyData.Credits += reward;
+        if (PassiveIncomeScript.isPassiveIncomeActive())
+        {
+            PassiveIncomeScript.IncreasePassiveIncome(reward);
+        } else
+        {
+            CurrencyData.Credits += reward;
+        }
+
         VisionMascotScript.SayText(selectedGridData.MascotStatement);
         VisionMascotScript.EnableProgress = false;
 

@@ -77,14 +77,18 @@ public class UpgradeScreenScript : MonoBehaviour
         }
 
         //Find which index to add to.
-        int newPriority = newUpgradeClones[0].Prioirty;
-        int insertionIndex = 0;
-        foreach (UpgradesAbstract upgrade in UpgradeClones)
+        for(int i = newUpgradeClones.Count - 1; i >= 0; i--)
         {
-            if (newPriority < upgrade.Prioirty) break;
-            insertionIndex++;
+            UpgradesAbstract newUpgrade = newUpgradeClones[i];
+            int newPriority = newUpgrade.Prioirty;
+            int insertionIndex = 0;
+            foreach (UpgradesAbstract upgrade in UpgradeClones)
+            {
+                if (newPriority <= upgrade.Prioirty) break;
+                insertionIndex++;
+            }
+            UpgradeClones.Insert(insertionIndex, newUpgrade);
         }
-        UpgradeClones.InsertRange(insertionIndex, newUpgradeClones);
 
         CheckForPrebought();
 

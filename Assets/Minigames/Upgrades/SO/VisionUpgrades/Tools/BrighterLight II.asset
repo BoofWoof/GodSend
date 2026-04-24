@@ -21,7 +21,11 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: Your soul is growing closer with the Flock. (Increase your
     cursor's vision range.)
-  MascotDialogue: Most brighterestest!
+  MascotDialogue: It's gone. That annoying mechanic is finally gone. We can see so
+    well now.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: Most brighterestest!
   Credits: 0.0000781
   FlockRenown: 0
   FoundationRenown: 0

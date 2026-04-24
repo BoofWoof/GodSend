@@ -16,21 +16,27 @@ MonoBehaviour:
   UpgradeID: e584c4c7b5673eb49b3641b6d722a2d1
   UpgradeName: Fear Motivates
   UpgradeIcon: {fileID: 1295698386, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: You finally deserve some leadership of your own, and the first
     rule of leadership is that FEAR MOTIVATES. (The higher the Ram's anger, the higher
     your earnings.)
-  MascotDialogue: 'Activating a new biometric sensor!<n>
+  MascotDialogue: Finally a perk that might apply to you. It's always good to be
+    able to shuffle the peons around effectively.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: 'Activating a new biometric sensor!<n>
 
-    Lets try switching
-    emotions based on what''s useful at the time!<n>
+      Lets try switching
+      emotions based on what''s useful at the time!<n>
 
-    The more angry, the more
-    you''ll earn!<n>
+      The more angry, the
+      more you''ll earn!<n>
 
-    Direct that anger toward productivity!!!'
+      Direct that anger toward productivity!!!'
   Credits: 0.0000625
   FlockRenown: 0
   FoundationRenown: 0

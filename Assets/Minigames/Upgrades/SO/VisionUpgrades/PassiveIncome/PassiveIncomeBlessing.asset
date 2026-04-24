@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992b3a488210cf54ca73a1663aba4117, type: 3}
+  m_Name: PassiveIncomeBlessing
+  m_EditorClassIdentifier: 
+  Prioirty: 0
+  UpgradeID: c05014aa7dfae3247b31464bb3011b4f
+  UpgradeName: Passive Income
+  UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: -1
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: Just relax.
+  MascotDialogue: 
+  OverrideDialogue: []
+  Credits: 0
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  UpgradeBought: 0
+  AssociatedMinigame: 0
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1

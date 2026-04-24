@@ -21,8 +21,12 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: Often it's not what you say, but how you say it. (Good prayers
     are now more effective.)
-  MascotDialogue: Get ready for the <b>advanced</b> sucking up to your superiors
-    class!
+  MascotDialogue: Ugh, more lesson on how to be a sycophant. Are you sure someone
+    of your status wants these?
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: Get ready for the <b>advanced</b> sucking up to your superiors
+      class!
   Credits: 0.00000313
   FlockRenown: 0
   FoundationRenown: 0

@@ -16,13 +16,19 @@ MonoBehaviour:
   UpgradeID: bfff33d96b72c66418317b4eb3cc2284
   UpgradeName: Sights Beyond
   UpgradeIcon: {fileID: 457129494, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
     comes responsibility. Access higher difficulties for more earnings! (Recommend
     Purchase)
-  MascotDialogue: I think I might finally be ready to open up...
+  MascotDialogue: Did you know a <b>really</b> nice telescope costs about as much
+    as a hot tub. Sometimes it's better to trade passion for luxury.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: I think I might finally be ready to open up...
   Credits: 0.000000125
   FlockRenown: 0
   FoundationRenown: 0
