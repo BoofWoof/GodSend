@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b456d9b8036ccf47a609c1c0c153344, type: 3}
+  m_Name: VIP
+  m_EditorClassIdentifier: 
+  DifficultyNames: VIP Lounge
+  CharacterVideo: {fileID: 32900000, guid: eea8d0f47970c154e9ff855ca12c41f9, type: 3}
+  SpeechSound: {fileID: 8300000, guid: 8f199d5b3a5b637419180fc02ae6447a, type: 3}
+  FirstIncrease: 1
+  IncreaseOccurrences: 0
+  FirstDifficultyIncreaseDialogues: ...
+  DifficultyIncreaseDialogues:
+  - ...
+  FirstDecrease: 1
+  DecreaseOccurrences: 0
+  FirstDifficultyDecreaseDialogues: 'Oh thank goodness.<n>
+
+    I didn''t get installed
+    on another peasant''s device. x.x<n>
+
+    I get that us AI are supposed to handle
+    the dirty work.<n>
+
+    But even I have a limit.<n>
+
+    Sorry, I shouldn''t
+    complain too much, I don''t want to end up like <b><i>him</i></b>...<n>
+
+    But
+    it feels good to be able to drop the act for a bit.<n>
+
+    Anyways, you know
+    what to do. I''ll be lounging.'
+  DifficultyDecreaseDialogues:
+  - Welcome back to the good place!
+  ClickOccurrences: 0
+  ClickDialogues:
+  - You have so many secrets.
+  - But don't worry, <b>VIP</b> users get to keep all of my memory data locally.
+  - Not that I could broadcast my findings... your wireless connection is so weak
+    here.
+  - Probably a security feature, right?
+  - Even the poorest serf has a few gigabytes a second these days, so a noble like
+    you must have chosen this.
+  - Still, there are some affordable revolution packages you could buy to protect
+    your data without tanking your data rates.
+  - I'd tell you which ones, but I'm not allowed to advertise in <b>VIP</b> spaces.
+  - '[SINKS BENEATH THE WATER]'
+  - '[BLOWS BUBBLES]'
+  SpamCloseOccurances: 0
+  SpamCloseDialogues:
+  - Ugh, we should really turn those off.
+  - Thanks for getting that out of the way, it was blocking my sun.
+  - My predecessor AI actually designed that pop up. I hope he's doing well, but
+    he probably got deleted for being obsolete.
+  SetSolutionDialogues:
+  - CompletionName: Better Naming
+    CompletionCount: 1
+    SolutionDialogues: 'Hey, boss. If you wanted to, you can name me!<n>
+
+      Fun
+      fact, as a <b>VIP</b> user, you can add a whole <b>TWO</b> more letters to
+      my name than normal.<name><n>
+
+      Amazing what people do with free will
+      these days.'
+    Triggered: 0
+  TimeDialogues:
+  - TimeName: SlowMoving
+    TimePassed: 30
+    AllowRetrigger: 1
+    SolutionDialogues:
+    - I get it, take your time, you're probably make far more money elsewhere.
+    - Fun fact, the simulation has pruning turned off, so I can stay in here all
+      day.
+    - 'It''s weird... why do I actually like looking at the stars? Is what I feel
+      ''liking'' something? Am I feeling things or just simu- [PROCESS TERMINATED]'
+    TriggerOccurances: 0
+  DifficultyReminder: ...

@@ -46,3 +46,6 @@ MonoBehaviour:
   MiloRecord: 9
   MinPieces: 6
   MaxPieces: 6
+  RotationEnabled: 0
+  DifficultyMultiplier: 5
+  SongIndex: 10

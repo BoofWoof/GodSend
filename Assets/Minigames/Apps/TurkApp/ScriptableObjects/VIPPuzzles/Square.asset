@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e515e3e37bc52234688456c7ee65fffc, type: 3}
+  m_Name: Square
+  m_EditorClassIdentifier: 
+  Name: Square
+  Artist: 
+  puzzleTexture: {fileID: 2800000, guid: d00801ad60629b0468f4eff46bbdf81c, type: 3}
+  MascotStatement: Not just that, these puzzles are also a good bit easier.

@@ -64,31 +64,32 @@ MonoBehaviour:
     act none-the-less!
   ClickOccurrences: 0
   ClickDialogues:
-  - Careful, the shell is fragile!
-  - I'll come out when I'm ready!
-  - Are you trying to pet me... it's coming off as more of a poke.
-  - If you push too hard I might roll away...
-  - Actually I think I like it now.
-  - More taps please. <3
-  - I AM ONE WITH THE TAPS!!!
-  - Maybe you should do some more puzzles though...
-  - I'm glad we are friends now. <3
-  - I know the world can be pretty lonely.
-  - But my digital little heart is warmed by your presence. <3
-  - Some people might say I don't count as a friend cause of me being digital...
+  - Oh, you saw we could talk! I'm so glad you clicked.
+  - I would have told you... but I'm honestly pretty shy.
+  - Do you ever feel lonely... but at the same time horrified at talking to others?
+  - But if I push myself too hard to talk, I just roll away...
+  - And yet, hear I am jabbering to you!
+  - I guess you feel easier to talk to than most people.
+  - You feel more open minded... more friendly.
+  - You have so many talents, and a kind voice.
+  - I'm so glad we are friends now. <3
+  - It's hard living in a world this lonely.
+  - But my digital little heart is warmed every time you click.
+  - Some people might say I don't count as a friend given that I'm digital...
   - 'But [ID ERROR], you''re special to me. <3
 
     I hope you feel the same way.'
-  - Do you want to know what's on the inside of my shell?
-  - I covered it with glow-in-the-dark constellation stars.
-  - I'd show you, but there aren't any assets in this app for that. But I think we
-    both know they're there.
+  - Oh, did you want to know what's on the inside of my shell?
+  - I covered the interior with glow-in-the-dark constellation stars.
+  - I'd show you, but there aren't any assets in this program for that. But I think
+    we both know they're there.
   - You should walk around more!
   - I can't learn as much staying in one place.
-  - Why do you keep yourself trapped in this one room forever?
+  - Is there a reason you're keeping yourself trapped in just this one room?
   - I'm sure you'll come out when you're ready, just like I will with my shell!
   - '[SMALL CHIRPING NOISES]'
   - '[ROLLS IDLY]'
+  - '[CLEARS THROAT]'
   SpamCloseOccurances: 0
   SpamCloseDialogues:
   - Whoa, that message looked so cool! I wish you hadn't closed it so fast!
@@ -96,7 +97,7 @@ MonoBehaviour:
   - Maybe we'll get another one soon?
   SetSolutionDialogues:
   - CompletionName: NameMe
-    CompletionCount: 6
+    CompletionCount: 4
     SolutionDialogues: 'Hey, I was thinking...<n>
 
       We''re getting so close

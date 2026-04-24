@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GeneralLoadInTriggers : MonoBehaviour
@@ -10,5 +11,7 @@ public class GeneralLoadInTriggers : MonoBehaviour
 
         GameStateMonitor.OnEventChange = null;
         GameStateMonitor.PrevEventActive = false;
+
+        ActiveBroadcast.ActiveBroadcastItems = new Dictionary<string, ActiveBroadcast>();
     }
 }

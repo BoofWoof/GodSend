@@ -25,3 +25,5 @@ MonoBehaviour:
   MinPieces: 5
   MaxPieces: 5
   RotationEnabled: 0
+  DifficultyMultiplier: 1
+  SongIndex: 9

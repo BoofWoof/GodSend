@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
   m_Name: TalkAbout
   m_EditorClassIdentifier: 
-  AudioData: {fileID: 8300000, guid: 2bcb70ba1338ec142a3441aa5bcc2ac5, type: 3}
+  AudioData: {fileID: 8300000, guid: 2aeeb6b889b4ab84aa4a3e99ea2ebca2, type: 3}
   PhenomeData: {fileID: 0}
-  SubtitleData: {fileID: 4900000, guid: 683b96fbd6943e94da245fae8e8af3c7, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 9bf091bd326ba2840b77d9ac455d4fcc, type: 3}
   GestureData: {fileID: 0}
   FocusLevel: 1
   PauseBeforeStart: 1

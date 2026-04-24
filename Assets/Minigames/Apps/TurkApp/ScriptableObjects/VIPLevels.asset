@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b8724cbf4a278488c1e98dffb1531d, type: 3}
+  m_Name: VIPLevels
+  m_EditorClassIdentifier: 
+  PuzzleSetName: VIP Room
+  Puzzles:
+  - {fileID: 11400000, guid: fc100f20b5e77fc42a87d67ab514f725, type: 2}
+  - {fileID: 11400000, guid: a6ad757bc1ec6db468290659fe1a1e8e, type: 2}
+  - {fileID: 11400000, guid: d092e2d7eac850749a0b0ba3ee8465ae, type: 2}
+  - {fileID: 11400000, guid: 39e9ee96befa5014aaf903388d716cc6, type: 2}
+  DarknessModifier: 2
+  OpennessModifier: 2
+  FalconSpeed: 30
+  MiloRecord: 10
+  MinPieces: 3
+  MaxPieces: 3
+  RotationEnabled: 1
+  DifficultyMultiplier: -1
+  SongIndex: 9

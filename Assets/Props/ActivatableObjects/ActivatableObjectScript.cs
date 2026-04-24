@@ -7,7 +7,11 @@ public class ActivatableObjectScript : MonoBehaviour
 {
     public float activeDelay = 0f;
 
+    private bool isHovered = false;
+
     public UnityEvent onActivate;
+    public UnityEvent onHover;
+    public UnityEvent onUnfocus;
 
     public bool ObjectEnabled = true;
 
@@ -28,6 +32,20 @@ public class ActivatableObjectScript : MonoBehaviour
         // Define what happens when the object is activated
         Debug.Log(gameObject.name + " has been activated!");
         // You can add more logic for interaction
-        onActivate.Invoke();
+        onActivate?.Invoke();
+    }
+
+    public void StartHover()
+    {
+        if (isHovered) return;
+        isHovered = true;
+        onHover?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        if (!isHovered) return;
+        isHovered = false;
+        onUnfocus?.Invoke();
     }
 }
