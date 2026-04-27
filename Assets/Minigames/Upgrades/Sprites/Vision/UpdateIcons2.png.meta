@@ -171,7 +171,7 @@ TextureImporter:
         width: 249
         height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,7 +193,7 @@ TextureImporter:
         width: 280
         height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -202,6 +202,94 @@ TextureImporter:
       bones: []
       spriteID: 06bef6ffda3577348b856ba2b6b89644
       internalID: -645817226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpdateIcons2_5
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 1414
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c80ee2dcf94d084383b7b4530312ae0
+      internalID: 1474361866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpdateIcons2_6
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 1506
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 884c75182f43e5b459cc077ad3a83ee1
+      internalID: -2140385114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpdateIcons2_7
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 1757
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581f0e21a52d5bc4b9d5e34f9189b9fa
+      internalID: -1106356115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpdateIcons2_8
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1409
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9118fe41e67a816419a8c4b48f717ec9
+      internalID: 1924011614
       vertices: []
       indices: 
       edges: []
@@ -225,6 +313,10 @@ TextureImporter:
       UpdateIcons2_2: 457129494
       UpdateIcons2_3: -1538940867
       UpdateIcons2_4: -645817226
+      UpdateIcons2_5: 1474361866
+      UpdateIcons2_6: -2140385114
+      UpdateIcons2_7: -1106356115
+      UpdateIcons2_8: 1924011614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

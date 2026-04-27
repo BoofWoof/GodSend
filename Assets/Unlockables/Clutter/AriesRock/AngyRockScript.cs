@@ -54,7 +54,7 @@ public class AngyRockScript : MonoBehaviour
 
     private float TimePassed()
     {
-        return Time.unscaledTime - StartingTime;
+        return Time.time - StartingTime;
     }
 
     private void IncreaseScore()

@@ -15,6 +15,7 @@ public class CarryableObject : MonoBehaviour
     public UnityEvent ObjectActivate;
 
     public bool City;
+    public bool DoNotSaveOrLoadPosition = false;
 
     public Color LightColor;
     public void Start()

@@ -6,6 +6,8 @@ public class PopUpGeneratorScript : MonoBehaviour
 {
     public List<Sprite> PopupSprites;
 
+    public int MaskDifficulty = 1;
+
     public float ChanceToShow = 0.2f;
     public AudioSource ShowNoise;
 
@@ -28,6 +30,6 @@ public class PopUpGeneratorScript : MonoBehaviour
 
     public void MaybeShowPopup()
     {
-        gameObject.SetActive(Random.value <= ChanceToShow && TurkPuzzleScript.CurrentDifficutly > 0);
+        gameObject.SetActive(Random.value <= ChanceToShow && TurkPuzzleScript.CurrentDifficutly != MaskDifficulty);
     }
 }

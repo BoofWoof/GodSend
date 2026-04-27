@@ -466,6 +466,10 @@ public class PrayerScript : MonoBehaviour
 
         _SpecialPrayerActive = false;
 
+        Debug.Log("GENERATING PRAYERS");
+        Debug.Log(SPrayerSubmissionScript.WaitingForcedPrayers.Count);
+        Debug.Log(GameStateMonitor.isEventActive());
+
         if (SPrayerSubmissionScript.WaitingForcedPrayers.Count > 0 && !GameStateMonitor.isEventActive())
         {
             SpecialPrayerSetSO targetPrayer = SPrayerSubmissionScript.WaitingForcedPrayers[0];

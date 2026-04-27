@@ -21,8 +21,12 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: Often it's not what you say, but how you say it. (Good prayers
     are now more effective.)
-  MascotDialogue: I can teach you to suck up as well as I do! It should be easy for
-    someone so smart!
+  MascotDialogue: A <b>VIP</b> shouldn't have to lower themself to begging. But if
+    you really want to know the skills...
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: I can teach you to suck up as well as I do! It should be
+      easy for someone so smart!
   Credits: 0.000000025
   FlockRenown: 0
   FoundationRenown: 0

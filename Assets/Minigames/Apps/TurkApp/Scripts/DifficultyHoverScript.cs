@@ -13,7 +13,7 @@ public class DifficultyHoverScript : MonoBehaviour
     public void SetHigherDifficulty()
     {
         int targetDifficulty = TurkPuzzleScript.CurrentDifficutly + 1;
-        if (targetDifficulty >= TurkPuzzleScript.DifficultiesUnlocked) targetDifficulty = -1;
+        if (targetDifficulty >= TurkPuzzleScript.MaxAvailableDifficutly) targetDifficulty = -1;
         SetTargetDifficulty(targetDifficulty);
     }
 

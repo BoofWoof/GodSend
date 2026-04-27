@@ -21,21 +21,25 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: A tranquil soul can sense more. (Increase your cursor's vision
     range based on how calm The Great Ram is.)
-  MascotDialogue: 'Hey, I''m gonna activate some new sensors quick!<n>
+  MascotDialogue: This is my kind of blessing. Let me teach you how to be as chill
+    as me.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: 'Hey, I''m gonna activate some new sensors quick!<n>
 
-    Just
-    to monitor your mood!<n>
+      Just
+      to monitor your mood!<n>
 
-    Or really, monitor the most powerful biometric
-    signature to me...<n>
+      Or really, monitor the most powerful biometric
+      signature to me...<n>
 
-    But I''m sure that will be yours, right?<n>
+      But I''m sure that will be yours, right?<n>
 
-    Either
-    way, practice controlling your emotions and staying calm!<n>
+      Either
+      way, practice controlling your emotions and staying calm!<n>
 
-    The more calm
-    you are, the more bright your light will shine!'
+      The more
+      calm you are, the more bright your light will shine!'
   Credits: 0.000000005
   FlockRenown: 0
   FoundationRenown: 0

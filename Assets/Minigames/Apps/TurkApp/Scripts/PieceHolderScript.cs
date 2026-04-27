@@ -25,6 +25,17 @@ public class PieceHolderScript : MonoBehaviour
 
     public static List<PieceHolderScript> PieceList = new List<PieceHolderScript>();
 
+    public void Awake()
+    {
+        PieceList = new List<PieceHolderScript>();
+        PickupEnabled = true;
+        RotationEnabled = false;
+        PieceHolderRestraint = true;
+        StorePiece = false;
+
+        TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(DestroySelf);
+    }
+
     public void Start()
     {
         PieceList.Add(this);
@@ -33,6 +44,17 @@ public class PieceHolderScript : MonoBehaviour
     public void OnDestroy()
     {
         PieceList.Remove(this);
+        TurkPuzzleScript.instance.OnBeforePuzzleGenerate.RemoveListener(DestroySelf);
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
+
+    public static void ClearPieces()
+    {
+        PieceList.Clear();
     }
 
     public static void SafetyCheckAllPositions()

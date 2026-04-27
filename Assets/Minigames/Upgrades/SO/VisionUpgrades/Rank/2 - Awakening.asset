@@ -16,29 +16,35 @@ MonoBehaviour:
   UpgradeID: 1733799aeee9bd34b943d441950ea99a
   UpgradeName: Awakening
   UpgradeIcon: {fileID: -632570387, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: 1
   DialogueToTrigger: V-Awakening
   CompleteQuest: 1
   ProgressQuest: 0
   UpgradeDescription: The lies of the body have begun to crack. Each puzzle now earns
     you more credits.
-  MascotDialogue: 'This is an amazing occassion!<n>
+  MascotDialogue: Two down, an unknown number to go. The heads of Flock don't actually
+    keep the full ranking system accessible to anyone outside of their numbers.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: 'This is an amazing occassion!<n>
 
-    Not everyone gets this far!<n>
+      Not everyone gets
+      this far!<n>
 
-    A
-    lot of them uninstall the app before we even get to talk. :c<n>
+      A lot of them uninstall the app before we even get to talk.
+      :c<n>
 
-    But now
-    our momentum can finally grow, because we''re both learning!<n>
+      But now our momentum can finally grow, because we''re both learning!<n>
 
-    You''re
-    going to get some paperwork to your device soon, and I''m going to need you to
-    do your best to fill it out!<n>
+      You''re
+      going to get some paperwork to your device soon, and I''m going to need you
+      to do your best to fill it out!<n>
 
-    I know it can be boring, but it''s going
-    to help both our futures!<n>
+      I know it can be boring, but it''s
+      going to help both our futures!<n>
 
-    We got this!'
+      We got this!'
   Credits: 0.000000375
   FlockRenown: 0
   FoundationRenown: 0

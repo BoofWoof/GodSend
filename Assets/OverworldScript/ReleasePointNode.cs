@@ -17,6 +17,8 @@ public class ReleasePointNode : Saver
 
         if (saveData == null || saveData.containedObjectID < 0) return;
 
+        if (PropManager.instance.PropList[saveData.containedObjectID].GetComponent<CarryableObject>().DoNotSaveOrLoadPosition) return;
+
         GameObject spawnedObject = Instantiate(PropManager.instance.PropList[saveData.containedObjectID]);
         spawnedObject.transform.localScale = Vector3.one;
         spawnedObject.transform.parent = transform;
@@ -31,7 +33,7 @@ public class ReleasePointNode : Saver
     public override string RecordData()
     {
         ReleasePonintSaveData saveData = new ReleasePonintSaveData();
-        if(heldObject == null || heldObject.ObjectName.ToLower() == "city")
+        if(heldObject == null || heldObject.ObjectName.ToLower() == "city" || heldObject.DoNotSaveOrLoadPosition)
         {
             saveData.containedObjectID = -1;
         } else

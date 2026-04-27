@@ -35,7 +35,6 @@ public class CursorEffectScript : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Triggered");
         if (ctx.phase == InputActionPhase.Started)
         {
             MouseMovementParticles.transform.localPosition = localPoint;

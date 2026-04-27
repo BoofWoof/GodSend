@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum Minigame
@@ -6,6 +9,18 @@ public enum Minigame
     Stocks,
     Rally,
     Hacking
+}
+
+[Serializable]
+public class MascotDialogueOverride
+{
+    public int OverrideDay = -1;
+    [TextArea]
+    public string ReplacementDialogue;
+    public bool triggerToday()
+    {
+        return OverrideDay == DayInfo.CurrentDay;
+    }
 }
 
 public abstract class UpgradesAbstract : ScriptableObject
@@ -17,6 +32,11 @@ public abstract class UpgradesAbstract : ScriptableObject
     public string UpgradeName;
     public Sprite UpgradeIcon;
 
+    public int PrioritySortOverride = -1;
+
+    public bool GoldenUpgrade = false;
+
+    public int DayToTrigger = -1;
     public string DialogueToTrigger = "";
     public bool CompleteQuest = false;
     public bool ProgressQuest = false;
@@ -25,6 +45,7 @@ public abstract class UpgradesAbstract : ScriptableObject
     public string UpgradeDescription;
     [TextArea]
     public string MascotDialogue;
+    public List<MascotDialogueOverride> OverrideDialogue = new List<MascotDialogueOverride>();
 
     [Header("Costs")]
     public float Credits;
@@ -94,13 +115,23 @@ public abstract class UpgradesAbstract : ScriptableObject
 
         OnBuy();
 
-        VisionMascotScript.SayText(MascotDialogue);
+        string sayDialogue = MascotDialogue;
+        foreach(MascotDialogueOverride mdo in OverrideDialogue)
+        {
+            if (mdo.triggerToday())
+            {
+                sayDialogue = mdo.ReplacementDialogue;
+                break;
+            }
+        }
+        VisionMascotScript.SayText(sayDialogue);
 
         if (!forceBuy) UpgradeScreenScript.UpgradeBoughtEvent?.Invoke(this);
 
-        if(DialogueToTrigger.Length > 0) MessageQueue.addDialogue(DialogueToTrigger);
-        if (CompleteQuest) QuestManager.CompleteQuest(QuestManager.currentQuest);
-        if (ProgressQuest) QuestManager.IncrementQuest();
+        bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
+        if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
+        if (CompleteQuest && triggerDay) QuestManager.CompleteQuest(QuestManager.currentQuest);
+        if (ProgressQuest && triggerDay) QuestManager.IncrementQuest();
 
         return canBuy;
     }

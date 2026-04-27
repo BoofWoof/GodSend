@@ -250,7 +250,7 @@ namespace DS
 
             DoubleMessage = false;
 
-            targetScrollRect.verticalNormalizedPosition = 1f;
+            targetScrollRect.verticalNormalizedPosition = 0f;
         }
         public GameObject AddObjectToContainer(GameObject targetPrefab)
         {

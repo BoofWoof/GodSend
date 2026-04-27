@@ -16,27 +16,35 @@ MonoBehaviour:
   UpgradeID: 2dd308e438ba6ae4f829b94c57a0b51b
   UpgradeName: Initiate
   UpgradeIcon: {fileID: -334383677, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: 1
   DialogueToTrigger: V-Initiate
   CompleteQuest: 1
   ProgressQuest: 0
   UpgradeDescription: You've proven your loyalty to Flock. Now you may start learning
     universal truths. Each puzzle now earns you more credits.
-  MascotDialogue: 'Do you understand what you just did?<n>
+  MascotDialogue: 'Nice!
 
-    You took the first
-    steps to soar above the crowds!<n>
+    Did you expect me to say more? Nah, I wouldn''t waste
+    a VIPs time.'
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: 'Do you understand what you just did?<n>
 
-    The church of <color=blue>FLOCK</color>
-    now recognizes you as one of their fledglings!<n>
+      You took
+      the first steps to soar above the crowds!<n>
 
-    Not only does this earn
-    respect from your new peers, but it gains you higher pay!<n>
+      The church of <color=blue>FLOCK</color>
+      now recognizes you as one of their fledglings!<n>
 
-    Keep going
-    and you might earn enough respect to be taught the secrets of the universe!<n>
+      Not only does this
+      earn respect from your new peers, but it gains you higher pay!<n>
 
-    Just
-    make sure to stay on your best behavior!'
+      Keep
+      going and you might earn enough respect to be taught the secrets of the universe!<n>
+
+      Just
+      make sure to stay on your best behavior!'
   Credits: 0.000000025
   FlockRenown: 0
   FoundationRenown: 0

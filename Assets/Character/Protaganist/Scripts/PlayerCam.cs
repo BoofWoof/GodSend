@@ -110,6 +110,7 @@ public class PlayerCam : MonoBehaviour
 
         if (TargetActivationObject != null)
         {
+            TargetActivationObject.GetComponent<ActivatableObjectScript>().EndHover();
             TargetActivationObject.layer = LayerMask.NameToLayer("Default");
             TargetActivationObject = null;
             ReticleScript.instance.SetDefault();
@@ -144,12 +145,14 @@ public class PlayerCam : MonoBehaviour
             {
                 if (TargetActivationObject != null)
                 {
+                    TargetActivationObject.GetComponent<ActivatableObjectScript>().EndHover();
                     TargetActivationObject.layer = LayerMask.NameToLayer("Default");
                     ReticleScript.instance.SetDefault();
                 }
                 TargetActivationObject = hit.collider.gameObject;
                 if (aos.ObjectEnabled)
                 {
+                    TargetActivationObject.GetComponent<ActivatableObjectScript>().StartHover();
                     TargetActivationObject.layer = LayerMask.NameToLayer("Outline");
                     ReticleScript.instance.SetInspector();
                 }
@@ -157,6 +160,7 @@ public class PlayerCam : MonoBehaviour
             {
                 if (TargetActivationObject != null)
                 {
+                    TargetActivationObject.GetComponent<ActivatableObjectScript>().EndHover();
                     TargetActivationObject.layer = LayerMask.NameToLayer("Default");
                     TargetActivationObject = null;
                     ReticleScript.instance.SetDefault();
@@ -166,6 +170,7 @@ public class PlayerCam : MonoBehaviour
         {
             if(TargetActivationObject != null)
             {
+                TargetActivationObject.GetComponent<ActivatableObjectScript>().EndHover();
                 TargetActivationObject.layer = LayerMask.NameToLayer("Default");
                 TargetActivationObject = null;
                 ReticleScript.instance.SetDefault();

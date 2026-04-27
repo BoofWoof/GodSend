@@ -47,20 +47,20 @@ Material:
     - _RotateRate: 0.01
     - _Scale: 150
     - _ScreenScale: 0.04
-    - _StarDensity: 350
+    - _StarDensity: 300
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TimeScale: 0.01
+    - _TimeScale: 0.02
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
     m_Colors:
-    - _Center: {r: 0.63, g: 0.56, b: 0, a: 0}
+    - _Center: {r: 0.57, g: 0.53, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _NebulaColor: {r: 0.6132076, g: 0.48690966, b: 0.19958171, a: 0}
     - _ScreenRatio: {r: 1.92, g: 1.08, b: 0, a: 0}
-    - _StarColor: {r: 0.76886797, g: 0.9890283, b: 1, a: 0}
+    - _StarColor: {r: 1.856356, g: 2.0610034, b: 2.412, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

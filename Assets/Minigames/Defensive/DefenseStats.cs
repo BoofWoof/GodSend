@@ -29,6 +29,12 @@ public class DefenseStats : MonoBehaviour
         
         OnHealthChange?.Invoke(GetEfficiencyMultiplier());
     }
+
+    public static void SetCityHealth(float healthValue)
+    {
+        CityEfficiencyHealth = healthValue;
+    }
+
     public static void DamageCity(float Damage)
     {
         if (Damage <= 0 && CityEfficiencyHealth == instance.MaxHealth) return;

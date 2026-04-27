@@ -16,13 +16,18 @@ MonoBehaviour:
   UpgradeID: d327a1ece25e42d4d8a680c52078f5fc
   UpgradeName: Sights Beyond
   UpgradeIcon: {fileID: 309433619, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  GoldenUpgrade: 1
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
     comes responsibility. Access higher difficulties for more earnings! (Recommend
     Purchase)
-  MascotDialogue: My wings are feeling so strong now!
+  MascotDialogue: Please don't make me fly again... I like the bird bath.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: My wings are feeling so strong now!
   Credits: 0.00000313
   FlockRenown: 0
   FoundationRenown: 0

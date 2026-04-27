@@ -21,6 +21,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public TrukAppScript AssociatedApp;
 
+    public UnityEvent OnBeforePuzzleGenerate;
     public UnityEvent OnPuzzleGenerate;
     public UnityEvent OnPuzzleFinish;
     public UnityEvent<int> OnDifficultyUp;
@@ -71,8 +72,10 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public List<Color> ColorsList = new List<Color>();
 
+    public int DefaultDifficulty = 1;
     public static int CurrentDifficutly = 0;
-    public static int DifficultiesUnlocked = 1;
+    public static int MinAvailableDifficulty = 1;
+    public static int MaxAvailableDifficutly = 1;
     public Button DifficultyIncreaseButton;
     public Button DifficultyDecreaseButton;
 
@@ -134,8 +137,9 @@ public class TurkPuzzleScript : MonoBehaviour
         rewardBaseModifier = null;
         OnPuzzleComplete = null;
 
-        CurrentDifficutly = 0;
-        DifficultiesUnlocked = 1;
+        CurrentDifficutly = DefaultDifficulty;
+        MaxAvailableDifficutly = 1;
+        VisionMascotScript.instance.UpdateCharacter();
 
         Shader.SetGlobalFloat("_TurkCompletion", 0);
 
@@ -151,16 +155,20 @@ public class TurkPuzzleScript : MonoBehaviour
 
         PuzzleCenter = gameObject;
         puzzleScript = this;
+    }
+
+    public void Start()
+    {
+        if (DayInfo.CurrentDay != 1) MinAvailableDifficulty = 0;
 
         GeneratePuzzle();
 
         UpdateDifficultyButtons();
-
     }
 
     public void Update()
     {
-        if (CurrentDifficutly >= DifficultiesUnlocked - 1)
+        if (CurrentDifficutly >= MaxAvailableDifficutly || CurrentDifficutly == 0)
         {
             NewDifficultyUnlockGlow.SetActive(false);
         }
@@ -198,14 +206,14 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void UnlockNewDifficulty()
     {
-        DifficultiesUnlocked++;
+        MaxAvailableDifficutly++;
         UpdateDifficultyButtons();
     }
 
     public void IncreaseDifficulty()
     {
         CurrentDifficutly++;
-        if (CurrentDifficutly >= DifficultiesUnlocked - 1) CurrentDifficutly = DifficultiesUnlocked - 1;
+        if (CurrentDifficutly < MaxAvailableDifficutly) CurrentDifficutly = MaxAvailableDifficutly;
         OnDifficultyUp?.Invoke(CurrentDifficutly);
         puzzleScript.GeneratePuzzle();
 
@@ -214,7 +222,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public void DecreaseDifficulty()
     {
         CurrentDifficutly--;
-        if (CurrentDifficutly < 0) CurrentDifficutly = 0;
+        if (CurrentDifficutly < MinAvailableDifficulty) CurrentDifficutly = MinAvailableDifficulty;
         OnDifficultyDown?.Invoke(CurrentDifficutly);
         puzzleScript.GeneratePuzzle();
 
@@ -223,12 +231,12 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void UpdateDifficultyButtons()
     {
-        DifficultyDecreaseButton.interactable = (CurrentDifficutly != 0);
-        DifficultyIncreaseButton.interactable = !(CurrentDifficutly >= DifficultiesUnlocked - 1);
+        DifficultyDecreaseButton.interactable = (CurrentDifficutly > MinAvailableDifficulty);
+        DifficultyIncreaseButton.interactable = (CurrentDifficutly < MaxAvailableDifficutly);
 
         StartCoroutine(OpenSkyHole(LevelSets[CurrentDifficutly].OpennessModifier));
 
-        int newSongIdx = 9 + CurrentDifficutly;
+        int newSongIdx = LevelSets[CurrentDifficutly].SongIndex;
         if (newSongIdx != AssociatedApp.StartSongInt)
         {
             AssociatedApp.StartSongInt = newSongIdx;
@@ -268,6 +276,9 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void GeneratePuzzle()
     {
+        PieceHolderScript.ClearPieces();
+        OnBeforePuzzleGenerate?.Invoke();
+
         PuzzleEarningsText.gameObject.SetActive(false);
         UpdatePuzzleIdx();
 
@@ -348,6 +359,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public IEnumerator WinCutscene()
     {
+        PieceHolderScript.ClearPieces();
         InteractionBlocker.SetActive(true);
 
         OnPuzzleFinish?.Invoke();
@@ -426,7 +438,14 @@ public class TurkPuzzleScript : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
         }
 
-        CurrencyData.Credits += reward;
+        if (PassiveIncomeScript.isPassiveIncomeActive())
+        {
+            PassiveIncomeScript.IncreasePassiveIncome(reward);
+        } else
+        {
+            CurrencyData.Credits += reward;
+        }
+
         VisionMascotScript.SayText(selectedGridData.MascotStatement);
         VisionMascotScript.EnableProgress = false;
 

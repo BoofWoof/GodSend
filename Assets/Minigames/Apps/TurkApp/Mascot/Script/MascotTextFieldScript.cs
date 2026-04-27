@@ -21,6 +21,9 @@ public class MascotTextFieldScript : MonoBehaviour
         MinCharacterLength = minCharacterLength;
 
         TextInputField.characterLimit = maxCharacterLength;
+
+        int remainingCharacters = MaxCharacterLength - TextInputField.text.Length;
+        RemainingCharactersText.text = remainingCharacters.ToString();
     }
 
     public void OnSubmit()

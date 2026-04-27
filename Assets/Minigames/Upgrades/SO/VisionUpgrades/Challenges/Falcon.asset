@@ -21,15 +21,12 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: Deligence and speed are important, be like the hard working
     Falcon. (Gain more based on completion speed.)
-  MascotDialogue: '<color=blue>FLOCK</color> values speed in their workers.<n>
-
-    I
-    feel the same way!<n>
-
-    Lets work hard to ZOOM through our work together!<n>
-
-    I
-    hear there''s even a special bonus if you go fast enough!'
+  MascotDialogue: Why are you in such a hurry?
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: <color=blue>FLOCK</color> values speed in their workers.<n>
+      I feel the same way!<n> Lets work hard to ZOOM through our work together!<n>
+      I hear there's even a special bonus if you go fast enough!
   Credits: 0.00000025
   FlockRenown: 0
   FoundationRenown: 0

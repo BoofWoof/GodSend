@@ -22,7 +22,10 @@ MonoBehaviour:
   UpgradeDescription: Inside all of us is a monster needing to be calmed. A monster
     that whispers for you to questions your Flock. Receive a visual reminder of such
     horrors.
-  MascotDialogue: That pic needs more birds...
+  MascotDialogue: If you really want that picture, it's yours.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: That pic needs more birds...
   Credits: 0.000000025
   FlockRenown: 0
   FoundationRenown: 0

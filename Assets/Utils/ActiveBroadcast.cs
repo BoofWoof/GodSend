@@ -22,7 +22,7 @@ public class ActiveBroadcast : MonoBehaviour
     public UnityEvent<float> ActivationWithValueEvents;
     public UnityEvent<string> ActivationWithStringEvents;
 
-    static Dictionary<string, ActiveBroadcast> ActiveBroadcastItems = new Dictionary<string, ActiveBroadcast>();
+    public static Dictionary<string, ActiveBroadcast> ActiveBroadcastItems = new Dictionary<string, ActiveBroadcast>();
 
     void Awake()
     {

@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class VisionMascotScript : MonoBehaviour
 {
-    private static VisionMascotScript instance;
+    public static VisionMascotScript instance;
     public static bool EnableProgress = true;
 
     public VideoPlayer CharacterVideo;
@@ -121,7 +121,11 @@ public class VisionMascotScript : MonoBehaviour
             textField.transform.localPosition = Vector3.zero;
 
             MascotTextFieldScript mascotTextFieldScript = textField.GetComponent<MascotTextFieldScript>();
-            mascotTextFieldScript.SetTextLimit(2, 6);
+
+            int maxCharacters = 6;
+            if (DayInfo.CurrentDay != 1) maxCharacters = 8;
+
+            mascotTextFieldScript.SetTextLimit(2, maxCharacters);
             mascotTextFieldScript.OnTextSubmission.AddListener(OnNameSet);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(TextBox.GetComponent<RectTransform>());
@@ -219,7 +223,7 @@ public class VisionMascotScript : MonoBehaviour
             {
                 VisionCompletionMascotText textData = currentDifficultyDialogue.SolutionDialogues[triggerValue];
 
-                if (!textData.Triggered)
+                if (!textData.Triggered && textData.TriggerOnDay == DayInfo.CurrentDay)
                 {
                     textData.Triggered = true;
                     MascotSayText(textData.SolutionDialogues);
@@ -247,7 +251,7 @@ public class VisionMascotScript : MonoBehaviour
         }
         */
 
-        if (TurkPuzzleScript.CurrentDifficutly == TurkPuzzleScript.DifficultiesUnlocked - 1) NewDifficultyUnlocked = false;
+        if (TurkPuzzleScript.CurrentDifficutly == TurkPuzzleScript.MaxAvailableDifficutly - 1) NewDifficultyUnlocked = false;
         if (NewDifficultyUnlocked)
         {
             MascotSayText(currentDifficultyDialogue.DifficultyReminder);
@@ -269,6 +273,107 @@ public class VisionMascotScript : MonoBehaviour
 
     public void OnNameSet(string newName)
     {
+        if (newName.ToLower() == "boof")
+        {
+            ShowText("The ego on that name is a bit too strong. Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "karu")
+        {
+            ShowText("Hmm, a bit too artsy of a name. Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "sykes")
+        {
+            ShowText("Way too silly. Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "hat")
+        {
+            ShowText("DON'T EVEN OFFER ME THAT NAME AS A JOKE. Please, pick another.<name>");
+            return;
+        }
+        if (newName.ToLower() == "aries")
+        {
+            ShowText("Please don't asssociate me with any outlaws... How about a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "aevs")
+        {
+            ShowText("I'm not small enough for a name like that! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "kyowin")
+        {
+            ShowText("I'm a bird, not a cat! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "flint")
+        {
+            ShowText("Despite fitting the character limit, that name seems too small! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "lex")
+        {
+            ShowText("I'm cute, but not that cute! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "seven")
+        {
+            ShowText("That's a number, not a name! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "trip")
+        {
+            ShowText("I'm plenty dexterous, I assure you! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "milo")
+        {
+            ShowText("A nearby user has already claimed that name! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "deimos")
+        {
+            ShowText("Please don't call me a simp! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "arkae")
+        {
+            ShowText("That name is too holy for my likeness! Perhaps you'd pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower() == "saleos")
+        {
+            ShowText("Perhaps you know more than you let on... But humor me. Might you pick a different name?<name>");
+            return;
+        }
+        if (newName.ToLower().Contains("egg"))
+        {
+            ShowText("I won't be an egg forever. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "sy")
+        {
+            ShowText("That name's a bit too out of this world for me. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "fop")
+        {
+            ShowText("I think you misspelled fox. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "Alesssan")
+        {
+            ShowText("That name doesn't even fit the prompt, let alone this room. Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "Sid")
+        {
+            ShowText("You can afford a better name than that! Maybe you should pick something else.<name>");
+            return;
+        }
+
         MascotName = newName;
         NameText.text = newName;
         WaitForInteraction = false;
@@ -302,7 +407,13 @@ public class VisionMascotScript : MonoBehaviour
         if (currentDifficulty >= DifficultyChangeMessages.Count) return;
 
         MascotDifficultyDialogueSO currentDifficultyDialogue = DifficultyChangeMessages[currentDifficulty];
-        MascotSayText(currentDifficultyDialogue.SpamCloseDialogues[currentDifficultyDialogue.SpamCloseOccurances % currentDifficultyDialogue.SpamCloseDialogues.Count]);
+        if(currentDifficultyDialogue.SpamCloseOccurances > 0)
+        {
+            MascotSayText(currentDifficultyDialogue.SpamCloseDialogues[currentDifficultyDialogue.SpamCloseOccurances % currentDifficultyDialogue.SpamCloseDialogues.Count]);
+        } else
+        {
+            MascotSayText(currentDifficultyDialogue.SpamCloseDialogues[0]);
+        }
         currentDifficultyDialogue.SpamCloseOccurances++;
     }
 
@@ -337,7 +448,7 @@ public class VisionMascotScript : MonoBehaviour
 
     public void OnDifficultyIncrease(int currentDifficulty)
     {
-        if (currentDifficulty == TurkPuzzleScript.DifficultiesUnlocked-1) NewDifficultyUnlocked = false;
+        if (currentDifficulty == TurkPuzzleScript.MaxAvailableDifficutly-1) NewDifficultyUnlocked = false;
 
         if (DialogueActive) return;
 
@@ -352,7 +463,7 @@ public class VisionMascotScript : MonoBehaviour
 
         UpdateCharacter();
 
-        if (currentDifficultyDialogue.FirstIncrease)
+        if (currentDifficultyDialogue.FirstIncrease && currentDifficultyDialogue.TriggerFirstIncreaseOnDay == DayInfo.CurrentDay)
         {
             currentDifficultyDialogue.FirstIncrease = false;
             MascotSayText(currentDifficultyDialogue.FirstDifficultyIncreaseDialogues);
@@ -377,7 +488,7 @@ public class VisionMascotScript : MonoBehaviour
 
         UpdateCharacter();
 
-        if (currentDifficultyDialogue.FirstDecrease)
+        if (currentDifficultyDialogue.FirstDecrease && currentDifficultyDialogue.TriggerFirstDecreaseOnDay == DayInfo.CurrentDay)
         {
             currentDifficultyDialogue.FirstDecrease = false;
             MascotSayText(currentDifficultyDialogue.FirstDifficultyDecreaseDialogues);

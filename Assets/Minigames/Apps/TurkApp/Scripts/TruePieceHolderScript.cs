@@ -23,6 +23,22 @@ public class TruePieceHolderScript : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(ClearBoard);
+    }
+
+    public void OnDisable()
+    {
+        TurkPuzzleScript.instance.OnBeforePuzzleGenerate.RemoveListener(ClearBoard);
+    }
+
+    public void ClearBoard()
+    {
+        Pieces.Clear();
+        SelectedPiece = 0;
+    }
+
     public void MovePieceToCenter()
     {
         PieceHolderScript selectedPiece = Pieces[SelectedPiece];

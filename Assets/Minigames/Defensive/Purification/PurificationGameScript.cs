@@ -75,7 +75,7 @@ public class PurificationGameScript : MonoBehaviour
 
     public void PlayStartingDialogue()
     {
-        if (!string.IsNullOrEmpty(associatedLevelHolder.StartingVoiceLinePath))
+        if (associatedLevelHolder != null && !string.IsNullOrEmpty(associatedLevelHolder.StartingVoiceLinePath))
         {
             CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.StartingVoiceLinePath);
         }
@@ -181,8 +181,6 @@ public class PurificationGameScript : MonoBehaviour
                 newWaitingExpansion.sourceVent = currentVent;
                 newVentRouteData.WaitingExpansions.Add(newWaitingExpansion);
 
-                Debug.Log("----");
-
                 int i = 0; //I is just being used to avoid infinite loops while debugging.
                 while (newVentRouteData.WaitingExpansions.Count > 0)
                 {
@@ -259,7 +257,6 @@ public class PurificationGameScript : MonoBehaviour
         }
         foreach (VentRouteData ventRoute in ventRoutes)
         {
-            Debug.Log(ventRoute.GoalFound);
             if (!ventRoute.GoalFound) ventRoute.SourceVent.SetLightLeaking();
         }
 
@@ -338,7 +335,7 @@ public class PurificationGameScript : MonoBehaviour
             {
                 PlayerBlinkScript.StartBlink(associatedLevelHolder.HallucinationResets);
             }
-            if (!string.IsNullOrEmpty(associatedLevelHolder.EndingVoiceLinePath))
+            if (associatedLevelHolder != null && !string.IsNullOrEmpty(associatedLevelHolder.EndingVoiceLinePath))
             {
                 CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.EndingVoiceLinePath);
             }

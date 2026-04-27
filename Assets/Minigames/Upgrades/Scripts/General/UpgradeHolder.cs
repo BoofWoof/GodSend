@@ -45,7 +45,13 @@ public class UpgradeHolder : ActiveBroadcast
         if (Submitted) return;
         foreach (UpgradesAbstract upgrade in Upgrades)
         {
-            upgrade.Prioirty = Priority;
+            if(upgrade.PrioritySortOverride >= 0)
+            {
+                upgrade.Prioirty = upgrade.PrioritySortOverride;
+            } else
+            {
+                upgrade.Prioirty = Priority;
+            }
         }
 
         UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].AddNewUpgrades(Upgrades, !AutoSubmit);

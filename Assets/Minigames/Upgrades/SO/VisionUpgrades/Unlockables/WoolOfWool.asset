@@ -21,9 +21,12 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: Most objects in life are redundant and thus useless. Receive
     a visual reminder of such horrors.
-  MascotDialogue: 'Still no birds. >:C
+  MascotDialogue: Where do images like this come from???
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: 'Still no birds. >:C
 
-    I hate art now.'
+      I hate art now.'
   Credits: 0.0000781
   FlockRenown: 0
   FoundationRenown: 0

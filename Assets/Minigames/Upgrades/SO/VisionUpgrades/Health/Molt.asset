@@ -15,15 +15,22 @@ MonoBehaviour:
   Prioirty: 2
   UpgradeID: ad6b923625c21f14eaa3121ad2d46ca1
   UpgradeName: Molt
-  UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  UpgradeIcon: {fileID: 1924011614, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: The most healing act is that of work. (For every puzzle you
     solve, recover a small amount of city health.)
-  MascotDialogue: Why would you take a sick day? You'd be rotting in a bed when you
-    could be working to buy an <color=#FFC0CB>ASSSCENSSSION</color> brand cure for
-    your ailment!
+  MascotDialogue: Ugh, I hate molting... Oh wait! I'm an AI! I don't actually do
+    that! Sweeeeet.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: Why would you take a sick day? You'd be rotting in a bed
+      when you could be working to buy an <color=#FFC0CB>ASSSCENSSSION</color> brand
+      cure for your ailment!
   Credits: 0.000000025
   FlockRenown: 0
   FoundationRenown: 0

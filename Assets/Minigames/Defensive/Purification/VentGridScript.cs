@@ -93,7 +93,6 @@ public class VentGridScript : MonoBehaviour
             ExtraGraphic.transform.rotation = Quaternion.identity;
             ExtraGraphic.transform.localScale = Vector3.one;
             ExtraGraphic.transform.localPosition = saveData.OnScreenDataPos;
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
 
         int i = 0;
@@ -220,7 +219,6 @@ public class VentGridScript : MonoBehaviour
 
         nextVent = PipeStacks[nextVentId].GetComponent<PipeStackScript>();
 
-        Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBB");
         switch (expansionDirection)
         {
             case BADdirections.UP:
@@ -254,7 +252,6 @@ public class VentGridScript : MonoBehaviour
                 secondaryExpansion = nextVent.LeftSecondary;
                 if (nextVent.LeftConnection == PipeConnectionType.Closed)
                 {
-                    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA");
                     sourceVent.RightLeakParticles.transform.parent = nextVent.transform;
                     sourceVent.LeakingRight = true;
                     return (validExpansion, secondaryExpansion, nextVent);

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6e69d4dfe5c1a47ae6a7f8b9cc2ab5, type: 3}
+  m_Name: PassivePeriodSO 2
+  m_EditorClassIdentifier: 
+  Prioirty: 0
+  UpgradeID: c063cc03a648ac4408885eb2137f4b5b
+  UpgradeName: Faster Passive
+  UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: 3
+  GoldenUpgrade: 1
+  DayToTrigger: -1
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: Gain passive income faster.
+  MascotDialogue: 
+  OverrideDialogue: []
+  Credits: 0
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  UpgradeBought: 0
+  AssociatedMinigame: 0
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1
+  NewPeriod: 1.5
