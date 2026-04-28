@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ClutterMenuScript : MonoBehaviour
 {
+    /*
     public bool WasPhoneUnLocked = false;
 
     public void OnEnable()
@@ -19,4 +20,5 @@ public class ClutterMenuScript : MonoBehaviour
         PlayerCam.EnableCameraMovement = true;
         if(WasPhoneUnLocked) PhonePositionScript.UnlockPhone();
     }
+    */
 }

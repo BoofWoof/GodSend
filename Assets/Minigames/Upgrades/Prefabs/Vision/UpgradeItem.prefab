@@ -639,6 +639,7 @@ MonoBehaviour:
   DescriptionText: {fileID: 3546948776954499168}
   CostText: {fileID: 4491685005444474037}
   UpgradeImage: {fileID: 1178814682292695881}
+  SpecialColor: {r: 0.47058824, g: 0.44313726, b: 0.21960784, a: 1}
   Duration: 1
 --- !u!114 &5434549827888444988
 MonoBehaviour:

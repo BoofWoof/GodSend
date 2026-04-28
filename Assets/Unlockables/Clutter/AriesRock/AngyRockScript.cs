@@ -6,14 +6,19 @@ public class AngyRockScript : MonoBehaviour
 {
     public TMP_Text ClockText;
     public TMP_Text ScoreText;
+    public TMP_Text HighScoreText;
 
     private static float StartingTime;
     private static int Score = 0;
+    private static int HighScore = 0;
     public static bool ActiveRun = false;
+
+    public float MaxTime = 60f * 5f;
 
     public void Start()
     {
-        ScoreText.text = "Score: " + Score.ToString();
+        ScoreText.text = "<b>Score</b>: " + Score.ToString();
+        HighScoreText.text = "<b>Highscore</b>: " + HighScore.ToString();
 
         if (ActiveRun)
         {
@@ -30,11 +35,9 @@ public class AngyRockScript : MonoBehaviour
     public void UpdateTimer()
     {
         float timePassed = TimePassed();
-        int minutes = Mathf.FloorToInt(timePassed / 60);
-        int seconds = Mathf.FloorToInt(timePassed % 60);
-        ClockText.text = string.Format("{0:00}:{1:00}", 4 - minutes, 59 - seconds);
+        ClockText.text = System.TimeSpan.FromSeconds(MaxTime - timePassed).ToString("m\\:ss");
 
-        if (TimePassed() > (60 * 5))
+        if (MaxTime < timePassed)
         {
             ActiveRun = false;
             ResetScore();
@@ -45,29 +48,40 @@ public class AngyRockScript : MonoBehaviour
     {
         if(ActiveRun == true)
         {
-            if (TimePassed() > 60) IncreaseScore();
+            if (TimePassed() > 60)
+            {
+                IncreaseScore();
+            }
             return;
         }
         ActiveRun = true;
         IncreaseScore();
     }
 
-    private float TimePassed()
+    public static float TimePassed()
     {
         return Time.time - StartingTime;
     }
 
     private void IncreaseScore()
     {
-        StartingTime = Time.unscaledTime;
+        OverworldAngryRockScript.PlayHappyBaa();
+        OverworldAngryRockScript.Reset();
+
+        StartingTime = Time.time;
         Score += 1;
-        ScoreText.text = "Score: " + Score.ToString();
+        if (Score > HighScore)
+        {
+            HighScore = Score;
+            HighScoreText.text = "<b>Highscore</b>: " + HighScore.ToString();
+        }
+        ScoreText.text = "<b>Score</b>: " + Score.ToString();
     }
 
     public void ResetScore()
     {
         Score = 0;
-        ScoreText.text = "Score: " + Score.ToString();
+        ScoreText.text = "<b>Score</b>: " + Score.ToString();
         ClockText.text = "0:00";
     }
 }

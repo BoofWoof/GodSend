@@ -28,23 +28,16 @@ public class CursorStateControl : MonoBehaviour
         PhonePositionScript.PhoneToggled -= AllowMouse;
     }
 
-    public static void PauseMenuToggle(bool menuUp)
+    public static void RecordCursorState()
     {
-        MenuUp = menuUp;
-        if (menuUp)
-        {
-            LastLockMode = Cursor.lockState;
-            LastVisible = Cursor.visible;
+        LastLockMode = Cursor.lockState;
+        LastVisible = Cursor.visible;
+    }
 
-
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = LastLockMode;
-            Cursor.visible = LastVisible;
-        }
+    public static void ResumeCursorState()
+    {
+        Cursor.lockState = LastLockMode;
+        Cursor.visible = LastVisible;
     }
 
     public static void AllowMouse(bool allow)

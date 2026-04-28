@@ -14,6 +14,8 @@ public class UpgradeItemScript : MonoBehaviour
     public TextMeshProUGUI CostText;
     public Image UpgradeImage;
 
+    public Color SpecialColor;
+
     public float Duration = 1f;
     public static int UpgradesAnimating = 0;
 
@@ -23,7 +25,7 @@ public class UpgradeItemScript : MonoBehaviour
         DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
         CostText.text = AssociatedUpgrade.CostToText();
         UpgradeImage.sprite = AssociatedUpgrade.UpgradeIcon;
-        if(AssociatedUpgrade.GoldenUpgrade) GetComponent<Image>().color = new Color(0.7f, 0.6f, 0.22f);
+        if(AssociatedUpgrade.GoldenUpgrade) GetComponent<Image>().color = SpecialColor;
     }
 
     public void SetUpgrade(UpgradesAbstract associatedUpgrade)

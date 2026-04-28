@@ -22,6 +22,8 @@ public class VisionTimerScript : MonoBehaviour
     public bool TimerStarted = false;
 
     public GameObject UpgradePanel;
+    public GameObject FocusPanel;
+    public GameObject FocusPanel2;
 
     public void Awake()
     {
@@ -45,7 +47,7 @@ public class VisionTimerScript : MonoBehaviour
     public void Update()
     {
         if(!TimerStarted) return;
-        if (UpgradePanel.activeSelf)
+        if (UpgradePanel.activeSelf || FocusPanel.activeSelf || FocusPanel2.activeSelf)
         {
             TimeText.text = "PAUSED";
             return;

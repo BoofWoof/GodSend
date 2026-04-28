@@ -14,6 +14,8 @@ public class PassiveIncomeScript : MonoBehaviour
     public TMP_Text PassiveIncomeText;
 
     public GameObject UpgradePanel;
+    public GameObject FocusPanel;
+    public GameObject FocusPanel2;
 
     public void Awake()
     {
@@ -43,14 +45,14 @@ public class PassiveIncomeScript : MonoBehaviour
             float timePassed = 0;
             while(timePassed < PayoutPeriod)
             {
-                if (UpgradePanel.activeSelf)
+                if (UpgradePanel.activeSelf || FocusPanel.activeSelf || FocusPanel2.activeSelf)
                 {
-                    PassiveIncomeText.text = "Passive Income Paused While Blessing";
+                    UpdateText("PAUSED");
                 }
                 else
                 {
                     timePassed += Time.deltaTime;
-                    UpdateText();
+                    UpdateText((PayoutPeriod - timePassed).ToString("F1"));
                 }
                 yield return null;
             }
@@ -77,9 +79,9 @@ public class PassiveIncomeScript : MonoBehaviour
         }
     }
 
-    public void UpdateText()
+    public void UpdateText(string timeText = "")
     {
-        PassiveIncomeText.text = $"+ <sprite index=1> <b>{PassiveIncomeQuantity.NumberToString().TrimEnd()}</b> <size=15>EVERY</size> <b>{PayoutPeriod}</b> <size=15>SECS</size>";
+        PassiveIncomeText.text = $"+ <sprite index=1> <b>{PassiveIncomeQuantity.NumberToString().TrimEnd()}</b> <size=15>IN</size> <b>{timeText}</b> <size=15>SECS</size>";
     }
 
     public static bool isPassiveIncomeActive()

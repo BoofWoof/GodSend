@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6e69d4dfe5c1a47ae6a7f8b9cc2ab5, type: 3}
   m_Name: PassivePeriodSO 2
   m_EditorClassIdentifier: 
-  Prioirty: 0
+  Prioirty: 3
   UpgradeID: c063cc03a648ac4408885eb2137f4b5b
   UpgradeName: Faster Passive
-  UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
-  PrioritySortOverride: 3
+  UpgradeIcon: {fileID: 1474361866, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: 2
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 

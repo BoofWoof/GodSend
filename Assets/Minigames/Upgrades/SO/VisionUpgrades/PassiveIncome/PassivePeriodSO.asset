@@ -16,7 +16,7 @@ MonoBehaviour:
   UpgradeID: c063cc03a648ac4408885eb2137f4b5b
   UpgradeName: Faster Passive
   UpgradeIcon: {fileID: 1474361866, guid: c5fe5212be599964b9de15878c200a47, type: 3}
-  PrioritySortOverride: 1
+  PrioritySortOverride: 0
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 

@@ -37,7 +37,7 @@ MonoBehaviour:
   DarknessModifier: 0.6
   OpennessModifier: 0.3
   FalconSpeed: 90
-  MiloRecord: 25
+  MiloRecord: 20
   MinPieces: 6
   MaxPieces: 6
   RotationEnabled: 1

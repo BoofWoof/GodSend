@@ -213,7 +213,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public void IncreaseDifficulty()
     {
         CurrentDifficutly++;
-        if (CurrentDifficutly < MaxAvailableDifficutly) CurrentDifficutly = MaxAvailableDifficutly;
+        if (CurrentDifficutly > MaxAvailableDifficutly) CurrentDifficutly = MaxAvailableDifficutly;
         OnDifficultyUp?.Invoke(CurrentDifficutly);
         puzzleScript.GeneratePuzzle();
 
@@ -234,7 +234,8 @@ public class TurkPuzzleScript : MonoBehaviour
         DifficultyDecreaseButton.interactable = (CurrentDifficutly > MinAvailableDifficulty);
         DifficultyIncreaseButton.interactable = (CurrentDifficutly < MaxAvailableDifficutly);
 
-        StartCoroutine(OpenSkyHole(LevelSets[CurrentDifficutly].OpennessModifier));
+        if (SkyHoleCoroutine != null) StopCoroutine(SkyHoleCoroutine);
+        SkyHoleCoroutine = StartCoroutine(OpenSkyHole(LevelSets[CurrentDifficutly].OpennessModifier));
 
         int newSongIdx = LevelSets[CurrentDifficutly].SongIndex;
         if (newSongIdx != AssociatedApp.StartSongInt)
@@ -776,6 +777,8 @@ public class TurkPuzzleScript : MonoBehaviour
         }
         return false;
     }
+
+    private Coroutine SkyHoleCoroutine;
     public IEnumerator OpenSkyHole(float finalValue)
     {
         float timePassed = 0f;

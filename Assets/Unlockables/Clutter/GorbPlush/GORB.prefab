@@ -807,12 +807,12 @@ Light:
   m_GameObject: {fileID: 5515681741669578471}
   m_Enabled: 1
   serializedVersion: 11
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
   m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 134.41666
+  m_InnerSpotAngle: 29.999998
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -1170,7 +1170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316e88ad808ad834e9a47c8485ca2191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WasPhoneUnLocked: 0
 --- !u!223 &247268818774514653
 Canvas:
   m_ObjectHideFlags: 0
@@ -1246,6 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb94ea7d75950441a0c0c4f0287b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroySelfOnDisable: 0
 --- !u!1 &7525719698387661182
 GameObject:
   m_ObjectHideFlags: 0

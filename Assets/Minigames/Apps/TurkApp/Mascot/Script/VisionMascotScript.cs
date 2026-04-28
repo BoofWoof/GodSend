@@ -251,7 +251,7 @@ public class VisionMascotScript : MonoBehaviour
         }
         */
 
-        if (TurkPuzzleScript.CurrentDifficutly == TurkPuzzleScript.MaxAvailableDifficutly - 1) NewDifficultyUnlocked = false;
+        if (TurkPuzzleScript.CurrentDifficutly == TurkPuzzleScript.MaxAvailableDifficutly) NewDifficultyUnlocked = false;
         if (NewDifficultyUnlocked)
         {
             MascotSayText(currentDifficultyDialogue.DifficultyReminder);
@@ -363,14 +363,19 @@ public class VisionMascotScript : MonoBehaviour
             ShowText("I think you misspelled fox. Maybe you should pick something else.<name>");
             return;
         }
-        if (newName.ToLower() == "Alesssan")
+        if (newName.ToLower() == "alesssan")
         {
             ShowText("That name doesn't even fit the prompt, let alone this room. Maybe you should pick something else.<name>");
             return;
         }
-        if (newName.ToLower() == "Sid")
+        if (newName.ToLower() == "sid")
         {
             ShowText("You can afford a better name than that! Maybe you should pick something else.<name>");
+            return;
+        }
+        if (newName.ToLower() == "blue")
+        {
+            ShowText("That's a color, not a name! Maybe you should pick something else.<name>");
             return;
         }
 
@@ -450,6 +455,8 @@ public class VisionMascotScript : MonoBehaviour
     {
         if (currentDifficulty == TurkPuzzleScript.MaxAvailableDifficutly-1) NewDifficultyUnlocked = false;
 
+        UpdateCharacter();
+
         if (DialogueActive) return;
 
         if (currentDifficulty >= DifficultyChangeMessages.Count) return;
@@ -460,8 +467,6 @@ public class VisionMascotScript : MonoBehaviour
         }
 
         MascotDifficultyDialogueSO currentDifficultyDialogue = DifficultyChangeMessages[currentDifficulty];
-
-        UpdateCharacter();
 
         if (currentDifficultyDialogue.FirstIncrease && currentDifficultyDialogue.TriggerFirstIncreaseOnDay == DayInfo.CurrentDay)
         {
@@ -475,6 +480,8 @@ public class VisionMascotScript : MonoBehaviour
 
     public void OnDifficultyDecrease(int currentDifficulty)
     {
+        UpdateCharacter();
+
         if (DialogueActive) return;
 
         if (currentDifficulty >= DifficultyChangeMessages.Count) return;
@@ -485,8 +492,6 @@ public class VisionMascotScript : MonoBehaviour
         }
 
         MascotDifficultyDialogueSO currentDifficultyDialogue = DifficultyChangeMessages[currentDifficulty];
-
-        UpdateCharacter();
 
         if (currentDifficultyDialogue.FirstDecrease && currentDifficultyDialogue.TriggerFirstDecreaseOnDay == DayInfo.CurrentDay)
         {
