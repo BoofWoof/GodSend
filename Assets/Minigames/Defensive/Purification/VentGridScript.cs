@@ -90,7 +90,7 @@ public class VentGridScript : MonoBehaviour
         {
             ExtraGraphic = Instantiate(saveData.OnScreenData);
             ExtraGraphic.transform.parent = transform.parent;
-            ExtraGraphic.transform.rotation = Quaternion.identity;
+            ExtraGraphic.transform.localRotation = Quaternion.identity;
             ExtraGraphic.transform.localScale = Vector3.one;
             ExtraGraphic.transform.localPosition = saveData.OnScreenDataPos;
         }

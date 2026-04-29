@@ -351,7 +351,7 @@ public class PurificationGameScript : MonoBehaviour
         GameObject newWinText = Instantiate(WinText);
         newWinText.transform.parent = MainBackdrop.transform;
         newWinText.transform.localScale = Vector3.one;
-        newWinText.transform.rotation = Quaternion.identity;
+        newWinText.transform.localRotation = Quaternion.identity;
         newWinText.transform.localPosition = Vector3.zero;
 
         newWinText.GetComponent<MaterialGradient>().OnCompletion.AddListener(NextLevel);

@@ -1,10 +1,21 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChannelChanger : MonoBehaviour
 {
+    public Animator ScreenAnimator;
+    public bool ScreenRaised = true;
+
+    public Animator MaskAnimator;
+
+    public Image MinigameMask;
+    public Coroutine RevealCoroutine;
+
     public GameObject AerialDefense;
     public GameObject PurityDefense;
-    public GameObject LockDefense;
+
+    public AudioSource ExtensionAudio;
 
     public static ChannelChanger ActiveChannelChanger;
 
@@ -30,7 +41,8 @@ public class ChannelChanger : MonoBehaviour
 
         AerialDefense.SetActive(false);
         PurityDefense.SetActive(false);
-        LockDefense.SetActive(true);
+
+        ScreenPositionChange(true);
     }
 
     public void AerialSwitch()
@@ -39,7 +51,8 @@ public class ChannelChanger : MonoBehaviour
 
         AerialDefense.SetActive(true);
         PurityDefense.SetActive(false);
-        LockDefense.SetActive(false);
+
+        ScreenPositionChange(false);
     }
 
     public void PuritySwitch()
@@ -48,6 +61,34 @@ public class ChannelChanger : MonoBehaviour
 
         AerialDefense.SetActive(false);
         PurityDefense.SetActive(true);
-        LockDefense.SetActive(false);
+
+        ScreenPositionChange(false);
+    }
+
+    public void ScreenPositionChange(bool raise = true)
+    {
+        if ((ScreenRaised && raise) || (!ScreenRaised && !raise)) return;
+        ScreenRaised = raise;
+
+        if (raise)
+        {
+            ScreenAnimator.Play("ContractUp");
+            ExtensionAudio.Play();
+
+            MaskAnimator.Play("MaskCollapse");
+            if (RevealCoroutine != null) StopCoroutine(RevealCoroutine);
+            return;
+        }
+        ScreenAnimator.Play("ExpandDown");
+        ExtensionAudio.Play();
+
+        RevealCoroutine = StartCoroutine(TurnOnScreen());
+    }
+
+    public IEnumerator TurnOnScreen()
+    {
+        yield return new WaitForSeconds(1.37f);
+
+        MaskAnimator.Play("MaskExpand");
     }
 }
