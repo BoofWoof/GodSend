@@ -49,14 +49,14 @@ Material:
     - _CastShadows: 1
     - _Cull: 0
     - _DstBlend: 0
-    - _Multiply_Value: 0.5
+    - _Multiply_Value: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Wind_Speed: 0.5
-    - _Wind_Strength: 0.5
+    - _Wind_Speed: -0.05
+    - _Wind_Strength: 0.05
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
