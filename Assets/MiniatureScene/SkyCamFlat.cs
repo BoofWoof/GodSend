@@ -3,6 +3,7 @@ using UnityEngine;
 public class SkyCamFlat : MonoBehaviour
 {
     public Camera SourceAngleCamera;
+    private Camera ReplacementAngleCamera;
 
     public GameObject SkyCamera;
 
@@ -12,7 +13,7 @@ public class SkyCamFlat : MonoBehaviour
 
     public void Start()
     {
-        startingSourcePosition = SourceAngleCamera.transform.position;
+        SetDefaultTargetCamera();
         startingTargetPosition = SkyCamera.transform.localPosition;
     }
 
@@ -22,10 +23,21 @@ public class SkyCamFlat : MonoBehaviour
         Quaternion cameraTurn = Quaternion.Euler(0, yRotOffset, 0);
         Quaternion reverseCameraTurn = Quaternion.Euler(0, -yRotOffset, 0);
 
-        SkyCamera.transform.rotation = cameraTurn * currentRotation * SourceAngleCamera.transform.rotation;
+        SkyCamera.transform.rotation = cameraTurn * currentRotation * ReplacementAngleCamera.transform.rotation;
 
-        Vector3 cameraShift = (startingSourcePosition - SourceAngleCamera.transform.position) / 10000f;
+        Vector3 cameraShift = (startingSourcePosition - ReplacementAngleCamera.transform.position) / 10000f;
         Debug.Log(cameraShift);
         SkyCamera.transform.localPosition = startingTargetPosition + reverseCameraTurn * cameraShift;
+    }
+
+    public void SetDefaultTargetCamera()
+    {
+        SetTargetCamera(SourceAngleCamera);
+    }
+
+    public void SetTargetCamera(Camera targetCamera)
+    {
+        startingSourcePosition = targetCamera.transform.position;
+        ReplacementAngleCamera = targetCamera;
     }
 }

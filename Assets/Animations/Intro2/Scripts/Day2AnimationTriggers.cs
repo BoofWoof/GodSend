@@ -7,6 +7,8 @@ public class Day2AnimationTriggers : MonoBehaviour
     public GameObject ContainingObject;
     public Camera TargetCamera;
 
+    public SkyCamFlat SkyCamController;
+
     private UniversalAdditionalCameraData CameraData;
     private List<Camera> previousStack;
 
@@ -23,6 +25,8 @@ public class Day2AnimationTriggers : MonoBehaviour
         previousStack = new List<Camera>(CameraData.cameraStack);
         CameraData.cameraStack.Clear();
         CameraData.cameraStack.Add(GetComponent<Camera>());
+
+        SkyCamController.SetTargetCamera(GetComponent<Camera>());
     }
 
     public void OnAnimationEnd()
@@ -32,6 +36,9 @@ public class Day2AnimationTriggers : MonoBehaviour
         {
             CameraData.cameraStack.Add(c);
         }
+
+        SkyCamController.SetDefaultTargetCamera();
+
         Destroy(ContainingObject);
     }
 
