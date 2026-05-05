@@ -1,5 +1,6 @@
 using PixelCrushers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,6 +65,37 @@ public class AchievementListScript : Saver
         instance = this;
         CompletedAchievementNames = new List<string>();
         ActivatedAchievementNames = new List<string>();
+    }
+
+    public void Start()
+    {
+        StartCoroutine(AchievementCheckLoop());
+    }
+
+    public IEnumerator AchievementCheckLoop()
+    {
+        Debug.Log("BOOF");
+        while (true)
+        {
+            foreach (PriorityAchievement pAchievement in SortedAchievementList)
+            {
+                if (!pAchievement.Achievement.AnnounceUnlock) continue;
+
+                string title = pAchievement.Achievement.Title;
+                if (CompletedAchievementNames.Contains(title))
+                {
+                    continue;
+                }
+                Debug.Log("Awoo");
+                if (pAchievement.Achievement.FirstCompletionCheck && pAchievement.Achievement.CheckCompletionCriteria())
+                {
+                    Debug.Log("Test");
+                    AchieveUnlockScript.instance.ShowUnlock(title);
+                    pAchievement.Achievement.FirstCompletionCheck = false;
+                }
+            }
+            yield return new WaitForSeconds(2f);
+        }
     }
 
     override public void OnEnable()

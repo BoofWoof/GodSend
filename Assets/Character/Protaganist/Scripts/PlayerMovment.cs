@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovment : MonoBehaviour
 {
+    public static PlayerMovment instance;
+
     [Header("Movement")]
     public float moveSpeed;
 
@@ -31,6 +33,7 @@ public class PlayerMovment : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         RegisterInputActions();
     }
 
@@ -97,5 +100,10 @@ public class PlayerMovment : MonoBehaviour
             if (WalkingSounds.isPlaying) WalkingSounds.Stop();
         }
         if (SpeedMultiplier < 0.9f) WalkingSounds.Stop();
+    }
+
+    public void TeleportPlayer(Vector3 newPosition)
+    {
+        rb.position = newPosition;
     }
 }

@@ -18,6 +18,14 @@ public class AchievementStorageScript : Saver
         public bool Saved = false;
     }
 
+    public void Awake()
+    {
+        foreach (AchievementAbstractSO ach in Achievements)
+        {
+            ach.FirstCompletionCheck = true;
+        }
+    }
+
     public override void ApplyData(string s)
     {
         AchievementDiscoveredSaveData saveData = SaveSystem.Deserialize<AchievementDiscoveredSaveData>(s);

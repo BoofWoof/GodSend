@@ -32,14 +32,27 @@ public class MusicSelectorScript : MonoBehaviour
     private void OnEnable()
     {
         Lua.RegisterFunction("SetSong", null, SymbolExtensions.GetMethodInfo(() => SetOverworldSong(0)));
+        Lua.RegisterFunction("FadeInSong", null, SymbolExtensions.GetMethodInfo(() => FadeInOverworldSong(0)));
         Lua.RegisterFunction("SetPhoneSong", null, SymbolExtensions.GetMethodInfo(() => SetPhoneSong(0)));
         Lua.RegisterFunction("RevertSong", null, SymbolExtensions.GetMethodInfo(() => RevertOverworldSong()));
         Lua.RegisterFunction("RevertPhoneSong", null, SymbolExtensions.GetMethodInfo(() => RevertPhoneSong()));
+        Lua.RegisterFunction("PauseMusic", null, SymbolExtensions.GetMethodInfo(() => PauseMusic()));
+        Lua.RegisterFunction("ResumeMusic", null, SymbolExtensions.GetMethodInfo(() => ResumeMusic()));
         PhonePositionScript.PhoneToggled += PhoneToggleMusicSwap;
     }
     private void OnDisable()
     {
         PhonePositionScript.PhoneToggled -= PhoneToggleMusicSwap;
+    }
+
+    public static void PauseMusic()
+    {
+        CrossfadeScript.PauseMusic();
+    }
+
+    public static void ResumeMusic()
+    {
+        CrossfadeScript.ResumeMusic();
     }
 
     public static void LockSong()
@@ -82,13 +95,17 @@ public class MusicSelectorScript : MonoBehaviour
     {
         SetOverworldSong(newSongID, false);
     }
-    public static void SetOverworldSong(double newSongID, bool instant = false)
+    public static void FadeInOverworldSong(double newSongID)
+    {
+        SetOverworldSong(newSongID, false, true);
+    }
+    public static void SetOverworldSong(double newSongID, bool instant = false, bool fadeIn = false)
     {
         if (SongLock) return;
         instance.OverworldSongID = (int)newSongID;
         if (!PhonePositionScript.raised)
         {
-            CrossfadeScript.TransitionSong(instance.OverworldSongID, instant);
+            CrossfadeScript.TransitionSong(instance.OverworldSongID, instant, fadeIn);
         }
     }
     public static void RevertOverworldSong()

@@ -1,0 +1,5 @@
+0,
+10, The work is pretty self explanatory.
+56, Wait for the radar to reveal a target,
+98, and then get blasting by tapping on them!
+170, Good luck PM!

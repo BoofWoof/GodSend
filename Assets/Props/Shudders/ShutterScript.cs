@@ -42,7 +42,11 @@ public class ShutterScript : MonoBehaviour
 
     public void Start()
     {
-        InstantClose();
+        if(DayInfo.CurrentDay == 1) InstantClose();
+        else
+        {
+            InstantOpen();
+        }
         //InstantOpen();
     }
 

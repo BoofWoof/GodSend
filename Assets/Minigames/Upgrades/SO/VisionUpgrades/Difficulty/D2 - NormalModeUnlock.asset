@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: D2 - NormalModeUnlock
   m_EditorClassIdentifier: 
   Prioirty: 2
-  UpgradeID: bfff33d96b72c66418317b4eb3cc2284
+  UpgradeID: 2cb2fc0e-d65e-461c-8a4c-5e83a7de798d
   UpgradeName: Sights Beyond
   UpgradeIcon: {fileID: 457129494, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 

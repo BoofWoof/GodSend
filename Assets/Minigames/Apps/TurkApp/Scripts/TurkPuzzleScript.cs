@@ -431,6 +431,7 @@ public class TurkPuzzleScript : MonoBehaviour
         ScoreMultiplierText.text = "";
         foreach (SecondaryMultiplier secondaryMultiplier in secondaryMultipliers)
         {
+            //MultiplierSource.pitch = 0.8f + 0.2f / (1 + Mathf.Log(secondaryMultiplier.multiplier)/4f);
             MultiplierSource.Play();
             ScoreMultiplierText.gameObject.SetActive(true);
             ScoreMultiplierText.text += secondaryMultiplier.description + "\r\n";

@@ -81,5 +81,6 @@ public class GameOverScript : MonoBehaviour
         PrayerScript.instance.ForcePrayerReferesh();
 
         ActiveBroadcast.BroadcastActivation("ResetDisaster");
+        ActiveBroadcast.BroadcastActivation("ResetDisaster1");
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d46e34a99873a94eb00a30085e018fe, type: 3}
   m_Name: PowerOutages
   m_EditorClassIdentifier: 
-  ID: ddc74f8aa7a996e4f81509ae9fbc3897
+  ID: 94de9911-eeb3-4793-bb97-6154d4e25c43
   SetName: PowerOutages
   ForceSelection: 0
   PrayerOptions:

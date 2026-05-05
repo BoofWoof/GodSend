@@ -124,11 +124,19 @@ public class CharacterSpeechScript : MonoBehaviour
         StartCoroutine(Speak(voiceLine));
     }
 
+    public static void BroadcastSpeechAttempt(string name, string voiceLinePath)
+    {
+        foreach (CharacterSpeechScript c in CharacterSpeechInstances)
+        {
+            c.StartBroadcastSpeechAttempt(name, voiceLinePath);
+        }
+    }
+
     public void StartBroadcastSpeechAttempt(string name, string voiceLinePath)
     {
-        StartCoroutine(BroadcastSpeechAttempt(name, voiceLinePath));
+        StartCoroutine(this.SpeechAttempt(name, voiceLinePath));
     }
-    public IEnumerator BroadcastSpeechAttempt(string name, string voiceLinePath)
+    public IEnumerator SpeechAttempt(string name, string voiceLinePath)
     {
         ResourceRequest request = Resources.LoadAsync<VoiceLineSO>(voiceLinePath.CleanResourcePath()); // Replace GameObject with your asset type
 
@@ -145,12 +153,12 @@ public class CharacterSpeechScript : MonoBehaviour
         }
     }
 
-    public static void BroadcastSpeechAttempt(string name, VoiceLineSO voiceLine)
+    public static void BroadcastSpeechAttempt(string name, VoiceLineSO voiceLine, bool showSubtitles = true)
     {
         foreach (CharacterSpeechScript c in CharacterSpeechInstances)
         {
             if (!string.IsNullOrEmpty(voiceLine.SpeakerOverride)) name = voiceLine.SpeakerOverride;
-            c.PlaySpeech(name, voiceLine);
+            c.PlaySpeech(name, voiceLine, showSubtitles);
         }
     }
     public static void BroadcastSpeechAttempt(string name, List<VoiceLineSO> voiceLines)
@@ -173,18 +181,18 @@ public class CharacterSpeechScript : MonoBehaviour
         }
     }
 
-    public void PlaySpeech(string name, VoiceLineSO voiceLine)
+    public void PlaySpeech(string name, VoiceLineSO voiceLine, bool showSubtitles = true)
     {
         if (SpeakerName.ToLower() != name.ToLower() && NickName.ToLower() != name.ToLower()) return;
-        StartCoroutine(SpeakNoDialogue(voiceLine));
+        StartCoroutine(SpeakNoDialogue(voiceLine, showSubtitles));
     }
-    public IEnumerator SpeakNoDialogue(VoiceLineSO voiceLine)
+    public IEnumerator SpeakNoDialogue(VoiceLineSO voiceLine, bool showSubtitles = true)
     {
         GameStateMonitor.AddSpeakingSource(this);
 
         //Update play speech to allow animations before and after start.
         yield return new WaitForSeconds(voiceLine.PauseBeforeStart);
-        PlaySpeech(voiceLine);
+        PlaySpeech(voiceLine, showSubtitles);
         if (RadioSpeech) RadioObject.SetActive(true);
 
         AudioSource audioSource = GetComponent<AudioSource>();
@@ -238,7 +246,7 @@ public class CharacterSpeechScript : MonoBehaviour
         }
     }
 
-    public void PlaySpeech(VoiceLineSO voiceLine)
+    public void PlaySpeech(VoiceLineSO voiceLine, bool showSubtitles = true)
     {
         if (voiceLine.AudioData != null)
         {
@@ -252,7 +260,7 @@ public class CharacterSpeechScript : MonoBehaviour
             LipSync.PlaySpeech();
         }
 
-        if (voiceLine.SubtitleData != null && CharacterSubtitle != null)
+        if (voiceLine.SubtitleData != null && CharacterSubtitle != null && showSubtitles)
         {
             CharacterSubtitle.Subtitles = voiceLine.SubtitleData;
             CharacterSubtitle.speechScript = this;

@@ -2,17 +2,30 @@ using UnityEngine;
 
 public class SkyCamFlat : MonoBehaviour
 {
+    public Camera SourceAngleCamera;
+
     public GameObject SkyCamera;
 
     public float yRotOffset;
+    private Vector3 startingSourcePosition;
+    private Vector3 startingTargetPosition;
 
-    // Update is called once per frame
+    public void Start()
+    {
+        startingSourcePosition = SourceAngleCamera.transform.position;
+        startingTargetPosition = SkyCamera.transform.localPosition;
+    }
+
     void LateUpdate()
     {
         Quaternion currentRotation = SkyCamera.transform.parent.rotation;
-        Quaternion playerRoation = Quaternion.Euler(transform.rotation.eulerAngles + Vector3.up * yRotOffset);
+        Quaternion cameraTurn = Quaternion.Euler(0, yRotOffset, 0);
+        Quaternion reverseCameraTurn = Quaternion.Euler(0, -yRotOffset, 0);
 
+        SkyCamera.transform.rotation = cameraTurn * currentRotation * SourceAngleCamera.transform.rotation;
 
-        SkyCamera.transform.rotation = currentRotation * playerRoation;
+        Vector3 cameraShift = (startingSourcePosition - SourceAngleCamera.transform.position) / 10000f;
+        Debug.Log(cameraShift);
+        SkyCamera.transform.localPosition = startingTargetPosition + reverseCameraTurn * cameraShift;
     }
 }

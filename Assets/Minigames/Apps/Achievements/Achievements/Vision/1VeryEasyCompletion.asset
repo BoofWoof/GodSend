@@ -16,6 +16,7 @@ MonoBehaviour:
   Objective: Complete all very easy puzzles in <b>Vision</b>.
   Flavor: Even if you had to do it, it's still an achievement!
   ButtonText: I feel more loyal to the church now
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>cool plushie</b></color> has been added
     to your room.
   ActivationData:

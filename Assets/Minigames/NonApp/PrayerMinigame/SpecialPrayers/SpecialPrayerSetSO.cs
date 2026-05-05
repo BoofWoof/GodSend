@@ -71,6 +71,7 @@ public class SpecialPrayerSetSO : ScriptableObject
     public bool ForceSelection;
     public SpecialPrayerData[] PrayerOptions = new SpecialPrayerData[3];
 
+    /*
 #if UNITY_EDITOR
     public void OnValidate()
     {
@@ -89,4 +90,5 @@ public class SpecialPrayerSetSO : ScriptableObject
         }
     }
 #endif
+    */
 }

@@ -1,0 +1,3 @@
+0,
+8, The rest of the ministry is already working on radars and reloading the cannons,
+94, we just need you to select where to shoot!

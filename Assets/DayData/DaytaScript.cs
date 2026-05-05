@@ -44,12 +44,6 @@ public class DaytaScript : MonoBehaviour
 
     public void Start()
     {
-        //SetupAudioForDay
-        MusicSelectorScript.SetOverworldSong(5, true); //Instantly switch;
-        CrossfadeScript.ResumeMusic();
-        CrossfadeScript.SetLowpassOn(true, true);
-
-
         if (SkipStart || ExternalSkipStart)
         {
             EnableCharacter();
@@ -69,8 +63,37 @@ public class DaytaScript : MonoBehaviour
         }
         if (DayInfo.CurrentDay == 1 && !SkipStart && !ExternalSkipStart)
         {
+            MusicSelectorScript.SetOverworldSong(5, true); //Instantly switch;
+            CrossfadeScript.ResumeMusic();
+            CrossfadeScript.SetLowpassOn(true, true);
             StartCoroutine(StartDayOne());
         }
+        if (DayInfo.CurrentDay == 2 && !SkipStart && !ExternalSkipStart)
+        {
+            StartCoroutine(StartDayTwo());
+            CrossfadeScript.PauseMusic();
+        }
+    }
+
+    public IEnumerator StartDayTwo()
+    {
+        TeleportPointScript.TeleportPlayerTo("Day2IntroPoint");
+
+        PlayerCam.EnableCameraMovement = false;
+
+        MessageQueue.addDialogue("D2Intro");
+
+        OverworldPositionScript.GoTo("A", 12);
+
+        CrossfadeScript.PauseMusic();
+
+        yield return new WaitForSeconds(0.01f);
+
+        CrossfadeScript.PauseMusic();
+
+        yield return new WaitForSeconds(0);
+
+        EnableCharacter();
     }
 
     public IEnumerator StartDayOne()

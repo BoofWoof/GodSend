@@ -17,6 +17,8 @@ MonoBehaviour:
   Flavor: Sometimes, exporation is rewarded. Accept this incentive to receive a prize
     in your room!
   ButtonText: I am encouraged
+  AnnounceUnlock: 0
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>table</b></color> has been added to your
     room.
   ActivationData:

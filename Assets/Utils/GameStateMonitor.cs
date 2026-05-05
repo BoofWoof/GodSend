@@ -33,6 +33,10 @@ public static class GameStateMonitor
         ActiveSpeakingSource.Remove(target);
         CheckEventChange();
     }
+    public static bool isSpeakingSourceActive()
+    {
+        return ActiveSpeakingSource.Count > 0;
+    }
 
     private static bool _ActivePrayer = false;
     public static bool ActivePrayer

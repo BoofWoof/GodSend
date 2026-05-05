@@ -8,6 +8,9 @@ public abstract class AchievementAbstractSO : ScriptableObject
     public string Flavor;
     public string ButtonText;
 
+    public bool AnnounceUnlock = true;
+    public bool FirstCompletionCheck = true;
+
     public string OnBuyAnnouncement;
 
     public BroadcastStruct ActivationData;

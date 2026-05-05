@@ -22,6 +22,7 @@ public abstract class EventAbstract : ScriptableObject
 
     public List<BroadcastStruct> AdditionalActivations = new List<BroadcastStruct>();
 
+    /*
 #if UNITY_EDITOR
     public void OnValidate()
     {
@@ -40,6 +41,7 @@ public abstract class EventAbstract : ScriptableObject
         }
     }
 #endif
+    */
 
     public bool CheckIfValid(float Value)
     {

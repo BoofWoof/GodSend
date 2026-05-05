@@ -62,7 +62,7 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public bool TriggerOnLoadBuy = true;
 
-
+    /*
 #if UNITY_EDITOR
     public void OnValidate()
     {
@@ -81,6 +81,7 @@ public abstract class UpgradesAbstract : ScriptableObject
         }
     }
 #endif
+    */
 
     public bool CanBuy()
     {

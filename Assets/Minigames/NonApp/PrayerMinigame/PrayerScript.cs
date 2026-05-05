@@ -167,7 +167,7 @@ public class PrayerScript : MonoBehaviour
         if (RamAngyLevel > AngerThreshold)
         {
             RamAngyLevel = AngerThreshold;
-            ActivateGameOver();
+            if(!GameStateMonitor.isEventActive()) ActivateGameOver();
         }
     }
     public void SubmitAnswer(int answerIdx)
@@ -388,20 +388,36 @@ public class PrayerScript : MonoBehaviour
             if (RamAngyLevel < 0) RamAngyLevel = 0;
 
             int RandomIdx = Random.Range(0, PositiveJudgementAudios.Count);
-            if (JudgementActive) CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", PositiveJudgementAudios[RandomIdx]);
+            if (JudgementActive) {
+                if (!GameStateMonitor.isSpeakingSourceActive())
+                {
+                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", PositiveJudgementAudios[RandomIdx]);
+                } else
+                {
+                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", PositiveJudgementAudios[RandomIdx], false);
+                }
+            } 
             yield return new WaitForSeconds(PositiveJudgementAudios[RandomIdx].AudioData.length + 0.1f);
         }
         else
         {
             RamAngyLevel += AngerReduction * 2f / 3f;
-            if (RamAngyLevel > AngerThreshold)
+            if (RamAngyLevel > AngerThreshold && !GameStateMonitor.isSpeakingSourceActive())
             {
                 GameStateMonitor.ActivePrayer = false;
                 yield break;
             }
 
             int RandomIdx = Random.Range(0, NegativeJudgementAudios.Count);
-            if (JudgementActive) CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", NegativeJudgementAudios[RandomIdx]);
+            if (JudgementActive) {
+                if (!GameStateMonitor.isSpeakingSourceActive())
+                {
+                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", NegativeJudgementAudios[RandomIdx]);
+                } else
+                {
+                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", NegativeJudgementAudios[RandomIdx], false);
+                }
+            }
             yield return new WaitForSeconds(NegativeJudgementAudios[RandomIdx].AudioData.length + 0.1f);
         }
 

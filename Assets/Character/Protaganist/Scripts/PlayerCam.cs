@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerCam : MonoBehaviour
 {
+    public static PlayerCam instance;
+
     public float sensX;
     public float sensY;
 
@@ -33,6 +35,8 @@ public class PlayerCam : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         RegisterInputActions();
     }
     private void Start()
@@ -128,10 +132,7 @@ public class PlayerCam : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        Vector3 newOrientation = new Vector3 (xRotation, yRotation, 0) + MoveCamera.TotalRumble * Random.insideUnitSphere * 15f;
-        transform.rotation = Quaternion.Euler(newOrientation);
-        orientation.rotation = Quaternion.Euler(new Vector3(0, yRotation, 0));
-
+        UpdateRotation();
 
         // Create a ray from the center of the screen
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
@@ -183,5 +184,20 @@ public class PlayerCam : MonoBehaviour
         {
             BigCameraPoint.instance.Clear();
         }
+    }
+
+    public void UpdateRotation()
+    {
+
+        Vector3 newOrientation = new Vector3(xRotation, yRotation, 0) + MoveCamera.TotalRumble * Random.insideUnitSphere * 15f;
+        transform.rotation = Quaternion.Euler(newOrientation);
+        orientation.rotation = Quaternion.Euler(new Vector3(0, yRotation, 0));
+    }
+
+    public void ForceLook(Quaternion newRotation)
+    {
+        xRotation = newRotation.eulerAngles.x;
+        yRotation = newRotation.eulerAngles.y;
+        UpdateRotation();
     }
 }
