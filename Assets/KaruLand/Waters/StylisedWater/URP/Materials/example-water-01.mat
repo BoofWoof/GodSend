@@ -70,20 +70,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_17E53C12: 0.27
+    - Vector1_17E53C12: 300
     - Vector1_244B0600: 0.5
     - Vector1_34CF798A: 1.75
     - Vector1_36E8227: 0.384
-    - Vector1_3D886DA1: 1
+    - Vector1_3D886DA1: 0.56
     - Vector1_46E42935: 0.251
     - Vector1_47683D42: 0.758
-    - Vector1_A0EAD698: 0.01
-    - Vector1_A6A0BC26: -1.03
+    - Vector1_A0EAD698: 0.5
+    - Vector1_A6A0BC26: 1
     - Vector1_B9F56378: 0.14
     - Vector1_C360A163: 0.46
     - Vector1_DF445019: 1.5
     - Vector1_E03AB928: 0.05
-    - Vector1_E5C51606: -0.1
+    - Vector1_E5C51606: 100
     - Vector1_F38B44AA: 0.4
     - _AlphaClip: 0
     - _Blend: 0
@@ -100,7 +100,7 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimFoamAmount: 0.0005
+    - _RimFoamAmount: 0.002
     - _RimFoamBiggening: 0.19
     - _RimFoamCutout: 1.08
     - _RimFoamSpeed: 0.1
@@ -116,7 +116,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_7D9A58EC: {r: 0.016019935, g: 0.15898076, b: 0.2264151, a: 1}
-    - Color_F01C36BF: {r: 0.118948035, g: 0.9105029, b: 0.9339623, a: 0.29803923}
+    - Color_F01C36BF: {r: 0.118948005, g: 0.9105029, b: 0.9339623, a: 0.12156863}
     - Vector2_37B21477: {r: 0.3, g: 0.3, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

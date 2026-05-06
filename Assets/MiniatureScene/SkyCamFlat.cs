@@ -26,7 +26,6 @@ public class SkyCamFlat : MonoBehaviour
         SkyCamera.transform.rotation = cameraTurn * currentRotation * ReplacementAngleCamera.transform.rotation;
 
         Vector3 cameraShift = (startingSourcePosition - ReplacementAngleCamera.transform.position) / 10000f;
-        Debug.Log(cameraShift);
         SkyCamera.transform.localPosition = startingTargetPosition + reverseCameraTurn * cameraShift;
     }
 
