@@ -1,0 +1,3 @@
+0,
+15, Good!
+30, Now, just shoot down any threats until we can calibrate the automated defenses.

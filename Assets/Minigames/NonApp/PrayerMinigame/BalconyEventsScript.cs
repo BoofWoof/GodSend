@@ -45,6 +45,13 @@ public class BalconyEventsScript : MonoBehaviour
                 QuestManager.IncrementQuest();
                 MessageQueue.addDialogue("FirstAriesSpotting");
             }
+            if (
+                QuestLog.GetQuestState("Great Leviathan") == QuestState.Active
+                )
+            {
+                QuestManager.IncrementQuest();
+                MessageQueue.addDialogue("D2MissileTutorial");
+            }
         }
     }
     private void OnTriggerEnter(Collider other)

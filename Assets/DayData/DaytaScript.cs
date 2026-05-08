@@ -79,6 +79,8 @@ public class DaytaScript : MonoBehaviour
     {
         TeleportPointScript.TeleportPlayerTo("Day2IntroPoint");
 
+        QuestManager.ChangeQuest("Zzz");
+
         PlayerCam.EnableCameraMovement = false;
 
         MessageQueue.addDialogue("D2Intro");

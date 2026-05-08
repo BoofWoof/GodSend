@@ -1,11 +1,10 @@
-using NUnit.Framework;
-using PixelCrushers.DialogueSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-struct RotationLimits
+[Serializable]
+public struct RotationLimits
 {
     public float NegHor;
     public float PosHor;
@@ -33,7 +32,13 @@ public class LookScript : MonoBehaviour
     public Transform Head;
     public Transform TargetHead;
 
-    public bool Flip = false;
+    public bool FlipX = false;
+    public bool FlipY = false;
+    public bool FlipZ = false;
+
+    public bool Aries = true;
+
+    public float HeadYBias = -5f;
 
     [Header("Target")]
     public Transform Target;
@@ -41,7 +46,7 @@ public class LookScript : MonoBehaviour
 
     private RotationLimits LEyeRotLimits = new RotationLimits(-70f, 10f, -10f, 5f);
     private RotationLimits REyeRotLimits = new RotationLimits(-10f, 70f, -10f, 5f);
-    private RotationLimits HeadRotLimits = new RotationLimits(-30f, 50f, -15f, 35f);
+    public RotationLimits HeadRotLimits = new RotationLimits(-30f, 50f, -15f, 35f);
 
 
     [Header("Speed")]
@@ -53,36 +58,48 @@ public class LookScript : MonoBehaviour
     public float NearLookAwayDistance = 0.5f;
     public float LookAwayValue = 45f;
 
+    public float MaxDistrationWait = 60f;
+    public float MinDistrationWait = 30f;
+
     public List<Transform> DistractionPoints;
     private bool Distracted = false;
+    public bool IsAries = true;
     public bool ForceDistracted = false;
     public static Transform ExternalDistractionPoint;
     public static Transform PrevExternalDistractionPoint;
 
 
-    private void Start()
+    private void Awake()
     {
-        TargetEyeL.transform.parent = EyeL;
-        TargetEyeR.transform.parent = EyeR;
-        TargetHead.transform.parent = Head;
+        if (TargetEyeL != null)
+        {
+            TargetEyeL.transform.parent = EyeL;
+            initialLEyeLocalRotation = EyeL.localRotation;
+        }
+        if (TargetEyeR != null)
+        {
+            TargetEyeR.transform.parent = EyeR;
+            initialREyeLocalRotation = EyeR.localRotation;
+        }
+        if (TargetHead != null) {
+            TargetHead.transform.parent = Head;
+            initialHeadLocalRotation = Head.localRotation;
+        } 
 
-        initialHeadLocalRotation = Head.localRotation;
-        initialLEyeLocalRotation = EyeL.localRotation;
-        initialREyeLocalRotation = EyeR.localRotation;
 
         StartCoroutine(OccassionalDistraction());
     }
 
     public IEnumerator OccassionalDistraction()
     {
-        while(true)
+        while (true)
         {
-            yield return new WaitForSeconds(Random.Range(30, 60));
-            int distractionIndex = Random.Range(0, DistractionPoints.Count);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(MinDistrationWait, MaxDistrationWait));
+            int distractionIndex = UnityEngine.Random.Range(0, DistractionPoints.Count);
             Distracted = true;
             DistractionTarget = DistractionPoints[distractionIndex];
             if (ExternalDistractionPoint != null) DistractionTarget = ExternalDistractionPoint;
-            yield return new WaitForSeconds(Random.Range(3, 5));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(3, 5));
             if (!ForceDistracted) DistractionTarget = null;
             yield return new WaitForSeconds(2f);
             if (!ForceDistracted) Distracted = false;
@@ -94,7 +111,7 @@ public class LookScript : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         Distracted = true;
         DistractionTarget = ExternalDistractionPoint;
-        yield return new WaitForSeconds(Random.Range(8, 12));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(8, 12));
         DistractionTarget = null;
         yield return new WaitForSeconds(2f);
         Distracted = false;
@@ -110,9 +127,9 @@ public class LookScript : MonoBehaviour
             if(ExternalDistractionPoint != null) StartCoroutine(ForceDistraction());
         }
 
-        LookAt(Head, -5f, HeadRotLimits, initialHeadLocalRotation, true);
-        LookAt(EyeL, 0f, LEyeRotLimits, initialLEyeLocalRotation);
-        LookAt(EyeR, 0f, REyeRotLimits, initialREyeLocalRotation);
+        if (Head != null) LookAt(Head, HeadYBias, HeadRotLimits, initialHeadLocalRotation, true);
+        if (EyeL != null) LookAt(EyeL, 0f, LEyeRotLimits, initialLEyeLocalRotation);
+        if (EyeR != null) LookAt(EyeR, 0f, REyeRotLimits, initialREyeLocalRotation);
     }
 
     public void SetLookWeight(float newWeight)
@@ -124,17 +141,16 @@ public class LookScript : MonoBehaviour
     {
         Transform selectedTarget = Target;
         float selectedLookSpeed = lookSpeed;
-        if (Distracted && PrayerScript.instance.JudgementActive && !PrayerScript.instance.JudgementFocus) {
+        if (Distracted && ((PrayerScript.instance.JudgementActive && !PrayerScript.instance.JudgementFocus) || !IsAries)) {
             if(DistractionTarget != null) selectedTarget = DistractionTarget;
             selectedLookSpeed = 2f;
         } 
 
         // Direction from bone to target in world space
         Vector3 directionToTarget = sourceTransform.position - selectedTarget.position;
-        if (Flip)
-        {
-            directionToTarget = new Vector3(-directionToTarget.x, -directionToTarget.y, -directionToTarget.z);
-        }
+        if (FlipX) directionToTarget.x = -directionToTarget.x;
+        if (FlipY) directionToTarget.y = -directionToTarget.y;
+        if (FlipZ) directionToTarget.z = -directionToTarget.z;
 
         // Convert target direction into the bone's local space
         Vector3 localDirection = sourceTransform.parent.InverseTransformDirection(directionToTarget.normalized);
@@ -162,54 +178,9 @@ public class LookScript : MonoBehaviour
         Quaternion targetLocalRotation = Quaternion.Euler(pitch, yaw + lookAwayYaw, 0f);
 
         // Apply rotation relative to original pose
-        Quaternion finalRotation = initialRotation * targetLocalRotation;
+        Quaternion finalRotation = Quaternion.Euler(yOffset, 0, 0) * initialRotation * targetLocalRotation;
 
 
         sourceTransform.localRotation = Quaternion.Slerp(sourceTransform.localRotation, finalRotation, Time.deltaTime * selectedLookSpeed);
     }
-
-    /*
-    Vector3 NormalizeAngles(Vector3 angles)
-    {
-        angles.x = NormalizeAngle(angles.x);
-        angles.y = NormalizeAngle(angles.y);
-        angles.z = NormalizeAngle(angles.z);
-        return angles;
-    }
-
-    float NormalizeAngle(float angle)
-    {
-        angle %= 360f;
-        if (angle > 180f) angle -= 360f;
-        return angle;
-    }
-    /*
-
-    /*
-    void LookAt(Transform lookObject, float xOffset, RotationLimits rotLimits)
-    {
-        transform.LookAt(lookObject);
-
-        Vector3 directionToTarget = Target.position - lookObject.position;
-
-        // Create a rotation so that local up points toward the target
-        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
-
-        lookObject.rotation = lookRotation;
-
-        Vector3 localEulerAngles = lookObject.localRotation.eulerAngles;
-
-        Vector3 limitedEulerAngles = LimitRotations(localEulerAngles, rotLimits);
-
-        lookObject.localRotation = Quaternion.Euler(xOffset - limitedEulerAngles.x, limitedEulerAngles.y, 0f);
-    }
-
-    private Vector3 LimitRotations(Vector3 rawRotation, RotationLimits rotLimits)
-    {
-        rawRotation.x = Mathf.Clamp(rawRotation.x, rotLimits.NegVer, rotLimits.PosVer);
-        rawRotation.y = Mathf.Clamp(rawRotation.y - 180f, rotLimits.NegHor, rotLimits.PosHor);
-
-        return rawRotation;
-    }
-    */
 }

@@ -53,6 +53,7 @@ public class QuestManager : MonoBehaviour
         }
 
         Lua.RegisterFunction("IncrementQuest", this, SymbolExtensions.GetMethodInfo(() => IncrementQuest()));
+        Lua.RegisterFunction("SetQuest", this, SymbolExtensions.GetMethodInfo(() => ChangeQuest("s")));
     }
 
     public static void CompleteQuest(string questTitle)
