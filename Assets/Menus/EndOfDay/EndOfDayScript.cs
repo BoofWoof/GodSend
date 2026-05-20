@@ -10,7 +10,9 @@ public class EndOfDayScript : MonoBehaviour
     public TMP_Text StatText;
 
     public static float SavedTime = 0;
+    public static float DaySavedTime = 0;
     public static float StartingTime;
+    public static float DayStartingTime;
     public float StartingMiloLike;
     public float StartingAriesLike;
     public float StartingAriesDislike;
@@ -22,6 +24,8 @@ public class EndOfDayScript : MonoBehaviour
         StartingTime = Time.time;
         StartingMiloLike = DialogueLua.GetVariable("MiloLike").asFloat;
         StartingAriesLike = DialogueLua.GetVariable("AriesLike").asFloat;
+
+        DayStartingTime = Time.time;
 
         StatScreen.SetActive(false);
     }
@@ -59,6 +63,10 @@ public class EndOfDayScript : MonoBehaviour
     public static float GetTimePassed()
     {
         return (Time.time - StartingTime) + SavedTime;
+    }
+    public static float GetDayTimePassed()
+    {
+        return (Time.time - DayStartingTime) + DaySavedTime;
     }
 
     public void UpdateText()

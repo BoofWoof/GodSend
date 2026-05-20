@@ -403,7 +403,8 @@ public class TurkPuzzleScript : MonoBehaviour
         PuzzleEarningsText.gameObject.SetActive(true);
         PuzzleEarningsText.text = "";
 
-        float reward = CalculateReward(CurrentDifficutly);
+        TurkData.PuzzlesSolved += 1;
+        float reward = TurkData.CreditsPerPuzzle;
 
         PuzzleEarningsText.text = "+ <sprite index=1> ";
         string finalEarningText = reward.AllSignificantDigits(3);
@@ -487,15 +488,19 @@ public class TurkPuzzleScript : MonoBehaviour
         InteractionBlocker.SetActive(false);
     }
 
-    public float CalculateReward(int completitionDifficulty)
+    public float QuickCalculateReward(int completitionDifficulty)
     {
         int tempDifficulty = CurrentDifficutly;
         CurrentDifficutly = completitionDifficulty;
 
-        TurkData.PuzzlesSolved += 1;
         float reward = TurkData.CreditsPerPuzzle;
-        RewardBaseModifier?.Invoke(ref reward);
-        RewardMultiplier?.Invoke(ref reward);
+
+        List<SecondaryMultiplier> secondaryMultipliers = new List<SecondaryMultiplier>();
+        secondaryMuliplierListModifier?.Invoke(ref secondaryMultipliers);
+        foreach (SecondaryMultiplier secondaryMultiplier in secondaryMultipliers)
+        {
+            reward *= secondaryMultiplier.multiplier;
+        }
 
         CurrentDifficutly = tempDifficulty;
 

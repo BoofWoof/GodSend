@@ -29,6 +29,9 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public string UpgradeID;
 
+    //This is only used for upgrade options.
+    public List<UpgradesAbstract> UpgradesGroup;
+
     public string UpgradeName;
     public Sprite UpgradeIcon;
 
@@ -61,27 +64,6 @@ public abstract class UpgradesAbstract : ScriptableObject
     public bool AutoBuy = false;
 
     public bool TriggerOnLoadBuy = true;
-
-    /*
-#if UNITY_EDITOR
-    public void OnValidate()
-    {
-        EnsureID();
-    }
-
-    [ContextMenu("Force Regenerate ID")]
-    private void EnsureID()
-    {
-        if (string.IsNullOrEmpty(UpgradeID) || UpgradeID.Length < 5)
-        {
-            // Gets the internal Unity GUID for this specific file
-            string assetPath = UnityEditor.AssetDatabase.GetAssetPath(this);
-            UpgradeID = UnityEditor.AssetDatabase.AssetPathToGUID(assetPath);
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-    }
-#endif
-    */
 
     public bool CanBuy()
     {
@@ -127,7 +109,7 @@ public abstract class UpgradesAbstract : ScriptableObject
         }
         VisionMascotScript.SayText(sayDialogue);
 
-        if (!forceBuy) UpgradeScreenScript.UpgradeBoughtEvent?.Invoke(this);
+        if (!forceBuy) AddToPurchasedList();
 
         bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
         if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
@@ -135,6 +117,11 @@ public abstract class UpgradesAbstract : ScriptableObject
         if (ProgressQuest && triggerDay) QuestManager.IncrementQuest();
 
         return canBuy;
+    }
+
+    public void AddToPurchasedList()
+    {
+        UpgradeScreenScript.UpgradeBoughtEvent?.Invoke(this);
     }
 
     

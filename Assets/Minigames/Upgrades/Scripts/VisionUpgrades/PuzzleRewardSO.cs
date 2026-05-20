@@ -41,7 +41,7 @@ public class PuzzleRewardSO : ValueModifierAbstract
                 new SecondaryMultiplier
                 {
                     multiplier = multiplier,
-                    description = "<color=#" + DisplayColor.ToHexString() + "><b>GRANDEUR: x</b>" + multiplier.AllSignificantDigits(3) + "</color>"
+                    description = "<size=30><color=#" + DisplayColor.ToHexString() + "><b>GRANDEUR:</size> x</b>" + multiplier.AllSignificantDigits(3) + "</color>"
                 }
                 );
         }

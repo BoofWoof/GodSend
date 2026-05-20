@@ -13,6 +13,11 @@ public class TeleportPointScript : MonoBehaviour
         TeleportPoints.Add(TeleportPointName, this);
     }
 
+    public void TeleportHere()
+    {
+        TeleportPlayerTo(TeleportPointName);
+    }
+
 
     public static void TeleportPlayerTo(string pointName)
     {

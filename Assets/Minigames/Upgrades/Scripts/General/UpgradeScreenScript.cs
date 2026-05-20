@@ -100,7 +100,6 @@ public class UpgradeScreenScript : MonoBehaviour
         if(WaitToOpen) (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
         UpgradeBoughtEvent += UpgradeAudioPlay;
         UpgradeBoughtEvent += RecordUpgradeBought;
-        UpgradeItemScript.UpgradesAnimating = 0;
         Refresh();
 
         NotificationMenuScript.ReleaseNotification(MinigameToString[AssociatedMinigame]);
@@ -150,11 +149,10 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void Clear()
     {
-        foreach (GameObject upgradeObject in UpgradeObjects)
+        foreach (Transform upgradeObject in ContentHolder.transform)
         {
-            Destroy(upgradeObject);
+            Destroy(upgradeObject.gameObject);
         }
-        UpgradeObjects.Clear();
         DisplayedUpgrades = 0;
         ContentHeight = 0;
     }
@@ -175,10 +173,22 @@ public class UpgradeScreenScript : MonoBehaviour
         DisplayedUpgrades++;
 
         GameObject newUpgradeObject = Instantiate(UpgradeItemPrefab, ContentHolder);
-        UpgradeObjects.Add(newUpgradeObject);
-        newUpgradeObject.GetComponent<UpgradeItemScript>().SetUpgrade(newUpgrade);
-        newUpgradeObject.GetComponent<UpgradeItemScript>().SetSource(this);
-        newUpgradeObject.GetComponent<UpgradeItemScript>().AssociatedUpgrade.AssociatedMinigame = AssociatedMinigame;
+
+        UpgradeItemListScript ulScript = newUpgradeObject.GetComponent<UpgradeItemListScript>();
+        ulScript.SetSource(this);
+        if (newUpgrade.UpgradesGroup == null || newUpgrade.UpgradesGroup.Count == 0)
+        {
+            newUpgrade.AssociatedMinigame = AssociatedMinigame;
+            ulScript.SetUpgrade(newUpgrade);
+        } else
+        {
+            foreach (UpgradesAbstract upgrade in newUpgrade.UpgradesGroup)
+            {
+                upgrade.AssociatedMinigame = AssociatedMinigame;
+            }
+            ulScript.AssociatedUpgrade = newUpgrade;
+            ulScript.SetUpgrade(newUpgrade.UpgradesGroup);
+        }
 
         RectTransform rect = newUpgradeObject.GetComponent<RectTransform>();
         rect.localPosition = Vector3.zero;

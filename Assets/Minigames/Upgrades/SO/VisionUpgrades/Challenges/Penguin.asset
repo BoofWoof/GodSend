@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad488c543c370a3488a35d815f9b4a4e, type: 3}
+  m_Name: Penguin
+  m_EditorClassIdentifier: 
+  Prioirty: 2
+  UpgradeID: e09905bb-41e0-4249-9fb0-337c369e3f61
+  UpgradesGroup: []
+  UpgradeName: Penguin
+  UpgradeIcon: {fileID: -1538940867, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: We all have a lot of tasks. Get more for waddling between your
+    jobs. (Gain a new multiplier for slower solutions.)
+  MascotDialogue: Take your time, I'll wait.
+  OverrideDialogue:
+  - OverrideDay: 1
+    ReplacementDialogue: <color=blue>FLOCK</color> wants you to grow close with its
+      members.<n> I feel the same way!<n> Take some time to speak with those close
+      to you!<n> I hear there's even a special bonus if you take enough time!
+  Credits: 0.00000025
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  UpgradeBought: 0
+  AssociatedMinigame: 0
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1
+  FastestTime: 5
+  MinMultiplier: 1
+  MaxMultiplier: 1.5
+  DisplayColor: {r: 0, g: 1, b: 0, a: 1}
+  GoFast: 0

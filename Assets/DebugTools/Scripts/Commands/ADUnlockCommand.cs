@@ -7,7 +7,6 @@ namespace DebugTools.DeveloperConsole.Commands
     {
         public override bool Process(string[] args)
         {
-            AerialDefenseScript.Unlock();
 
             return true;
         }

@@ -74,7 +74,6 @@ public class AchievementListScript : Saver
 
     public IEnumerator AchievementCheckLoop()
     {
-        Debug.Log("BOOF");
         while (true)
         {
             foreach (PriorityAchievement pAchievement in SortedAchievementList)
@@ -86,10 +85,8 @@ public class AchievementListScript : Saver
                 {
                     continue;
                 }
-                Debug.Log("Awoo");
                 if (pAchievement.Achievement.FirstCompletionCheck && pAchievement.Achievement.CheckCompletionCriteria())
                 {
-                    Debug.Log("Test");
                     AchieveUnlockScript.instance.ShowUnlock(title);
                     pAchievement.Achievement.FirstCompletionCheck = false;
                 }

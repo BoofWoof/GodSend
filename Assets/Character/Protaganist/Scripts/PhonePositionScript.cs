@@ -23,7 +23,7 @@ public class PhonePositionScript : MonoBehaviour
     public delegate void PhoneStateCallback(bool raised);
     static public event PhoneStateCallback PhoneToggled;
 
-    public static bool AllowPhoneToggle = false;
+    public static bool AllowPhoneToggle = true;
     public static bool FirstPhoneRaise = true;
 
     public static PhonePositionScript instance;

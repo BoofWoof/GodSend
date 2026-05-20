@@ -243,9 +243,9 @@ public class CrossfadeScript : MonoBehaviour
         while (timeElapsed < fadePeriod)
         {
             timeElapsed += Time.deltaTime;
-            //float progress = timeElapsed / fadePeriod;
+            float progress = timeElapsed / fadePeriod;
 
-            MusicPlayer.currentTrack.volume = Mathf.Pow(timeElapsed, 2.2f) / Mathf.Pow(fadePeriod, 2.2f);  // Fade out current track
+            MusicPlayer.currentTrack.volume = Mathf.Pow(progress, 2.2f) * NewSong.MaxVolume;  // Fade out current track
             MusicPlayer.oldTrack.volume = 0;
 
             yield return null;

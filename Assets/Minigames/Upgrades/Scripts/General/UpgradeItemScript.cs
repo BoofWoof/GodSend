@@ -1,23 +1,33 @@
 using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeItemScript : MonoBehaviour
 {
     public UpgradesAbstract AssociatedUpgrade;
-    public UpgradeScreenScript SourceScreen;
+    public UpgradeItemListScript AssociatedList;
 
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI DescriptionText;
     public TextMeshProUGUI CostText;
     public Image UpgradeImage;
 
-    public Color SpecialColor;
+    public GameObject TopTitle;
 
-    public float Duration = 1f;
-    public static int UpgradesAnimating = 0;
+    public UpgradeScreenScript SourceScreen;
+
+    private bool DisablePurchases = false;
+
+    public void RemoveTopTitle()
+    {
+        TopTitle.SetActive(false);
+    }
+
+    public void SetTopTitle(string TopText)
+    {
+        TopTitle.GetComponentInChildren<TMP_Text>().text = TopText;
+    }
 
     public void UpdateUI()
     {
@@ -25,7 +35,10 @@ public class UpgradeItemScript : MonoBehaviour
         DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
         CostText.text = AssociatedUpgrade.CostToText();
         UpgradeImage.sprite = AssociatedUpgrade.UpgradeIcon;
-        if(AssociatedUpgrade.GoldenUpgrade) GetComponent<Image>().color = SpecialColor;
+    }
+    public void SetSource(UpgradeScreenScript sourceScreen)
+    {
+        SourceScreen = sourceScreen;
     }
 
     public void SetUpgrade(UpgradesAbstract associatedUpgrade)
@@ -34,56 +47,53 @@ public class UpgradeItemScript : MonoBehaviour
         UpdateUI();
     }
 
-    public void SetSource(UpgradeScreenScript sourceScreen)
-    {
-        SourceScreen = sourceScreen;
-    }
-
     public void Buy()
     {
-        if (!AssociatedUpgrade.Buy()) {
+        if (AssociatedUpgrade.UpgradeBought) return;
+        if (DisablePurchases || !AssociatedUpgrade.Buy()) {
             AnnouncementScript.StartAnnouncement("You can't afford this upgrade. Go do more puzzles!");
             return;
-        } 
-        StartCoroutine(UpgradeBoughtAnimation());
+        }
+        AssociatedList.StartCoroutine(AssociatedList.UpgradeBoughtAnimation());
     }
 
     public void Start()
     {
+    }
+
+    public void ForceDisablePurchases()
+    {
+        DisablePurchases = true;
+        UpgradeImage.color = new Color(0.35f, 0.3f, 0.3f);
+        UpgradeImage.GetComponent<Button>().interactable = false;
+    }
+
+    public void OnEnable()
+    {
+        if (SourceScreen != null) SourceScreen.UpgradeObjects.Add(gameObject);
         StartCoroutine(AffordCheck());
+    }
+
+    public void OnDisable()
+    {
+        if(SourceScreen != null) SourceScreen.UpgradeObjects.Remove(gameObject);
+        StopAllCoroutines();
     }
 
     public IEnumerator AffordCheck()
     {
         while (true)
         {
-            if (AssociatedUpgrade.CanBuy()) UpgradeImage.color = new Color(1f, 1f, 1f);
+            if(AssociatedUpgrade == null)
+            {
+                yield return new WaitForSeconds(0.2f);
+                continue;
+            }
+
+            if (AssociatedUpgrade.CanBuy() && !DisablePurchases) UpgradeImage.color = new Color(1f, 1f, 1f);
             else UpgradeImage.color = new Color(0.35f, 0.3f, 0.3f);
             yield return new WaitForSeconds(0.2f);
         }
-    }
-
-    public IEnumerator UpgradeBoughtAnimation()
-    {
-        Image image = GetComponent<Image>();
-        Material runtimeMaterial = Instantiate(image.material);
-        image.material = runtimeMaterial;
-
-        float elapsed = 0f;
-        while (elapsed < Duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / Duration);
-            float progress = Mathf.Lerp(0.3f, 1f, t);
-            image.materialForRendering.SetFloat("_Disappear", progress);
-            yield return null;
-        }
-
-        // Ensure it ends at 1
-        image.materialForRendering.SetFloat("_Disappear", 1f);
-
-        SourceScreen.UpgradeObjects.Remove(gameObject);
-        Destroy(gameObject);
     }
 
 }

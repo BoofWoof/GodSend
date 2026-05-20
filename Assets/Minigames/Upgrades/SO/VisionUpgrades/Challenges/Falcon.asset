@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 25ef69827139cf64f871ea99034edb5a
+  UpgradesGroup: []
   UpgradeName: Falcon
   UpgradeIcon: {fileID: -1538940867, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Deligence and speed are important, be like the hard working
-    Falcon. (Gain more based on completion speed.)
+  UpgradeDescription: Diligence and speed are important. Be like the hard-working
+    Falcon. (Gain a new multiplier for speedy solutions.)
   MascotDialogue: Why are you in such a hurry?
   OverrideDialogue:
   - OverrideDay: 1
@@ -40,3 +44,4 @@ MonoBehaviour:
   MinMultiplier: 1
   MaxMultiplier: 1.5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}
+  GoFast: 1

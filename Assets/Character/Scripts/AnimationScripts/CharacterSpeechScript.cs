@@ -23,12 +23,26 @@ public class CharacterSpeechScript : MonoBehaviour
 
     public static List<CharacterSpeechScript> CharacterSpeechInstances = new List<CharacterSpeechScript>();
 
+    [Header("Tracking Variables")]
+    public Transform SkyCamera;
+    public Transform CharacterCamera;
+    public Transform ReferenceBone;
+
     private void OnEnable()
     {
         if (IsCentralNode) CentralNode = this;
         else CharacterSpeechInstances.Add(this);
 
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationLine.AddListener(OnConversationLine);
+
+        if(CharacterCamera) transform.SetParent(CharacterCamera);
+    }
+
+    public void LateUpdate()
+    {
+        if (!CharacterCamera) return;
+        Vector3 localOffset = SkyCamera.InverseTransformPoint(ReferenceBone.position);
+        transform.localPosition = localOffset.normalized * 10f;
     }
 
     public void OnDisable()
@@ -134,9 +148,9 @@ public class CharacterSpeechScript : MonoBehaviour
 
     public void StartBroadcastSpeechAttempt(string name, string voiceLinePath)
     {
-        StartCoroutine(this.SpeechAttempt(name, voiceLinePath));
+        StartCoroutine(SpeechAttempt(name, voiceLinePath));
     }
-    public IEnumerator SpeechAttempt(string name, string voiceLinePath)
+    public static IEnumerator SpeechAttempt(string name, string voiceLinePath)
     {
         ResourceRequest request = Resources.LoadAsync<VoiceLineSO>(voiceLinePath.CleanResourcePath()); // Replace GameObject with your asset type
 
@@ -160,6 +174,11 @@ public class CharacterSpeechScript : MonoBehaviour
             if (!string.IsNullOrEmpty(voiceLine.SpeakerOverride)) name = voiceLine.SpeakerOverride;
             c.PlaySpeech(name, voiceLine, showSubtitles);
         }
+    }
+
+    public static IEnumerator LoadDialogueBroadcastSpeaker()
+    {
+        yield return null;
     }
     public static void BroadcastSpeechAttempt(string name, List<VoiceLineSO> voiceLines)
     {

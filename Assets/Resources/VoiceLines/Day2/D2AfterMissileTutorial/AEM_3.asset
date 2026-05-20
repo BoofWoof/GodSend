@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
+  m_Name: AEM_3
+  m_EditorClassIdentifier: 
+  AudioData: {fileID: 8300000, guid: e748ed887e41240418d9ec58a2b2fa1d, type: 3}
+  PhenomeData: {fileID: 0}
+  SubtitleData: {fileID: 4900000, guid: 03c9e5d9cdc4ab147a54c44a9a514c85, type: 3}
+  GestureData: {fileID: 0}
+  FocusLevel: 1
+  PauseBeforeStart: 0
+  PauseAfterEnd: 0
+  SpeakerOverride: RadioMilo

@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: bdedeb73c0e9f8342af5124b306e5052
+  UpgradesGroup: []
   UpgradeName: Love Bombing
   UpgradeIcon: {fileID: 895661343, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: In a lonely world, love can be addictive. Make sure to love
-    your Flock. (Positive prayer fireworks complete a <color=green>Very Easy</color>
-    Vision puzzle.)
+    your Flock. (Every <b>five</b> prayers, complete a free puzzle.)
   MascotDialogue: This blessing is specifically made for <b>VIP<b>s like you. It
     plays well with your special perks.
   OverrideDialogue:

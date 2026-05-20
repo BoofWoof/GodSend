@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e2b563fdec3184894eea8db8fdb6ba, type: 3}
   m_Name: 1 HallucinationWarning
   m_EditorClassIdentifier: 
+  EnableTimer: 1
+  PuzzleTimeLimit: 30
   LevelName: 1 HallucinationWarning
   LevelDescription: MakeMulipleSinkClear
   VentGridPos: {x: 0, y: 142, z: 0}
@@ -20,6 +22,10 @@ MonoBehaviour:
   - BroadcastName: SetPlayerScale
     UseValue: 1
     BroadcastValue: 0.8
+    UseString: 0
+    BroadcastString: 
+  VoiceLineTargetName: 
+  VoiceLine: {fileID: 0}
   ConnectedCutsceneName: 
   OnScreenData: {fileID: 7752960434985955068, guid: 880652d4b8200ca45840d1b70bad8daf, type: 3}
   OnScreenDataPos: {x: 0, y: -360, z: 0}

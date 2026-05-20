@@ -2,21 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[System.Serializable]
-public struct ThreatWaveInfo
-{
-    public ThreatInfo[] threatInfos;
-    public float pauseMean;
-    public float pauseStd;
-    public int neededDestruction;
-    public Volume optionalVolume;
-}
-[System.Serializable]
-public struct ThreatInfo
-{
-    public GameObject ThreatPrefab;
-    public float Weight;
-}
 
 public class ThreatSpawnerScript : MonoBehaviour
 {
@@ -29,20 +14,22 @@ public class ThreatSpawnerScript : MonoBehaviour
 
     public RectTransform CanvasParent;
 
-    public ThreatWaveInfo threatWaveInfo;
-
     public void Start()
     {
         SpawnRect = GetComponent<RectTransform>();
     }
 
-    public void StartWave()
+    public void StartWave(AerialDefenseLevelData levelData)
     {
-        StartCoroutine(RunWave(threatWaveInfo));
+
+        StartCoroutine(RunWave(levelData));
     }
 
-    public IEnumerator RunWave(ThreatWaveInfo waveInfo)
+    public IEnumerator RunWave(AerialDefenseLevelData levelData)
     {
+        ThreatWaveInfo waveInfo = levelData.LevelWaves[AerialDefenseScript.Instance.CurrentWave];
+
+
         AerialDefenseScript.SetTargetsToKill(waveInfo.neededDestruction);
         while (true)
         {

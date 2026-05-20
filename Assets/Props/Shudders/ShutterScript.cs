@@ -42,7 +42,11 @@ public class ShutterScript : MonoBehaviour
 
     public void Start()
     {
-        if(DayInfo.CurrentDay == 1) InstantClose();
+        if (DayInfo.CurrentDay == 1)
+        {
+            PhonePositionScript.AllowPhoneToggle = false;
+            InstantClose();
+        }
         else
         {
             InstantOpen();

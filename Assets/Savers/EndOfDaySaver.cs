@@ -9,6 +9,7 @@ public class EndOfDaySaver : Saver
     [Serializable]
     public class EndOfDaySaveData
     {
+        public float DaySavedTime;
         public float SavedTime;
         public float StartingMiloLike;
         public float StartingAriesLike;
@@ -18,6 +19,7 @@ public class EndOfDaySaver : Saver
 
         public EndOfDaySaveData FromEndOfDay(EndOfDayScript eofData)
         {
+            DaySavedTime = EndOfDayScript.GetDayTimePassed();
             SavedTime = EndOfDayScript.GetTimePassed();
             StartingMiloLike = eofData.StartingMiloLike;
             StartingAriesLike = eofData.StartingAriesLike;
@@ -30,6 +32,7 @@ public class EndOfDaySaver : Saver
 
         public void LoadData(EndOfDayScript eofData)
         {
+            EndOfDayScript.DaySavedTime = DaySavedTime;
             EndOfDayScript.SavedTime = SavedTime;
             eofData.StartingMiloLike = StartingMiloLike;
             eofData.StartingAriesLike = StartingAriesLike;

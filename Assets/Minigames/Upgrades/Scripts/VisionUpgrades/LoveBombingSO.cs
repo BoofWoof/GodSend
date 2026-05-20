@@ -5,6 +5,9 @@ public class LoveBombingSO : UpgradesAbstract
 {
     [Header("PuzzleDifficultyReward")]
     public int CompletionDifficulty;
+    public int PrayerRequired = 5;
+
+    private int PrayersSubmitted = 0;
 
     public override void OnBuy()
     {
@@ -13,10 +16,17 @@ public class LoveBombingSO : UpgradesAbstract
 
     public void OnPrayerSubmission(bool goodPrayer)
     {
-        if (goodPrayer)
+        PrayersSubmitted++;
+
+        if (PrayersSubmitted >= PrayerRequired)
         {
-            float reward = TurkPuzzleScript.instance.CalculateReward(CompletionDifficulty);
+            float reward = TurkPuzzleScript.instance.QuickCalculateReward(CompletionDifficulty);
             CurrencyData.Credits += reward;
+
+            AnnouncementScript.StartAnnouncement($"Love bombing has earned you {reward.ToString("G2")} credits.");
+            Debug.Log($"Love bombing: {reward}");
+
+            PrayersSubmitted = 0;
         }
     }
 }

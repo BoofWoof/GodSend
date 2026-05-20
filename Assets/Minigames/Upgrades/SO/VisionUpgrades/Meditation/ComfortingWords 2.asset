@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 3
   UpgradeID: d9ce9ab20c30e614cb076bfaff132be9
+  UpgradesGroup: []
   UpgradeName: Comforting Words II
   UpgradeIcon: {fileID: 1563813400, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Often it's not what you say, but how you say it. (Good prayers
     are now more effective.)
   MascotDialogue: Ugh, more lesson on how to be a sycophant. Are you sure someone
-    of your status wants these?
+    of your status wants this?
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: Get ready for the <b>advanced</b> sucking up to your superiors

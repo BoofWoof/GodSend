@@ -1,11 +1,14 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class AerialDefenseScript : MonoBehaviour
 {
+    public static AerialDefenseScript Instance;
+
+    public static int TotalProjectilesDestroyed = 0;
+
     //Put stats here: Firing rate and ect.
     public int TargetsToKill = 5;
     public int MaxHealth = 3;
@@ -17,8 +20,6 @@ public class AerialDefenseScript : MonoBehaviour
 
     public delegate void OnADLockStateChange(bool lockState);
     public static OnADLockStateChange onADLockStateChange;
-
-    public static AerialDefenseScript Instance;
     public ThreatSpawnerScript threatSpawnerScript;
 
     public static bool GameRunning = false;
@@ -29,6 +30,9 @@ public class AerialDefenseScript : MonoBehaviour
     public RectTransform GameCanvas;
 
     public float TransitionPeriod = 2f;
+
+    public AerialDefenseLevelData LevelData;
+    public int CurrentWave = 0;
 
     public void Awake()
     {
@@ -47,25 +51,30 @@ public class AerialDefenseScript : MonoBehaviour
         Instance.TargetsToKillText.text = Instance.TargetsToKill.ToString();
     }
 
-    public static void Unlock()
+    public void PreSetLevel(AerialDefenseLevelData targetLevel)
     {
-        Instance.StartWave();
+        LevelData = targetLevel;
     }
 
-    public void StartWave()
+    public void StartLevel()
     {
+        int CurrentWave = 0;
+
         if (GameStateMonitor.DangerActive) return;
+        ChannelChanger.instance.AerialSwitch();
         GameStateMonitor.DangerActive = true;
 
-        if(threatSpawnerScript.threatWaveInfo.optionalVolume != null)
+        RemainingHealth = MaxHealth;
+
+        if (LevelData.LevelWaves[CurrentWave].optionalVolume != null)
         {
-            StartCoroutine(StartVolume(threatSpawnerScript.threatWaveInfo.optionalVolume));
+            StartCoroutine(StartVolume(LevelData.LevelWaves[CurrentWave].optionalVolume));
         }
 
         CrossfadeScript.TransitionSong(5);
 
         onADLockStateChange?.Invoke(false);
-        threatSpawnerScript.StartWave();
+        threatSpawnerScript.StartWave(LevelData);
         GameRunning = true;
     }
 
@@ -80,24 +89,44 @@ public class AerialDefenseScript : MonoBehaviour
 
         CrossfadeScript.TransitionSong(1);
 
-        if (threatSpawnerScript.threatWaveInfo.optionalVolume != null)
+        if (LevelData.LevelWaves[CurrentWave].optionalVolume != null)
         {
-            StartCoroutine(StopVolume(threatSpawnerScript.threatWaveInfo.optionalVolume));
+            StartCoroutine(StopVolume(LevelData.LevelWaves[CurrentWave].optionalVolume));
         }
 
         GameStateMonitor.DangerActive = false;
         ChannelChanger.ActiveChannelChanger.LockSwitch();
     }
 
+    public void WinOutcomes()
+    {
+        if(RemainingHealth == MaxHealth)
+        {
+            LevelData.MarkPerfectWin();
+        } else
+        {
+            LevelData.MarkWin();
+        }
+        LevelData.PlayEndingDialogue();
+    }
+    public void LoseOutcomes()
+    {
+        LevelData.MarkLoss();
+        LevelData.PlayEndingDialogue();
+    }
+
     public static void ThreatDestroyed()
     {
         if (!GameRunning) return;
+
+        TotalProjectilesDestroyed++;
 
         Instance.TargetsToKill--;
         Instance.TargetsToKillText.text = Instance.TargetsToKill.ToString();
 
         if(Instance.TargetsToKill == 0)
         {
+            Instance.WinOutcomes();
             TurretScript.autoFire = true;
             Instance.StopWave();
         }
@@ -120,6 +149,7 @@ public class AerialDefenseScript : MonoBehaviour
 
         if (Instance.RemainingHealth <= 0)
         {
+            Instance.LoseOutcomes();
             FallingThreatScript.DestroyAllThreats();
             Instance.StopWave();
         }

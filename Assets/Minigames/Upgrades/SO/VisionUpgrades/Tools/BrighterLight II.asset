@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: d2f20571ddd678a45b9e16730c620062
+  UpgradesGroup: []
   UpgradeName: Enlightened Soul III
   UpgradeIcon: {fileID: -1997820138, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
@@ -26,7 +30,7 @@ MonoBehaviour:
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: Most brighterestest!
-  Credits: 0.0000781
+  Credits: 0.0000156
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

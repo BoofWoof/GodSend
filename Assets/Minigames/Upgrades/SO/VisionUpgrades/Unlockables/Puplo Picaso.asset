@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: 3a8a9d30ae01e6c4daa79c77479afcc7
+  UpgradesGroup: []
   UpgradeName: BygoneTyrant
   UpgradeIcon: {fileID: 2106267085, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
@@ -25,7 +29,7 @@ MonoBehaviour:
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: Do any of these have birds?
-  Credits: 0.0000156
+  Credits: 0.0000781
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

@@ -567,7 +567,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167092301536818943}
-  - component: {fileID: 8010478255304781797}
   - component: {fileID: 9084936403226193720}
   - component: {fileID: 6281737874485023044}
   - component: {fileID: 5434549827888444988}
@@ -600,19 +599,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: -11}
   m_SizeDelta: {x: 1376.4, y: 170}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &8010478255304781797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7151212283979010501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!222 &9084936403226193720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -634,13 +620,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AssociatedUpgrade: {fileID: 11400000, guid: 2dd308e438ba6ae4f829b94c57a0b51b, type: 2}
-  SourceScreen: {fileID: 0}
+  AssociatedList: {fileID: 0}
   NameText: {fileID: 5994916422328965308}
   DescriptionText: {fileID: 3546948776954499168}
   CostText: {fileID: 4491685005444474037}
   UpgradeImage: {fileID: 1178814682292695881}
-  SpecialColor: {r: 0.47058824, g: 0.44313726, b: 0.21960784, a: 1}
-  Duration: 1
+  TopTitle: {fileID: 0}
+  SourceScreen: {fileID: 0}
 --- !u!114 &5434549827888444988
 MonoBehaviour:
   m_ObjectHideFlags: 0

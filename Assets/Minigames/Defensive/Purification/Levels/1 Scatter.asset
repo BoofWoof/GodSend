@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e2b563fdec3184894eea8db8fdb6ba, type: 3}
   m_Name: 1 Scatter
   m_EditorClassIdentifier: 
+  EnableTimer: 1
+  PuzzleTimeLimit: 60
   LevelName: 1 Scatter
   LevelDescription: MakeMulipleSinkClear
   VentGridPos: {x: 0, y: 0, z: 0}
@@ -20,6 +22,10 @@ MonoBehaviour:
   - BroadcastName: SetPlayerScale
     UseValue: 1
     BroadcastValue: 0.5
+    UseString: 0
+    BroadcastString: 
+  VoiceLineTargetName: 
+  VoiceLine: {fileID: 0}
   ConnectedCutsceneName: 
   OnScreenData: {fileID: 0}
   OnScreenDataPos: {x: 0, y: 0, z: 0}
