@@ -1,17 +1,22 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class AppScript : MonoBehaviour
 {
+    public Transform ActiveTarget;
+    public Transform InactiveTarget;
+
     public string AppName;
     public static string ActiveAppName = "";
 
     public GameObject AppRoot;
-    public GameObject PreviousApp;
+    public AppScript PreviousApp;
 
     public bool HideOnStart = true;
     public bool Active = true;
+    public static AppScript ActiveApp;
 
     public delegate void HideApp();
     public event HideApp OnHideApp;
@@ -20,6 +25,7 @@ public class AppScript : MonoBehaviour
 
     public UnityEvent OnActivateApp;
     public UnityEvent OnDeactivateApp;
+    public UnityEvent OnRaiseRefreshApp;
 
     public void Awake()
     {
@@ -31,9 +37,23 @@ public class AppScript : MonoBehaviour
     {
         if (HideOnStart)
         {
-            Hide(false);
+            Hide();
             RegisterInputActions();
+        } else
+        {
+            AppAnimator.instance.CurrentDisplayedApp = this;
+            Show();
         }
+    }
+
+    public void OnEnable()
+    {
+        PhonePositionScript.PhoneToggled += TryRaiseRefresh;
+    }
+
+    public void OnDisable()
+    {
+        PhonePositionScript.PhoneToggled -= TryRaiseRefresh;
     }
 
     public void OnDestroy()
@@ -50,23 +70,33 @@ public class AppScript : MonoBehaviour
 
     public void HidePressed(InputAction.CallbackContext c)
     {
-        if (!Input.GetMouseButton(0)) Hide(true);
+        if (AppAnimator.instance.TransitionActive || !Active || PreviousApp == null) return;
+
+        if (!Input.GetMouseButton(0)) AppAnimator.instance.SwitchToAppStart(PreviousApp, -Vector3.up * 900f);
     }
 
-    public void Swap(AppScript newApp)
+    public static void Swap(AppScript newApp)
     {
-        newApp.Show(AppRoot);
-        Hide(false);
+        if (newApp == null) return;
+        newApp.PreviousApp = ActiveApp;
+        AppAnimator.instance.SwitchToAppStart(newApp, Vector3.up * 900f);
+        //newApp.Show(AppRoot);
+        //Hide(false);
     }
 
-    public void Show(GameObject previousApp)
+    public void Show()
+    {
+        AppRoot.transform.SetParent(ActiveTarget);
+        AppRoot.transform.localPosition = Vector3.zero;
+        AppRoot.transform.localRotation = Quaternion.identity;
+        AppRoot.transform.SetAsFirstSibling();
+
+        ShowTriggers();
+    }
+    public void ShowTriggers()
     {
         Active = true;
-        if (previousApp != null)
-        {
-            PreviousApp = previousApp;
-        }
-        AppRoot.transform.localPosition = new Vector3(0, 0, 0);
+        ActiveApp = this;
 
         OnActivateApp?.Invoke();
         OnShowApp?.Invoke();
@@ -74,19 +104,34 @@ public class AppScript : MonoBehaviour
         ActiveAppName = AppName;
     }
 
-    public void Hide(bool revealLast)
+    public void Hide()
+    {
+        AppRoot.transform.SetParent(InactiveTarget);
+        AppRoot.transform.localPosition = Vector3.zero;
+        AppRoot.transform.localRotation = Quaternion.identity;
+
+        HideTriggers();
+    }
+
+    public void HideTriggers()
     {
         Active = false;
-        if (PreviousApp != null && revealLast)
-        {
-            Debug.Log(gameObject.name);
-            PreviousApp.GetComponent<AppScript>().Show(null);
-            PreviousApp = null;
-        }
-        AppRoot.transform.position = new Vector3(0, -100, 0);
 
         OnDeactivateApp?.Invoke();
         OnHideApp?.Invoke();
+    }
+
+    public void TryRaiseRefresh(bool raised)
+    {
+        Debug.Log("-------------");
+        Debug.Log(AppName);
+        Debug.Log(raised);
+        Debug.Log(Active);
+        if (raised && Active)
+        {
+            OnRaiseRefreshApp?.Invoke();
+            Debug.Log("Refreshing");
+        }
     }
 
     public static bool CheckIfActive(string checkName)

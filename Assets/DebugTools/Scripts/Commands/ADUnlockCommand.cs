@@ -7,7 +7,7 @@ namespace DebugTools.DeveloperConsole.Commands
     {
         public override bool Process(string[] args)
         {
-
+            AppMenuScript.UnlockAllApps();
             return true;
         }
     }

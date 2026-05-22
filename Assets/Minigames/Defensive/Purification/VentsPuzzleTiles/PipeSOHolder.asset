@@ -98,7 +98,7 @@ MonoBehaviour:
     RightConnection: 0
     RightSecondaryVentConnection: 0
     ForceCapped: 0
-  - PipeSprite: {fileID: 21300000, guid: 154cbe1d560fd72409f771c115b26df3, type: 3}
+  - PipeSprite: {fileID: 21300000, guid: 6b170c59e47ff2642ad17a26f8bce2a4, type: 3}
     SecondaryPipeSprite: {fileID: 0}
     SecondaryCapSprite: {fileID: 21300000, guid: 90f81acff5173ff49a6f2cbf341416dd, type: 3}
     SourceVersion: {fileID: 21300000, guid: 51c77db2fcc119c46a1846d35e661ba8, type: 3}

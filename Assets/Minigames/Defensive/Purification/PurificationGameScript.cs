@@ -4,17 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-struct WaitingExpansion
+public struct WaitingExpansion
 {
     public BADdirections expansionDirection;
     public PipeStackScript sourceVent;
 }
-struct VentRouteData
+public struct VentRouteData
 {
     public PipeStackScript SourceVent;
     public List<PipeStackScript> PrimaryExpanded;
     public List<PipeStackScript> SecondaryExpanded;
     public List<WaitingExpansion> WaitingExpansions;
+    public List<WaitingExpansion> ExpansionHistory;
     public bool LeakFound;
     public List<PipeStackScript> GoalsFound;
     public bool GoalFound;
@@ -52,6 +53,8 @@ public class PurificationGameScript : MonoBehaviour
 
     public static float TotalTime = 0;
     public float StartingTime;
+
+    public VentDrawOverScript VentDrawOver;
 
     public void Awake()
     {
@@ -99,7 +102,9 @@ public class PurificationGameScript : MonoBehaviour
 
     public void StartLevel()
     {
-        if(CurrentLevelPack.Levels[CurrentLevelInPack].HallucinationBroadcasts.Count > 0)
+        VentDrawOver.ResetTint();
+
+        if (CurrentLevelPack.Levels[CurrentLevelInPack].HallucinationBroadcasts.Count > 0)
         {
             PlayerBlinkScript.StartBlink(CurrentLevelPack.Levels[CurrentLevelInPack].HallucinationBroadcasts);
         }
@@ -132,6 +137,7 @@ public class PurificationGameScript : MonoBehaviour
             AnnouncementScript.StartAnnouncement("The air grows thicker. Your people are losing their grip on reality.");
             DefenseStats.DamageCity(10f);
             TimerTime = StartingTimerTime;
+            VentDrawOver.StartTintFadeIn();
         }
         TimerText.text = "Oversaturation In: <b>" + System.TimeSpan.FromSeconds(TimerTime).ToString("m\\:ss") + "</b>";
     }
@@ -170,6 +176,7 @@ public class PurificationGameScript : MonoBehaviour
                 newVentRouteData.PrimaryExpanded = new List<PipeStackScript>();
                 newVentRouteData.SecondaryExpanded = new List<PipeStackScript>();
                 newVentRouteData.WaitingExpansions = new List<WaitingExpansion>();
+                newVentRouteData.ExpansionHistory = new List<WaitingExpansion>();
                 newVentRouteData.GoalFound = false;
                 newVentRouteData.LeakFound = false;
                 newVentRouteData.GoalsFound = new List<PipeStackScript>();
@@ -180,6 +187,7 @@ public class PurificationGameScript : MonoBehaviour
                 newWaitingExpansion.expansionDirection = expansionDirection;
                 newWaitingExpansion.sourceVent = currentVent;
                 newVentRouteData.WaitingExpansions.Add(newWaitingExpansion);
+                newVentRouteData.ExpansionHistory.Add(newWaitingExpansion);
 
                 int i = 0; //I is just being used to avoid infinite loops while debugging.
                 while (newVentRouteData.WaitingExpansions.Count > 0)
@@ -281,7 +289,10 @@ public class PurificationGameScript : MonoBehaviour
         foreach (GameObject pipestack in VentGridData.PipeStacks)
         {
             pipestack.GetComponent<PipeStackScript>().UpdateParticleLeaks();
+            pipestack.GetComponent<PipeStackScript>().SetMaterial(VentDrawOver.DefaultMaterial);
         }
+
+        VentDrawOver.DrawRoutes(ventRoutes);
     }
 
     public void Win()

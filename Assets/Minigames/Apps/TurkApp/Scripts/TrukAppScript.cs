@@ -18,21 +18,21 @@ public class TrukAppScript : AppScript
 
     private void OnEnable()
     {
+        base.OnEnable();
         OnShowApp += StartSong;
         OnHideApp += EndSong;
     }
 
     private void OnDisable()
     {
+        base.OnDisable();
         OnShowApp -= StartSong;
         OnHideApp -= EndSong;
     }
 
-    new private void Awake()
+    public void Awake()
     {
         base.Awake();
         PhoneScreenCanvas = phoneScreenCanvas;
-        Hide(true);
-        RegisterInputActions();
     }
 }

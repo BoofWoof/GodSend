@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class AppMenuObjectData
 {
     public Sprite AppIcon;
-    public GameObject TargetApp;
+    public AppScript TargetApp;
     public bool Unlocked;
     public string AppName;
 }
@@ -131,7 +131,8 @@ public class AppMenuScript : AppScript
     }
     private void OnAppRelease(AppMenuObjectData appData)
     {
-        appData.TargetApp.GetComponent<AppScript>().Show(gameObject);
-        Hide(false);
+        AppScript.Swap(appData.TargetApp);
+        //appData.TargetApp.GetComponent<AppScript>().Show(gameObject);
+        //Hide(false);
     }
 }

@@ -88,6 +88,13 @@ public class ConversationManagerScript : MonoBehaviour
 
                 if (BannedDialogues.Contains(nextDialogue.dialouge)) continue;
 
+                bool exists = DialogueManager.masterDatabase.GetConversation(nextDialogue.dialouge) != null;
+                if (!exists)
+                {
+                    Debug.LogError($"Dialogue does not exist: {nextDialogue.dialouge}");
+                    continue;
+                }
+
                 yield return new WaitForSeconds((float)nextDialogue.wait);
                 StartDialogue(nextDialogue.dialouge);
             }

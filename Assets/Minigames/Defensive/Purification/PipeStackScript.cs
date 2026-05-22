@@ -26,6 +26,19 @@ public static class BADDirectionExtensions
             default: throw new System.ArgumentOutOfRangeException(nameof(dir), dir, null);
         }
     }
+
+    public static Vector3 ToValue(this BADdirections dir)
+    {
+        switch (dir)
+        {
+            case BADdirections.UP: return Vector3.up;
+            case BADdirections.DOWN: return Vector3.down;
+            case BADdirections.LEFT: return Vector3.left;
+            case BADdirections.RIGHT: return Vector3.right;
+            case BADdirections.NULL: return Vector3.zero;
+            default: throw new System.ArgumentOutOfRangeException(nameof(dir), dir, null);
+        }
+    }
 }
 
 public class PipeStackScript : MonoBehaviour
@@ -697,5 +710,11 @@ public class PipeStackScript : MonoBehaviour
         }
 
         return expansionList;
+    }
+
+    internal void SetMaterial(Material spriateMaterial)
+    {
+        Pipe.GetComponent<Image>().material = spriateMaterial;
+        PipeSecondLayer.GetComponent<Image>().material = spriateMaterial;
     }
 }

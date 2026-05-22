@@ -1,4 +1,5 @@
 using DS;
+using JetBrains.Annotations;
 using PixelCrushers;
 using PixelCrushers.DialogueSystem;
 using System;
@@ -77,6 +78,22 @@ public class ContactsScript : Saver
         instance = this;
     }
 
+    public void OnEnable()
+    {
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationLine.AddListener(OnConversationLineTrigger);
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationResponseMenu.AddListener(OnConversationResponseMenuTrigger);
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd.AddListener(OnConversationEndTrigger);
+    }
+
+    public void OnDisable()
+    {
+
+        if (ConversationManagerScript.instance == null) return;
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationLine.RemoveListener(OnConversationLineTrigger);
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationResponseMenu.RemoveListener(OnConversationResponseMenuTrigger);
+        ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd.RemoveListener(OnConversationEndTrigger);
+    }
+
     public void SendMessageByName(string speakerName, string messageText)
     {
         LocalCharacterInfo character = new LocalCharacterInfo().FromName(speakerName);
@@ -84,8 +101,9 @@ public class ContactsScript : Saver
         StartCoroutine(SendSingleMessage(character, messageText, false));
     }
 
-    public void OnConversationLine(Subtitle subtitle)
+    public void OnConversationLineTrigger(Subtitle subtitle)
     {
+        Debug.Log(subtitle.formattedText.ToString());
         if (subtitle.speakerInfo.GetFieldBool("WaitThem"))
         {
             ConversationManagerScript.WaitingForEvent = true;
@@ -127,6 +145,7 @@ public class ContactsScript : Saver
         yield return new WaitForSeconds((MessagingVariables.TimeBetweenMessages + MessagingVariables.TimePerCharacter * message_text.Length) / MessagingVariables.SetTimeDivider);
         CheckContacts(newSpeaker);
         messengerApp.AddLeftMessage(newSpeaker.id, message_text);
+        RebuildContacts();
 
         if (messengerApp.PingOptions.ContainsKey(message_text))
         {
@@ -135,7 +154,7 @@ public class ContactsScript : Saver
         if (continueConversation) (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
     }
 
-    public void OnConversationResponseMenu(Response[] responses)
+    public void OnConversationResponseMenuTrigger(Response[] responses)
     {
         if (DialogueManager.CurrentConversationState.subtitle.speakerInfo.GetFieldBool("IsRadio")) return;
         if (DialogueManager.CurrentConversationState.subtitle.speakerInfo.GetFieldBool("IsMacro")) return;
@@ -149,9 +168,10 @@ public class ContactsScript : Saver
     {
         yield return new WaitForSeconds(MessagingVariables.TimeBetweenMessages / MessagingVariables.SetTimeDivider);
         messengerApp.SendOptions(speakingCharacterId, responses);
+        RebuildContacts();
     }
 
-    public void OnConversationEnd(Transform actor)
+    public void OnConversationEndTrigger(Transform actor)
     {
         if (!isActiveAndEnabled) return;
         messengerApp.AddDivisionBar(speakingCharacterId);
@@ -178,6 +198,9 @@ public class ContactsScript : Saver
     public void MakeContactButtons()
     {
         int idx = 0;
+
+        int optionID = messengerApp.Choices.SourceID;
+
         foreach (LocalCharacterInfo characterInfo in ContactsFound.Values)
         {
             GameObject newContactButton = Instantiate(ContactButtonPrefab);
@@ -188,12 +211,13 @@ public class ContactsScript : Saver
             newContactButton.transform.localScale = Vector3.one;
 
             newContactButton.transform.GetChild(0).GetComponent<Image>().sprite = characterInfo.portrait;
-            if (messengerApp.UncheckMessages.Contains(characterInfo.id))
+
+            if (messengerApp.UncheckMessages.Contains(characterInfo.id) || characterInfo.id == optionID)
             {
-                newContactButton.transform.GetChild(0).GetComponent<Image>().color = Color.white;
+                newContactButton.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = Color.white;
             } else
             {
-                newContactButton.transform.GetChild(0).GetComponent<Image>().color = Color.gray;
+                newContactButton.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = Color.gray;
             }
 
             EventTrigger eventTrigger = newContactButton.transform.GetChild(0).GetChild(0).gameObject.AddComponent<EventTrigger>();
@@ -245,13 +269,7 @@ public class ContactsScript : Saver
 
         activeCharacter = selectCharacter;
         messengerApp.SetCharacter(selectCharacter);
-        GetComponent<AppScript>().Swap(messengerApp);
-    }
-
-    public void DeselectCharacter()
-    {
-        activeCharacter = null;
-        RebuildContacts();
+        AppScript.Swap(messengerApp);
     }
 
     [Serializable]

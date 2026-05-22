@@ -144,6 +144,7 @@ namespace DS
             UpdateTextHistory(speakerId, "<a>" + message_text + "\n");
             if (CurrentCharacter != null && speakerId == CurrentCharacter.id) {
                 MakeLeftMessage(message_text);
+                if (!PhonePositionScript.raised) AddUncheckedMessage(speakerId);
             }
             else {
                 AddUncheckedMessage(speakerId);
@@ -191,6 +192,7 @@ namespace DS
 
             NewObjectAdded = true;
         }
+
         public void SendOptions(int speakerId, Response[] responseOptions)
         {
             if (MessagingVariables.ForceSelect)
@@ -295,12 +297,14 @@ namespace DS
         #region Song
         public void OnEnable()
         {
+            base.OnEnable();
             OnShowApp += MusinOnAppShow;
             OnHideApp += MusinOnAppHide;
         }
 
         public void OnDisable()
         {
+            base.OnDisable();
             OnShowApp -= MusinOnAppShow;
             OnHideApp -= MusinOnAppHide;
         }

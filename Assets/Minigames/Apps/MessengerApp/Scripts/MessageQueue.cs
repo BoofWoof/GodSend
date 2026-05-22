@@ -35,10 +35,11 @@ public class MessageQueue
     public static void addDialogue(string newDialogue)
     {
         dialogueQueue.Add(new Dialogue(newDialogue, 0));
-        Debug.Log(dialogueQueue.Count);
+        Debug.Log($"Dialogues Waitings: {dialogueQueue.Count}");
     }
     public static void addDialogue(string newDialogue, double wait)
     {
         dialogueQueue.Add(new Dialogue(newDialogue, wait));
+        Debug.Log($"Dialogues Waitings: {dialogueQueue.Count}");
     }
 }
