@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
@@ -10,7 +9,8 @@ public class UpgradeScreenScript : MonoBehaviour
     public Minigame AssociatedMinigame;
     public Dictionary<Minigame, string> MinigameToString = new Dictionary<Minigame, string>()
     {
-        {Minigame.Visions, "vision"}
+        {Minigame.Visions, "vision"},
+        {Minigame.Shoppr, "shoppr"}
     };
 
     public AudioSource UpgradeAudio;
@@ -21,9 +21,6 @@ public class UpgradeScreenScript : MonoBehaviour
     public GameObject UpgradeItemPrefab;
 
     public RectTransform ContentHolder;
-    public float InitialContentHeight = 8f;
-    public float GapHeight = 4f;
-    [HideInInspector] public float ContentHeight = 0f;
 
     [HideInInspector] public int DisplayedUpgrades = 0;
 
@@ -38,13 +35,15 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public List<string> PreboughtUpgradeIDs = new List<string>();
 
+    public bool StartActive = false;
+
     public void Awake()
     {
         Lua.RegisterFunction("UpgradeWait", null, SymbolExtensions.GetMethodInfo(() => EnableWaitTrigger()));
 
         upgradeScreenScripts[AssociatedMinigame] = this;
 
-        gameObject.SetActive(false);
+        gameObject.SetActive(StartActive);
     }
 
     public void PreBuyUpgrades(List<string> UpgradeIDList)
@@ -154,7 +153,6 @@ public class UpgradeScreenScript : MonoBehaviour
             Destroy(upgradeObject.gameObject);
         }
         DisplayedUpgrades = 0;
-        ContentHeight = 0;
     }
 
     public void Refresh()
@@ -192,8 +190,5 @@ public class UpgradeScreenScript : MonoBehaviour
 
         RectTransform rect = newUpgradeObject.GetComponent<RectTransform>();
         rect.localPosition = Vector3.zero;
-        ContentHeight += rect.sizeDelta.y + GapHeight;
-
-        ContentHolder.sizeDelta = new Vector2(ContentHolder.sizeDelta.x, ContentHeight + InitialContentHeight);
     }
 }

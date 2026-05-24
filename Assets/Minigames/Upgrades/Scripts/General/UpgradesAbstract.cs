@@ -8,7 +8,8 @@ public enum Minigame
     Visions,
     Stocks,
     Rally,
-    Hacking
+    Hacking,
+    Shoppr
 }
 
 [Serializable]
@@ -47,6 +48,8 @@ public abstract class UpgradesAbstract : ScriptableObject
     [TextArea]
     public string UpgradeDescription;
     [TextArea]
+    public string UpgradeMechanicDescription;
+    [TextArea]
     public string MascotDialogue;
     public List<MascotDialogueOverride> OverrideDialogue = new List<MascotDialogueOverride>();
 
@@ -56,6 +59,8 @@ public abstract class UpgradesAbstract : ScriptableObject
     public float FoundationRenown;
     public float AssscensssionRenown;
     public float RevolutionRenown;
+
+    public string Tags;
 
     public bool UpgradeBought = false;
 
@@ -98,16 +103,18 @@ public abstract class UpgradesAbstract : ScriptableObject
 
         OnBuy();
 
-        string sayDialogue = MascotDialogue;
-        foreach(MascotDialogueOverride mdo in OverrideDialogue)
-        {
-            if (mdo.triggerToday())
+        if(AssociatedMinigame == Minigame.Visions) {
+            string sayDialogue = MascotDialogue;
+            foreach(MascotDialogueOverride mdo in OverrideDialogue)
             {
-                sayDialogue = mdo.ReplacementDialogue;
-                break;
+                if (mdo.triggerToday())
+                {
+                    sayDialogue = mdo.ReplacementDialogue;
+                    break;
+                }
             }
+            VisionMascotScript.SayText(sayDialogue);
         }
-        VisionMascotScript.SayText(sayDialogue);
 
         if (!forceBuy) AddToPurchasedList();
 
@@ -133,31 +140,31 @@ public abstract class UpgradesAbstract : ScriptableObject
 
         if(Credits > 0)
         {
-            outputText += "<sprite index=1> " + Credits.NumberToString();
+            outputText += "<sprite index=1 tint=1> " + Credits.NumberToString();
             costTypes++;
         }
         if(FlockRenown > 0)
         {
             if (costTypes > 0) outputText += "\n";
-            outputText += "<sprite index=0> " + FlockRenown.NumberToString();
+            outputText += "<sprite index=0 tint=1> " + FlockRenown.NumberToString();
             costTypes++;
         }
         if(FoundationRenown > 0)
         {
             if (costTypes > 0) outputText += "\n";
-            outputText += "<sprite index=5> " + FoundationRenown.NumberToString();
+            outputText += "<sprite index=5 tint=1> " + FoundationRenown.NumberToString();
             costTypes++;
         }
         if(AssscensssionRenown > 0)
         {
             if (costTypes > 0) outputText += "\n";
-            outputText += "<sprite index=2> " + AssscensssionRenown.NumberToString();
+            outputText += "<sprite index=2 tint=1> " + AssscensssionRenown.NumberToString();
             costTypes++;
         }
         if(RevolutionRenown > 0)
         {
             if (costTypes > 0) outputText += "\n";
-            outputText += "<sprite index=4> " + RevolutionRenown.NumberToString();
+            outputText += "<sprite index=4 tint=1> " + RevolutionRenown.NumberToString();
         }
 
         if (outputText.Length <= 1) return "<sprite index=1> 0";

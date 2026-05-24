@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9084936403226193720}
   - component: {fileID: 4819963979572114233}
   - component: {fileID: 4507680819802620555}
+  - component: {fileID: 1425032254844378450}
   - component: {fileID: 5434549827888444988}
   - component: {fileID: 9186755935769504879}
   m_Layer: 5
@@ -94,6 +95,38 @@ MonoBehaviour:
   SpecialColor: {r: 0.47058824, g: 0.44313726, b: 0.21960784, a: 1}
   MultiColor: {r: 0.4117647, g: 0.22352941, b: 0.39607844, a: 1}
   Duration: 1
+  OnPurchaseTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1425032254844378450}
+        m_TargetAssemblyTypeName: MaterialTransitionScript, Assembly-CSharp
+        m_MethodName: StartTransitionAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1425032254844378450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151212283979010501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f155d958deea564fab46a46d8ba7e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ValueName: _Disappear
+  StartingValue: 0.3
+  EndingValue: 1
+  Duration: 0.5
+  DestroyOnCompletition: 1
 --- !u!114 &5434549827888444988
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1406c5c150a397408cbf73665edc58d, type: 3}
+  m_Name: ChipTune
+  m_EditorClassIdentifier: 
+  Prioirty: 0
+  UpgradeID: 777c260a-c6c8-4513-a3e1-927a106be15c
+  UpgradesGroup: []
+  UpgradeName: Chiptune
+  UpgradeIcon: {fileID: 21300000, guid: a0a195a93105b4d4e9ca834cd6f731ed, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: Great tunes at an affordable price. Every indie game developers
+    best friend.
+  UpgradeMechanicDescription: Give as a gift to gain affection and trigger unique
+    dialogues.
+  MascotDialogue: 
+  OverrideDialogue: []
+  Credits: 1
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  Tags: 
+  UpgradeBought: 0
+  AssociatedMinigame: 4
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1
+  DialogueName: 

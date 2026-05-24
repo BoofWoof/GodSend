@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10dbf3fd783d8c42987aec8cb19e28a, type: 3}
+  m_Name: Turret1
+  m_EditorClassIdentifier: 
+  Prioirty: 0
+  UpgradeID: e0f29047-8109-4147-90c2-b780fd652546
+  UpgradesGroup: []
+  UpgradeName: Turret
+  UpgradeIcon: {fileID: 21300000, guid: d63693f707481d14981d9a76c137d7b2, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
+  DialogueToTrigger: 
+  CompleteQuest: 0
+  ProgressQuest: 0
+  UpgradeDescription: The most expensive technology in all of Soza. It is also the
+    most important. Nothing ruins an evening more than a gigagram of rain.
+  UpgradeMechanicDescription: Adds an additional turret to <b>Aerial Defense</b>.
+  MascotDialogue: 
+  OverrideDialogue: []
+  Credits: 1
+  FlockRenown: 0
+  FoundationRenown: 0
+  AssscensssionRenown: 0
+  RevolutionRenown: 0
+  Tags: AD
+  UpgradeBought: 0
+  AssociatedMinigame: 4
+  AutoBuy: 0
+  TriggerOnLoadBuy: 1
+  DialogueName: 

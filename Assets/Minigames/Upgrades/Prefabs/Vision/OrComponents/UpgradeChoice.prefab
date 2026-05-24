@@ -619,6 +619,7 @@ MonoBehaviour:
   CostText: {fileID: 1398701267921205051}
   UpgradeImage: {fileID: 4424638645142659271}
   TopTitle: {fileID: 8130084394711567047}
+  BuyButton: {fileID: 3743795697349294534}
   SourceScreen: {fileID: 0}
 --- !u!114 &5142033442249009787
 MonoBehaviour:

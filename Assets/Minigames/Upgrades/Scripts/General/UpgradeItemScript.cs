@@ -15,24 +15,28 @@ public class UpgradeItemScript : MonoBehaviour
 
     public GameObject TopTitle;
 
+    public Button BuyButton;
+
     public UpgradeScreenScript SourceScreen;
 
     private bool DisablePurchases = false;
 
     public void RemoveTopTitle()
     {
+        if (TopTitle == null) return;
         TopTitle.SetActive(false);
     }
 
     public void SetTopTitle(string TopText)
     {
+        if (TopTitle == null) return;
         TopTitle.GetComponentInChildren<TMP_Text>().text = TopText;
     }
 
-    public void UpdateUI()
+    virtual public void UpdateUI()
     {
         NameText.text = AssociatedUpgrade.UpgradeName;
-        DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
+        if(DescriptionText != null) DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
         CostText.text = AssociatedUpgrade.CostToText();
         UpgradeImage.sprite = AssociatedUpgrade.UpgradeIcon;
     }
@@ -47,25 +51,11 @@ public class UpgradeItemScript : MonoBehaviour
         UpdateUI();
     }
 
-    public void Buy()
-    {
-        if (AssociatedUpgrade.UpgradeBought) return;
-        if (DisablePurchases || !AssociatedUpgrade.Buy()) {
-            AnnouncementScript.StartAnnouncement("You can't afford this upgrade. Go do more puzzles!");
-            return;
-        }
-        AssociatedList.StartCoroutine(AssociatedList.UpgradeBoughtAnimation());
-    }
-
-    public void Start()
-    {
-    }
-
     public void ForceDisablePurchases()
     {
         DisablePurchases = true;
-        UpgradeImage.color = new Color(0.35f, 0.3f, 0.3f);
-        UpgradeImage.GetComponent<Button>().interactable = false;
+        BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);
+        BuyButton.interactable = false;
     }
 
     public void OnEnable()
@@ -90,10 +80,21 @@ public class UpgradeItemScript : MonoBehaviour
                 continue;
             }
 
-            if (AssociatedUpgrade.CanBuy() && !DisablePurchases) UpgradeImage.color = new Color(1f, 1f, 1f);
-            else UpgradeImage.color = new Color(0.35f, 0.3f, 0.3f);
+            if (AssociatedUpgrade.CanBuy() && !DisablePurchases) BuyButton.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            else BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public void Buy()
+    {
+        if (AssociatedUpgrade.UpgradeBought) return;
+        if (DisablePurchases || !AssociatedUpgrade.Buy())
+        {
+            AnnouncementScript.StartAnnouncement("You can't afford this upgrade. Go do more puzzles!");
+            return;
+        }
+        AssociatedList.OnPurchase();
     }
 
 }

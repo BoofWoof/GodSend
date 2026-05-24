@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UpgradeItemListScript : MonoBehaviour
@@ -20,6 +20,8 @@ public class UpgradeItemListScript : MonoBehaviour
     public float Duration = 1f;
 
     public static List<UpgradeItemListScript> MultiListUpgrades = new List<UpgradeItemListScript>();
+
+    public UnityEvent OnPurchaseTrigger;
 
     public void SetSource(UpgradeScreenScript sourceScreen)
     {
@@ -111,6 +113,7 @@ public class UpgradeItemListScript : MonoBehaviour
     public void OnDestroy()
     {
         MultiListUpgrades.Remove(this);
+        RefreshMultiList();
     }
 
     public void RefreshMultiList()
@@ -127,38 +130,24 @@ public class UpgradeItemListScript : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
+            if (child == null) continue;
             Destroy(child.gameObject);
         }
     }
 
-    public IEnumerator UpgradeBoughtAnimation()
+
+    public void OnPurchase()
     {
         AssociatedUpgrade.AddToPurchasedList();
         AssociatedUpgrade.UpgradeBought = true;
+
         foreach (UpgradeItemScript targetUpgradeItem in ItemList)
         {
             targetUpgradeItem.ForceDisablePurchases();
         }
 
-        Image image = GetComponent<Image>();
-        Material runtimeMaterial = Instantiate(image.material);
-        image.material = runtimeMaterial;
-
-        float elapsed = 0f;
-        while (elapsed < Duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / Duration);
-            float progress = Mathf.Lerp(0.3f, 1f, t);
-            image.materialForRendering.SetFloat("_Disappear", progress);
-            yield return null;
-        }
-
-        // Ensure it ends at 1
-        image.materialForRendering.SetFloat("_Disappear", 1f);
+        OnPurchaseTrigger?.Invoke();
 
         MultiListUpgrades.Remove(this);
-        RefreshMultiList();
-        Destroy(gameObject);
     }
 }
