@@ -123,14 +123,9 @@ public class AppScript : MonoBehaviour
 
     public void TryRaiseRefresh(bool raised)
     {
-        Debug.Log("-------------");
-        Debug.Log(AppName);
-        Debug.Log(raised);
-        Debug.Log(Active);
         if (raised && Active)
         {
             OnRaiseRefreshApp?.Invoke();
-            Debug.Log("Refreshing");
         }
     }
 

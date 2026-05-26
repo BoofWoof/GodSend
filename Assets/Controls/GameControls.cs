@@ -493,6 +493,34 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Neutral"",
+            ""id"": ""5277f9ba-b593-4369-a2e4-8ed8e17e8fd4"",
+            ""actions"": [
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bacf726-0153-4662-a9db-cfdaf8ba9297"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7dd3d89e-4d4c-4a94-bb59-f1386d7652a6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -515,6 +543,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_ToggleConsole = m_Debug.FindAction("Toggle Console", throwIfNotFound: true);
         m_Debug_SubmitCommand = m_Debug.FindAction("Submit Command", throwIfNotFound: true);
+        // Neutral
+        m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
+        m_Neutral_Space = m_Neutral.FindAction("Space", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -522,6 +553,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Overworld.enabled, "This will cause a leak and performance issues, GameControls.Overworld.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Phone.enabled, "This will cause a leak and performance issues, GameControls.Phone.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Debug.enabled, "This will cause a leak and performance issues, GameControls.Debug.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Neutral.enabled, "This will cause a leak and performance issues, GameControls.Neutral.Disable() has not been called.");
     }
 
     /// <summary>
@@ -980,6 +1012,102 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="DebugActions" /> instance referencing this action map.
     /// </summary>
     public DebugActions @Debug => new DebugActions(this);
+
+    // Neutral
+    private readonly InputActionMap m_Neutral;
+    private List<INeutralActions> m_NeutralActionsCallbackInterfaces = new List<INeutralActions>();
+    private readonly InputAction m_Neutral_Space;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Neutral".
+    /// </summary>
+    public struct NeutralActions
+    {
+        private @GameControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public NeutralActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Neutral/Space".
+        /// </summary>
+        public InputAction @Space => m_Wrapper.m_Neutral_Space;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Neutral; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="NeutralActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(NeutralActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="NeutralActions" />
+        public void AddCallbacks(INeutralActions instance)
+        {
+            if (instance == null || m_Wrapper.m_NeutralActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_NeutralActionsCallbackInterfaces.Add(instance);
+            @Space.started += instance.OnSpace;
+            @Space.performed += instance.OnSpace;
+            @Space.canceled += instance.OnSpace;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="NeutralActions" />
+        private void UnregisterCallbacks(INeutralActions instance)
+        {
+            @Space.started -= instance.OnSpace;
+            @Space.performed -= instance.OnSpace;
+            @Space.canceled -= instance.OnSpace;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="NeutralActions.UnregisterCallbacks(INeutralActions)" />.
+        /// </summary>
+        /// <seealso cref="NeutralActions.UnregisterCallbacks(INeutralActions)" />
+        public void RemoveCallbacks(INeutralActions instance)
+        {
+            if (m_Wrapper.m_NeutralActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="NeutralActions.AddCallbacks(INeutralActions)" />
+        /// <seealso cref="NeutralActions.RemoveCallbacks(INeutralActions)" />
+        /// <seealso cref="NeutralActions.UnregisterCallbacks(INeutralActions)" />
+        public void SetCallbacks(INeutralActions instance)
+        {
+            foreach (var item in m_Wrapper.m_NeutralActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_NeutralActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="NeutralActions" /> instance referencing this action map.
+    /// </summary>
+    public NeutralActions @Neutral => new NeutralActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Overworld" which allows adding and removing callbacks.
     /// </summary>
@@ -1087,5 +1215,20 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSubmitCommand(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Neutral" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="NeutralActions.AddCallbacks(INeutralActions)" />
+    /// <seealso cref="NeutralActions.RemoveCallbacks(INeutralActions)" />
+    public interface INeutralActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Space" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpace(InputAction.CallbackContext context);
     }
 }

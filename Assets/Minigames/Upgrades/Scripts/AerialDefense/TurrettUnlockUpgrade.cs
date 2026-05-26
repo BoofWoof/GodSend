@@ -7,6 +7,6 @@ public class TurrettUnlockUpgrade : UpgradesAbstract
     public string DialogueName;
     public override void OnBuy()
     {
-        Debug.Log("Lol, jk no turret 4 you.");
+        TurretManagerScript.IncreaseTurretCountStatic();
     }
 }

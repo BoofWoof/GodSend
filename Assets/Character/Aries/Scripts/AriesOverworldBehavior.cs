@@ -114,6 +114,7 @@ public class AriesOverworldBehavior : OverworldBehavior
 
     public IEnumerator GrabSoda()
     {
+        Debug.Log("Starting Soda");
         yield return StartCoroutine(WalkToStation(5));
         thisAnimator.SetBool("LeftGrab", true);
 

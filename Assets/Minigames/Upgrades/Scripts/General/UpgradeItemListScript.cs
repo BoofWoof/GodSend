@@ -148,6 +148,6 @@ public class UpgradeItemListScript : MonoBehaviour
 
         OnPurchaseTrigger?.Invoke();
 
-        MultiListUpgrades.Remove(this);
+        MultiListUpgrades.RemoveAll(item => item == null || item.AssociatedUpgrade.UpgradeID == AssociatedUpgrade.UpgradeID);
     }
 }

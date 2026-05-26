@@ -13,7 +13,7 @@ public class AnnouncementScript : MonoBehaviour
     public Image PanelImage;
 
     public float ExpandPeriod = 0.5f;
-    public float HoldPeriod = 1f;
+    public float HoldPeriod = 4f;
     public float FadePeriod = 1f;
 
     private float StartingPanelAlpha;
@@ -22,6 +22,9 @@ public class AnnouncementScript : MonoBehaviour
     public AudioSource AnnouncementSound;
 
     private List<string> WaitingAnnouncements = new List<string>();
+
+    public bool Skip = false;
+    public GameObject SkipText;
 
     public void OnEnable()
     {
@@ -39,6 +42,11 @@ public class AnnouncementScript : MonoBehaviour
         if (instance.WaitingAnnouncements.Contains(announcementText)) return;
         instance.WaitingAnnouncements.Add(announcementText);
         if(instance.WaitingAnnouncements.Count == 1) instance.StartCoroutine(instance.AnnouncementCoroutine());
+    }
+
+    public void SetSkip()
+    {
+        Skip = true;
     }
 
     public IEnumerator AnnouncementCoroutine()
@@ -64,7 +72,15 @@ public class AnnouncementScript : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(HoldPeriod);
+            Skip = false;
+            SkipText.SetActive(true);
+            timePassed = 0;
+            while (timePassed < HoldPeriod && !Skip)
+            {
+                timePassed += Time.deltaTime;
+                yield return null;
+            }
+            SkipText.SetActive(false);
 
             timePassed = 0;
             while (timePassed < FadePeriod)

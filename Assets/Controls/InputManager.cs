@@ -30,6 +30,7 @@ public class InputManager : MonoBehaviour
         PlayerInputs.Enable();
         PlayerInputs.Overworld.Enable();
         PlayerInputs.Phone.Enable();
+        PlayerInputs.Neutral.Enable();
     }
     public static void AllOff()
     {

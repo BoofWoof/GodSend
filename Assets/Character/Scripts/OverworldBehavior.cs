@@ -34,6 +34,7 @@ public class OverworldBehavior : MonoBehaviour
 
     public static void AriesBehavior(string behavior)
     {
+        Debug.Log($"Starting behavior: {behavior}.");
         BroadcastBehaviors("MacroAries", behavior, 0);
     }
 

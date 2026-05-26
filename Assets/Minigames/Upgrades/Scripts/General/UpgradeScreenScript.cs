@@ -91,7 +91,7 @@ public class UpgradeScreenScript : MonoBehaviour
 
         CheckForPrebought();
 
-        Refresh();
+        if(gameObject.activeInHierarchy) Refresh();
     }
 
     public void OnEnable()
