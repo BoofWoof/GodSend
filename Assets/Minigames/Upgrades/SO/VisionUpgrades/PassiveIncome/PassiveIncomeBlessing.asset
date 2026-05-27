@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992b3a488210cf54ca73a1663aba4117, type: 3}
   m_Name: PassiveIncomeBlessing
   m_EditorClassIdentifier: 
-  Prioirty: 0
+  Prioirty: -1
   UpgradeID: c05014aa7dfae3247b31464bb3011b4f
+  UpgradesGroup: []
   UpgradeName: Passive Income
   UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Just relax.
+  UpgradeMechanicDescription: Remove your usual earnings to replace it with a passive
+    income that pays out every few seconds.
   MascotDialogue: 
   OverrideDialogue: []
   Credits: 0
@@ -29,6 +33,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -14,16 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: e584c4c7b5673eb49b3641b6d722a2d1
+  UpgradesGroup: []
   UpgradeName: Fear Motivates
   UpgradeIcon: {fileID: 1295698386, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: You finally deserve some leadership of your own, and the first
-    rule of leadership is that FEAR MOTIVATES. (The higher the Ram's anger, the higher
-    your earnings.)
+    rule of leadership is that FEAR MOTIVATES.
+  UpgradeMechanicDescription: The higher the Ram's anger, the higher your puzzle
+    reward.
   MascotDialogue: Finally a perk that might apply to you. It's always good to be
     able to shuffle the peons around effectively.
   OverrideDialogue:
@@ -42,6 +45,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

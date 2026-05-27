@@ -23,8 +23,8 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Respect your elders. (The longer the game has run unpaused,
-    the larger this multiplier grows.)
+  UpgradeDescription: Respect your elders.
+  UpgradeMechanicDescription: Gain a new multiplier based on the day's length.
   MascotDialogue: You'll grow into this one!
   OverrideDialogue: []
   Credits: 0
@@ -32,6 +32,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

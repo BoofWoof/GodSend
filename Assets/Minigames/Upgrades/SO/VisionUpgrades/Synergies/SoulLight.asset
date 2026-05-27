@@ -14,13 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 1
   UpgradeID: 71c5377763abc3f43822f50d7c2ce638
+  UpgradesGroup: []
   UpgradeName: Calm Soul
   UpgradeIcon: {fileID: 1451810913, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: A tranquil soul can sense more. (Increase your cursor's vision
-    range based on how calm The Great Ram is.)
+  UpgradeDescription: A tranquil soul can sense more.
+  UpgradeMechanicDescription: Increase your cursor's vision range based on how calm
+    The Great Ram is.
   MascotDialogue: This is my kind of blessing. Let me teach you how to be as chill
     as me.
   OverrideDialogue:
@@ -45,6 +50,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

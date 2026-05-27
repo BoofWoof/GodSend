@@ -14,16 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 3
   UpgradeID: d327a1ece25e42d4d8a680c52078f5fc
+  UpgradesGroup: []
   UpgradeName: Sights Beyond
   UpgradeIcon: {fileID: 309433619, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
-    comes responsibility. Access higher difficulties for more earnings! (Recommend
-    Purchase)
+    comes responsibility!
+  UpgradeMechanicDescription: Gain access to a higher difficulty that gives significantly
+    higher earnings.
   MascotDialogue: Please don't make me fly again... I like the bird bath.
   OverrideDialogue:
   - OverrideDay: 1
@@ -33,6 +36,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

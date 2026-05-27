@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 3
   UpgradeID: 9c18a19814458a4428d0f929a4330a75
+  UpgradesGroup: []
   UpgradeName: Enlightened Soul II
   UpgradeIcon: {fileID: -1997820138, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Your soul is growing closer with the Flock. (Increase your
-    cursor's vision range.)
+  UpgradeDescription: Your soul is growing closer with the Flock.
+  UpgradeMechanicDescription: Increase your cursor's vision range.
   MascotDialogue: I always found the lighting mechanic of this app annoying. However,
     I suppose it prepares most users for the dim lighting of the factory.
   OverrideDialogue:
@@ -31,6 +35,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

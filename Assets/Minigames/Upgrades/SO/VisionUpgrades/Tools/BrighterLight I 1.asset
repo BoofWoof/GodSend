@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 675b695145be4fb4d8dc660a05679421
+  UpgradesGroup: []
   UpgradeName: Enlightened Soul I
   UpgradeIcon: {fileID: -1997820138, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Your soul is growing closer with the Flock. (Increase your
-    cursor's vision range.)
+  UpgradeDescription: Your soul is growing closer with the Flock.
+  UpgradeMechanicDescription: Increase your cursor's vision range.
   MascotDialogue: Yes, banish away the lighting mechanic. Send it away from here!
   OverrideDialogue:
   - OverrideDay: 1
@@ -30,6 +34,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

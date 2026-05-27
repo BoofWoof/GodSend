@@ -23,8 +23,8 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Often it's not what you say, but how you say it. (Good prayers
-    are now more effective.)
+  UpgradeDescription: Often it's not what you say, but how you say it.
+  UpgradeMechanicDescription: All prayers now have more impact.
   MascotDialogue: Ugh, more lesson on how to be a sycophant. Are you sure someone
     of your status wants this?
   OverrideDialogue:
@@ -36,6 +36,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -23,8 +23,9 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: In a lonely world, love can be addictive. Make sure to love
-    your Flock. (Every <b>five</b> prayers, complete a free puzzle.)
+  UpgradeDescription: In a lonely world, love can be addictive.
+  UpgradeMechanicDescription: Every <b>five</b> prayers, you are rewarded the credits
+    of a free puzzle completion.
   MascotDialogue: This blessing is specifically made for <b>VIP<b>s like you. It
     plays well with your special perks.
   OverrideDialogue:
@@ -36,8 +37,10 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
   CompletionDifficulty: 0
+  PrayerRequired: 5

@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UpgradeItemListScript : MonoBehaviour
 {
+    public GameObject DestructionRoot;
+
     public UpgradesAbstract AssociatedUpgrade;
     public List<UpgradesAbstract> AssociatedUpgrades;
     public UpgradeScreenScript SourceScreen;
@@ -22,6 +25,8 @@ public class UpgradeItemListScript : MonoBehaviour
     public static List<UpgradeItemListScript> MultiListUpgrades = new List<UpgradeItemListScript>();
 
     public UnityEvent OnPurchaseTrigger;
+
+    public GameObject TopTitle;
 
     public void SetSource(UpgradeScreenScript sourceScreen)
     {
@@ -42,6 +47,7 @@ public class UpgradeItemListScript : MonoBehaviour
     {
         GameObject newOption = Instantiate(UpgradeOptionPrefab);
         newOption.transform.SetParent(transform);
+        newOption.transform.SetAsFirstSibling();
         newOption.transform.localPosition = Vector3.zero;
         newOption.transform.localRotation = Quaternion.identity;
         newOption.transform.localScale = Vector3.one;
@@ -63,12 +69,22 @@ public class UpgradeItemListScript : MonoBehaviour
         if (AssociatedUpgrade.GoldenUpgrade)
         {
             GetComponent<Image>().color = SpecialColor;
-            uiScript.SetTopTitle("Recommended");
+            SetTopTitle("Recommended");
         }
         else
         {
-            uiScript.RemoveTopTitle();
+            RemoveTopTitle();
         }
+    }
+
+    public void DestroySelf()
+    {
+        if (DestructionRoot)
+        {
+            Destroy(DestructionRoot);
+            return;
+        }
+        Destroy(gameObject);
     }
 
     public void GenerateMultiUpgrade()
@@ -77,7 +93,7 @@ public class UpgradeItemListScript : MonoBehaviour
         MultiListUpgrades.RemoveAll(item => item == null || item.AssociatedUpgrade.UpgradeID == AssociatedUpgrade.UpgradeID);
         if (AssociatedUpgrades.Count == 0)
         {
-            Destroy(gameObject);
+            DestroySelf();
             return;
         }
         else if (AssociatedUpgrades.Count == 1)
@@ -87,20 +103,12 @@ public class UpgradeItemListScript : MonoBehaviour
             return;
         }
 
-        int itemCount = 0;
+
+        SetTopTitle("PICK ONE");
         foreach(UpgradesAbstract targetUpgrade in AssociatedUpgrades)
         {
             if (SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID)) continue;
             UpgradeItemScript uiScript = AddUpgradeToList(targetUpgrade);
-
-            if(itemCount == 0)
-            {
-                uiScript.SetTopTitle("PICK ONE");
-            } else
-            {
-                uiScript.SetTopTitle("OR");
-            }
-            itemCount++;
         }
         GetComponent<Image>().color = MultiColor;
         MultiListUpgrades.Add(this);
@@ -113,7 +121,7 @@ public class UpgradeItemListScript : MonoBehaviour
     public void OnDestroy()
     {
         MultiListUpgrades.Remove(this);
-        RefreshMultiList();
+        if(ItemList.Count > 1) RefreshMultiList();
     }
 
     public void RefreshMultiList()
@@ -128,11 +136,12 @@ public class UpgradeItemListScript : MonoBehaviour
 
     public void ClearList()
     {
-        foreach (Transform child in transform)
+        foreach (UpgradeItemScript child in ItemList)
         {
             if (child == null) continue;
             Destroy(child.gameObject);
         }
+        ItemList.Clear();
     }
 
 
@@ -149,5 +158,16 @@ public class UpgradeItemListScript : MonoBehaviour
         OnPurchaseTrigger?.Invoke();
 
         MultiListUpgrades.RemoveAll(item => item == null || item.AssociatedUpgrade.UpgradeID == AssociatedUpgrade.UpgradeID);
+    }
+    public void RemoveTopTitle()
+    {
+        if (TopTitle == null) return;
+        TopTitle.SetActive(false);
+    }
+
+    public void SetTopTitle(string TopText)
+    {
+        if (TopTitle == null) return;
+        TopTitle.GetComponentInChildren<TMP_Text>().text = TopText;
     }
 }

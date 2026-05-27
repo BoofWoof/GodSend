@@ -14,18 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 0
   UpgradeID: b1197392e0ff09e49bf3f82fc230956d
+  UpgradesGroup: []
   UpgradeName: Difficulty Funds
   UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: The higher the difficulty, the more you gain.
+  UpgradeDescription: With risk come riches.
+  UpgradeMechanicDescription: The higher the difficulty, the more you gain.
   MascotDialogue: 
+  OverrideDialogue: []
   Credits: 0
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 1

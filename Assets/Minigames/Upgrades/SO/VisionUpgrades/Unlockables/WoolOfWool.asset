@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: 8d0e69f1af0151343886a59221b8737e
+  UpgradesGroup: []
   UpgradeName: WoolOfWool
   UpgradeIcon: {fileID: 2106267085, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Most objects in life are redundant and thus useless. Receive
-    a visual reminder of such horrors.
+  UpgradeDescription: Most objects in life are redundant and thus useless.
+  UpgradeMechanicDescription: Unlock a new poster.
   MascotDialogue: Where do images like this come from???
   OverrideDialogue:
   - OverrideDay: 1
@@ -32,6 +36,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

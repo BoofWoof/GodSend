@@ -13,25 +13,11 @@ public class UpgradeItemScript : MonoBehaviour
     public TextMeshProUGUI CostText;
     public Image UpgradeImage;
 
-    public GameObject TopTitle;
-
     public Button BuyButton;
 
     public UpgradeScreenScript SourceScreen;
 
     private bool DisablePurchases = false;
-
-    public void RemoveTopTitle()
-    {
-        if (TopTitle == null) return;
-        TopTitle.SetActive(false);
-    }
-
-    public void SetTopTitle(string TopText)
-    {
-        if (TopTitle == null) return;
-        TopTitle.GetComponentInChildren<TMP_Text>().text = TopText;
-    }
 
     virtual public void UpdateUI()
     {

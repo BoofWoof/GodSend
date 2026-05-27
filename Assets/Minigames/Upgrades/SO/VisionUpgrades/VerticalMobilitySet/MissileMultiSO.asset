@@ -24,7 +24,8 @@ MonoBehaviour:
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: The most important thing you can do is protect your flock.
-    (Grow this multiplier every time you destroy a projectile.)
+  UpgradeMechanicDescription: Gain a new multiplier based on how many projectiles
+    you've destroyed.
   MascotDialogue: How explosive!
   OverrideDialogue: []
   Credits: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

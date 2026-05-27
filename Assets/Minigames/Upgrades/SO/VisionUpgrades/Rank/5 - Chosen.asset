@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1aa6bb3e2c4f5b41a12f66407372851, type: 3}
   m_Name: 5 - Chosen
   m_EditorClassIdentifier: 
-  Prioirty: 0
+  Prioirty: 5
   UpgradeID: 41232eed4074e3e45983d8f343f41ea5
+  UpgradesGroup: []
   UpgradeName: One of the Chosen
   UpgradeIcon: {fileID: -717910143, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
@@ -23,6 +25,7 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: You are ready for a grand challenge. Trust in your brethern.
     Each puzzle now earns you more credits.
+  UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: 
   OverrideDialogue: []
   Credits: 0
@@ -30,6 +33,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

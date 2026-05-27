@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: ad6b923625c21f14eaa3121ad2d46ca1
+  UpgradesGroup: []
   UpgradeName: Molt
   UpgradeIcon: {fileID: 1924011614, guid: c5fe5212be599964b9de15878c200a47, type: 3}
   PrioritySortOverride: -1
@@ -22,8 +23,9 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: The most healing act is that of work. (For every puzzle you
-    solve, recover a small amount of city health.)
+  UpgradeDescription: The most healing act is that of work.
+  UpgradeMechanicDescription: For every puzzle you solve, recover a small amount
+    of city health.
   MascotDialogue: Ugh, I hate molting... Oh wait! I'm an AI! I don't actually do
     that! Sweeeeet.
   OverrideDialogue:
@@ -36,6 +38,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

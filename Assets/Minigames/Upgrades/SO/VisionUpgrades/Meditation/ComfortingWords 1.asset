@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 4eda240198cf3904fb432a2cef9003c7
+  UpgradesGroup: []
   UpgradeName: Comforting Words I
   UpgradeIcon: {fileID: 1564960068, guid: c5fe5212be599964b9de15878c200a47, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Often it's not what you say, but how you say it. (Good prayers
-    are now more effective.)
+  UpgradeDescription: Often it's not what you say, but how you say it.
+  UpgradeMechanicDescription: All prayers now have more impact.
   MascotDialogue: A <b>VIP</b> shouldn't have to lower themself to begging. But if
     you really want to know the skills...
   OverrideDialogue:
@@ -32,6 +36,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

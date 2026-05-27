@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 1
   UpgradeID: 2dd308e438ba6ae4f829b94c57a0b51b
+  UpgradesGroup: []
   UpgradeName: Initiate
   UpgradeIcon: {fileID: -334383677, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: 1
   DialogueToTrigger: V-Initiate
   CompleteQuest: 1
   ProgressQuest: 0
-  UpgradeDescription: You've proven your loyalty to Flock. Now you may start learning
-    universal truths. Each puzzle now earns you more credits.
+  UpgradeDescription: Prove your loyalty to Flock and start learning universal truths.
+  UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: 'Nice!
 
     Did you expect me to say more? Nah, I wouldn''t waste
@@ -50,6 +52,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

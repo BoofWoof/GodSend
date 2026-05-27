@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 1553fe471b8e0254aa7b318d393cd125
+  UpgradesGroup: []
   UpgradeName: Motionless Beast
   UpgradeIcon: {fileID: 2106267085, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Inside all of us is a monster needing to be calmed. A monster
-    that whispers for you to questions your Flock. Receive a visual reminder of such
-    horrors.
+    that whispers for you to questions your Flock.
+  UpgradeMechanicDescription: Unlock a new poster.
   MascotDialogue: If you really want that picture, it's yours.
   OverrideDialogue:
   - OverrideDay: 1
@@ -31,6 +35,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

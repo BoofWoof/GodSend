@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6e69d4dfe5c1a47ae6a7f8b9cc2ab5, type: 3}
   m_Name: PassivePeriodSO 1
   m_EditorClassIdentifier: 
-  Prioirty: 2
+  Prioirty: 1
   UpgradeID: c063cc03a648ac4408885eb2137f4b5b
+  UpgradesGroup: []
   UpgradeName: Faster Passive
   UpgradeIcon: {fileID: 1474361866, guid: c5fe5212be599964b9de15878c200a47, type: 3}
   PrioritySortOverride: 1
@@ -22,7 +23,8 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Gain passive income faster.
+  UpgradeDescription: Growing impatient.
+  UpgradeMechanicDescription: Gain passive income faster.
   MascotDialogue: 
   OverrideDialogue: []
   Credits: 0
@@ -30,6 +32,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -23,8 +23,9 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Build your living, one puzzle at a time. (Grow this multiplier
-    every time you complete a puzzle.)
+  UpgradeDescription: Build your living, one puzzle at a time.
+  UpgradeMechanicDescription: Gain a new multiplier based on how many puzzles you've
+    completed.
   MascotDialogue: With a bit of practice, you'll be looking flawless, boss.
   OverrideDialogue: []
   Credits: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -173,6 +173,7 @@ public class UpgradeScreenScript : MonoBehaviour
         GameObject newUpgradeObject = Instantiate(UpgradeItemPrefab, ContentHolder);
 
         UpgradeItemListScript ulScript = newUpgradeObject.GetComponent<UpgradeItemListScript>();
+        if(ulScript == null) ulScript = newUpgradeObject.GetComponentInChildren<UpgradeItemListScript>();
         ulScript.SetSource(this);
         if (newUpgrade.UpgradesGroup == null || newUpgrade.UpgradesGroup.Count == 0)
         {

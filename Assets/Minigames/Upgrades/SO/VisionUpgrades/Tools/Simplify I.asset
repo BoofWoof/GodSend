@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 96e0d441a21f5e44e978653df079c2b7
+  UpgradesGroup: []
   UpgradeName: Simple Mind I
   UpgradeIcon: {fileID: -691155298, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Some struggle to see the forest for more than the trees, and
-    in that way, thinking too much can poison the mind. (Creates a 50% chance for
-    the puzzle to be one piece simpler.)
+    in that way, thinking too much can poison the mind.
+  UpgradeMechanicDescription: Adds a 50% chance for the puzzle to be one piece simpler.
   MascotDialogue: This blessing is actually very funny in the <b>VIP</b> room. The
     two piece puzzles are memorable.
   OverrideDialogue:
@@ -32,6 +36,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

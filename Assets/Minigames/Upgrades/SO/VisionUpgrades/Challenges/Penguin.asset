@@ -24,7 +24,8 @@ MonoBehaviour:
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: We all have a lot of tasks. Get more for waddling between your
-    jobs. (Gain a new multiplier for slower solutions.)
+    jobs.
+  UpgradeMechanicDescription: Gain a new multiplier that rewards slower solutions.
   MascotDialogue: Take your time, I'll wait.
   OverrideDialogue:
   - OverrideDay: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -23,8 +23,9 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Though belief, anything can be done. (Grow this multiplier
-    every time you send a prayer.)
+  UpgradeDescription: Though belief, anything can be done.
+  UpgradeMechanicDescription: Gain a new multiplier based on how many prayers you've
+    sent.
   MascotDialogue: Oh, are you actually a believer?
   OverrideDialogue: []
   Credits: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

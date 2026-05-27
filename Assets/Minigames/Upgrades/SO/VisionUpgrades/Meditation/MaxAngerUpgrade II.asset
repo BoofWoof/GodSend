@@ -14,13 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 3
   UpgradeID: 338836c9230748f4fb4fda452969e755
+  UpgradesGroup: []
   UpgradeName: Clear Mind II
   UpgradeIcon: {fileID: 811170558, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Learning to empty ones mind can remove even the most polluting
-    thoughts. (The Great Ram will get angry slower.)
+    thoughts.
+  UpgradeMechanicDescription: The Great Ram will get angry slower.
   MascotDialogue: You know what calms me down when I get stressed? I wouldn't know.
     I haven't gotten stressed since being turned on.
   OverrideDialogue:
@@ -32,6 +37,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 2
   UpgradeID: 1733799aeee9bd34b943d441950ea99a
+  UpgradesGroup: []
   UpgradeName: Awakening
   UpgradeIcon: {fileID: -632570387, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: 1
   DialogueToTrigger: V-Awakening
   CompleteQuest: 1
   ProgressQuest: 0
-  UpgradeDescription: The lies of the body have begun to crack. Each puzzle now earns
-    you more credits.
+  UpgradeDescription: Many may question you, but you know more than them. Trust in
+    your brethren.
+  UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: Two down, an unknown number to go. The heads of Flock don't actually
     keep the full ranking system accessible to anyone outside of their numbers.
   OverrideDialogue:
@@ -50,6 +53,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

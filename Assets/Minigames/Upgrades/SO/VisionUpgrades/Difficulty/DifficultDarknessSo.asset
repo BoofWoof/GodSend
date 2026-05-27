@@ -14,18 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 0
   UpgradeID: 91860ebc1d94fad4fb167ad99e703c98
+  UpgradesGroup: []
   UpgradeName: Difficult Darkness
   UpgradeIcon: {fileID: 540152914, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
+  GoldenUpgrade: 0
+  DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: The lights grow more dim the more difficult things become.
+  UpgradeDescription: Become the light in the darkness.
+  UpgradeMechanicDescription: The lights grow more dim the more difficult things
+    become.
   MascotDialogue: 
+  OverrideDialogue: []
   Credits: 0
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 1

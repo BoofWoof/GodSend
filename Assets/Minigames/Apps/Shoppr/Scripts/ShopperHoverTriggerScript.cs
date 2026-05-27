@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class ShopperHoverTriggerScript : MonoBehaviour
 {
+    public Minigame AssociatedMinigame;
+
     public void SendData(UpgradeItemScript data)
     {
-        ShopprHoverDescription.Instance.UpdateData(data);
+        if (!ShopprHoverDescription.Instances.ContainsKey(AssociatedMinigame)) return;
+        ShopprHoverDescription.Instances[AssociatedMinigame].UpdateData(data);
     }
 
     public void ClearData()
     {
-        ShopprHoverDescription.Instance.Clear();
+        if (!ShopprHoverDescription.Instances.ContainsKey(AssociatedMinigame)) return;
+        ShopprHoverDescription.Instances[AssociatedMinigame].Clear();
     }
 }

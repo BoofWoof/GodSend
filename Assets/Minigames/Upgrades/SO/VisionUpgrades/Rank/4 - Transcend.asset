@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prioirty: 4
   UpgradeID: 78a90b1238549aa4d9e7d5ab7092e3c7
+  UpgradesGroup: []
   UpgradeName: Transcend
   UpgradeIcon: {fileID: 2117758218, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
+  PrioritySortOverride: -1
   GoldenUpgrade: 1
   DayToTrigger: 1
   DialogueToTrigger: V-Transcend
   CompleteQuest: 1
   ProgressQuest: 0
-  UpgradeDescription: You're almost ready. Show patience with yourself.. Keep working.
-    Trust in your brethern. Each puzzle now earns you more credits.
+  UpgradeDescription: You're almost ready. Show patience with yourself. Keep working.
+  UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: Nice work! This rank is the end of the 'free trial' for most users,
     but I'm sure you'll find ways around the ceiling. You seem resourceful!
   OverrideDialogue:
@@ -95,6 +97,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

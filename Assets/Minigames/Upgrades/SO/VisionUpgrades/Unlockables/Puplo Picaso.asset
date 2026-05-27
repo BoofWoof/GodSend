@@ -24,7 +24,8 @@ MonoBehaviour:
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Someone is always manipulating your will. Make sure it is someone
-    you trust. Receive a visual reminder of such horrors.
+    you trust.
+  UpgradeMechanicDescription: Unlock a new poster.
   MascotDialogue: You want that?
   OverrideDialogue:
   - OverrideDay: 1
@@ -34,6 +35,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

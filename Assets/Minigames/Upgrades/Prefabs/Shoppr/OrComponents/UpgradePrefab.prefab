@@ -446,7 +446,6 @@ MonoBehaviour:
   DescriptionText: {fileID: 0}
   CostText: {fileID: 7003800172956112140}
   UpgradeImage: {fileID: 307413369963047511}
-  TopTitle: {fileID: 0}
   BuyButton: {fileID: 2120189390309992128}
   SourceScreen: {fileID: 0}
   PriceShadow: {fileID: 1737355025263484492}
@@ -661,6 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec28cc559646add47886137a38f05583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssociatedMinigame: 4
 --- !u!114 &1383203179051066271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec28cc559646add47886137a38f05583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssociatedMinigame: 4
 --- !u!114 &5243156107751022878
 MonoBehaviour:
   m_ObjectHideFlags: 0

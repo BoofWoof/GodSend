@@ -24,7 +24,8 @@ MonoBehaviour:
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: Diligence and speed are important. Be like the hard-working
-    Falcon. (Gain a new multiplier for speedy solutions.)
+    Falcon.
+  UpgradeMechanicDescription: Gain a new multiplier that rewards speedy solutions.
   MascotDialogue: Why are you in such a hurry?
   OverrideDialogue:
   - OverrideDay: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class MaterialTransitionScript : MonoBehaviour
 {
+    public GameObject DestructionTarget;
+
     public string ValueName;
     public float StartingValue = 0.3f;
     public float EndingValue = 1.0f;
@@ -35,6 +37,6 @@ public class MaterialTransitionScript : MonoBehaviour
         // Ensure it ends at 1
         image.materialForRendering.SetFloat(ValueName, EndingValue);
 
-        if(DestroyOnCompletition) Destroy(gameObject);
+        if(DestroyOnCompletition) Destroy(DestructionTarget);
     }
 }
