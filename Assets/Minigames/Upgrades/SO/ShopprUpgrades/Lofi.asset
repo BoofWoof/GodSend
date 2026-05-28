@@ -38,5 +38,7 @@ MonoBehaviour:
   UpgradeBought: 0
   AssociatedMinigame: 4
   AutoBuy: 0
-  TriggerOnLoadBuy: 1
+  TriggerOnLoadBuy: 0
+  VTags: 
+  STags: 03000000
   DialogueName: 

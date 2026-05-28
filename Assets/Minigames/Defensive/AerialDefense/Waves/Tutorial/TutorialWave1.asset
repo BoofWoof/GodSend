@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e002f4dac65d34ca9d98e1ede8623d, type: 3}
+  m_Name: TutorialWave1
+  m_EditorClassIdentifier: 
+  DropInfo:
+  - FormationPrefab: {fileID: 5772542791907477359, guid: dfbc9da6cf238c3479130c0582308ed8, type: 3}
+    DelayTillRelease: 4
+    Offest: 0
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 5772542791907477359, guid: dfbc9da6cf238c3479130c0582308ed8, type: 3}
+    DelayTillRelease: 6
+    Offest: 0
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 5221196665106152341, guid: 9d42cba0286f2fa489eb342f25ed8fe1, type: 3}
+    DelayTillRelease: 4
+    Offest: 0
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 2285165179195430239, guid: 1c52127e624e60542a11797b40f6e161, type: 3}
+    DelayTillRelease: 4
+    Offest: 0
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 7485398624072764773, guid: 4ba8d2b49dfb6c44482fe59a0e18ec98, type: 3}
+    DelayTillRelease: 8
+    Offest: -581
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 7485398624072764773, guid: 4ba8d2b49dfb6c44482fe59a0e18ec98, type: 3}
+    DelayTillRelease: 0
+    Offest: 581
+    Flip: 0
+    FormationSpeedModifier: 1.25
+  CurrentWave: 0
+  BossWave: 0
+  WaveSpeedModifier: 1

@@ -38,3 +38,5 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 1
   TriggerOnLoadBuy: 1
+  VTags: 02000000
+  STags: 

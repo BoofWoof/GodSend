@@ -112,6 +112,8 @@ public class UpgradeItemListScript : MonoBehaviour
         }
         GetComponent<Image>().color = MultiColor;
         MultiListUpgrades.Add(this);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)transform);
     }
 
     public void OnDisable()
@@ -142,6 +144,7 @@ public class UpgradeItemListScript : MonoBehaviour
             Destroy(child.gameObject);
         }
         ItemList.Clear();
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)SourceScreen.transform);
     }
 
 
@@ -149,6 +152,7 @@ public class UpgradeItemListScript : MonoBehaviour
     {
         AssociatedUpgrade.AddToPurchasedList();
         AssociatedUpgrade.UpgradeBought = true;
+        RemoveTopTitle();
 
         foreach (UpgradeItemScript targetUpgradeItem in ItemList)
         {

@@ -25,6 +25,8 @@ public class UpgradeItemScript : MonoBehaviour
         if(DescriptionText != null) DescriptionText.text = AssociatedUpgrade.UpgradeDescription;
         CostText.text = AssociatedUpgrade.CostToText();
         UpgradeImage.sprite = AssociatedUpgrade.UpgradeIcon;
+
+        BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);
     }
     public void SetSource(UpgradeScreenScript sourceScreen)
     {

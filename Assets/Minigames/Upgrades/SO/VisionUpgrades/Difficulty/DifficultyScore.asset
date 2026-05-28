@@ -37,5 +37,7 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 1
   TriggerOnLoadBuy: 1
+  VTags: 00000000
+  STags: 
   BasePower: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

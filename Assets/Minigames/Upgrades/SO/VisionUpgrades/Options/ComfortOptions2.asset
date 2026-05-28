@@ -26,6 +26,7 @@ MonoBehaviour:
   CompleteQuest: 0
   ProgressQuest: 0
   UpgradeDescription: 
+  UpgradeMechanicDescription: 
   MascotDialogue: 
   OverrideDialogue: []
   Credits: 0
@@ -33,8 +34,11 @@ MonoBehaviour:
   FoundationRenown: 0
   AssscensssionRenown: 0
   RevolutionRenown: 0
+  Tags: 
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 0200000000000000
+  STags: 
   PosterName: 

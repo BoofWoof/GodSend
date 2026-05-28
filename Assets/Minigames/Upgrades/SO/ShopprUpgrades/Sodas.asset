@@ -37,5 +37,7 @@ MonoBehaviour:
   UpgradeBought: 0
   AssociatedMinigame: 0
   AutoBuy: 0
-  TriggerOnLoadBuy: 1
-  DialogueName: 
+  TriggerOnLoadBuy: 0
+  VTags: 
+  STags: 00000000
+  LevelName: Soda1

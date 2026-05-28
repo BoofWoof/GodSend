@@ -26,11 +26,11 @@ public class ADBlastScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "ADThreat")
         {
-            AerialDefenseScript.ThreatDestroyed();
-
             collision.gameObject.GetComponent<FallingThreatScript>().SpawnExplosionPing();
             Destroy(collision.gameObject);
             Destroy(gameObject);
+
+            AerialDefenseScript.ThreatDestroyed();
         }
     }
 }

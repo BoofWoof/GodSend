@@ -12,6 +12,22 @@ public enum Minigame
     Shoppr
 }
 
+public enum VisionTags
+{
+    Income,
+    Survival,
+    Tools,
+    Decorations
+}
+public enum ShopprTags
+{
+    Tribute,
+    City,
+    Defense,
+    Gifts,
+    Misc
+}
+
 [Serializable]
 public class MascotDialogueOverride
 {
@@ -69,6 +85,9 @@ public abstract class UpgradesAbstract : ScriptableObject
     public bool AutoBuy = false;
 
     public bool TriggerOnLoadBuy = true;
+
+    public List<VisionTags> VTags;
+    public List<ShopprTags> STags;
 
     public bool CanBuy()
     {

@@ -43,4 +43,6 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 01000000
+  STags: 
   HealAmount: 3

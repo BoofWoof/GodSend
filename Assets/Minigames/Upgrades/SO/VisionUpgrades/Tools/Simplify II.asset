@@ -41,6 +41,8 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 02000000
+  STags: 
   MaxPieceReduction: 2
   MinPieceReduction: 0
   Chance: 0.1

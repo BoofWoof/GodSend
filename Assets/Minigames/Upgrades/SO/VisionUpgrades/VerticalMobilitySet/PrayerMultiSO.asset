@@ -23,7 +23,7 @@ MonoBehaviour:
   DialogueToTrigger: 
   CompleteQuest: 0
   ProgressQuest: 0
-  UpgradeDescription: Though belief, anything can be done.
+  UpgradeDescription: Through belief, anything can be done.
   UpgradeMechanicDescription: Gain a new multiplier based on how many prayers you've
     sent.
   MascotDialogue: Oh, are you actually a believer?
@@ -38,4 +38,6 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 00000000
+  STags: 
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

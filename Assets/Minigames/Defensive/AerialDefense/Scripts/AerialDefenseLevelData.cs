@@ -3,25 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[System.Serializable]
-public struct ThreatWaveInfo
-{
-    public ThreatInfo[] threatInfos;
-    public float pauseMean;
-    public float pauseStd;
-    public int neededDestruction;
-    public Volume optionalVolume;
-}
-[System.Serializable]
-public struct ThreatInfo
-{
-    public GameObject ThreatPrefab;
-    public float Weight;
-}
 public class AerialDefenseLevelData : MonoBehaviour
 {
     public string LevelName;
-    public List<ThreatWaveInfo> LevelWaves;
+    public List<ADWaveInfoSO> LevelWaves;
 
     [Header("Quick Dialogues")]
     public string FailureVoiceLinePath;
@@ -37,6 +22,8 @@ public class AerialDefenseLevelData : MonoBehaviour
     private int WinType = 0; //Sets to zero if lose, one if win, and two if flawless victory;
 
     public static Dictionary<string, AerialDefenseLevelData> LevelDictionary = new Dictionary<string, AerialDefenseLevelData>();
+
+    public Volume OptionalVolume;
 
     public void Start()
     {
@@ -102,6 +89,9 @@ public class AerialDefenseLevelData : MonoBehaviour
         if (LevelDictionary.ContainsKey(levelName))
         {
             LevelDictionary[levelName].PrepLevel();
+        } else
+        {
+            Debug.LogError($"Level name not found: {levelName}.");
         }
     }
 

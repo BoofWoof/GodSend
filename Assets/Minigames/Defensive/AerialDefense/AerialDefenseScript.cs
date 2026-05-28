@@ -1,7 +1,7 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class AerialDefenseScript : MonoBehaviour
 {
@@ -10,13 +10,11 @@ public class AerialDefenseScript : MonoBehaviour
     public static int TotalProjectilesDestroyed = 0;
 
     //Put stats here: Firing rate and ect.
-    public int TargetsToKill = 5;
     public int MaxHealth = 3;
     public int RemainingHealth;
     public static int TotalTimesDamaged;
 
-    public TMP_Text TargetsToKillText;
-    public TMP_Text RemainingHealthText;
+    public Image RemainingHealthMeter;
 
     public delegate void OnADLockStateChange(bool lockState);
     public static OnADLockStateChange onADLockStateChange;
@@ -40,15 +38,11 @@ public class AerialDefenseScript : MonoBehaviour
         RemainingHealth = MaxHealth;
 
         StaticGameCanvas = GameCanvas;
-
-        TargetsToKillText.text = TargetsToKill.ToString();
-        RemainingHealthText.text = RemainingHealth.ToString();
     }
 
-    public static void SetTargetsToKill(int newTargetCount)
+    public void UpdateHealthFill()
     {
-        Instance.TargetsToKill = newTargetCount;
-        Instance.TargetsToKillText.text = Instance.TargetsToKill.ToString();
+        RemainingHealthMeter.fillAmount = RemainingHealth / MaxHealth;
     }
 
     public void PreSetLevel(AerialDefenseLevelData targetLevel)
@@ -66,9 +60,9 @@ public class AerialDefenseScript : MonoBehaviour
 
         RemainingHealth = MaxHealth;
 
-        if (LevelData.LevelWaves[CurrentWave].optionalVolume != null)
+        if (LevelData.OptionalVolume != null)
         {
-            StartCoroutine(StartVolume(LevelData.LevelWaves[CurrentWave].optionalVolume));
+            StartCoroutine(StartVolume(LevelData.OptionalVolume));
         }
 
         CrossfadeScript.TransitionSong(5);
@@ -82,16 +76,14 @@ public class AerialDefenseScript : MonoBehaviour
     {
         GameRunning = false;
 
-        Instance.threatSpawnerScript.StopAllCoroutines();
-
         RemainingHealth = MaxHealth;
-        Instance.RemainingHealthText.text = Instance.RemainingHealth.ToString();
+        UpdateHealthFill();
 
         CrossfadeScript.TransitionSong(1);
 
-        if (LevelData.LevelWaves[CurrentWave].optionalVolume != null)
+        if (LevelData.OptionalVolume != null)
         {
-            StartCoroutine(StopVolume(LevelData.LevelWaves[CurrentWave].optionalVolume));
+            StartCoroutine(StopVolume(LevelData.OptionalVolume));
         }
 
         GameStateMonitor.DangerActive = false;
@@ -120,16 +112,8 @@ public class AerialDefenseScript : MonoBehaviour
         if (!GameRunning) return;
 
         TotalProjectilesDestroyed++;
-
-        Instance.TargetsToKill--;
-        Instance.TargetsToKillText.text = Instance.TargetsToKill.ToString();
-
-        if(Instance.TargetsToKill == 0)
-        {
-            Instance.WinOutcomes();
-            TurretScript.autoFire = true;
-            Instance.StopWave();
-        }
+        
+        Instance.StartCoroutine(Instance.CheckClearAtFrameEnd());
     }
 
     public static void TakeDamage()
@@ -138,7 +122,7 @@ public class AerialDefenseScript : MonoBehaviour
 
         Debug.Log("Aerial Defense: Hit");
         Instance.RemainingHealth--;
-        Instance.RemainingHealthText.text = Instance.RemainingHealth.ToString();
+        Instance.UpdateHealthFill();
 
         TotalTimesDamaged++;
         int particleImpactIdx = TotalTimesDamaged % Instance.DamageParticleSystems.Length;
@@ -152,6 +136,22 @@ public class AerialDefenseScript : MonoBehaviour
             Instance.LoseOutcomes();
             FallingThreatScript.DestroyAllThreats();
             Instance.StopWave();
+        } else
+        {
+            Instance.StartCoroutine(Instance.CheckClearAtFrameEnd());
+        }
+    }
+    private IEnumerator CheckClearAtFrameEnd()
+    {
+        // Wait until the end of the frame when Destroy() has finished running
+        yield return null;
+        yield return new WaitForEndOfFrame();
+
+        if (threatSpawnerScript.WaveClearCheck())
+        {
+            WinOutcomes();
+            TurretScript.autoFire = true;
+            StopWave();
         }
     }
 

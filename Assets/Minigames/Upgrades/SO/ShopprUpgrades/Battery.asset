@@ -38,4 +38,6 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 
+  STags: 01000000
   DialogueName: 

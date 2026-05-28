@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.UI;
 
 public class UpgradeScreenScript : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class UpgradeScreenScript : MonoBehaviour
     public List<string> PreboughtUpgradeIDs = new List<string>();
 
     public bool StartActive = false;
+
+    private bool EnableShopprFilter;
+    private ShopprTags ShopprFilter;
+    private bool EnableVisionFilter;
+    private VisionTags VisionFilter;
 
     public void Awake()
     {
@@ -136,6 +142,8 @@ public class UpgradeScreenScript : MonoBehaviour
             AddUpgrade(upgrade);
         }
         ProgressToUnlockUpgradesText?.SetActive(DisplayedUpgrades == 0);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
     }
     public void BoughtGenerate()
     {
@@ -144,6 +152,8 @@ public class UpgradeScreenScript : MonoBehaviour
             if (!upgrade.UpgradeBought) continue;
             AddUpgrade(upgrade);
         }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
     }
 
     public void Clear()
@@ -168,6 +178,9 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void AddUpgrade(UpgradesAbstract newUpgrade)
     {
+        if (EnableVisionFilter && !newUpgrade.VTags.Contains(VisionFilter)) return;
+        if (EnableShopprFilter && !newUpgrade.STags.Contains(ShopprFilter)) return;
+
         DisplayedUpgrades++;
 
         GameObject newUpgradeObject = Instantiate(UpgradeItemPrefab, ContentHolder);
@@ -190,6 +203,29 @@ public class UpgradeScreenScript : MonoBehaviour
         }
 
         RectTransform rect = newUpgradeObject.GetComponent<RectTransform>();
-        rect.localPosition = Vector3.zero;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+    }
+
+    public void SetVisionsFilter(int enumIdx)
+    {
+        VisionTags newTag = (VisionTags)enumIdx;
+        EnableVisionFilter = true;
+        VisionFilter = newTag;
+        Refresh();
+    }
+
+    public void SetShopprFilter(int enumIdx)
+    {
+        ShopprTags newTag = (ShopprTags)enumIdx;
+        EnableShopprFilter = true;
+        ShopprFilter = newTag;
+        Refresh();
+    }
+
+    public void ResetFilters()
+    {
+        EnableShopprFilter = false;
+        EnableVisionFilter = false;
+        Refresh();
     }
 }

@@ -21,6 +21,9 @@ public class FallingThreatScript : MonoBehaviour
 
     public static List<FallingThreatScript> FallingThreatScripts = new List<FallingThreatScript>();
 
+    public float FormationSpeedModifier = 1f;
+    public float WaveSpeedModifier = 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,7 +31,7 @@ public class FallingThreatScript : MonoBehaviour
         imageComponent.color = new Color(1f, 1f, 1f, 0f);
 
         thisRB2D = GetComponent<Rigidbody2D>();
-        thisRB2D.linearVelocity = Vector2.down * DropSpeed * transform.lossyScale.x;
+        thisRB2D.linearVelocity = Vector2.down * DropSpeed * transform.lossyScale * FormationSpeedModifier * WaveSpeedModifier;
 
         FallingThreatScripts.Add(this);
     }

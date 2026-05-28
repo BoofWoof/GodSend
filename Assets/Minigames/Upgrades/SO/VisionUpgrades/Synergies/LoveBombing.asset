@@ -42,5 +42,7 @@ MonoBehaviour:
   AssociatedMinigame: 0
   AutoBuy: 0
   TriggerOnLoadBuy: 1
+  VTags: 00000000
+  STags: 
   CompletionDifficulty: 0
   PrayerRequired: 5
