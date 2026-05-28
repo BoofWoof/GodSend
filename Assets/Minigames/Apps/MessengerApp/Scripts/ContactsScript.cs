@@ -112,7 +112,9 @@ public class ContactsScript : Saver
         if (subtitle.speakerInfo.GetFieldBool("SkipThem"))
         {
             Debug.Log("Skipping Conversation Step");
-            (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+            
+
+
             return;
         }
         if (subtitle.speakerInfo.GetFieldBool("IsRadio")) {
@@ -151,7 +153,7 @@ public class ContactsScript : Saver
         {
             yield return new WaitForSeconds(1f / MessagingVariables.SetTimeDivider);
         }
-        if (continueConversation) (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        if (continueConversation) Sequencer.Message("FinishedSpeaking");
     }
 
     public void OnConversationResponseMenuTrigger(Response[] responses)

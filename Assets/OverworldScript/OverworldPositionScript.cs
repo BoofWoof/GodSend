@@ -66,7 +66,7 @@ public class OverworldPositionScript : MonoBehaviour
     public IEnumerator DelayedContinue()
     {
         yield return null;
-        (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        Sequencer.Message("FinishedSpeaking");
     }
 
     public static void GoTo(string name, int CurrentStationIdx)
@@ -250,7 +250,7 @@ public class OverworldPositionScript : MonoBehaviour
         if(CurrentStation == WaitStation)
         {
             WaitStation = -1;
-            (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+            Sequencer.Message("FinishedSpeaking");
         }
     }
 }

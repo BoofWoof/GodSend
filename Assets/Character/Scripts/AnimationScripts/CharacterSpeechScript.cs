@@ -252,7 +252,8 @@ public class CharacterSpeechScript : MonoBehaviour
         if (RadioSpeech) RadioObject.SetActive(false);
         yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
 
-        (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        Sequencer.Message("FinishedSpeaking");
+        //(DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
 
         GameStateMonitor.RemoveSpeakingSource(this);
     }

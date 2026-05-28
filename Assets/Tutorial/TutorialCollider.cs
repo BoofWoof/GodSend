@@ -48,7 +48,7 @@ public class TutorialCollider : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if(ContinueTutorial) HudScript.SetContinueTutorial();
-            if(ContinueDialogue) (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+            if(ContinueDialogue) Sequencer.Message("FinishedSpeaking");
 
             BaseObject.SetActive(false);
         }

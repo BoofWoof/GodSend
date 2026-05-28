@@ -55,7 +55,6 @@ public class UpgradeItemListScript : MonoBehaviour
         UpgradeItemScript uiScript = newOption.GetComponent<UpgradeItemScript>();
         uiScript.AssociatedList = this;
         uiScript.SetUpgrade(Instantiate(targetUpgrade));
-        uiScript.SetSource(SourceScreen);
 
         ItemList.Add(uiScript);
 

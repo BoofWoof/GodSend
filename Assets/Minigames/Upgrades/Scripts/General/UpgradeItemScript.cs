@@ -15,8 +15,6 @@ public class UpgradeItemScript : MonoBehaviour
 
     public Button BuyButton;
 
-    public UpgradeScreenScript SourceScreen;
-
     private bool DisablePurchases = false;
 
     virtual public void UpdateUI()
@@ -28,15 +26,12 @@ public class UpgradeItemScript : MonoBehaviour
 
         BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);
     }
-    public void SetSource(UpgradeScreenScript sourceScreen)
-    {
-        SourceScreen = sourceScreen;
-    }
-
     public void SetUpgrade(UpgradesAbstract associatedUpgrade)
     {
         AssociatedUpgrade = associatedUpgrade;
         UpdateUI();
+
+        RegisterUpgrade();
     }
 
     public void ForceDisablePurchases()
@@ -46,15 +41,19 @@ public class UpgradeItemScript : MonoBehaviour
         BuyButton.interactable = false;
     }
 
-    public void OnEnable()
+    public void RegisterUpgrade()
     {
-        if (SourceScreen != null) SourceScreen.UpgradeObjects.Add(gameObject);
+        UpgradeScreenScript.upgradeScreenScripts[AssociatedUpgrade.AssociatedMinigame].UpgradeObjects.Add(gameObject);
+        Debug.Log($"Adding upgrade {AssociatedUpgrade.UpgradeName}");
+
         StartCoroutine(AffordCheck());
     }
 
     public void OnDisable()
     {
-        if(SourceScreen != null) SourceScreen.UpgradeObjects.Remove(gameObject);
+        UpgradeScreenScript.upgradeScreenScripts[AssociatedUpgrade.AssociatedMinigame].UpgradeObjects.Remove(gameObject);
+        Debug.Log($"Removing upgrade {AssociatedUpgrade.UpgradeName}");
+
         StopAllCoroutines();
     }
 

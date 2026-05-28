@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class UpgradesAvailable : MonoBehaviour
@@ -6,17 +7,18 @@ public class UpgradesAvailable : MonoBehaviour
 
     public UpgradeScreenScript UpgradeScreen;
 
-    public void Update()
+    public void Start()
     {
         if (ButtonGlow == null) return;
-        bool anyUpgradePurchasable = false;
-        foreach (GameObject upgradeObject in UpgradeScreen.UpgradeObjects)
+        StartCoroutine(StartUpgradeCheck());
+    }
+
+    public IEnumerator StartUpgradeCheck()
+    {
+        while (true)
         {
-            if (upgradeObject.GetComponent<UpgradeItemScript>().AssociatedUpgrade.CanBuy())
-            {
-                anyUpgradePurchasable = true;
-            }
+            yield return new WaitForSeconds(1f);
+            ButtonGlow.SetActive(UpgradeScreen.UpgradeAffordable());
         }
-        ButtonGlow.SetActive(anyUpgradePurchasable);
     }
 }

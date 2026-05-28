@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UpgradeScreenScript : MonoBehaviour
 {
@@ -45,9 +46,8 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void Awake()
     {
-        Lua.RegisterFunction("UpgradeWait", null, SymbolExtensions.GetMethodInfo(() => EnableWaitTrigger()));
-
         upgradeScreenScripts[AssociatedMinigame] = this;
+        Lua.RegisterFunction("UpgradeWait", null, SymbolExtensions.GetMethodInfo(() => EnableWaitTrigger()));
 
         gameObject.SetActive(StartActive);
     }
@@ -65,6 +65,15 @@ public class UpgradeScreenScript : MonoBehaviour
             if (upgrade.UpgradeBought) continue;
             if (PreboughtUpgradeIDs.Contains(upgrade.UpgradeID)) upgrade.LoadBuy();
         }
+    }
+
+    public bool UpgradeAffordable()
+    {
+        foreach(UpgradesAbstract upgrade in UpgradeClones)
+        {
+            if (upgrade.CanBuy()) return true;
+        }
+        return false;
     }
 
     public void AddNewUpgrades(List<UpgradesAbstract> newUpgrades, bool showNotification = true)
@@ -102,7 +111,7 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void OnEnable()
     {
-        if(WaitToOpen) (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        if(WaitToOpen) Sequencer.Message("FinishedSpeaking"); // (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
         UpgradeBoughtEvent += UpgradeAudioPlay;
         UpgradeBoughtEvent += RecordUpgradeBought;
         Refresh();
@@ -143,7 +152,8 @@ public class UpgradeScreenScript : MonoBehaviour
         }
         ProgressToUnlockUpgradesText?.SetActive(DisplayedUpgrades == 0);
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
+        StartCoroutine(RebuildLayout());
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
     }
     public void BoughtGenerate()
     {
@@ -154,6 +164,7 @@ public class UpgradeScreenScript : MonoBehaviour
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
+        StartCoroutine(RebuildLayout());
     }
 
     public void Clear()
@@ -204,6 +215,12 @@ public class UpgradeScreenScript : MonoBehaviour
 
         RectTransform rect = newUpgradeObject.GetComponent<RectTransform>();
         LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+    }
+
+    public IEnumerator RebuildLayout()
+    {
+        yield return new WaitForEndOfFrame();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(ContentHolder);
     }
 
     public void SetVisionsFilter(int enumIdx)

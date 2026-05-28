@@ -27,7 +27,7 @@ public class ConversationManagerScript : MonoBehaviour
 
     public void ForceNextDialogue()
     {
-        (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        Sequencer.Message("FinishedSpeaking");
     }
 
     void Start()
