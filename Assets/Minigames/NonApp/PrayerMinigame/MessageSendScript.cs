@@ -26,6 +26,8 @@ public class MessageSendScript : MonoBehaviour
 
     private Color OriginalColor = new Color(0.415f, 0.345f, 0.125f);
 
+    public AudioSource NewMessageBuzz;
+
 
     public void Awake()
     {
@@ -86,6 +88,8 @@ public class MessageSendScript : MonoBehaviour
         UpdateInteractability();
         transform.localPosition = backupPos;
         transform.localScale = Vector3.one;
+
+        if (NewMessageBuzz != null) NewMessageBuzz.Play();
     }
 
     public void ActivateSend()

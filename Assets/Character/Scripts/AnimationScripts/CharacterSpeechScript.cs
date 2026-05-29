@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
+using UnityEngine.Scripting;
 
 public class CharacterSpeechScript : MonoBehaviour
 {
@@ -133,7 +134,11 @@ public class CharacterSpeechScript : MonoBehaviour
 
         VoiceLineSO voiceLine = request.asset as VoiceLineSO;
 
-        if (voiceLine == null) yield break;
+        if (voiceLine == null)
+        {
+            Debug.LogError($"Line not found at: {voiceFilePath}");
+            yield break;
+        }
 
         StartCoroutine(Speak(voiceLine));
     }
@@ -252,8 +257,9 @@ public class CharacterSpeechScript : MonoBehaviour
         if (RadioSpeech) RadioObject.SetActive(false);
         yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
 
+        //WaitForMessage(FinishedSpeaking);
         Sequencer.Message("FinishedSpeaking");
-        //(DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        //Sequencer.Message("FinishedSpeaking");
 
         GameStateMonitor.RemoveSpeakingSource(this);
     }

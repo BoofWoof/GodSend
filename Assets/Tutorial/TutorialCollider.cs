@@ -1,4 +1,5 @@
 using PixelCrushers.DialogueSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,7 +49,7 @@ public class TutorialCollider : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if(ContinueTutorial) HudScript.SetContinueTutorial();
-            if(ContinueDialogue) Sequencer.Message("FinishedSpeaking");
+            if(ContinueDialogue) ConversationManagerScript.instance.ForceNextDialogue();
 
             BaseObject.SetActive(false);
         }

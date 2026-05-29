@@ -13,28 +13,33 @@ MonoBehaviour:
   m_Name: TutorialWave1
   m_EditorClassIdentifier: 
   DropInfo:
-  - FormationPrefab: {fileID: 5772542791907477359, guid: dfbc9da6cf238c3479130c0582308ed8, type: 3}
-    DelayTillRelease: 4
-    Offest: 0
+  - FormationPrefab: {fileID: 9068355234619328729, guid: 3cc1f7dbf2372704bbe039e72a18e1f1, type: 3}
+    DelayTillRelease: 0
+    Offest: 581
     Flip: 0
     FormationSpeedModifier: 1
   - FormationPrefab: {fileID: 5772542791907477359, guid: dfbc9da6cf238c3479130c0582308ed8, type: 3}
-    DelayTillRelease: 6
+    DelayTillRelease: 0
+    Offest: -581
+    Flip: 0
+    FormationSpeedModifier: 1
+  - FormationPrefab: {fileID: 5772542791907477359, guid: dfbc9da6cf238c3479130c0582308ed8, type: 3}
+    DelayTillRelease: 3
     Offest: 0
     Flip: 0
     FormationSpeedModifier: 1
   - FormationPrefab: {fileID: 5221196665106152341, guid: 9d42cba0286f2fa489eb342f25ed8fe1, type: 3}
-    DelayTillRelease: 4
+    DelayTillRelease: 2
     Offest: 0
     Flip: 0
     FormationSpeedModifier: 1
   - FormationPrefab: {fileID: 2285165179195430239, guid: 1c52127e624e60542a11797b40f6e161, type: 3}
-    DelayTillRelease: 4
+    DelayTillRelease: 2
     Offest: 0
     Flip: 0
     FormationSpeedModifier: 1
   - FormationPrefab: {fileID: 7485398624072764773, guid: 4ba8d2b49dfb6c44482fe59a0e18ec98, type: 3}
-    DelayTillRelease: 8
+    DelayTillRelease: 3
     Offest: -581
     Flip: 0
     FormationSpeedModifier: 1
@@ -42,7 +47,9 @@ MonoBehaviour:
     DelayTillRelease: 0
     Offest: 581
     Flip: 0
-    FormationSpeedModifier: 1.25
+    FormationSpeedModifier: 1
   CurrentWave: 0
   BossWave: 0
+  WaveName: A SIMPLE DROP
+  WaveFlavor: All threats fall directly downward
   WaveSpeedModifier: 1

@@ -10796,7 +10796,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 488
-        y: 449.9996
+        y: 448.4371
         width: 160
         height: 30
     - id: 5
@@ -12465,7 +12465,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 6.25, y: 226.56244}
+    canvasScrollPosition: {x: 26.5625, y: 0}
     canvasZoom: 0.6400004
   - id: 11
     fields:
@@ -25627,7 +25627,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 163
-        y: 97
+        y: 96
         width: 160
         height: 30
     - id: 2
@@ -25686,7 +25686,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 164
-        y: 167
+        y: 155
         width: 160
         height: 30
     - id: 3
@@ -25745,7 +25745,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 163
-        y: 217
+        y: 216
         width: 160
         height: 30
     - id: 4
@@ -25915,7 +25915,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 171
+        x: 172
         y: 434
         width: 160
         height: 30
@@ -65413,7 +65413,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 81.886795
-        y: 228.37735
+        y: 229.47626
         width: 160
         height: 30
     - id: 13
@@ -65490,11 +65490,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
-        value: 5
+        value: 9
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 9
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -65530,8 +65530,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 97.92453
-        y: 163.8308
+        x: 81.441025
+        y: 167.12752
         width: 160
         height: 30
     - id: 15
@@ -65650,12 +65650,12 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 92.2641
-        y: 102.83017
+        x: 82.37398
+        y: 106.12686
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 964.83484}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.91000015
   - id: 29
     fields:

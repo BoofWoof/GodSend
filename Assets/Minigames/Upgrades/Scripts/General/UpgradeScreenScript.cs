@@ -111,7 +111,7 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void OnEnable()
     {
-        if(WaitToOpen) Sequencer.Message("FinishedSpeaking"); // (DialogueManager.dialogueUI as AbstractDialogueUI).OnContinueConversation();
+        if (WaitToOpen) ConversationManagerScript.instance.ForceNextDialogue();
         UpgradeBoughtEvent += UpgradeAudioPlay;
         UpgradeBoughtEvent += RecordUpgradeBought;
         Refresh();

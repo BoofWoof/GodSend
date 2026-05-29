@@ -9,6 +9,12 @@ public class TurretManagerScript : MonoBehaviour
 
     public int ActiveTurrets = 2;
 
+    public AudioSource ErrorSoundSource;
+
+    private int CurrentFireIndex = 0;
+    private bool SearchForNextTurret = true;
+
+    public bool AutoFire;
 
     public void Awake()
     {
@@ -38,5 +44,69 @@ public class TurretManagerScript : MonoBehaviour
             if(turretCount <= ActiveTurrets) t.gameObject.SetActive(true);
             else t.gameObject.SetActive(false);
         }
+    }
+    public void Update()
+    {
+        if (SearchForNextTurret)
+        {
+            FindNextAvailableTurret();
+        }
+
+        if (Input.GetMouseButtonDown(0) || AutoFire)
+        {
+            if (ADTargetScript.ValidTarget)
+            {
+                for(int i = 0; i < ActiveTurrets; i++)
+                {
+                    int turretIdx = (CurrentFireIndex + i) % ActiveTurrets;
+                    if (Turrets[turretIdx].FireBeam())
+                    {
+                        CurrentFireIndex = (turretIdx + 1) % ActiveTurrets;
+                        FindNextAvailableTurret();
+                        return;
+                    }
+                }
+                FireError();
+            }
+        }
+    }
+
+    public void UpdateFireBeams()
+    {
+        for (int i = 0; i < ActiveTurrets; i++)
+        {
+            Turrets[i].AimBeam.SetActive(i == CurrentFireIndex);
+        }
+        SearchForNextTurret = false;
+    }
+
+    public void ClearFireBeams()
+    {
+        for (int i = 0; i < ActiveTurrets; i++)
+        {
+            Turrets[i].AimBeam.SetActive(false);
+        }
+        SearchForNextTurret = true;
+    }
+
+    public bool FindNextAvailableTurret()
+    {
+        for (int i = 0; i < ActiveTurrets; i++)
+        {
+            int turretIdx = (CurrentFireIndex + i) % ActiveTurrets;
+            if (Turrets[turretIdx].IsTurretCharged())
+            {
+                CurrentFireIndex = turretIdx;
+                UpdateFireBeams();
+                return true;
+            }
+        }
+        ClearFireBeams();
+        return false;
+    }
+
+    public void FireError()
+    {
+        ErrorSoundSource.Play();
     }
 }

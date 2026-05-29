@@ -16,7 +16,14 @@ public class ConversationManagerScript : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+
+        transform.SetParent(DialogueManager.instance.transform);
 
         ConversationOngoing = false;
         isMacroConvo = false;
@@ -27,6 +34,12 @@ public class ConversationManagerScript : MonoBehaviour
 
     public void ForceNextDialogue()
     {
+        StartCoroutine(DelayedSkip());
+    }
+    public IEnumerator DelayedSkip()
+    {
+        yield return null;
+        yield return null;
         Sequencer.Message("FinishedSpeaking");
     }
 

@@ -3,12 +3,6 @@ using UnityEngine.UI;
 
 public class TurretScript : MonoBehaviour
 {
-    public static int ActiveTurrets = 0;
-    public static int CurrentFireIdx = 0;
-    public static bool TurretFired = false;
-
-    public int ThisTurretIdx;
-
     public RectTransform canvasSpace;
     public RectTransform target;
     public RectTransform gun;
@@ -18,9 +12,11 @@ public class TurretScript : MonoBehaviour
     public GameObject blastObject;
 
     public Image chargeMeter;
-    public float InitialChargePeriod = 1f;
-    public static float ChargePeriod;
-    public float currentCharge = 0f;
+    public float ChargeRate = 1f;
+    public float CurrentCharge = 0f;
+    public float MaxCharge = 1f;
+
+    public float ShotCost = 0.25f;
 
     public DiageticTurretScript diageticTurretScript;
 
@@ -28,20 +24,42 @@ public class TurretScript : MonoBehaviour
     public delegate void TurretFiredDelegate(TurretScript turretScript);
     public static TurretFiredDelegate TurretFiredEvent;
 
+    public GameObject AimBeam;
+
     public void Start()
     {
-        ChargePeriod = InitialChargePeriod;
-        ThisTurretIdx = ActiveTurrets;
-        ActiveTurrets++;
+        AimBeam.SetActive(false);
+    }
 
+    public bool IsTurretCharged()
+    {
+        float chargePercentage = CurrentCharge / MaxCharge;
+        return chargePercentage >= ShotCost;
+    }
+
+    public bool FireBeam()
+    {
+        if (!IsTurretCharged()) return false;
+
+        GameObject newBlast = Instantiate(blastObject, bulletParent);
+        RectTransform newRectTransform = newBlast.GetComponent<RectTransform>();
+        newRectTransform.position = gun.position;
+        newRectTransform.localRotation = gun.localRotation;
+        newRectTransform.SetSiblingIndex(0);
+
+        if (diageticTurretScript != null) diageticTurretScript.Fire();
+        CurrentCharge -= ShotCost;
+        TurretFiredEvent?.Invoke(this);
+
+        return true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentCharge += Time.deltaTime;
-        float chargePercentage = currentCharge / ChargePeriod;
-        if(chargePercentage > 1) chargePercentage = 1;
+        CurrentCharge += Time.deltaTime * ChargeRate;
+        if (CurrentCharge > MaxCharge) CurrentCharge = MaxCharge;
+        float chargePercentage = CurrentCharge / MaxCharge;
         chargeMeter.fillAmount = chargePercentage;
 
         // Get direction from turret to mouse (in local canvas space)
@@ -54,31 +72,5 @@ public class TurretScript : MonoBehaviour
 
         // Apply rotation (z-axis since it’s 2D UI element)
         gun.localRotation = Quaternion.Euler(0, 0, angle - 90f);
-
-        if ((Input.GetMouseButtonDown(0)|| autoFire) && chargePercentage >= 1f && CurrentFireIdx == ThisTurretIdx && !TurretFired)
-        {
-            float x = target.localPosition.x;
-            if (ADTargetScript.ValidTarget)
-            {
-                TurretFired = true;
-                CurrentFireIdx++;
-                CurrentFireIdx = CurrentFireIdx % ActiveTurrets;
-
-                GameObject newBlast = Instantiate(blastObject, bulletParent);
-                RectTransform newRectTransform = newBlast.GetComponent<RectTransform>();
-                newRectTransform.position = gun.position;
-                newRectTransform.localRotation = gun.localRotation;
-                newRectTransform.SetSiblingIndex(0);
-
-                if(diageticTurretScript != null) diageticTurretScript.Fire();
-                currentCharge = 0;
-                TurretFiredEvent?.Invoke(this);
-            }
-        }
-    }
-
-    private void LateUpdate()
-    {
-        TurretFired = false;
     }
 }

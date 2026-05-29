@@ -58,15 +58,9 @@ public class OverworldPositionScript : MonoBehaviour
             {
                 Debug.Log("Skipping Wait");
                 WaitStation = -1;
-                overworldPositionScript.StartCoroutine(overworldPositionScript.DelayedContinue());
+                ConversationManagerScript.instance.ForceNextDialogue();
             }
         }
-    }
-
-    public IEnumerator DelayedContinue()
-    {
-        yield return null;
-        Sequencer.Message("FinishedSpeaking");
     }
 
     public static void GoTo(string name, int CurrentStationIdx)
@@ -250,7 +244,7 @@ public class OverworldPositionScript : MonoBehaviour
         if(CurrentStation == WaitStation)
         {
             WaitStation = -1;
-            Sequencer.Message("FinishedSpeaking");
+            ConversationManagerScript.instance.ForceNextDialogue();
         }
     }
 }
