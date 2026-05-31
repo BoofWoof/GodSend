@@ -188,4 +188,10 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         Image img = GetComponent<Image>();
         img.material = TurkPuzzleScript.instance.ActiveConstMat;
     }
+
+    public void SetDark()
+    {
+        Image img = GetComponent<Image>();
+        img.color = new Color(0, 0, 0, 0.7f);
+    }
 }

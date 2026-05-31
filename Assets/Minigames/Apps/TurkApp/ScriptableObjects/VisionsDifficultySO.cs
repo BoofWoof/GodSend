@@ -13,6 +13,7 @@ public class VisionsDifficultySO : ScriptableObject
     public int MinPieces = 4;
     public int MaxPieces = 5;
     public bool RotationEnabled = false;
+    public bool FakersEnabled = false;
     public float DifficultyMultiplier = 1f;
     public int SongIndex = -1;
 }

@@ -1,13 +1,10 @@
-using PixelCrushers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static TurkPuzzleScript;
 
 public struct SecondaryMultiplier
 {
@@ -80,7 +77,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public Button DifficultyDecreaseButton;
 
     private static PuzzleShapeSO selectedGridData;
-    public static float squareSize = 50f;      // Size of each square
+    public static float squareSize = 45f;      // Size of each square
     public TileSetSO constallationTiles;         // Sprite to use for the grid squares
 
     public static List<GameObject> gridSquares = new List<GameObject>();
@@ -101,6 +98,8 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public ModifierMenuText modifierMenuText;
     private static ModifierMenuText.RewardModifier rewardBaseModifier;
+
+    public List<GameObject> FakePieces;
 
     public Image CloudPanel;
     public static ModifierMenuText.RewardModifier RewardBaseModifier 
@@ -287,6 +286,7 @@ public class TurkPuzzleScript : MonoBehaviour
         GenerateGrid();
         GeneratePuzzlePieces();
         GroupPuzzlePieces();
+        Shuffle();
         UpdateTileSprites();
         PlacePieces();
         ScrambleCords();
@@ -360,6 +360,8 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public IEnumerator WinCutscene()
     {
+        ClearFakePieces();
+
         PieceHolderScript.ClearPieces();
         InteractionBlocker.SetActive(true);
 
@@ -614,9 +616,47 @@ public class TurkPuzzleScript : MonoBehaviour
         {
             TurkCubeScript pieceScript = piece.GetComponent<TurkCubeScript>();
             pieceScript.ConnectionCheck();
+        }
 
+        if (currentDifficulty.FakersEnabled)
+        {
+            AddFakePiece();
         }
     }
+
+    public void AddFakePiece()
+    {
+        int randomIdx = Random.Range(0, FakePieces.Count);
+        GameObject FakePiece = Instantiate(FakePieces[randomIdx]);
+        FakePiece.transform.parent = transform;
+        FakePiece.transform.localScale = Vector3.one * squareSize/50f;
+        FakePiece.transform.localRotation = Quaternion.identity; 
+
+        puzzlePiece.Add(FakePiece.GetComponent<PieceHolderScript>());
+    }
+    public void ClearFakePieces()
+    {
+        for (int i = puzzlePiece.Count - 1; i >= 0; i--)
+        {
+            PieceHolderScript piece = puzzlePiece[i];
+            if (!piece.FullyFilled) Destroy(piece.gameObject);
+        }
+    }
+    public void Shuffle()
+    {
+        int count = puzzlePiece.Count;
+        for (int i = 0; i < count - 1; i++)
+        {
+            // Pick a random index from the remaining elements
+            int randomIndex = Random.Range(i, count);
+
+            // Swap the current element with the random element
+            PieceHolderScript temp = puzzlePiece[i];
+            puzzlePiece[i] = puzzlePiece[randomIndex];
+            puzzlePiece[randomIndex] = temp;
+        }
+    }
+
     private List<GameObject> SelectRandomSquares(int numberOfSquares)
     {
         if (numberOfSquares > gridSquares.Count)

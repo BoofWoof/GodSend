@@ -2,6 +2,7 @@ using PixelCrushers.DialogueSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BalconyEventsScript : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class BalconyEventsScript : MonoBehaviour
     public static event RaiseStatueEvents OnRaiseStatue;
 
     public static BalconyEventsScript instance;
+
+    public UnityEvent OnEnterBalcony;
 
     private void Awake()
     {
@@ -44,6 +47,7 @@ public class BalconyEventsScript : MonoBehaviour
             {
                 QuestManager.IncrementQuest();
                 MessageQueue.addDialogue("FirstAriesSpotting");
+                OnEnterBalcony?.Invoke();
             }
             if (
                 QuestLog.GetQuestState("Great Leviathan") == QuestState.Active
@@ -51,6 +55,7 @@ public class BalconyEventsScript : MonoBehaviour
             {
                 QuestManager.IncrementQuest();
                 MessageQueue.addDialogue("D2MissileTutorial");
+                OnEnterBalcony?.Invoke();
             }
         }
     }

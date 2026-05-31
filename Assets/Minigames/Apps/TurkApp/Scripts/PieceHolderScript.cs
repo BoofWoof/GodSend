@@ -25,6 +25,10 @@ public class PieceHolderScript : MonoBehaviour
 
     public static List<PieceHolderScript> PieceList = new List<PieceHolderScript>();
 
+    public bool FullyFilled = false;
+
+    private GameObject Shadow;
+
     public void Awake()
     {
         PieceList = new List<PieceHolderScript>();
@@ -156,10 +160,18 @@ public class PieceHolderScript : MonoBehaviour
 
     public void FillHoles()
     {
+        FullyFilled = true;
         foreach (TurkCubeScript filler in Pieces)
         {
             Vector2Int cord = filler.cord;
-            if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y)) TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler);
+            if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
+            {
+                TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler);
+            }
+            else
+            {
+                FullyFilled = false;
+            }
         }
     }
 
@@ -175,6 +187,8 @@ public class PieceHolderScript : MonoBehaviour
     }
     public void InterruptDrag(bool phoneUp)
     {
+        DeleteShadow();
+
         PickupEnabled = phoneUp;
 
         if (phoneUp || !isDragging)
@@ -211,7 +225,18 @@ public class PieceHolderScript : MonoBehaviour
                 TrukAppScript.PhoneScreenCanvas.worldCamera,
                 out mousePos);
 
-            transform.localPosition = (Vector3)(mousePos + offset);
+            Vector3 rawPos = (Vector3)(mousePos + offset); 
+            
+            rawPos.x = Mathf.Round(rawPos.x);
+            rawPos.y = Mathf.Round(rawPos.y);
+
+            Vector2Int newCord = TurkPuzzleScript.PosToGridIdx((Vector2)rawPos);
+
+            Vector2 newPos = TurkPuzzleScript.GridIdxToPos(new Vector2Int(newCord.x, newCord.y));
+
+
+            transform.localPosition = rawPos;
+            Shadow.transform.localPosition = newPos-(Vector2)rawPos;
         }
     }
 
@@ -262,6 +287,8 @@ public class PieceHolderScript : MonoBehaviour
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (!PickupEnabled) return;
 
+        FullyFilled = false;
+
         isDragging = true;
         TurkPuzzleScript.instance.Pickup.Play();
 
@@ -279,12 +306,29 @@ public class PieceHolderScript : MonoBehaviour
         transform.parent = TurkPuzzleScript.puzzleScript.transform;
 
         offset = (Vector2)transform.localPosition - mousePos;
+
+        CreateShadow();
+    }
+
+    public void CreateShadow()
+    {
+        DeleteShadow();
+        Shadow = Instantiate(gameObject, transform);
+        Shadow.transform.SetAsFirstSibling();
+        SetAllDark();
+    }
+
+    public void DeleteShadow()
+    {
+        if (Shadow != null) Destroy(Shadow);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (!PickupEnabled || !isDragging) return;
+
+        DeleteShadow();
 
         isDragging = false;
         TurkPuzzleScript.instance.Pickup.Stop();
@@ -341,6 +385,7 @@ public class PieceHolderScript : MonoBehaviour
 
     public void SendToPieceHolder(bool PlaySounds = false)
     {
+        DeleteShadow();
         ClearAllMat();
 
         if (!FirstRelease)
@@ -383,6 +428,9 @@ public class PieceHolderScript : MonoBehaviour
             offset = new Vector2(-offset.y, offset.x);
         }
 
+        offset.x = Mathf.Round(offset.x);
+        offset.y = Mathf.Round(offset.y);
+
         return offset;
     }
 
@@ -390,14 +438,18 @@ public class PieceHolderScript : MonoBehaviour
     {
         foreach (RectTransform child in transform)
         {
-            child.GetComponent<TurkCubeScript>().UpdateSprite();
+            TurkCubeScript tS = child.GetComponent<TurkCubeScript>();
+            if (tS == null) continue;
+            tS.UpdateSprite();
         }
     }
     public void ClearAllMat()
     {
         foreach (RectTransform child in transform)
         {
-            child.GetComponent<TurkCubeScript>().ClearMat();
+            TurkCubeScript tS = child.GetComponent<TurkCubeScript>();
+            if (tS == null) continue;
+            tS.ClearMat();
         }
     }
 
@@ -405,7 +457,17 @@ public class PieceHolderScript : MonoBehaviour
     {
         foreach (RectTransform child in transform)
         {
-            child.GetComponent<TurkCubeScript>().ActivateMat();
+            TurkCubeScript tS = child.GetComponent<TurkCubeScript>();
+            if (tS == null) continue;
+            tS.ActivateMat();
+        }
+    }
+
+    public void SetAllDark()
+    {
+        foreach (RectTransform child in Shadow.transform)
+        {
+            child.GetComponent<TurkCubeScript>().SetDark();
         }
     }
 }

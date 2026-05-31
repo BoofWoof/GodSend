@@ -46,5 +46,6 @@ MonoBehaviour:
   MinPieces: 7
   MaxPieces: 7
   RotationEnabled: 0
+  FakersEnabled: 1
   DifficultyMultiplier: 25
   SongIndex: 11
