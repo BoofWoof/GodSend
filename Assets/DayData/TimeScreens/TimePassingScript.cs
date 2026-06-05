@@ -26,8 +26,22 @@ public class TimePassingScript : MonoBehaviour
     public AudioSource BoomSound;
     public AudioSource TickSound;
 
+    private Vector3 FinalClockPos;
+    private Vector3 FinalTextPos;
+    private float Width;
+    private float FinalHeight;
+    private float FinalAlpha;
+
     public void Awake()
     {
+        FinalClockPos = ClockTransform.transform.localPosition;
+        FinalTextPos = TextTransform.transform.localPosition;
+
+        Width = TopBorder.sizeDelta.x;
+        FinalHeight = TopBorder.sizeDelta.y;
+
+        FinalAlpha = BackPanel.color.a;
+
         ObjectBase.SetActive(false);
     }
     public void StartDisplay(TimePassTrigger data)
@@ -37,20 +51,15 @@ public class TimePassingScript : MonoBehaviour
 
     public IEnumerator TimePassingCutscene(TimePassTrigger data)
     {
-        float width = TopBorder.sizeDelta.x;
-        float finalHeight = TopBorder.sizeDelta.y;
-        TopBorder.sizeDelta = new Vector2 (width, 0);
-        BottomBorder.sizeDelta = new Vector2(width, 0);
+        TopBorder.sizeDelta = new Vector2 (Width, 0);
+        BottomBorder.sizeDelta = new Vector2(Width, 0);
 
-        float finalAlpha = BackPanel.color.a;
         BackPanel.color = new Color(0, 0, 0, 0);
 
-        Vector3 finalClockPos = ClockTransform.transform.localPosition;
-        Vector3 startClockPos = new Vector3(finalClockPos.x, 800f, finalClockPos.z);
+        Vector3 startClockPos = new Vector3(FinalClockPos.x, 800f, FinalClockPos.z);
         ClockTransform.transform.localPosition = startClockPos;
 
-        Vector3 finalTextPos = TextTransform.transform.localPosition;
-        Vector3 startTextPos = new Vector3(finalTextPos.x, -600f, finalTextPos.z);
+        Vector3 startTextPos = new Vector3(FinalTextPos.x, -600f, FinalTextPos.z);
         TextTransform.transform.localPosition = startTextPos;
 
         TimeText.text = data.TextTime;
@@ -69,24 +78,24 @@ public class TimePassingScript : MonoBehaviour
             timePassed += Time.deltaTime;
             float progress = timePassed/fadeInPeriod;
 
-            TopBorder.sizeDelta = new Vector2(width, Mathf.Lerp(0, finalHeight, progress));
-            BottomBorder.sizeDelta = new Vector2(width, Mathf.Lerp(0, finalHeight, progress));
+            TopBorder.sizeDelta = new Vector2(Width, Mathf.Lerp(0, FinalHeight, progress));
+            BottomBorder.sizeDelta = new Vector2(Width, Mathf.Lerp(0, FinalHeight, progress));
 
-            ClockTransform.transform.localPosition = Vector3.Lerp(startClockPos, finalClockPos, progress);
-            TextTransform.transform.localPosition = Vector3.Lerp(startTextPos, finalTextPos, progress);
+            ClockTransform.transform.localPosition = Vector3.Lerp(startClockPos, FinalClockPos, progress);
+            TextTransform.transform.localPosition = Vector3.Lerp(startTextPos, FinalTextPos, progress);
 
-            BackPanel.color = new Color(0, 0, 0, Mathf.Lerp(0, finalAlpha, progress));
+            BackPanel.color = new Color(0, 0, 0, Mathf.Lerp(0, FinalAlpha, progress));
 
             yield return null;
         }
 
-        TopBorder.sizeDelta = new Vector2(width, finalHeight);
-        BottomBorder.sizeDelta = new Vector2(width, finalHeight);
+        TopBorder.sizeDelta = new Vector2(Width, FinalHeight);
+        BottomBorder.sizeDelta = new Vector2(Width, FinalHeight);
 
-        ClockTransform.transform.localPosition = finalClockPos;
-        TextTransform.transform.localPosition = finalTextPos;
+        ClockTransform.transform.localPosition = FinalClockPos;
+        TextTransform.transform.localPosition = FinalTextPos;
 
-        BackPanel.color = new Color(0, 0, 0, finalAlpha);
+        BackPanel.color = new Color(0, 0, 0, FinalAlpha);
 
         for (int i = 1; i < holdTicks+1; i++)
         {
@@ -103,13 +112,13 @@ public class TimePassingScript : MonoBehaviour
             timePassed += Time.deltaTime;
             float progress = timePassed / fadeInPeriod;
 
-            TopBorder.sizeDelta = new Vector2(width, Mathf.Lerp(finalHeight, 0, progress));
-            BottomBorder.sizeDelta = new Vector2(width, Mathf.Lerp(finalHeight, 0, progress));
+            TopBorder.sizeDelta = new Vector2(Width, Mathf.Lerp(FinalHeight, 0, progress));
+            BottomBorder.sizeDelta = new Vector2(Width, Mathf.Lerp(FinalHeight, 0, progress));
 
-            ClockTransform.transform.localPosition = Vector3.Lerp(finalClockPos, startClockPos, progress);
-            TextTransform.transform.localPosition = Vector3.Lerp(finalTextPos, startTextPos, progress);
+            ClockTransform.transform.localPosition = Vector3.Lerp(FinalClockPos, startClockPos, progress);
+            TextTransform.transform.localPosition = Vector3.Lerp(FinalTextPos, startTextPos, progress);
 
-            BackPanel.color = new Color(0, 0, 0, Mathf.Lerp(finalAlpha, 0, progress));
+            BackPanel.color = new Color(0, 0, 0, Mathf.Lerp(FinalAlpha, 0, progress));
 
             yield return null;
         }

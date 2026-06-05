@@ -6,51 +6,66 @@ public class CursorStateControl : MonoBehaviour
 {
     public static CursorStateControl ActiveCursorController;
 
-    public static bool MenuUp;
+    private static int _CursorRequest;
 
-    public static CursorLockMode LastLockMode = CursorLockMode.Locked;
-    public static bool LastVisible = false;
+    public void RequestCursor()
+    {
+        _CursorRequest++;
+        ShowMouse();
+    }
+
+    public void ReleaseCursor()
+    {
+        _CursorRequest--;
+        if(_CursorRequest == 0)
+        {
+            HideMouse();
+        }
+    }
+
+    public static bool isCursorActive()
+    {
+        return _CursorRequest > 0;
+    }
+
+    public void ShowMouse()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        HudScript.instance.Reticle.SetActive(false);
+    }
+
+    public void HideMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        HudScript.instance.Reticle.SetActive(true);
+    }
 
     public void Awake()
     {
         ActiveCursorController = this;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        HideMouse();
 
-        MenuUp = false;
+        PhonePositionScript.PhoneToggled += PhoneToggle;
 
-        PhonePositionScript.PhoneToggled += AllowMouse;
+        _CursorRequest = 0;
     }
 
     private void OnDestroy()
     {
-        PhonePositionScript.PhoneToggled -= AllowMouse;
+        PhonePositionScript.PhoneToggled -= PhoneToggle;
     }
 
-    public static void RecordCursorState()
+    public void PhoneToggle(bool phoneUp)
     {
-        LastLockMode = Cursor.lockState;
-        LastVisible = Cursor.visible;
-    }
-
-    public static void ResumeCursorState()
-    {
-        Cursor.lockState = LastLockMode;
-        Cursor.visible = LastVisible;
-    }
-
-    public static void AllowMouse(bool allow)
-    {
-        if (allow)
+        if (phoneUp)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
-        else
+            RequestCursor();
+        } else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            ReleaseCursor();
         }
     }
 }

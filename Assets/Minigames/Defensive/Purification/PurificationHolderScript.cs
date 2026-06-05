@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PurificationHolderScript : MonoBehaviour
 {
     public string SetName;
 
     public PurificationLevelPacksSO AssociatedLevels;
+    public UnityEvent StartEvents;
     public List<BroadcastStruct> HallucinationResets;
 
     public string StartingVoiceLinePath;
@@ -35,6 +37,7 @@ public class PurificationHolderScript : MonoBehaviour
         PurificationGameScript.associatedLevelHolder = this;
         Debug.Log(AssociatedLevels);
         PurificationGameScript.SetLevelSet(AssociatedLevels);
+        StartEvents?.Invoke();
     }
 
 }

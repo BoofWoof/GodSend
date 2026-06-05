@@ -92,6 +92,7 @@ public abstract class UpgradesAbstract : ScriptableObject
     public bool CanBuy()
     {
         if (UpgradeBought) return false;
+        if (AutoBuy) return false;
 
         if (UpgradesGroup.Count > 0)
         {

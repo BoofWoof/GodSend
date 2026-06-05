@@ -31,6 +31,11 @@ public class ShopprHoverDescription : MonoBehaviour
         Instances.Add(AssociatedMinigame, this);
     }
 
+    public void OnDestroy()
+    {
+        Instances.Remove(AssociatedMinigame);
+    }
+
     public void Clear()
     {
         ObjectImage.gameObject.SetActive(false);

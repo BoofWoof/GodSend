@@ -109,7 +109,7 @@ public class MessageSendScript : MonoBehaviour
 
     private void UpdateInteractability()
     {
-        bool ButtonEnabled = SystemEnable && !PhoneEnabled;
+        bool ButtonEnabled = SystemEnable && !PhoneEnabled && !GameStateMonitor.ActivePrayer;
         SubmissionButton.interactable = ButtonEnabled;
 
         if(ButtonEnabled) MessageText.color = OriginalColor;

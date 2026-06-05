@@ -58616,13 +58616,15 @@ MonoBehaviour:
 
         UnlockPortrait("Burden")
 
+        BroadcastActivate("DayOneTimerTrigger000006")
+
 '
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 275.96423
+        x: 274.59436
         y: 3464.6313
         width: 160
         height: 30
@@ -63552,9 +63554,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'SetSong(3)
-
-        IncrementQuest()
+      userScript: 'IncrementQuest()
 
         BroadcastActivate("AllowDayEnd")'
       onExecute:

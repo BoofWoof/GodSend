@@ -5,18 +5,24 @@ using UnityEngine.UI;
 
 public static class DayInfo
 {
-    public static int CurrentDay = 0;
+    public static int CurrentDay { get; private set; }
+    public static bool DaySet { get; private set; } = false;
+
     public static bool DayEndEnabled = false;
+
+    public static void SetDay(int dayvalue)
+    {
+        CurrentDay = dayvalue;
+        DaySet = true;
+    }
 }
 
 public class DaytaScript : MonoBehaviour
 {
-    private static DaytaScript instance; 
+    private static DaytaScript instance;
 
-    public static bool SkipStart = false;
     public bool SkipStartInit = false;
-
-    public bool ExteriorDaySet = false;
+    public static bool SkipStart = false;
     public static bool ExternalSkipStart = false;
 
     public int DayInit = 0;
@@ -29,8 +35,15 @@ public class DaytaScript : MonoBehaviour
     public void Awake()
     {
         instance = this;
-        if(!ExteriorDaySet) DayInfo.CurrentDay = DayInit;
-        SkipStart = SkipStartInit;
+
+        if (!DayInfo.DaySet)
+        {
+            DayInfo.SetDay(DayInit);
+            SkipStart = SkipStartInit;
+        } else
+        {
+            SkipStart = ExternalSkipStart;
+        }
 
         Physics.gravity = Vector3.down * 9.8f;
 
@@ -44,7 +57,7 @@ public class DaytaScript : MonoBehaviour
 
     public void Start()
     {
-        if (SkipStart || ExternalSkipStart)
+        if (SkipStart)
         {
             EnableCharacter();
             StartDay();
@@ -59,16 +72,17 @@ public class DaytaScript : MonoBehaviour
         if (DayInfo.CurrentDay == 0)
         {
             EnableCharacter();
+            CrossfadeScript.ResumeMusic();
             OverworldPositionScript.GoTo("A", 0);
         }
-        if (DayInfo.CurrentDay == 1 && !SkipStart && !ExternalSkipStart)
+        if (DayInfo.CurrentDay == 1 && !SkipStart)
         {
             MusicSelectorScript.SetOverworldSong(5, true); //Instantly switch;
             CrossfadeScript.ResumeMusic();
             CrossfadeScript.SetLowpassOn(true, true);
             StartCoroutine(StartDayOne());
         }
-        if (DayInfo.CurrentDay == 2 && !SkipStart && !ExternalSkipStart)
+        if (DayInfo.CurrentDay == 2 && !SkipStart)
         {
             StartCoroutine(StartDayTwo());
             CrossfadeScript.PauseMusic();

@@ -54,7 +54,9 @@ public class UpgradeItemListScript : MonoBehaviour
 
         UpgradeItemScript uiScript = newOption.GetComponent<UpgradeItemScript>();
         uiScript.AssociatedList = this;
-        uiScript.SetUpgrade(Instantiate(targetUpgrade));
+        UpgradesAbstract upgradeClone = Instantiate(targetUpgrade);
+        upgradeClone.UpgradeBought = SourceScreen.PreboughtUpgradeIDs.Contains(upgradeClone.UpgradeID);
+        uiScript.SetUpgrade(upgradeClone);
 
         ItemList.Add(uiScript);
 
@@ -106,7 +108,9 @@ public class UpgradeItemListScript : MonoBehaviour
         SetTopTitle("PICK ONE");
         foreach(UpgradesAbstract targetUpgrade in AssociatedUpgrades)
         {
-            if (SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID)) continue;
+            if ((SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID) && !AssociatedUpgrade.UpgradeBought) ||
+                (!SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID) && AssociatedUpgrade.UpgradeBought)
+                ) continue;
             UpgradeItemScript uiScript = AddUpgradeToList(targetUpgrade);
         }
         GetComponent<Image>().color = MultiColor;

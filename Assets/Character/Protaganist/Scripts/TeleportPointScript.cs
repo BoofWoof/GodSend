@@ -12,6 +12,10 @@ public class TeleportPointScript : MonoBehaviour
     {
         TeleportPoints.Add(TeleportPointName, this);
     }
+    public void OnDestroy()
+    {
+        TeleportPoints.Remove(TeleportPointName);
+    }
 
     public void TeleportHere()
     {

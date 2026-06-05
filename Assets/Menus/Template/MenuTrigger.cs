@@ -6,18 +6,16 @@ public class MenuTrigger : MonoBehaviour
     private static int PartialMenuOpenCount = 0;
 
     private static float NormalTimescale = 1f;
-    private static bool ReticlePreviousShown = true;
 
     private static bool Paused = false;
-
     public bool PartialPause = false;
+
+    private bool CursorRequestActive = false;
 
     public static void Reset()
     {
         MenuOpenCount = 0;
-
         NormalTimescale = 1f;
-        ReticlePreviousShown = true;
     }
 
     public void OnEnable()
@@ -67,19 +65,21 @@ public class MenuTrigger : MonoBehaviour
 
     public void RecordCurrentGameState()
     {
-        ReticlePreviousShown = HudScript.instance.Reticle.activeInHierarchy;
         NormalTimescale = Time.timeScale;
-        CursorStateControl.RecordCursorState();
     }
     public void PauseGame()
     {
         Paused = true;
 
         AudioListener.pause = true;
-        CursorStateControl.AllowMouse(true);
-        HudScript.instance.ShowReticle(false);
         Time.timeScale = 0;
         InputManager.AllOff();
+
+        if (!CursorRequestActive)
+        {
+            CursorRequestActive = true;
+            CursorStateControl.ActiveCursorController.RequestCursor();
+        }
     }
 
     public void PartialPauseGame()
@@ -87,11 +87,14 @@ public class MenuTrigger : MonoBehaviour
         Paused = true;
 
         AudioListener.pause = false;
-        CursorStateControl.AllowMouse(true);
-        ReticlePreviousShown = HudScript.instance.Reticle.activeInHierarchy;
-        HudScript.instance.ShowReticle(false);
         Time.timeScale = NormalTimescale;
         InputManager.AllOff();
+
+        if (!CursorRequestActive)
+        {
+            CursorRequestActive = true;
+            CursorStateControl.ActiveCursorController.RequestCursor();
+        }
     }
 
     public void UnPauseGame()
@@ -99,9 +102,13 @@ public class MenuTrigger : MonoBehaviour
         Paused = false;
 
         AudioListener.pause = false;
-        CursorStateControl.ResumeCursorState();
-        HudScript.instance.ShowReticle(!ReticlePreviousShown);
         Time.timeScale = NormalTimescale;
         InputManager.AllOn();
+
+        if (CursorRequestActive)
+        {
+            CursorRequestActive = false;
+            CursorStateControl.ActiveCursorController.ReleaseCursor();
+        }
     }
 }

@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
@@ -9,9 +8,11 @@ public class AngyRockScript : MonoBehaviour
     public TMP_Text HighScoreText;
 
     private static float StartingTime;
-    private static int Score = 0;
-    private static int HighScore = 0;
+    public static int Score = 0;
+    public static int HighScore = 0;
     public static bool ActiveRun = false;
+
+    public static float BonusSaveTime = 0f;
 
     public float MaxTime = 60f * 5f;
 
@@ -60,7 +61,7 @@ public class AngyRockScript : MonoBehaviour
 
     public static float TimePassed()
     {
-        return Time.time - StartingTime;
+        return (Time.time - StartingTime) + BonusSaveTime;
     }
 
     private void IncreaseScore()
@@ -78,10 +79,17 @@ public class AngyRockScript : MonoBehaviour
         ScoreText.text = "<b>Score</b>: " + Score.ToString();
     }
 
+    public static void ResetStartingTime()
+    {
+        StartingTime = Time.time;
+    }
+
     public void ResetScore()
     {
         Score = 0;
         ScoreText.text = "<b>Score</b>: " + Score.ToString();
         ClockText.text = "0:00";
+
+        BonusSaveTime = 0f;
     }
 }

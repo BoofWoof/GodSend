@@ -30,12 +30,16 @@ public class PlayerCam : MonoBehaviour
     public static PlayerCam Instance;
 
     private static float MouseSensitivityMultiplier = 1f;
-    private float SlowModeMultiplier = 1f;
+    public static  float SlowModeMultiplier = 1f;
+
+    private bool ShiftToggleActive = false;
 
 
     private void Awake()
     {
         instance = this;
+
+        SlowModeMultiplier = 1f;
 
         RegisterInputActions();
     }
@@ -60,7 +64,7 @@ public class PlayerCam : MonoBehaviour
 
     private void ActivateObjects()
     {
-        if (!EnableCameraMovement || CursorStateControl.MenuUp || Cursor.lockState == CursorLockMode.Confined) return;
+        if (!EnableCameraMovement || CursorStateControl.isCursorActive() || Cursor.lockState == CursorLockMode.Confined) return;
         if (TargetActivationObject == null) return;
         ActivatableObjectScript aos = TargetActivationObject.GetComponent<ActivatableObjectScript>();
         if (aos != null)
@@ -90,13 +94,25 @@ public class PlayerCam : MonoBehaviour
     }
     public void SetSpeed(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.performed)
         {
-            SlowModeMultiplier = 0.3f;
+            ShiftToggleActive = !ShiftToggleActive;
+
+            SlowModeMultiplier = 0.2f;
+            if (!ShiftToggleActive)
+            {
+                CursorStateControl.ActiveCursorController.ReleaseCursor();
+            }
         }
         if (context.canceled)
         {
-            SlowModeMultiplier = 1f;
+            if (ShiftToggleActive)
+            {
+                CursorStateControl.ActiveCursorController.RequestCursor();
+            } else
+            {
+                SlowModeMultiplier = 1f;
+            }
         }
     }
 
@@ -123,7 +139,7 @@ public class PlayerCam : MonoBehaviour
 
     public void Update()
     {
-        if (!EnableCameraMovement || CursorStateControl.MenuUp || Cursor.lockState == CursorLockMode.Confined) return;
+        if (!EnableCameraMovement || CursorStateControl.isCursorActive() || Cursor.lockState == CursorLockMode.Confined) return;
         float mouseX = CameraInput.x * Time.deltaTime * sensX * SlowModeMultiplier * MouseSensitivityMultiplier;
         float mouseY = CameraInput.y * Time.deltaTime * sensY * SlowModeMultiplier * MouseSensitivityMultiplier;
 

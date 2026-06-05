@@ -44,7 +44,6 @@ public class UpgradeItemScript : MonoBehaviour
     public void RegisterUpgrade()
     {
         UpgradeScreenScript.upgradeScreenScripts[AssociatedUpgrade.AssociatedMinigame].UpgradeObjects.Add(gameObject);
-        Debug.Log($"Adding upgrade {AssociatedUpgrade.UpgradeName}");
 
         StartCoroutine(AffordCheck());
     }
@@ -52,7 +51,6 @@ public class UpgradeItemScript : MonoBehaviour
     public void OnDisable()
     {
         UpgradeScreenScript.upgradeScreenScripts[AssociatedUpgrade.AssociatedMinigame].UpgradeObjects.Remove(gameObject);
-        Debug.Log($"Removing upgrade {AssociatedUpgrade.UpgradeName}");
 
         StopAllCoroutines();
     }

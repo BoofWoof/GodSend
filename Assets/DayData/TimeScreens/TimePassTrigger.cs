@@ -1,8 +1,13 @@
 using PixelCrushers;
 using System;
+using System.Collections;
+using UnityEngine;
 
 public class TimePassTrigger : Saver
 {
+    [Header("Trigger Settings")]
+    public float DelayStart = 0f;
+
     public string Title;
     public string TextTime;
 
@@ -12,6 +17,8 @@ public class TimePassTrigger : Saver
     public TimePassingScript TargetTimePassScript;
 
     public int TriggerDay = -1;
+
+    public int ComparisonValue = -1;
 
     [Serializable]
     public class TimePassTriggerSave
@@ -35,10 +42,24 @@ public class TimePassTrigger : Saver
         Triggered = saveData.Triggered;
     }
 
+    public void ifIntTrigger(int comparisonValue)
+    {
+        if (ComparisonValue == comparisonValue) Trigger();
+    }
+
     public void Trigger()
     {
         if (Triggered) return;
         if (TriggerDay != DayInfo.CurrentDay) return;
+
+        Triggered = true;
+
+        StartCoroutine(DelayedStart());
+    }
+
+    public IEnumerator DelayedStart() { 
+        yield return new WaitForSeconds(DelayStart);
+
         TargetTimePassScript.StartDisplay(this);
     }
 }

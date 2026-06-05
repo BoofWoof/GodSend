@@ -80,6 +80,7 @@ public class ContactsScript : Saver
 
     public void OnEnable()
     {
+        base.OnEnable();
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationLine.AddListener(OnConversationLineTrigger);
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationResponseMenu.AddListener(OnConversationResponseMenuTrigger);
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd.AddListener(OnConversationEndTrigger);
@@ -87,7 +88,7 @@ public class ContactsScript : Saver
 
     public void OnDisable()
     {
-
+        base.OnDisable();
         if (ConversationManagerScript.instance == null) return;
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationLine.RemoveListener(OnConversationLineTrigger);
         ConversationManagerScript.instance.GetComponent<DialogueSystemEvents>().conversationEvents.onConversationResponseMenu.RemoveListener(OnConversationResponseMenuTrigger);
@@ -321,10 +322,16 @@ public class ContactsScript : Saver
     {
         ConversationSave saveData = SaveSystem.Deserialize<ConversationSave>(s);
 
+        Debug.Log("A---------------------");
+
         if (saveData == null) return;
 
+        Debug.Log("B---------------------");
+
         ContactsFound = saveData.GetContactsFound();
+        Debug.Log(ContactsFound.Count);
         messengerApp.MessageHistorys = saveData.GetMessageHistory();
+        Debug.Log(messengerApp.MessageHistorys.Count);
         RebuildContacts();
     }
 }

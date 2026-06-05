@@ -8,13 +8,16 @@ public class PhoneTutorialSaver : Saver
     public class PhoneTutorialSaveData
     {
         public bool Completed = false;
+        public int MaxTutorialStep;
     }
 
     public override string RecordData()
     {
+        PhoneTutorialScript pts = GetComponent<PhoneTutorialScript>();
         PhoneTutorialSaveData newSaveData = new PhoneTutorialSaveData()
         {
-            Completed = GetComponent<PhoneTutorialScript>().CompletedTutorial
+            Completed = pts.CompletedTutorial,
+            MaxTutorialStep = pts.MaxTutorialStep
         };
         return SaveSystem.Serialize(newSaveData);
     }
@@ -24,11 +27,14 @@ public class PhoneTutorialSaver : Saver
 
         if (saveData == null) return;
 
+        PhoneTutorialScript pts = GetComponent<PhoneTutorialScript>();
+
         if (saveData.Completed)
         {
-            GetComponent<PhoneTutorialScript>().CompletedTutorial = true;
-            GetComponent<PhoneTutorialScript>().HideTutorial();
+            pts.CompletedTutorial = true;
+            pts.HideTutorial();
         }
+        pts.MaxTutorialStep = saveData.MaxTutorialStep;
     }
 
 }

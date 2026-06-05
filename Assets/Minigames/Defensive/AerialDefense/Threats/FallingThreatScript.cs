@@ -13,6 +13,7 @@ public class FallingThreatScript : MonoBehaviour
 
     public Rigidbody2D thisRB2D;
     public float DropSpeed = 20f;
+    public float WindSpeed = 0f;
 
     public GameObject DestructionPingPrefab;
     public GameObject DetectionPingPrefab;
@@ -24,14 +25,26 @@ public class FallingThreatScript : MonoBehaviour
     public float FormationSpeedModifier = 1f;
     public float WaveSpeedModifier = 1f;
 
+    public bool RadarNeeded = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        imageComponent = GetComponent<Image>();
-        imageComponent.color = new Color(1f, 1f, 1f, 0f);
+        if (RadarNeeded)
+        {
+            imageComponent = GetComponent<Image>();
+            imageComponent.color = new Color(1f, 1f, 1f, 0f);
+        }
 
         thisRB2D = GetComponent<Rigidbody2D>();
-        thisRB2D.linearVelocity = Vector2.down * DropSpeed * transform.lossyScale * FormationSpeedModifier * WaveSpeedModifier;
+        Vector2 DownSpeed = Vector2.down * DropSpeed * transform.lossyScale * FormationSpeedModifier * WaveSpeedModifier;
+        Vector2 HorizontalSpeed = Vector2.right * WindSpeed * transform.lossyScale;
+        Vector2 TotalSpeed = DownSpeed + HorizontalSpeed;
+        thisRB2D.linearVelocity = TotalSpeed;
+
+        float angle = Mathf.Atan2(TotalSpeed.y, TotalSpeed.x) * Mathf.Rad2Deg;
+        float targetAngle = angle + 90;
+        transform.localRotation = Quaternion.Euler(0, 0, -targetAngle);
 
         FallingThreatScripts.Add(this);
     }
@@ -90,6 +103,7 @@ public class FallingThreatScript : MonoBehaviour
     {
         if(collision.gameObject.name == "Scanner")
         {
+            if (!RadarNeeded) return;
             Instantiate(DetectionPingPrefab, transform.position, Quaternion.identity, transform.parent);
             StopAllCoroutines();
             StartCoroutine(FadeInAndOut());

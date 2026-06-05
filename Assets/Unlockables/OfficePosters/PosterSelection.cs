@@ -1,11 +1,8 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 
 public class PosterSelection : MonoBehaviour
@@ -45,43 +42,39 @@ public class PosterSelection : MonoBehaviour
 
         SelectPoster(UnlockablesManager.PostersList[0]);
 
-        CursorStateControl.AllowMouse(true);
-
-        int spawned = 0;
-
         foreach (OfficePoster poster in UnlockablesManager.PostersList)
         {
-            int col = spawned % Columns;
-            int row = Mathf.FloorToInt(spawned/Columns);
+            if (!poster.Unlocked) continue;
 
             GameObject posterButton = new GameObject("Poster");
 
             RectTransform rect = posterButton.AddComponent<RectTransform>();
-            rect.pivot = Vector2.up;
-            rect.anchorMin = Vector2.up;
-            rect.anchorMax = Vector2.up;
 
-            rect.sizeDelta = Size;
-            rect.localScale = Vector2.one;
-
-            rect.parent = Content;
-            rect.localPosition = Vector2.zero;
+            rect.SetParent(Content);
 
             Image img = rect.AddComponent<Image>();
             img.sprite = poster.Image;
 
-            if (!poster.Unlocked)
-            {
-                img.material = PosterMaterial;
-            } else
-            {
+            Button butt = rect.AddComponent<Button>();
+            butt.onClick.AddListener(() => SelectPoster(poster));
 
-                Button butt = rect.AddComponent<Button>();
+            Posters.Add(posterButton);
+        }
 
-                butt.onClick.AddListener(() => SelectPoster(poster));
-            }
+        foreach (OfficePoster poster in UnlockablesManager.PostersList)
+        {
+            if (poster.Unlocked) continue;
 
-            spawned++;
+            GameObject posterButton = new GameObject("Poster");
+
+            RectTransform rect = posterButton.AddComponent<RectTransform>();
+
+            rect.SetParent(Content);
+
+            Image img = rect.AddComponent<Image>();
+            img.sprite = poster.Image;
+            img.material = PosterMaterial;
+
             Posters.Add(posterButton);
         }
     }
@@ -110,7 +103,6 @@ public class PosterSelection : MonoBehaviour
 
     public void OnDestroy()
     {
-        if(SelectedPoster != null) transform.parent.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", SelectedPoster.Image.texture);
-        CursorStateControl.AllowMouse(false);
+        if(SelectedPoster != null) transform.parent.GetComponent<SetInitialPoster>().SetPoster(SelectedPoster);
     }
 }

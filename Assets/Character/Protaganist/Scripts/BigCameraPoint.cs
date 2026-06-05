@@ -48,7 +48,7 @@ public class BigCameraPoint : MonoBehaviour
     public void ActivateObjects(InputAction.CallbackContext context)
     {
         if (!context.started) return; 
-        if (!PlayerCam.EnableCameraMovement || CursorStateControl.MenuUp || Cursor.lockState == CursorLockMode.Confined) return;
+        if (!PlayerCam.EnableCameraMovement || CursorStateControl.isCursorActive() || Cursor.lockState == CursorLockMode.Confined) return;
         if (TargetActivationObject == null) return;
         ActivatableObjectScript aos = TargetActivationObject.GetComponent<ActivatableObjectScript>();
         if (aos != null)

@@ -251,6 +251,7 @@ public class SaveMenuScript : MonoBehaviour
     {
         Physics.gravity = Vector3.down * 9.8f;
         DaytaScript.ExternalSkipStart = true;
+        DayInfo.SetDay(GetSelectedMetaData().Day);
         SaveSystem.LoadFromSlot(SelectedSaveSlot);
     }
 

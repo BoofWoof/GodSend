@@ -63,7 +63,7 @@ public class AppAnimator : MonoBehaviour
         SlideInPoint.localPosition = Vector3.zero;
 
         displayedAppTransform.SetParent(InactivePoint);
-        displayedAppTransform.localPosition += Vector3.zero;
+        displayedAppTransform.localPosition = Vector3.zero;
         displayedAppTransform.localRotation = Quaternion.identity;
 
         CurrentDisplayedApp.HideTriggers();

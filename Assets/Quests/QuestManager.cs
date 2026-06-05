@@ -92,6 +92,7 @@ public class QuestManager : MonoBehaviour
     {
         string[] QuestList = QuestLog.GetAllQuests(QuestState.Active|QuestState.Success|QuestState.Unassigned, false);
 
+        if (QuestList.Length <= currentQuestIndex + 1 || currentQuestIndex + 1 < 0) return;
         string newQuest = QuestList[currentQuestIndex + 1];
 
         ChangeQuest(newQuest);
@@ -101,6 +102,7 @@ public class QuestManager : MonoBehaviour
     {
         string[] QuestList = QuestLog.GetAllQuests(QuestState.Active | QuestState.Success | QuestState.Unassigned, false);
 
+        if (QuestList.Length <= QuestIdx || QuestIdx < 0) return;
         string newQuest = QuestList[QuestIdx];
 
         ChangeQuest(newQuest);

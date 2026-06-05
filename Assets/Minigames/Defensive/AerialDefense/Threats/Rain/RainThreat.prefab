@@ -57,6 +57,7 @@ MonoBehaviour:
   MaintainPeriod: 0.5
   thisRB2D: {fileID: 0}
   DropSpeed: 75
+  WindSpeed: 25
   DestructionPingPrefab: {fileID: 3176560342262635343, guid: 9fee3b93413c1924aa988e4ff9dd6f30, type: 3}
   DetectionPingPrefab: {fileID: 3176560342262635343, guid: 2a4b46335a66ae44990453cb0555421f, type: 3}
   DestructionNoises:
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba77644ead31d7f4582f7230391b4f78, type: 3}
   FormationSpeedModifier: 1
   WaveSpeedModifier: 1
+  RadarNeeded: 0
 --- !u!61 &6535995716211452762
 BoxCollider2D:
   m_ObjectHideFlags: 0

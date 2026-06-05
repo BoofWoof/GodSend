@@ -179,7 +179,7 @@ public class CrossfadeScript : MonoBehaviour
         }
 
         MusicPlayer.CurrentSongID = SongID;
-        MusicPlayer.CurrentSong = MusicSelectorScript.instance.SongList[SongID];
+        MusicPlayer.CurrentSong = NewSong;
 
         if (MusicPlayer.TransitionCoroutine != null) MusicPlayer.StopCoroutine(MusicPlayer.TransitionCoroutine);
 

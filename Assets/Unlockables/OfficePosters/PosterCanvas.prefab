@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7483996503604596771}
   - component: {fileID: 5415782964586231681}
   - component: {fileID: 929752072407032354}
+  - component: {fileID: 3147224947996232702}
   m_Layer: 5
   m_Name: PosterCanvas
   m_TagString: Untagged
@@ -58,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316e88ad808ad834e9a47c8485ca2191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WasPhoneUnLocked: 0
 --- !u!114 &5283132090030264999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +152,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3147224947996232702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397028130385844464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d391d92ec4ac0e40a963cf3ca4099fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PartialPause: 1
 --- !u!1 &2099434154211921226
 GameObject:
   m_ObjectHideFlags: 0
