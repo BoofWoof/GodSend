@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5713685194231298889}
   - component: {fileID: 2941744383469616956}
   - component: {fileID: 6042513060847743580}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 526ad1cfb1cda1b48959b58d11adcb58, type: 2}
-  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
+  m_Color: {r: 0.41509432, g: 0.28782484, b: 0.28782484, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 234226660130270213}
   - component: {fileID: 5970451798526344071}
   - component: {fileID: 2674016626355277526}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 3937014352230917942}
   - component: {fileID: 6028436676997423901}
   - component: {fileID: 1584888124214926788}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 2499887975061244896}
   - component: {fileID: 2643131206160596807}
   - component: {fileID: 6124215674014056449}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6047192041131524141}
   - component: {fileID: -4333729264623055022}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,9 +470,9 @@ MonoBehaviour:
   bulletParent: {fileID: 0}
   blastObject: {fileID: 2099277080783123704, guid: 40d13e3a15ef5774ea9b938925bbf25d, type: 3}
   chargeMeter: {fileID: 1584888124214926788}
-  ChargeRate: 1
+  ChargeRate: 0.25
   CurrentCharge: 0
   MaxCharge: 1
-  ShotCost: 0.33
+  ShotCost: 0.25
   diageticTurretScript: {fileID: 0}
   AimBeam: {fileID: 7457039982224218047}

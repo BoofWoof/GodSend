@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ThreatSpawnerScript : MonoBehaviour
 {
+    public static ThreatSpawnerScript Instance;
     public static bool Spawning;
 
     public ADTextController textController;
@@ -13,6 +15,7 @@ public class ThreatSpawnerScript : MonoBehaviour
 
     public void Awake()
     {
+        Instance = this;
         Spawning = false;
     }
 
@@ -45,11 +48,7 @@ public class ThreatSpawnerScript : MonoBehaviour
 
             textController.TurnOff();
 
-            while (waveInfo.GetContinueSpawn())
-            {
-                yield return new WaitForSeconds(waveInfo.GetWait());
-                waveInfo.SpawnWave(transform);
-            }
+            waveInfo.SpawnWave(transform);
         }
 
         Spawning = false;
@@ -62,13 +61,10 @@ public class ThreatSpawnerScript : MonoBehaviour
             Debug.Log("Still Spawning");
             return false;
         }
-        foreach(Transform child in transform)
+        if(FallingThreatScript.isEnemiesRemaining())
         {
-            if (child.gameObject != null)
-            {
-                Debug.Log("Remaining Enemies");
-                return false;
-            }
+            Debug.Log("Remaining Enemies");
+            return false;
         }
         Debug.Log("Clear");
         return true;

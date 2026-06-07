@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e002f4dac65d34ca9d98e1ede8623d, type: 3}
   m_Name: TutorialWave1
   m_EditorClassIdentifier: 
+  LevelPrefab: {fileID: 8000708439455868736, guid: c06e94fb92da0c545a58c7c3d7807b21, type: 3}
   DropInfo:
   - FormationPrefab: {fileID: 9068355234619328729, guid: 3cc1f7dbf2372704bbe039e72a18e1f1, type: 3}
     DelayTillRelease: 0

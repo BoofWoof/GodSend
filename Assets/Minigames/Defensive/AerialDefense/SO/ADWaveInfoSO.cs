@@ -16,6 +16,7 @@ public class FormationDropInfo
 [CreateAssetMenu(fileName = "WaveInfoSO", menuName = "AerialDefense/WaveInfoSO")]
 public class ADWaveInfoSO : ScriptableObject
 {
+    public GameObject LevelPrefab;
     public List<FormationDropInfo> DropInfo;
     [HideInInspector] public int CurrentWave = 0;
     public bool BossWave = false;
@@ -32,6 +33,11 @@ public class ADWaveInfoSO : ScriptableObject
             Debug.Log("Attempted to spawn invalid weve.");
             return;
         }
+
+        GameObject NewWave = Instantiate(LevelPrefab, targetParent);
+        NewWave.transform.localPosition = Vector3.zero;
+        NewWave.transform.localRotation = Quaternion.identity;
+        /*
         GameObject NewWave = Instantiate(DropInfo[CurrentWave].FormationPrefab, targetParent);
         NewWave.transform.localPosition = Vector3.zero;
         NewWave.transform.localRotation = Quaternion.identity;
@@ -46,6 +52,7 @@ public class ADWaveInfoSO : ScriptableObject
             threatScript.WaveSpeedModifier = WaveSpeedModifier;
         }
         Destroy(NewWave);
+        */
 
         CurrentWave++;
     }

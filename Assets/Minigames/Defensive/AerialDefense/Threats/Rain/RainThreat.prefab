@@ -52,21 +52,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01779397fff72bf44aa3408d1ecf2ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeInPeriod: 1
-  FadeOutPeriod: 1
-  MaintainPeriod: 0.5
-  thisRB2D: {fileID: 0}
-  DropSpeed: 75
-  WindSpeed: 25
-  DestructionPingPrefab: {fileID: 3176560342262635343, guid: 9fee3b93413c1924aa988e4ff9dd6f30, type: 3}
-  DetectionPingPrefab: {fileID: 3176560342262635343, guid: 2a4b46335a66ae44990453cb0555421f, type: 3}
   DestructionNoises:
   - {fileID: 8300000, guid: eb99fe3d1da03874daf89b3453542a06, type: 3}
   - {fileID: 8300000, guid: 074eaf5c565e79047839fe3f9a3751b7, type: 3}
   - {fileID: 8300000, guid: ba77644ead31d7f4582f7230391b4f78, type: 3}
+  Health: 1
+  CanBeHurt: 1
+  CanHurtCity: 1
+  FinalRippleValue: 1
+  DeathPeriod: 0.25
+  DropSpeed: 75
+  WindSpeed: 25
   FormationSpeedModifier: 1
   WaveSpeedModifier: 1
+  DestructionPingPrefab: {fileID: 3176560342262635343, guid: 9fee3b93413c1924aa988e4ff9dd6f30, type: 3}
+  DetectionPingPrefab: {fileID: 3176560342262635343, guid: 2a4b46335a66ae44990453cb0555421f, type: 3}
   RadarNeeded: 0
+  FadeInPeriod: 1
+  FadeOutPeriod: 1
+  MaintainPeriod: 0.5
 --- !u!61 &6535995716211452762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,11 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 526ad1cfb1cda1b48959b58d11adcb58, type: 2}
+  m_Material: {fileID: 2100000, guid: 1696028c3c9555747b614175fe598829, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

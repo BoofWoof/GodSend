@@ -110,8 +110,6 @@ public class AerialDefenseScript : MonoBehaviour
     public static void ThreatDestroyed()
     {
         if (!GameRunning) return;
-
-        TotalProjectilesDestroyed++;
         
         Instance.StartCoroutine(Instance.CheckClearAtFrameEnd());
     }

@@ -57,6 +57,7 @@ MonoBehaviour:
   MaintainPeriod: 0.5
   thisRB2D: {fileID: 0}
   DropSpeed: 75
+  WindSpeed: 0
   DestructionPingPrefab: {fileID: 3176560342262635343, guid: 2bcb742e41a1794489c5227ac6c5abe2, type: 3}
   DetectionPingPrefab: {fileID: 3176560342262635343, guid: 2a4b46335a66ae44990453cb0555421f, type: 3}
   DestructionNoises:
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba77644ead31d7f4582f7230391b4f78, type: 3}
   FormationSpeedModifier: 1
   WaveSpeedModifier: 1
+  RadarNeeded: 0
 --- !u!61 &6535995716211452762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +164,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

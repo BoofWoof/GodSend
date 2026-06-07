@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class ADBlastScript : MonoBehaviour
 {
-    public float Speed = 20f;
     private RectTransform thisRect;
-    public float LifeTime = 3f;
+    private Rigidbody2D thisRB2D;
 
-    public Rigidbody2D thisRB2D;
+    [Header("Stats")]
+    public int DamageAmount = 1;
+    public float Speed = 20f;
+    public float LifeTime = 3f;
 
     public void Start()
     {
@@ -26,11 +28,8 @@ public class ADBlastScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "ADThreat")
         {
-            collision.gameObject.GetComponent<FallingThreatScript>().SpawnExplosionPing();
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<FallingThreatScript>().TakeDamage(DamageAmount, transform);
             Destroy(gameObject);
-
-            AerialDefenseScript.ThreatDestroyed();
         }
     }
 }
