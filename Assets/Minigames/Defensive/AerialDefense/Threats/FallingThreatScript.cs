@@ -21,6 +21,7 @@ public class FallingThreatScript : MonoBehaviour
     [Header("DeathSettings")]
     public float FinalRippleValue = 1f;
     public float DeathPeriod = 0.5f;
+    public float DamagePeriod = 0.1f;
 
     [Header("Personal Speeds")]
     public float DropSpeed = 20f;
@@ -39,6 +40,8 @@ public class FallingThreatScript : MonoBehaviour
     public float FadeInPeriod = 1.0f;
     public float FadeOutPeriod = 1.0f;
     public float MaintainPeriod = 0.5f;
+
+    private Material RenderMaterial;
 
     public static bool isEnemiesRemaining()
     {
@@ -76,6 +79,11 @@ public class FallingThreatScript : MonoBehaviour
         float angle = Mathf.Atan2(TotalSpeed.x, TotalSpeed.y) * Mathf.Rad2Deg;
         thisRB2D.MoveRotation(-angle - 180f);
         //transform.localRotation = Quaternion.Euler(0, 0, -targetAngle);
+
+        RenderMaterial = Instantiate(thisImage.material);
+        thisImage.material = RenderMaterial;
+        //thisImage.canvasRenderer.SetMaterial(RenderMaterial, 0);
+        thisImage.SetMaterialDirty();
     }
 
     public static void DestroyAllThreats()
@@ -89,6 +97,9 @@ public class FallingThreatScript : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (RenderMaterial != null)
+            DestroyImmediate(RenderMaterial);
+
         FallingThreatScripts.Remove(this);
         AerialDefenseScript.ThreatDestroyed();
     }
@@ -107,6 +118,8 @@ public class FallingThreatScript : MonoBehaviour
 
     public void TakeDamage(int damageValue, Transform source)
     {
+        if (!FallTriggered) return;
+
         Health -= damageValue;
         if(Health <= 0)
         {
@@ -116,30 +129,57 @@ public class FallingThreatScript : MonoBehaviour
             {
                 StartCoroutine(BurnAnimation(source.localPosition));
             }
+        } else
+        {
+            StartCoroutine(DamageAnimation(source.localPosition));
         }
+    }
+
+    public IEnumerator DamageAnimation(Vector2 explosionPoint)
+    {
+        RenderMaterial = thisImage.canvasRenderer.GetMaterial();
+
+        RenderMaterial.SetVector("_ImpactPoint", explosionPoint);
+
+        RenderMaterial.SetFloat("_DamageGlow", 1f);
+
+        float timePassed = 0f;
+
+        Vector2 lastMovement = Vector2.zero;
+
+        while(timePassed < DamagePeriod)
+        {
+            yield return null;
+            timePassed += Time.deltaTime;
+            float progress = timePassed / DamagePeriod;
+            RenderMaterial.SetFloat("_DamageGlow", Mathf.Lerp(1f, 0f, progress));
+
+            Vector2 newRandomMovement = Random.insideUnitCircle * 0.02f * (1 - progress);
+            thisRB2D.position += newRandomMovement - lastMovement;
+            lastMovement = newRandomMovement;
+        }
+        thisRB2D.position -= lastMovement;
+
+        RenderMaterial.SetVector("_ImpactPoint", new Vector2(0, -2000f));
     }
 
     public IEnumerator BurnAnimation(Vector2 explosionPoint)
     {
         Debug.Log("STARTING THE BURN---------------------");
+        RenderMaterial = thisImage.canvasRenderer.GetMaterial();
 
         thisRB2D.simulated = false;
 
-        Material renderMaterial = Instantiate(thisImage.material);
-        thisImage.canvasRenderer.SetMaterial(renderMaterial, 0);
-        renderMaterial.SetVector("_ImpactPoint", explosionPoint);
+        RenderMaterial.SetVector("_ImpactPoint", explosionPoint);
 
         float timePassed = 0f;
         while (timePassed < DeathPeriod)
         {
             yield return null;
             timePassed += Time.deltaTime;
-            Debug.Log(timePassed);
             float progress = timePassed / DeathPeriod;
-            Debug.Log(progress);
             float rippleValue = Mathf.Lerp(0.1f * FinalRippleValue, FinalRippleValue, progress);
-            Debug.Log(rippleValue);
-            renderMaterial.SetFloat("_RippleProgress", rippleValue);
+            RenderMaterial.SetFloat("_RippleProgress", rippleValue);
         }
         Destroy(gameObject);
     }

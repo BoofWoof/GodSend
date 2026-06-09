@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TurretScript : MonoBehaviour
@@ -26,6 +27,8 @@ public class TurretScript : MonoBehaviour
 
     public GameObject AimBeam;
 
+    public UnityEvent OnShoot;
+
     public void Start()
     {
         AimBeam.SetActive(false);
@@ -40,6 +43,8 @@ public class TurretScript : MonoBehaviour
     public bool FireBeam()
     {
         if (!IsTurretCharged()) return false;
+
+        OnShoot?.Invoke();
 
         GameObject newBlast = Instantiate(blastObject, bulletParent);
         RectTransform newRectTransform = newBlast.GetComponent<RectTransform>();

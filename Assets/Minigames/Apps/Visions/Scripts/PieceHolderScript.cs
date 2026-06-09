@@ -25,13 +25,13 @@ public class PieceHolderScript : MonoBehaviour
 
     public static List<PieceHolderScript> PieceList = new List<PieceHolderScript>();
 
+    public bool LastPlaceFilled = false;
     public bool FullyFilled = false;
 
     private GameObject Shadow;
 
     public void Awake()
     {
-        PieceList = new List<PieceHolderScript>();
         PickupEnabled = true;
         PieceHolderRestraint = true;
         StorePiece = false;
@@ -57,6 +57,7 @@ public class PieceHolderScript : MonoBehaviour
 
     public static void ClearPieces()
     {
+
         PieceList.Clear();
     }
 
@@ -374,7 +375,22 @@ public class PieceHolderScript : MonoBehaviour
 
         if (successfulUpdate)
         {
-            TurkPuzzleScript.instance.Drop.Play();
+            if (FullyFilled && !LastPlaceFilled)
+            {
+                int Filled = -1;
+                foreach(PieceHolderScript piece in PieceList)
+                {
+                    if (piece.FullyFilled) Filled++;
+                }
+                Debug.Log(Filled);
+                Debug.Log(PieceList.Count);
+                TurkPuzzleScript.instance.DropGood.pitch = Mathf.Lerp(1f, 2f, ((float)Filled)/PieceList.Count);
+                TurkPuzzleScript.instance.DropGood.Play();
+            } else
+            {
+                TurkPuzzleScript.instance.Drop.Play();
+            }
+            LastPlaceFilled = FullyFilled;
             PreviousValidRotations = Rotations;
         }
         else

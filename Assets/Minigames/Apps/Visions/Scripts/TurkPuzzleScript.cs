@@ -40,6 +40,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public GameObject InteractionBlocker;
 
     [Header("Objects")]
+    public Transform EmptyHolder;
     public TMP_Text PuzzleName;
     public TMP_Text NewRecordText;
     public ParticleSystem NewRecordParticles;
@@ -55,6 +56,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public AudioSource Pickup;
     public AudioSource Drop;
     public AudioSource DropBad;
+    public AudioSource DropGood;
     public AudioSource NewPuzzleSound;
     public AudioSource RotateSound;
 
@@ -158,6 +160,8 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void Start()
     {
+        EmptyHolder.localPosition = transform.localPosition;
+
         if (DayInfo.CurrentDay != 1) MinAvailableDifficulty = 0;
 
         GeneratePuzzle();
@@ -776,7 +780,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
                 // Instantiate a new square
                 GameObject newSquare = Instantiate(EmptyTile);
-                newSquare.transform.parent = transform;
+                newSquare.transform.parent = EmptyHolder;
 
                 RectTransform rectTransform = newSquare.GetComponent<RectTransform>();
                 rectTransform.pivot = new Vector2(0.5f, 0.5f);
@@ -784,7 +788,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
                 // Set the position of the square
                 newSquare.transform.localRotation = Quaternion.identity;
-                newSquare.transform.localScale = Vector2.one;
+                newSquare.transform.localScale = Vector3.one;
                 rectTransform.localPosition = new Vector2(
                     (x - center_idx.x) * squareSize,
                     (y - center_idx.y) * squareSize

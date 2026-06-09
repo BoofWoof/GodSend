@@ -45,6 +45,7 @@ Material:
     - _ColorMask: 15
     - _Dissolve: 0
     - _Gradient: 100
+    - _NoiseScale: 3000
     - _RippleProgress: 0
     - _Stencil: 0
     - _StencilComp: 8
@@ -55,6 +56,6 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _ImpactPoint: {r: 0, g: 0, b: 0, a: 0}
+    - _ImpactPoint: {r: 0, g: -2000, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

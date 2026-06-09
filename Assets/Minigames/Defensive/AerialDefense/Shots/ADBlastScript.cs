@@ -5,6 +5,12 @@ public class ADBlastScript : MonoBehaviour
     private RectTransform thisRect;
     private Rigidbody2D thisRB2D;
 
+    [Header("Particles")]
+    public GameObject TrailObject;
+    public ParticleSystem Trail;
+    public GameObject BurstObject;
+    public ParticleSystem Burst;
+
     [Header("Stats")]
     public int DamageAmount = 1;
     public float Speed = 20f;
@@ -29,6 +35,14 @@ public class ADBlastScript : MonoBehaviour
         if (collision.gameObject.tag == "ADThreat")
         {
             collision.gameObject.GetComponent<FallingThreatScript>().TakeDamage(DamageAmount, transform);
+
+            Trail.Stop();
+            TrailObject.transform.SetParent(transform.parent);
+            Destroy(TrailObject, 1);
+            Burst.Play();
+            BurstObject.transform.SetParent(transform.parent);
+            Destroy(BurstObject, 1);
+
             Destroy(gameObject);
         }
     }

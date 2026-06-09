@@ -37,16 +37,12 @@ public class UnlockablesManager: MonoBehaviour
         PostersList = InitialPostersList;
 
         PostersDict = new Dictionary<string, OfficePoster>();
-
-        Lua.RegisterFunction("UnlockPortrait", null, SymbolExtensions.GetMethodInfo(() => UnlockPortrait("")));
-    }
-
-    public void Start()
-    {
         foreach (OfficePoster poster in PostersList)
         {
             PostersDict.Add(poster.Name, poster);
         }
+
+        Lua.RegisterFunction("UnlockPortrait", null, SymbolExtensions.GetMethodInfo(() => UnlockPortrait("")));
     }
 
     public static void UnlockPortrait(string posterName)

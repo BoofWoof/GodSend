@@ -10,9 +10,13 @@ public class TurkHoleScript : MonoBehaviour
     public Vector2Int cord;
     public TurkCubeScript filledWith;
 
+    public ParticleSystem PlaceBurst;
+    public bool Filled = false;
+
     public void FillHole(TurkCubeScript filler)
     {
         filledWith = filler;
+        PlaceBurst.Play();
     }
 
     public void EmptyHole()
@@ -22,11 +26,11 @@ public class TurkHoleScript : MonoBehaviour
 
     public bool isFilled()
     {
-        bool filled = filledWith != null;
-        if (filled) {
+        Filled = filledWith != null;
+        if (Filled) {
             Image img = filledWith.GetComponent<Image>();
             img.material = TurkPuzzleScript.instance.ActiveConstMat;
         } 
-        return filled;
+        return Filled;
     }
 }

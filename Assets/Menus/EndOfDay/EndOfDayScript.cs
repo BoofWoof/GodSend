@@ -32,7 +32,9 @@ public class EndOfDayScript : MonoBehaviour
 
     public void GoSceneNextDay()
     {
-
+        DaytaScript.ExternalSkipStart = false;
+        DayInfo.SetDay(DayInfo.CurrentDay + 1);
+        SaveSystem.LoadScene("AriesRoom");
     }
     public void GoSceneMenu()
     {
