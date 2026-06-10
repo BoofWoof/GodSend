@@ -91,7 +91,7 @@ public class VisionEvents : MonoBehaviour
             }
         }
     }
-    public void OnCreditChange(float newValue)
+    public void OnCreditChange(double newValue)
     {
         List<EventAbstract> eventCopy = new List<EventAbstract>(MoneyEarnedEvents);
         foreach (EventAbstract possibleEvent in eventCopy)

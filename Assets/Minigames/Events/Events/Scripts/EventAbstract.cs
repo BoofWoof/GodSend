@@ -48,6 +48,11 @@ public abstract class EventAbstract : ScriptableObject
         if (RequiredQuest.Length > 0 && QuestLog.GetQuestState(RequiredQuest) != QuestState.Active) return false;
         return Value >= Threshold;
     }
+    public bool CheckIfValid(double Value)
+    {
+        if (RequiredQuest.Length > 0 && QuestLog.GetQuestState(RequiredQuest) != QuestState.Active) return false;
+        return Value >= Threshold;
+    }
 
     public void Activate()
     {

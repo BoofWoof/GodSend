@@ -7,7 +7,7 @@ namespace DebugTools.DeveloperConsole.Commands
     {
         public override bool Process(string[] args)
         {
-            CurrencyData.Credits += float.Parse(args[0]);
+            CurrencyData.Credits += double.Parse(args[0]);
 
             return true;
         }

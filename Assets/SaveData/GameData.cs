@@ -7,10 +7,10 @@ public static class GameData
 
 public static class CurrencyData
 {
-    public delegate void ValueUpdate(float newValue);
+    public delegate void ValueUpdate(double newValue);
     public static ValueUpdate CreditUpdate;
-    private static float _credits;
-    public static float Credits {
+    private static double _credits;
+    public static double Credits {
         get
         {
             return _credits;

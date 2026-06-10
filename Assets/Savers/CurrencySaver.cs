@@ -7,7 +7,7 @@ public class CurrencySaver : Saver
     [Serializable]
     public class CurrencySaveData 
     {
-        public float Credits;
+        public double Credits;
     }
     public override string RecordData()
     {

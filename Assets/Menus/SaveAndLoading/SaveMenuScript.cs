@@ -55,7 +55,7 @@ public class SaveMenuScript : MonoBehaviour
         public int Slot;
         public int Day;
         public float TimePlayed;
-        public float Credits;
+        public double Credits;
     }
 
     void Start()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FallingThreatScript : MonoBehaviour
@@ -43,6 +44,9 @@ public class FallingThreatScript : MonoBehaviour
 
     private Material RenderMaterial;
 
+    public UnityEvent OnStageEnter;
+    public UnityEvent OnObjectDestroy;
+
     public static bool isEnemiesRemaining()
     {
         return FallingThreatScripts.Count > 0;
@@ -57,7 +61,7 @@ public class FallingThreatScript : MonoBehaviour
 
         thisRB2D = GetComponent<Rigidbody2D>();
         thisImage = GetComponent<Image>();
-        thisImage.maskable = true;
+        if(thisImage != null) thisImage.maskable = true;
 
         Vector2 DownSpeed = Vector2.down * transform.parent.lossyScale * 75f * WaveSpeedModifier;
         Vector2 TotalSpeed = DownSpeed;
@@ -70,20 +74,29 @@ public class FallingThreatScript : MonoBehaviour
         if (FallTriggered) return;
         FallTriggered = true;
 
-        thisRB2D = GetComponent<Rigidbody2D>();
+        OnStageEnter?.Invoke();
+
+        UpdatePath();
+
+        WindScript.OnWindChanged += UpdatePath;
+
+        if (thisImage == null) return;
+        RenderMaterial = Instantiate(thisImage.material);
+        thisImage.material = RenderMaterial;
+        thisImage.SetMaterialDirty();
+    }
+
+    public void UpdatePath()
+    {
+        Debug.Log($"Update Path: {WindScript.StageWind}");
+
         Vector2 DownSpeed = Vector2.down * DropSpeed * transform.parent.lossyScale * FormationSpeedModifier * WaveSpeedModifier;
-        Vector2 HorizontalSpeed = Vector2.right * WindSpeed * transform.lossyScale;
+        Vector2 HorizontalSpeed = Vector2.right * (WindSpeed + WindScript.StageWind) * transform.lossyScale;
         Vector2 TotalSpeed = DownSpeed + HorizontalSpeed;
         thisRB2D.linearVelocity = TotalSpeed;
 
         float angle = Mathf.Atan2(TotalSpeed.x, TotalSpeed.y) * Mathf.Rad2Deg;
         thisRB2D.MoveRotation(-angle - 180f);
-        //transform.localRotation = Quaternion.Euler(0, 0, -targetAngle);
-
-        RenderMaterial = Instantiate(thisImage.material);
-        thisImage.material = RenderMaterial;
-        //thisImage.canvasRenderer.SetMaterial(RenderMaterial, 0);
-        thisImage.SetMaterialDirty();
     }
 
     public static void DestroyAllThreats()
@@ -99,6 +112,9 @@ public class FallingThreatScript : MonoBehaviour
     {
         if (RenderMaterial != null)
             DestroyImmediate(RenderMaterial);
+
+        WindScript.OnWindChanged -= UpdatePath;
+        OnObjectDestroy?.Invoke();
 
         FallingThreatScripts.Remove(this);
         AerialDefenseScript.ThreatDestroyed();
@@ -118,6 +134,7 @@ public class FallingThreatScript : MonoBehaviour
 
     public void TakeDamage(int damageValue, Transform source)
     {
+        if (thisImage == null) return;
         if (!FallTriggered) return;
 
         Health -= damageValue;

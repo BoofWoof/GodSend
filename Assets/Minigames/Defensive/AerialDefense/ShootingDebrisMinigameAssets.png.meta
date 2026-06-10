@@ -655,7 +655,7 @@ TextureImporter:
         width: 218
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -664,6 +664,28 @@ TextureImporter:
       bones: []
       spriteID: d15499ad3ffd0cb42acbf0ec0dfca7eb
       internalID: -2045665936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingDebrisMinigameAssets_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 862
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea2e70189c06f0428902119ae8e6e96
+      internalID: 612538705
       vertices: []
       indices: 
       edges: []
@@ -708,6 +730,7 @@ TextureImporter:
       ShootingDebrisMinigameAssets (2)_9: 426605066
       ShootingDebrisMinigameAssets_0: -930562208
       ShootingDebrisMinigameAssets_1: -2045665936
+      ShootingDebrisMinigameAssets_2: 612538705
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

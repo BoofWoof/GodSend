@@ -6,6 +6,41 @@ using UnityEngine;
 
 public static class NumberConversion
 {
+    public static string NumberToString(this double value, bool force3Figures = false)
+    {
+        double absValue = Math.Abs(value);
+
+        string Format(double val)
+        {
+            if (!force3Figures)
+                return val.ToString("G3"); // General format, max 3 significant digits
+
+            // Calculate number of digits before the decimal
+            int digitsBeforeDecimal = (val == 0) ? 0 : Math.Max(0, (int)Math.Floor(Math.Log10(Math.Abs(val))) + 1);
+            int decimals = Math.Max(0, 3 - digitsBeforeDecimal);
+            string format = "0." + new string('0', decimals);
+            return val.ToString(format);
+        }
+
+        if (absValue >= 1_000_000_000_000 * 0.9999)
+            return Format(value / 1_000_000_000_000d) + " T";
+        else if (absValue >= 1_000_000_000 * 0.9999)
+            return Format(value / 1_000_000_000d) + " G";
+        else if (absValue >= 1_000_000 * 0.9999)
+            return Format(value / 1_000_000d) + " M";
+        else if (absValue >= 1_000 * 0.9999)
+            return Format(value / 1_000d) + " k";
+        else if (absValue >= 1 * 0.9999)
+            return Format(value) + " ";
+        else if (absValue >= 0.001 * 0.9999)
+            return Format(value * 1_000d) + " m";
+        else if (absValue >= 0.000_001 * 0.9999)
+            return Format(value * 1_000_000d) + " µ";
+        else if (absValue >= 0.000_000_001 * 0.9999)
+            return Format(value * 1_000_000_000d) + " n";
+        else
+            return Format(value) + " ";
+    }
     public static string NumberToString(this float value, bool force3Figures = false)
     {
         float absValue = Mathf.Abs(value);
