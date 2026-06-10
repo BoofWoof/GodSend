@@ -16,6 +16,8 @@ public class ADBlastScript : MonoBehaviour
     public float Speed = 20f;
     public float LifeTime = 3f;
 
+    private TurretScript Source;
+
     public void Start()
     {
         thisRect = GetComponent<RectTransform>();
@@ -36,6 +38,8 @@ public class ADBlastScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<FallingThreatScript>().TakeDamage(DamageAmount, transform);
 
+            Source.HitRegenerate();
+
             Trail.Stop();
             TrailObject.transform.SetParent(transform.parent);
             Destroy(TrailObject, 1);
@@ -45,5 +49,10 @@ public class ADBlastScript : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    public void SetSource(TurretScript source)
+    {
+        Source = source;
     }
 }

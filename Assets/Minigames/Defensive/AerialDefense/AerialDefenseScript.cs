@@ -112,7 +112,7 @@ public class AerialDefenseScript : MonoBehaviour
         if (!GameRunning) return;
         if (!Instance.isActiveAndEnabled) return;
 
-        Instance.StartCoroutine(Instance.CheckClearAtFrameEnd());
+
     }
 
     public static void TakeDamage()
@@ -135,22 +135,6 @@ public class AerialDefenseScript : MonoBehaviour
             Instance.LoseOutcomes();
             FallingThreatScript.DestroyAllThreats();
             Instance.StopWave();
-        } else
-        {
-            Instance.StartCoroutine(Instance.CheckClearAtFrameEnd());
-        }
-    }
-    private IEnumerator CheckClearAtFrameEnd()
-    {
-        // Wait until the end of the frame when Destroy() has finished running
-        yield return null;
-        yield return new WaitForEndOfFrame();
-
-        if (threatSpawnerScript.WaveClearCheck())
-        {
-            WinOutcomes();
-            TurretScript.autoFire = true;
-            StopWave();
         }
     }
 

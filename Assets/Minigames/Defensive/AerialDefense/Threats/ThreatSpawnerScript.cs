@@ -27,40 +27,43 @@ public class ThreatSpawnerScript : MonoBehaviour
 
     public IEnumerator RunWave(AerialDefenseLevelData levelData)
     {
-        Spawning = true;
-
+        float waitDivider = 1f;
         for (int i = 0; i < levelData.LevelWaves.Count; i++)
         {
+            float modifiedWaitPeriod = WaitPeriod / waitDivider;
+
             ADWaveInfoSO waveInfo = Instantiate(levelData.LevelWaves[i]);
 
             textController.TurnOn(waveInfo, levelData, i+1);
 
             float timePassed = 0;
-            while(timePassed < WaitPeriod)
+            while(timePassed < modifiedWaitPeriod)
             {
                 timePassed += Time.deltaTime;
-                float progress = timePassed / WaitPeriod;
+                float progress = timePassed / modifiedWaitPeriod;
 
                 TimerBar1.fillAmount = 1f - progress;
                 TimerBar2.fillAmount = 1f - progress;
                 yield return null;
             }
+            waitDivider = 2f;
 
             textController.TurnOff();
 
             waveInfo.SpawnWave(transform);
+
+            while (!WaveClearCheck())
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+            yield return new WaitForSeconds(0.2f);
         }
 
-        Spawning = false;
+        AerialDefenseScript.Instance.StopWave();
     }
 
     public bool WaveClearCheck()
     {
-        if (Spawning)
-        {
-            Debug.Log("Still Spawning");
-            return false;
-        }
         if(FallingThreatScript.isEnemiesRemaining())
         {
             Debug.Log("Remaining Enemies");

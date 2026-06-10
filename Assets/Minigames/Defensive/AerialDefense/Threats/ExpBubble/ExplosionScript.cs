@@ -17,10 +17,8 @@ public class ExplosionScript : MonoBehaviour
 
         if (collision.gameObject.tag == "ADThreat")
         {
-            collision.gameObject.GetComponent<FallingThreatScript>().SpawnExplosionPing();
-            Destroy(collision.gameObject);
-
-            AerialDefenseScript.ThreatDestroyed();
+            if (collision.gameObject == null) return;
+            collision.gameObject.GetComponent<FallingThreatScript>()?.TakeDamage(1, transform);
         }
     }
 }

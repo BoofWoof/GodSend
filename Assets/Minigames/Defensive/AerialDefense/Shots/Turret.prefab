@@ -628,9 +628,10 @@ MonoBehaviour:
   bulletParent: {fileID: 0}
   blastObject: {fileID: 2099277080783123704, guid: 40d13e3a15ef5774ea9b938925bbf25d, type: 3}
   chargeMeter: {fileID: 1584888124214926788}
-  ChargeRate: 0.08
+  ChargeRate: 0.065
   CurrentCharge: 0
   MaxCharge: 1
+  OnHitRechargePercent: 0.4
   ShotCost: 0.2
   diageticTurretScript: {fileID: 0}
   AimBeam: {fileID: 7457039982224218047}

@@ -23,7 +23,7 @@ public class WindScript : MonoBehaviour
 
     public void ResetWind()
     {
-        StopCoroutine(WindCoroutine);
+        if(WindCoroutine != null) StopCoroutine(WindCoroutine);
         StageWind = 0f;
         TargetWind = 0f;
     }

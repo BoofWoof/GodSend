@@ -66,12 +66,18 @@ MonoBehaviour:
   WindSpeed: 0
   FormationSpeedModifier: 1
   WaveSpeedModifier: 1
-  DestructionPingPrefab: {fileID: 3176560342262635343, guid: 9fee3b93413c1924aa988e4ff9dd6f30, type: 3}
-  DetectionPingPrefab: {fileID: 3176560342262635343, guid: 2a4b46335a66ae44990453cb0555421f, type: 3}
+  DestructionPingPrefab: {fileID: 0}
+  DetectionPingPrefab: {fileID: 0}
   RadarNeeded: 0
   FadeInPeriod: 1
   FadeOutPeriod: 1
   MaintainPeriod: 0.5
+  OnStageEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &6535995716211452762
 BoxCollider2D:
   m_ObjectHideFlags: 0

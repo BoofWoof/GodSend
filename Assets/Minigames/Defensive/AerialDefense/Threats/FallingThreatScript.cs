@@ -43,9 +43,12 @@ public class FallingThreatScript : MonoBehaviour
     public float MaintainPeriod = 0.5f;
 
     private Material RenderMaterial;
+    private Coroutine DamageCoroutine;
 
     public UnityEvent OnStageEnter;
     public UnityEvent OnObjectDestroy;
+
+    private bool Dying = false;
 
     public static bool isEnemiesRemaining()
     {
@@ -122,6 +125,8 @@ public class FallingThreatScript : MonoBehaviour
 
     public void SpawnExplosionPing()
     {
+        if (DestructionPingPrefab == null) return;
+
         GameObject newPing = Instantiate(DestructionPingPrefab, transform.position, Quaternion.identity, AerialDefenseScript.StaticGameCanvas);
         AudioSource pingAudio = newPing.GetComponent<AudioSource>();
         if (pingAudio != null && DestructionNoises.Length > 0)
@@ -136,19 +141,21 @@ public class FallingThreatScript : MonoBehaviour
     {
         if (thisImage == null) return;
         if (!FallTriggered) return;
+        if (Dying) return;
 
         Health -= damageValue;
         if(Health <= 0)
         {
-            //SpawnExplosionPing();
+            if (DamageCoroutine != null) StopCoroutine(DamageCoroutine);
+            SpawnExplosionPing();
             if (source == null) Destroy(gameObject);
             else
             {
-                StartCoroutine(BurnAnimation(source.localPosition));
+                DamageCoroutine = StartCoroutine(BurnAnimation(source.localPosition));
             }
         } else
         {
-            StartCoroutine(DamageAnimation(source.localPosition));
+            DamageCoroutine = StartCoroutine(DamageAnimation(source.localPosition));
         }
     }
 
@@ -182,12 +189,15 @@ public class FallingThreatScript : MonoBehaviour
 
     public IEnumerator BurnAnimation(Vector2 explosionPoint)
     {
+        Dying = true;
+
         Debug.Log("STARTING THE BURN---------------------");
         RenderMaterial = thisImage.canvasRenderer.GetMaterial();
 
         thisRB2D.simulated = false;
 
         RenderMaterial.SetVector("_ImpactPoint", explosionPoint);
+        RenderMaterial.SetFloat("_DamageGlow", 0f);
 
         float timePassed = 0f;
         while (timePassed < DeathPeriod)

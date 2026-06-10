@@ -16,6 +16,7 @@ public class TurretScript : MonoBehaviour
     public float ChargeRate = 1f;
     public float CurrentCharge = 0f;
     public float MaxCharge = 1f;
+    public float OnHitRechargePercent = 0.5f;
 
     public float ShotCost = 0.25f;
 
@@ -52,6 +53,8 @@ public class TurretScript : MonoBehaviour
         newRectTransform.localRotation = gun.localRotation;
         newRectTransform.SetSiblingIndex(0);
 
+        newBlast.GetComponent<ADBlastScript>().SetSource(this);
+
         if (diageticTurretScript != null) diageticTurretScript.Fire();
         CurrentCharge -= ShotCost;
         TurretFiredEvent?.Invoke(this);
@@ -77,5 +80,11 @@ public class TurretScript : MonoBehaviour
 
         // Apply rotation (z-axis since it’s 2D UI element)
         gun.localRotation = Quaternion.Euler(0, 0, angle - 90f);
+    }
+
+    public void HitRegenerate()
+    {
+        CurrentCharge += ShotCost * OnHitRechargePercent;
+        if (CurrentCharge > MaxCharge) CurrentCharge = MaxCharge;
     }
 }

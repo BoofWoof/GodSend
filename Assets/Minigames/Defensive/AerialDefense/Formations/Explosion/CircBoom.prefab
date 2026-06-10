@@ -356,29 +356,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3805782594856282353}
     m_Modifications:
-    - target: {fileID: 4413200827512493010, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -930562208, guid: 37df1609754649f4d93409fccf98a418, type: 3}
     - target: {fileID: 5581073285144118489, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
       propertyPath: m_Name
       value: BubbleThreat
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535995716211452762, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
-      propertyPath: m_Size.x
-      value: 38.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535995716211452762, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
-      propertyPath: m_Size.y
-      value: 30.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535995716211452762, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535995716211452762, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
-      propertyPath: m_Offset.y
-      value: 16.7
       objectReference: {fileID: 0}
     - target: {fileID: 8292632933335754904, guid: 779faa59218848d4fad75e84e0b3a5b9, type: 3}
       propertyPath: m_Pivot.x

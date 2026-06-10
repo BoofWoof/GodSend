@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DeleteOnAnimationEnd : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        if (animator == null) animator = GetComponent<Animator>();
 
         if (animator == null)
         {
