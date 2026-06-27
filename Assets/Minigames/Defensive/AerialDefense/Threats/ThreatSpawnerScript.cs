@@ -33,6 +33,7 @@ public class ThreatSpawnerScript : MonoBehaviour
             float modifiedWaitPeriod = WaitPeriod / waitDivider;
 
             ADWaveInfoSO waveInfo = Instantiate(levelData.LevelWaves[i]);
+            FallingThreatScript.WaveSpeedModifier = waveInfo.WaveSpeedModifier;
 
             textController.TurnOn(waveInfo, levelData, i+1);
 

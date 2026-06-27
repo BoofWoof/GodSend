@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public class IntroSoundEffects : MonoBehaviour
 {
@@ -10,6 +12,14 @@ public class IntroSoundEffects : MonoBehaviour
     private AudioSource ThisAudioSource;
 
     public UnityEvent OnCompleteEvent;
+
+    //CameraControl
+    public Camera TargetCamera;
+
+    public SkyCamFlat SkyCamController;
+
+    private UniversalAdditionalCameraData CameraData;
+    private List<Camera> previousStack;
 
 
     public void Start()
@@ -21,6 +31,14 @@ public class IntroSoundEffects : MonoBehaviour
             DaytaScript.StaticStartDay();
             Destroy(gameObject);
         }
+
+        CameraData = TargetCamera.GetUniversalAdditionalCameraData();
+
+        previousStack = new List<Camera>(CameraData.cameraStack);
+        CameraData.cameraStack.Clear();
+        CameraData.cameraStack.Add(GetComponent<Camera>());
+
+        SkyCamController.SetTargetCamera(GetComponent<Camera>());
     }
 
     public void TakeStep()
@@ -37,6 +55,15 @@ public class IntroSoundEffects : MonoBehaviour
     public void OnCutsceneCompletion()
     {
         OnCompleteEvent?.Invoke();
+
+        CameraData.cameraStack.Clear();
+        foreach (Camera c in previousStack)
+        {
+            CameraData.cameraStack.Add(c);
+        }
+
+        SkyCamController.SetDefaultTargetCamera();
+
         Destroy(gameObject);
     }
 }

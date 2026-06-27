@@ -8,7 +8,8 @@ public class FallingThreatScript : MonoBehaviour
 {
     public static List<FallingThreatScript> FallingThreatScripts = new List<FallingThreatScript>();
     private Rigidbody2D thisRB2D;
-    private Image thisImage;
+    public Image thisImage;
+    private BoxCollider2D thisBoxCollider;
 
     public AudioClip[] DestructionNoises;
 
@@ -18,6 +19,8 @@ public class FallingThreatScript : MonoBehaviour
     public int Health = 1;
     public bool CanBeHurt = true;
     public bool CanHurtCity = true;
+    public bool ScaleWithHealth = false;
+    private Vector2 BaseScale;
 
     [Header("DeathSettings")]
     public float FinalRippleValue = 1f;
@@ -30,7 +33,7 @@ public class FallingThreatScript : MonoBehaviour
 
     [Header("External Speeds")]
     public float FormationSpeedModifier = 1f;
-    public float WaveSpeedModifier = 1f;
+    public static float WaveSpeedModifier = 1f;
 
     [Header("Prefabs")]
     public GameObject DestructionPingPrefab;
@@ -63,12 +66,21 @@ public class FallingThreatScript : MonoBehaviour
         transform.rotation = Quaternion.identity;
 
         thisRB2D = GetComponent<Rigidbody2D>();
-        thisImage = GetComponent<Image>();
-        if(thisImage != null) thisImage.maskable = true;
+        thisBoxCollider = GetComponent<BoxCollider2D>();
+        if(thisImage == null)
+        {
+            thisImage = GetComponent<Image>();
+        }
 
-        Vector2 DownSpeed = Vector2.down * transform.parent.lossyScale * 75f * WaveSpeedModifier;
-        Vector2 TotalSpeed = DownSpeed;
+        BaseScale = thisBoxCollider.size;
+
+        if (thisImage != null) thisImage.maskable = true;
+
+        Vector2 DownSpeed = Vector2.down * transform.parent.lossyScale * 75f;
+        Vector2 TotalSpeed = DownSpeed * WaveSpeedModifier;
         thisRB2D.linearVelocity = TotalSpeed;
+
+        if (ScaleWithHealth && Health > 1f) SetScale(1f + (Health - 1f) / 2f);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -89,13 +101,21 @@ public class FallingThreatScript : MonoBehaviour
         thisImage.SetMaterialDirty();
     }
 
+    public void SetScale(float scale)
+    {
+        thisRB2D.simulated = false;
+        thisBoxCollider.size = BaseScale * scale;
+        thisRB2D.simulated = true;
+        thisImage.transform.localScale = Vector3.one * scale;
+    }
+
     public void UpdatePath()
     {
         Debug.Log($"Update Path: {WindScript.StageWind}");
 
-        Vector2 DownSpeed = Vector2.down * DropSpeed * transform.parent.lossyScale * FormationSpeedModifier * WaveSpeedModifier;
+        Vector2 DownSpeed = Vector2.down * DropSpeed * transform.parent.lossyScale;
         Vector2 HorizontalSpeed = Vector2.right * (WindSpeed + WindScript.StageWind) * transform.lossyScale;
-        Vector2 TotalSpeed = DownSpeed + HorizontalSpeed;
+        Vector2 TotalSpeed = (DownSpeed + HorizontalSpeed) * WaveSpeedModifier * FormationSpeedModifier;
         thisRB2D.linearVelocity = TotalSpeed;
 
         float angle = Mathf.Atan2(TotalSpeed.x, TotalSpeed.y) * Mathf.Rad2Deg;
@@ -156,6 +176,7 @@ public class FallingThreatScript : MonoBehaviour
         } else
         {
             DamageCoroutine = StartCoroutine(DamageAnimation(source.localPosition));
+            if (ScaleWithHealth) SetScale(1f + (Health - 1f) / 2f);
         }
     }
 

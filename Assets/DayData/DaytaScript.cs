@@ -62,6 +62,21 @@ public class DaytaScript : MonoBehaviour
             EnableCharacter();
             StartDay();
         }
+        if (DayInfo.CurrentDay == 0)
+        {
+            CharacterActivationScript.DisableCharacter("MacroSid");
+            CharacterActivationScript.DisableCharacter("MacroAlesssandro");
+        }
+        if (DayInfo.CurrentDay == 1 && !SkipStart)
+        {
+            CharacterActivationScript.DisableCharacter("MacroSid");
+            CharacterActivationScript.DisableCharacter("MacroAlesssandro");
+        }
+        if (DayInfo.CurrentDay == 2 && !SkipStart)
+        {
+            CharacterActivationScript.DisableCharacter("MacroSid");
+            CharacterActivationScript.DisableCharacter("MacroAries");
+        }
     }
     public static void StaticStartDay()
     {

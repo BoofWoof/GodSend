@@ -32,7 +32,12 @@ public class CharacterSubtitleScript : MonoBehaviour
         AudioSource audioSource = GetComponent<AudioSource>();
         while (speechScript.isSpeechPlaying())
         {
-            if(timeMarkers.GetSize() > 0)
+            if (SubtitleScript.instance == null)
+            {
+                yield return null;
+                continue;
+            }
+            if (timeMarkers.GetSize() > 0)
             {
                 (TimeMarker<string> currentSubtitle, _) = timeMarkers.GetNearestData(audioSource.time);
                 SubtitleScript.instance.SetText(currentSubtitle.data);

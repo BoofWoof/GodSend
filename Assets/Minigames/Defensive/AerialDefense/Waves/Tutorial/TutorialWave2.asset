@@ -16,5 +16,5 @@ MonoBehaviour:
   CurrentWave: 0
   BossWave: 0
   WaveName: BREEZY
-  WaveFlavor: The winds of change.
-  WaveSpeedModifier: 1
+  WaveFlavor: The winds of change are coming
+  WaveSpeedModifier: 1.15
