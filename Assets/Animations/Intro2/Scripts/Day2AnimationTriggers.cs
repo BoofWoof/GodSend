@@ -14,7 +14,7 @@ public class Day2AnimationTriggers : MonoBehaviour
 
     public void Start()
     {
-        if (DayInfo.CurrentDay != 2)
+        if (DayInfo.CurrentDay != 2 || DaytaScript.SkipStart)
         {
             Destroy(ContainingObject);
             return;

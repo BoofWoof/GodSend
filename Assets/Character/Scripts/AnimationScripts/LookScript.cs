@@ -95,6 +95,11 @@ public class LookScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(MinDistrationWait, MaxDistrationWait));
+            if(DistractionPoints.Count == 0)
+            {
+                yield return null;
+                continue;
+            }
             int distractionIndex = UnityEngine.Random.Range(0, DistractionPoints.Count);
             Distracted = true;
             DistractionTarget = DistractionPoints[distractionIndex];

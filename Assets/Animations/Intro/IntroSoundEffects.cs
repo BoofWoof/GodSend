@@ -30,6 +30,7 @@ public class IntroSoundEffects : MonoBehaviour
         {
             DaytaScript.StaticStartDay();
             Destroy(gameObject);
+            return;
         }
 
         CameraData = TargetCamera.GetUniversalAdditionalCameraData();

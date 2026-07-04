@@ -47,7 +47,7 @@ public class CharacterSubtitleScript : MonoBehaviour
             }
             yield return null;
         }
-        SubtitleScript.instance.SetText("");
+        if (SubtitleScript.instance != null) SubtitleScript.instance.SetText("");
     }
 
     public void ProcessText()

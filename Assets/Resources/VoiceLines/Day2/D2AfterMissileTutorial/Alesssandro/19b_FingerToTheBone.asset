@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
+  m_Name: 19b_FingerToTheBone
+  m_EditorClassIdentifier: 
+  AudioData: {fileID: 8300000, guid: 93e92546da01b21428702e69b0e89a75, type: 3}
+  PhenomeData: {fileID: 4900000, guid: a9c96ee9b23ef6745a49fd49221b5138, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 5e3d8f99cce8c86429b7542f5b2edd95, type: 3}
+  GestureData: {fileID: 0}
+  FocusLevel: 1
+  PauseBeforeStart: 0
+  PauseAfterEnd: 0
+  SpeakerOverride: 

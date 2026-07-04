@@ -65,10 +65,10 @@ MonoBehaviour:
     m_Value: 1.08
   intensity:
     m_OverrideState: 1
-    m_Value: 0.78
+    m_Value: 1.96
   scatter:
     m_OverrideState: 1
-    m_Value: 0.567
+    m_Value: 0.024
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -89,8 +89,8 @@ MonoBehaviour:
     m_Value: {fileID: 2800000, guid: dc649286476e9d445ad3d9ccc7e1cec6, type: 3}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 0
-    m_Value: 1.03
+    m_OverrideState: 1
+    m_Value: 1.37
 --- !u!114 &5265803557729782099
 MonoBehaviour:
   m_ObjectHideFlags: 3

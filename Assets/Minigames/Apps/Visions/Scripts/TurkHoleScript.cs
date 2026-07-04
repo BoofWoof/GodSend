@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,10 +9,10 @@ public class TurkHoleScript : MonoBehaviour
     public ParticleSystem PlaceBurst;
     public bool Filled = false;
 
-    public void FillHole(TurkCubeScript filler)
+    public void FillHole(TurkCubeScript filler, bool fullyFilled)
     {
         filledWith = filler;
-        PlaceBurst.Play();
+        if(fullyFilled) PlaceBurst.Play();
     }
 
     public void EmptyHole()

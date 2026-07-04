@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
+  m_Name: 18a_LifeOfLuxury
+  m_EditorClassIdentifier: 
+  AudioData: {fileID: 8300000, guid: 92d9b0ca33d2000488345a32259d556c, type: 3}
+  PhenomeData: {fileID: 4900000, guid: 7913a918d3021a24fa24e53ebd9055d6, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 796c066627dde454480867c282f00f8f, type: 3}
+  GestureData: {fileID: 0}
+  FocusLevel: 1
+  PauseBeforeStart: 0
+  PauseAfterEnd: 0
+  SpeakerOverride: 

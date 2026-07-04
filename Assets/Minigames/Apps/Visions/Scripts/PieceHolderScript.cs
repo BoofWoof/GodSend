@@ -164,13 +164,17 @@ public class PieceHolderScript : MonoBehaviour
         foreach (TurkCubeScript filler in Pieces)
         {
             Vector2Int cord = filler.cord;
-            if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
-            {
-                TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler);
-            }
-            else
+            if (!TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
             {
                 FullyFilled = false;
+            }
+        }
+        foreach (TurkCubeScript filler in Pieces)
+        {
+            Vector2Int cord = filler.cord;
+            if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
+            {
+                TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler, FullyFilled);
             }
         }
     }
@@ -384,8 +388,8 @@ public class PieceHolderScript : MonoBehaviour
                 }
                 Debug.Log(Filled);
                 Debug.Log(PieceList.Count);
-                TurkPuzzleScript.instance.DropGood.pitch = Mathf.Lerp(1f, 2f, ((float)Filled)/PieceList.Count);
-                TurkPuzzleScript.instance.DropGood.Play();
+                //TurkPuzzleScript.instance.DropGood.pitch = Mathf.Lerp(1f, 2f, ((float)Filled)/PieceList.Count);
+                TurkPuzzleScript.instance.DropGood.GetComponent<AudioArrayScript>().PlayAudioByIndex(Filled);
             } else
             {
                 TurkPuzzleScript.instance.Drop.Play();
