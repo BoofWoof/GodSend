@@ -38,6 +38,7 @@ public class AchievementMenuItemScript : MonoBehaviour
 
         AchievementListScript.AddFinishedAchievement(AchievementData.Title);
         ActiveBroadcast.BroadcastActivation(AchievementData.ActivationData);
+        AchievementData.OnBuyTriggers();
 
         StartCoroutine(SwipePanel());
     }

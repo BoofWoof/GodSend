@@ -16,4 +16,5 @@ public class VisionsDifficultySO : ScriptableObject
     public bool FakersEnabled = false;
     public float DifficultyMultiplier = 1f;
     public int SongIndex = -1;
+    public string SteamAPIName;
 }

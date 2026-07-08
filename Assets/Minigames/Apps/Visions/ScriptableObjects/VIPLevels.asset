@@ -25,5 +25,7 @@ MonoBehaviour:
   MinPieces: 3
   MaxPieces: 3
   RotationEnabled: 1
+  FakersEnabled: 0
   DifficultyMultiplier: -1
   SongIndex: 9
+  SteamAPIName: Vision:VIP

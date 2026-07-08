@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Complete all hard puzzles in <b>Vision</b>.
   Flavor: Your people have gathered.
   ButtonText: ALL MY EFFORT NOW HAS VALUE
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>cup</b></color> has been added to your room.
   ActivationData:
     BroadcastName: UnlockBoof
@@ -23,4 +25,5 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Populace
   DifficultyCompletion: 4

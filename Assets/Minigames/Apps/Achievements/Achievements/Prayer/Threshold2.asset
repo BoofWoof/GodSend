@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Send 5 bad prayers.
   Flavor: Wait, why is this one on here?
   ButtonText: I DID POORLY
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>strange poster</b></color> has been added
     to your collection.
   ActivationData:
@@ -24,6 +26,7 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Poke The Ram
   TotalPrayerThreshold: 0
   GoodPrayerThreshold: 0
   BadPrayerThreshold: 5

@@ -28,7 +28,7 @@ public class TruePieceHolderScript : MonoBehaviour
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(ClearBoard);
     }
 
-    public void OnDisable()
+    public void OnDestroy()
     {
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.RemoveListener(ClearBoard);
     }
@@ -78,6 +78,7 @@ public class TruePieceHolderScript : MonoBehaviour
         }
 
         Pieces.Add(Piece);
+        Piece.isStored = true;
         InteractableButtonCheck();
         if (Pieces.Count == 1) {
             ShowBoard();
@@ -97,6 +98,7 @@ public class TruePieceHolderScript : MonoBehaviour
         if (!Pieces.Contains(Piece)) return;
 
         Pieces.Remove(Piece);
+        Piece.isStored = false;
         InteractableButtonCheck();
         if (Pieces.Count == 0)
         {
@@ -119,6 +121,9 @@ public class TruePieceHolderScript : MonoBehaviour
         SelectedPiece++;
         SelectedPiece %= Pieces.Count;
         if (SelectedPiece < 0) SelectedPiece += Pieces.Count;
+
+        Debug.Log(SelectedPiece);
+        Debug.Log(Pieces.Count);
 
         MovePieceToCenter();
     }

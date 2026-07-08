@@ -380,6 +380,9 @@ public class TurkPuzzleScript : MonoBehaviour
         {
             PuzzlesCompleted[CurrentDifficutly] += 1;
         }
+
+        SteamManager.UpdateIntStat(LevelSets[CurrentDifficutly].SteamAPIName, PuzzlesCompleted[CurrentDifficutly]);
+
         float TotalTime = Time.time - StartingTime;
         if (!TimeRecords.ContainsKey(CurrentDifficutly))
         {

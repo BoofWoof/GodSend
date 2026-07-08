@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
   m_Name: 5b_WorldSerpent
   m_EditorClassIdentifier: 
-  AudioData: {fileID: 8300000, guid: 5f7223a7885657b46917201bef664a5d, type: 3}
-  PhenomeData: {fileID: 4900000, guid: acb9b61ee164013429d74636b225a9ac, type: 3}
-  SubtitleData: {fileID: 4900000, guid: 72e69505ea189554ba0f70f6ef2635ec, type: 3}
+  AudioData: {fileID: 8300000, guid: a1cddfd5b0a30c5469a6804c6c690a5d, type: 3}
+  PhenomeData: {fileID: 4900000, guid: 04ec07d1a973b954db409dc73d9cd20e, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 005555eb55398df4c9524727748c892a, type: 3}
   GestureData: {fileID: 0}
   FocusLevel: 1
   PauseBeforeStart: 0

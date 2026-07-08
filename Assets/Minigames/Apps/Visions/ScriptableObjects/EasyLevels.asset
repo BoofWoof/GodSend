@@ -47,5 +47,7 @@ MonoBehaviour:
   MinPieces: 6
   MaxPieces: 6
   RotationEnabled: 0
+  FakersEnabled: 0
   DifficultyMultiplier: 5
   SongIndex: 10
+  SteamAPIName: Vision:Easy

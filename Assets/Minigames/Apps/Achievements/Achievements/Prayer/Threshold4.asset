@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Send 30 prayers total.
   Flavor: I hope he reads these.
   ButtonText: WORK LIFE UNBALANCE
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: An <color=#FFAAAA><b>awe inspiring poster</b></color> has been
     added to your collection.
   ActivationData:
@@ -24,6 +26,7 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Empty Bonds
   TotalPrayerThreshold: 30
   GoodPrayerThreshold: 0
   BadPrayerThreshold: 0

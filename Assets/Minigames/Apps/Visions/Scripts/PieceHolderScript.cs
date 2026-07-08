@@ -15,6 +15,8 @@ public class PieceHolderScript : MonoBehaviour
     public int Rotations = 0;
     public int PreviousValidRotations = 0;
 
+    public bool isStored = false;
+
     public static bool PickupEnabled = true;
     public static bool RotationEnabled = false;
     public static bool PieceHolderRestraint = true;
@@ -65,6 +67,7 @@ public class PieceHolderScript : MonoBehaviour
     {
         foreach(PieceHolderScript piece in PieceList)
         {
+            if (piece.isStored) continue;
             if (!piece.PieceInValidZone()) piece.SendToPieceHolder();
         }
     }
@@ -325,6 +328,12 @@ public class PieceHolderScript : MonoBehaviour
     {
         DeleteShadow();
         Shadow = Instantiate(gameObject, transform);
+        Destroy(Shadow.GetComponent<PieceHolderScript>());
+        TurkCubeScript[] ShadowScripts = Shadow.GetComponentsInChildren<TurkCubeScript>();
+        foreach (TurkCubeScript script in ShadowScripts)
+        {
+            Destroy(script);
+        }
         Shadow.transform.SetAsFirstSibling();
         Shadow.transform.localRotation = Quaternion.identity;
         SetAllDark();

@@ -1,7 +1,5 @@
 using PixelCrushers;
 using System;
-using UnityEngine;
-using static EndOfDaySaver;
 
 public class AerialDefenseSaver : Saver
 {

@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Complete all normal puzzles in <b>Vision</b>.
   Flavor: Every vision group has a theme, and this is the most holy one.
   ButtonText: I'VE NEVER BEEN SO CHUFFED
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>wonderful plushie</b></color> has been added
     to your room.
   ActivationData:
@@ -24,4 +26,5 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Propaganda
   DifficultyCompletion: 3

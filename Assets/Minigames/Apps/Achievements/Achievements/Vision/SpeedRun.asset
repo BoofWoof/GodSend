@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Beat the first four <color=#D3AF37>Milo</color> speed records in <b>Vision</b>.
   Flavor: He's actually pretty good at puzzles.
   ButtonText: I AM THE BEST
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>grand poster</b></color> has been added
     to your collection.
   ActivationData:
@@ -24,4 +26,5 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Top Dog
   SpeedCompletions: 01000000020000000300000004000000

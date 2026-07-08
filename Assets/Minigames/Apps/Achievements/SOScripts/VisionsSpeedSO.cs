@@ -30,6 +30,9 @@ public class VisionsSpeedSO : AchievementAbstractSO
             if (!CheckSpeedCompletion(i)) break;
             TotalPuzzles++;
         }
+
+        SteamManager.UpdateIntStat("Vision:Milo", TotalPuzzles);
+
         return $" ({TotalPuzzles}/{SpeedCompletions.Count})";
     }
 }

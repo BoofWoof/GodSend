@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Send 20 prayers total.
   Flavor: Keep to your work and be rewarded.
   ButtonText: WORK HOURS EVERY HOUR
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: An <color=#FFAAAA><b>ominous poster</b></color> has been added
     to your collection.
   ActivationData:
@@ -24,6 +26,7 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Commitment
   TotalPrayerThreshold: 20
   GoodPrayerThreshold: 0
   BadPrayerThreshold: 0

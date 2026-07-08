@@ -16,6 +16,8 @@ MonoBehaviour:
   Objective: Complete all easy puzzles in <b>Vision</b>.
   Flavor: Everything near and dear to you in one place.
   ButtonText: I AM LITERALLY VIBRATING
+  AnnounceUnlock: 1
+  FirstCompletionCheck: 1
   OnBuyAnnouncement: A <color=#FFAAAA><b>diligent plushie</b></color> has been added
     to your room.
   ActivationData:
@@ -24,4 +26,5 @@ MonoBehaviour:
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Scanner
   DifficultyCompletion: 2

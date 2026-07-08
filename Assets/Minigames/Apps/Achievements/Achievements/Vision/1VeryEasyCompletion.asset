@@ -16,13 +16,15 @@ MonoBehaviour:
   Objective: Complete all very easy puzzles in <b>Vision</b>.
   Flavor: Even if you had to do it, it's still an achievement!
   ButtonText: I feel more loyal to the church now
+  AnnounceUnlock: 1
   FirstCompletionCheck: 1
-  OnBuyAnnouncement: A <color=#FFAAAA><b>cool plushie</b></color> has been added
+  OnBuyAnnouncement: An <color=#FFAAAA><b>informative sign</b></color> has been added
     to your room.
   ActivationData:
-    BroadcastName: UnlockSy
+    BroadcastName: UnlockCreditTicker
     UseValue: 0
     BroadcastValue: 0
     UseString: 0
     BroadcastString: 
+  SteamAchievementAPIName: Sponsorship
   DifficultyCompletion: 1

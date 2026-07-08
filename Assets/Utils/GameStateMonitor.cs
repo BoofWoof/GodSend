@@ -49,6 +49,8 @@ public static class GameStateMonitor
         }
     }
 
+    public delegate void OnDangerChangeDelegate(bool dangerBool);
+    public static OnDangerChangeDelegate OnDangerChange;
     public static bool _DangerActive = false;
     public static bool DangerActive
     {
@@ -57,6 +59,7 @@ public static class GameStateMonitor
         {
             _DangerActive = value;
             CheckEventChange();
+            OnDangerChange?.Invoke(_DangerActive);
         }
     }
 

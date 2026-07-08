@@ -1,3 +1,4 @@
+using Steamworks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AchievementAbstractSO", menuName = "Scriptable Objects/AchievementAbstractSO")]
@@ -15,11 +16,18 @@ public abstract class AchievementAbstractSO : ScriptableObject
 
     public BroadcastStruct ActivationData;
 
+    public string SteamAchievementAPIName;
+
     public abstract bool CheckCompletionCriteria();
 
     public virtual string ProgressText()
     {
         return "";
+    }
+
+    public virtual void OnBuyTriggers()
+    {
+        SteamManager.TriggerSteamAchievement(SteamAchievementAPIName);
     }
 
 }

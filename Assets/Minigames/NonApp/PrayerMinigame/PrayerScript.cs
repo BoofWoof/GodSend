@@ -346,17 +346,21 @@ public class PrayerScript : MonoBehaviour
         OnPrayer?.Invoke();
 
         TotalPrayerCount++;
+        SteamManager.UpdateIntStat("Prayers:Total", TotalPrayerCount, false);
         if (CurrentResponse[answerIdx].GoodPrayer)
         {
             GoodPrayerCount++;
+            SteamManager.UpdateIntStat("Prayers:Good", GoodPrayerCount);
             OnGoodPrayer?.Invoke();
             PrayerSubmitted.Invoke(true);
         } else
         {
             BadPrayerCount++;
+            SteamManager.UpdateIntStat("Prayers:Bad", BadPrayerCount);
             OnBadPrayer?.Invoke();
             PrayerSubmitted.Invoke(false);
         }
+
 
         if (isSpecialPrayer)
         {

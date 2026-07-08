@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1406c5c150a397408cbf73665edc58d, type: 3}
-  m_Name: Lofi
+  m_Name: Chinkon
   m_EditorClassIdentifier: 
   Prioirty: 0
   UpgradeID: 48c473ce-639b-4aa2-8c2d-385a63821096
   UpgradesGroup: []
-  UpgradeName: Lofi
+  UpgradeName: Chinkon
   UpgradeIcon: {fileID: 21300000, guid: 427f25f7a71a7304787d250401ef9ccc, type: 3}
   PrioritySortOverride: -1
   GoldenUpgrade: 0

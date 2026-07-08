@@ -60,6 +60,8 @@ public class EndOfDayScript : MonoBehaviour
         StatScreen.SetActive(true);
         UpdateText();
         InputManager.GameEnd();
+
+        SteamManager.TriggerSteamAchievement("First Day");
     }
 
     public static float GetTimePassed()

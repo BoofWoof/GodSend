@@ -49,3 +49,4 @@ MonoBehaviour:
   FakersEnabled: 1
   DifficultyMultiplier: 25
   SongIndex: 11
+  SteamAPIName: Vision:Normal

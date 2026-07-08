@@ -8,7 +8,20 @@ public class ConversationManagerScript : MonoBehaviour
 {
     public static ConversationManagerScript instance;
 
-    public static bool ConversationOngoing = false;
+    public delegate void OnConversationChangeDelegate(bool conversationBool);
+    public static OnConversationChangeDelegate OnConversationChange;
+    public static bool _ConversationOngoing = false;
+    public static bool ConversationOngoing
+    {
+        get { return _ConversationOngoing; }
+        set
+        {
+            _ConversationOngoing = value;
+            OnConversationChange?.Invoke(_ConversationOngoing);
+        }
+    }
+
+
     public static bool isMacroConvo = false;
     public static bool WaitingForEvent = false;
 
