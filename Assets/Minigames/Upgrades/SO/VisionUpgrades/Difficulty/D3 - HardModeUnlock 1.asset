@@ -30,7 +30,7 @@ MonoBehaviour:
   MascotDialogue: Please don't make me fly again... I like the bird bath.
   OverrideDialogue:
   - OverrideDay: 1
-    ReplacementDialogue: My wings are feeling so strong now!
+    ReplacementDialogue: 
   Credits: 0.00000313
   FlockRenown: 0
   FoundationRenown: 0
@@ -43,3 +43,4 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 1

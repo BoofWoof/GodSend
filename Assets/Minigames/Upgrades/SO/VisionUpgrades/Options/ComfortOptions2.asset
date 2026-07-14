@@ -15,7 +15,7 @@ MonoBehaviour:
   Prioirty: 4
   UpgradeID: be55ce87-c514-4af2-ae94-92d9b8f155b1
   UpgradesGroup:
-  - {fileID: 11400000, guid: d2f20571ddd678a45b9e16730c620062, type: 2}
+  - {fileID: 11400000, guid: 675b695145be4fb4d8dc660a05679421, type: 2}
   - {fileID: 11400000, guid: bdedeb73c0e9f8342af5124b306e5052, type: 2}
   UpgradeName: 
   UpgradeIcon: {fileID: 0}
@@ -41,4 +41,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 0200000000000000
   STags: 
+  CloseMenuOnBuy: 0
   PosterName: 

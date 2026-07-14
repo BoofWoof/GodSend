@@ -26,7 +26,13 @@ public class IntroSoundEffects : MonoBehaviour
     {
         ThisAudioSource = GetComponent<AudioSource>();
 
-        if (DaytaScript.SkipStart || DayInfo.CurrentDay != 1)
+        if (DayInfo.CurrentDay != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (DaytaScript.SkipStart)
         {
             DaytaScript.StaticStartDay();
             Destroy(gameObject);

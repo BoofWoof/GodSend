@@ -9,12 +9,6 @@ public class PosterSelection : MonoBehaviour
 {
     public RectTransform Content;
 
-    public float TopBuffer = 20f;
-    public float LeftBuffer = 20f;
-    public float PortraitBuffer = 20f;
-
-    public Vector2 Size = new Vector2(290, 400);
-
     public int Columns = 4;
 
     [Header("Preview")]
@@ -38,8 +32,6 @@ public class PosterSelection : MonoBehaviour
     {
         int rows = Mathf.CeilToInt(UnlockablesManager.PostersList.Count / Columns) + 1;
 
-        Content.sizeDelta = new Vector2(Content.sizeDelta.x, 2f * TopBuffer + (PortraitBuffer + Size.y) * rows);
-
         SelectPoster(UnlockablesManager.PostersList[0]);
 
         foreach (OfficePoster poster in UnlockablesManager.PostersList)
@@ -51,6 +43,9 @@ public class PosterSelection : MonoBehaviour
             RectTransform rect = posterButton.AddComponent<RectTransform>();
 
             rect.SetParent(Content);
+            rect.localPosition = Vector3.zero;
+            rect.localScale = Vector3.one;
+            rect.localRotation = Quaternion.identity;
 
             Image img = rect.AddComponent<Image>();
             img.sprite = poster.Image;
@@ -70,6 +65,9 @@ public class PosterSelection : MonoBehaviour
             RectTransform rect = posterButton.AddComponent<RectTransform>();
 
             rect.SetParent(Content);
+            rect.localPosition = Vector3.zero;
+            rect.localScale = Vector3.one;
+            rect.localRotation = Quaternion.identity;
 
             Image img = rect.AddComponent<Image>();
             img.sprite = poster.Image;

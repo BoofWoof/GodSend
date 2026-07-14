@@ -10,12 +10,14 @@ public class CursorStateControl : MonoBehaviour
 
     public void RequestCursor()
     {
+        Debug.Log("Requesting Cursor");
         _CursorRequest++;
         ShowMouse();
     }
 
     public void ReleaseCursor()
     {
+        Debug.Log("Releasing Cursor");
         _CursorRequest--;
         if(_CursorRequest == 0)
         {

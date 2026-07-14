@@ -91,6 +91,11 @@ public class AngyRockScript : MonoBehaviour
         SteamManager.UpdateIntStat("AriesRockGlobal", + SteamManager.GetIntStat("AriesRockGlobal") + 1, false);
         SteamManager.UpdateIntStat("AriesRock", Score);
 
+        if(Score >= 10)
+        {
+            SteamManager.TriggerSteamAchievement("This Rocks!");
+        }
+
         if (SteamManager.Initialized)
         {
             UpdateOfficeWide();

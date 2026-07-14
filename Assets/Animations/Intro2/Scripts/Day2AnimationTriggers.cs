@@ -31,6 +31,8 @@ public class Day2AnimationTriggers : MonoBehaviour
 
     public void OnAnimationEnd()
     {
+        DaytaScript.EnableCharacter();
+
         CameraData.cameraStack.Clear();
         foreach (Camera c in previousStack)
         {

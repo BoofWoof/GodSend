@@ -94,6 +94,7 @@ public class PlayerCam : MonoBehaviour
     }
     public void SetSpeed(InputAction.CallbackContext context)
     {
+        if (MenuTrigger.GetPaused()) return;
         if (context.performed)
         {
             ShiftToggleActive = !ShiftToggleActive;
@@ -114,6 +115,8 @@ public class PlayerCam : MonoBehaviour
                 SlowModeMultiplier = 1f;
             }
         }
+
+        HudScript.instance.SetShiftOverlay(ShiftToggleActive);
     }
 
     public void OnApplicationFocus(bool focus)

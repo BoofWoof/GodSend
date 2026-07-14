@@ -89,6 +89,8 @@ public abstract class UpgradesAbstract : ScriptableObject
     public List<VisionTags> VTags;
     public List<ShopprTags> STags;
 
+    public bool CloseMenuOnBuy = false;
+
     public bool CanBuy()
     {
         if (UpgradeBought) return false;
@@ -148,6 +150,8 @@ public abstract class UpgradesAbstract : ScriptableObject
             }
             VisionMascotScript.SayText(sayDialogue);
         }
+
+        if(CloseMenuOnBuy) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
 
         if (!forceBuy) AddToPurchasedList();
 

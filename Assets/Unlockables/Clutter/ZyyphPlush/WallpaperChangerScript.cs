@@ -18,6 +18,8 @@ public class WallpaperChangerScript : MonoBehaviour
 
     public int DebugWallpaperIndex;
 
+    public int CurrentWallpaperID = 0;
+
     public List<WallpaperData> WallpaperChoices = new List<WallpaperData>();
 
     [Serializable]
@@ -46,8 +48,15 @@ public class WallpaperChangerScript : MonoBehaviour
         SetWallpaperTexture(DebugWallpaperIndex);
     }
 
+    public int GetWallpaperID()
+    {
+        return CurrentWallpaperID;
+    }
+
     public void SetWallpaperTexture(int textureIndex)
     {
+        CurrentWallpaperID = textureIndex;
+
         WallpaperData targetWallpaper = WallpaperChoices[textureIndex];
 
         Debug.Log("CHANGING TEXTURE");

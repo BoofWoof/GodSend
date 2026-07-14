@@ -60113,7 +60113,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Mercenary? Is that Aries? We already know him! He's why he can't leave!
+        value: Mercenary? Is that Aries? We already know him! He's why we can't leave!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -63567,7 +63567,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 21.649475, y: 3381.4448}
+    canvasScrollPosition: {x: 0, y: 762.88684}
     canvasZoom: 0.97
   - id: 25
     fields:
@@ -77277,9 +77277,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'SetQuest("Great Leviathan")
-
-        FadeInSong(5)'
+      userScript: SetQuest("Great Leviathan")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -77392,7 +77390,7 @@ MonoBehaviour:
       - originConversationID: 35
         originDialogueID: 0
         destinationConversationID: 35
-        destinationDialogueID: 6
+        destinationDialogueID: 7
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -77461,8 +77459,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 168
-        y: 157
+        x: 188
+        y: 323
         width: 160
         height: 30
     - id: 2
@@ -77520,8 +77518,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 164
-        y: 216
+        x: 184
+        y: 382
         width: 160
         height: 30
     - id: 3
@@ -77579,8 +77577,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 156
-        y: 285
+        x: 176
+        y: 451
         width: 160
         height: 30
     - id: 4
@@ -77632,8 +77630,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 164
-        y: 355
+        x: 184
+        y: 521
         width: 160
         height: 30
     - id: 6
@@ -77691,8 +77689,67 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 159
-        y: 88
+        x: 179
+        y: 254
+        width: 160
+        height: 30
+    - id: 7
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: 
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 8
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 35
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 35
+        originDialogueID: 7
+        destinationConversationID: 35
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: StartDay()
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 175
+        y: 140
         width: 160
         height: 30
     entryGroups: []
@@ -77814,8 +77871,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 203
-        y: 50
+        x: 373.87378
+        y: 49.029114
         width: 160
         height: 30
     - id: 1
@@ -80286,8 +80343,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1, y: 59}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 15.145629, y: 6.553385}
+    canvasZoom: 1.03
   syncInfo:
     syncActors: 0
     syncItems: 0

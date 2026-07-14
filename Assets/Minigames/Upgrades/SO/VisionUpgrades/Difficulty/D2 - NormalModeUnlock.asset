@@ -31,7 +31,7 @@ MonoBehaviour:
     as a hot tub. Sometimes it's better to trade passion for luxury.
   OverrideDialogue:
   - OverrideDay: 1
-    ReplacementDialogue: I think I might finally be ready to open up...
+    ReplacementDialogue: 
   Credits: 0.000000125
   FlockRenown: 0
   FoundationRenown: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   Prioirty: 2
   UpgradeID: 675b695145be4fb4d8dc660a05679421
   UpgradesGroup: []
-  UpgradeName: Enlightened Soul I
+  UpgradeName: Enlightened Soul
   UpgradeIcon: {fileID: -1997820138, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
   PrioritySortOverride: -1
   GoldenUpgrade: 0
@@ -41,4 +41,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 02000000
   STags: 
+  CloseMenuOnBuy: 0
   LightIncrease: 0.15

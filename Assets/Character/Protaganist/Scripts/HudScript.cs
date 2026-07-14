@@ -29,6 +29,13 @@ public class HudScript : MonoBehaviour
 
     public static HudScript instance;
 
+    public GameObject ShiftOverlay;
+
+    public void SetShiftOverlay(bool setActive)
+    {
+        ShiftOverlay.SetActive(setActive);
+    }
+
     public void OnClick(InputAction.CallbackContext ctx)
     {
         if(ctx.phase == InputActionPhase.Started)
@@ -58,6 +65,8 @@ public class HudScript : MonoBehaviour
     public void Awake()
     {
         instance = this;
+
+        SetShiftOverlay(false);
 
         MoveArrow.SetActive(false);
         LookArrow.SetActive(false);

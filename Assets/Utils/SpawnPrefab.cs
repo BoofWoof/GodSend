@@ -40,11 +40,7 @@ public class SpawnPrefab : MonoBehaviour
                     {
                         instance.transform.rotation = Quaternion.identity;
                         Vector3 parentScale = m_parent.lossyScale;
-                        instance.transform.localScale = new Vector3(
-                                1 / parentScale.x,
-                                1 / parentScale.y,
-                                1 / parentScale.z
-                            );
+                        instance.transform.localScale = Vector3.one;
                     }
                 }
             }

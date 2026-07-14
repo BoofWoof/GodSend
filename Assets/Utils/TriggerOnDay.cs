@@ -21,6 +21,11 @@ public class TriggerOnDay : MonoBehaviour
 
     public void Start()
     {
+        CheckTriggers();
+    }
+
+    public void CheckTriggers()
+    {
         foreach (DayTriggers t in TriggerList)
         {
             if (t.TriggerDay0 && DayInfo.CurrentDay == 0)

@@ -27,9 +27,7 @@ public class DifficultyScoreSO : ValueModifierAbstract
 
     public float CalculateMultiplier()
     {
-        float multiplier = TurkPuzzleScript.instance.LevelSets[TurkPuzzleScript.CurrentDifficutly].DifficultyMultiplier;
-        if(multiplier < 0) multiplier = TurkPuzzleScript.instance.LevelSets[TurkPuzzleScript.MaxAvailableDifficutly].DifficultyMultiplier;
-        return multiplier;
+        return TurkPuzzleScript.GetCurrentMultiplier();
     }
 
     public void ListModifier(ref List<SecondaryMultiplier> referenceValue)

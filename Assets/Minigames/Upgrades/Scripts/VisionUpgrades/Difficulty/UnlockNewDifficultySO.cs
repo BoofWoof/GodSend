@@ -8,7 +8,8 @@ public class UnlockNewDifficultySO : UpgradesAbstract
     public override void OnBuy()
     {
         TurkPuzzleScript.instance.UnlockNewDifficulty();
-        ActiveBroadcast.BroadcastActivation("DifficultyGlow");
-        VisionMascotScript.OnNewDifficutlyUnlocked();
+        if(DayInfo.CurrentDay <= 1) TurkPuzzleScript.instance.IncreaseDifficultyToMax();
+        //ActiveBroadcast.BroadcastActivation("DifficultyGlow");
+        //VisionMascotScript.OnNewDifficutlyUnlocked();
     }
 }

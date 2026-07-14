@@ -29,8 +29,15 @@ public class DaytaScript : MonoBehaviour
 
     public AudioSource AudioBoom;
 
+    public GameObject StartScreenGroup;
+
+    [Header("Day One")]
     public Image TitleCard;
     public TMP_Text TitleText;
+
+    [Header("Day Two")]
+    public Image TitleCard2;
+    public TMP_Text TitleText2;
 
     public void Awake()
     {
@@ -76,6 +83,8 @@ public class DaytaScript : MonoBehaviour
         {
             CharacterActivationScript.DisableCharacter("MacroSid");
             CharacterActivationScript.DisableCharacter("MacroAries");
+
+            StartCoroutine(PreStartDayTwo());
         }
     }
     public static void StaticStartDay()
@@ -100,12 +109,13 @@ public class DaytaScript : MonoBehaviour
         if (DayInfo.CurrentDay == 2 && !SkipStart)
         {
             StartCoroutine(StartDayTwo());
-            CrossfadeScript.PauseMusic();
+            PlayerCam.EnableCameraMovement = false;
         }
     }
 
-    public IEnumerator StartDayTwo()
+    public IEnumerator PreStartDayTwo()
     {
+        yield return null;
         TeleportPointScript.TeleportPlayerTo("Day2IntroPoint");
 
         QuestManager.ChangeQuest("Zzz");
@@ -117,12 +127,21 @@ public class DaytaScript : MonoBehaviour
         OverworldPositionScript.GoTo("A", 12);
 
         CrossfadeScript.PauseMusic();
+    }
+    public IEnumerator StartDayTwo()
+    {
+        PlayerCam.EnableCameraMovement = false;
+        TitleCard2.gameObject.SetActive(true);
+        AudioBoom.Play();
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(4);
 
-        CrossfadeScript.PauseMusic();
+        TitleText2.gameObject.SetActive(true);
+        AudioBoom.Play();
 
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(5);
+
+        Destroy(StartScreenGroup);
 
         EnableCharacter();
     }
@@ -136,23 +155,22 @@ public class DaytaScript : MonoBehaviour
         TitleCard.gameObject.SetActive(true);
         AudioBoom.Play();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         OverworldPositionScript.GoTo("A", 6);
 
         TitleText.gameObject.SetActive(true);
         AudioBoom.Play();
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
-        Destroy(TitleText.gameObject);
-        Destroy(TitleCard.gameObject);
+        Destroy(StartScreenGroup);
 
         MessageQueue.addDialogue("Day1Intro");
 
         EnableCharacter();
     }
 
-    public void EnableCharacter()
+    public static void EnableCharacter()
     {
         PlayerCam.EnableCameraMovement = true;
         InputManager.GameStart();

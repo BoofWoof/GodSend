@@ -16,7 +16,7 @@ public class MaterialTransitionScript : MonoBehaviour
 
     public void StartTransitionAnimation()
     {
-        StartCoroutine(TransitionAnimation());
+        if(isActiveAndEnabled) StartCoroutine(TransitionAnimation());
     }
     public IEnumerator TransitionAnimation()
     {

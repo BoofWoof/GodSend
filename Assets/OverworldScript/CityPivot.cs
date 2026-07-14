@@ -44,7 +44,6 @@ public class CityPivot : MonoBehaviour
             timePassed += Time.deltaTime;
             float adjustedRotation = currentRotation + RotationCurve.Evaluate(timePassed/RotationPeriod) * rotationDelta;
             transform.rotation = Quaternion.Euler(0f, adjustedRotation, 0f);
-            Debug.Log(adjustedRotation);
             yield return null;
         }
         transform.rotation = Quaternion.Euler(0f, newRotation, 0f);

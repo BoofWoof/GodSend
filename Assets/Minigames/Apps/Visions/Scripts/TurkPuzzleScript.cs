@@ -36,6 +36,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public TMP_Text PuzzleEarningsText;
     public TMP_Text UniquePuzzlesSolvedText;
     public TMP_Text ScoreMultiplierText;
+    public TMP_Text DifficultyMultiplierText;
     public GameObject ClickToContinueText;
     public GameObject InteractionBlocker;
 
@@ -163,6 +164,7 @@ public class TurkPuzzleScript : MonoBehaviour
         EmptyHolder.localPosition = transform.localPosition;
 
         if (DayInfo.CurrentDay != 1) MinAvailableDifficulty = 0;
+        else MinAvailableDifficulty = 1;
 
         GeneratePuzzle();
 
@@ -207,9 +209,29 @@ public class TurkPuzzleScript : MonoBehaviour
         RotateSound.Play();
     }
 
+    public void UpdateDifficultyMultplierText()
+    {
+        DifficultyMultiplierText.text = $"x{GetCurrentMultiplier()}";
+    }
+
+    public static float GetCurrentMultiplier()
+    {
+        float multiplier = instance.LevelSets[CurrentDifficutly].DifficultyMultiplier;
+        if (multiplier < 0) multiplier = instance.LevelSets[MaxAvailableDifficutly].DifficultyMultiplier;
+        return multiplier;
+    }
+
     public void UnlockNewDifficulty()
     {
         MaxAvailableDifficutly++;
+        UpdateDifficultyButtons();
+    }
+    public void IncreaseDifficultyToMax()
+    {
+        CurrentDifficutly = MaxAvailableDifficutly;
+        OnDifficultyUp?.Invoke(CurrentDifficutly);
+        puzzleScript.GeneratePuzzle();
+
         UpdateDifficultyButtons();
     }
 
@@ -234,6 +256,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void UpdateDifficultyButtons()
     {
+        UpdateDifficultyMultplierText();
         DifficultyDecreaseButton.interactable = (CurrentDifficutly > MinAvailableDifficulty);
         DifficultyIncreaseButton.interactable = (CurrentDifficutly < MaxAvailableDifficutly);
 

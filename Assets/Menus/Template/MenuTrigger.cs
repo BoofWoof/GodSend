@@ -10,7 +10,7 @@ public class MenuTrigger : MonoBehaviour
     private static bool Paused = false;
     public bool PartialPause = false;
 
-    private bool CursorRequestActive = false;
+    private static bool CursorRequestActive = false;
 
     public static void Reset()
     {
@@ -23,11 +23,24 @@ public class MenuTrigger : MonoBehaviour
         if(PartialPause)
         {
             PartialMenuOpenCount++;
-            PauseCheck();
-            return;
         }
-        MenuOpenCount++;
+        else
+        {
+            MenuOpenCount++;
+        }
         PauseCheck();
+
+        MenuOpenCountPrint();
+    }
+
+    private void MenuOpenCountPrint()
+    {
+        Debug.Log($"MenuOpenCount: {MenuOpenCount} | PartialPauseCount: {PartialMenuOpenCount}");
+    }
+
+    public static bool GetPaused()
+    {
+        return Paused;
     }
 
     public void OnDisable()
@@ -35,11 +48,12 @@ public class MenuTrigger : MonoBehaviour
         if (PartialPause)
         {
             PartialMenuOpenCount--;
-            PauseCheck();
-            return;
+        } else
+        {
+            MenuOpenCount--;
         }
-        MenuOpenCount--;
         PauseCheck();
+        MenuOpenCountPrint();
     }
 
     public void PauseCheck()
@@ -92,6 +106,7 @@ public class MenuTrigger : MonoBehaviour
 
         if (!CursorRequestActive)
         {
+            Debug.Log("Pausing and locking cursor.");
             CursorRequestActive = true;
             CursorStateControl.ActiveCursorController.RequestCursor();
         }
@@ -107,6 +122,7 @@ public class MenuTrigger : MonoBehaviour
 
         if (CursorRequestActive)
         {
+            Debug.Log("Unpausing and unlocking cursor.");
             CursorRequestActive = false;
             CursorStateControl.ActiveCursorController.ReleaseCursor();
         }
