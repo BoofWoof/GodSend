@@ -90,6 +90,20 @@ public class AerialDefenseScript : MonoBehaviour
         ChannelChanger.ActiveChannelChanger.LockSwitch();
     }
 
+    public void ForceWin()
+    {
+        if (!GameRunning) return;
+        Debug.Log("Forcing Win for Aerial Defense.");
+        WinOutcomes();
+        StopWave();
+    }
+    public void ForceLoss()
+    {
+        if (!GameRunning) return;
+        Debug.Log("Forcing Loss for Aerial Defense.");
+        LoseOutcomes();
+        StopWave();
+    }
     public void WinOutcomes()
     {
         if(RemainingHealth == MaxHealth)
@@ -105,14 +119,6 @@ public class AerialDefenseScript : MonoBehaviour
     {
         LevelData.MarkLoss();
         LevelData.PlayEndingDialogue();
-    }
-
-    public static void ThreatDestroyed()
-    {
-        if (!GameRunning) return;
-        if (!Instance.isActiveAndEnabled) return;
-
-
     }
 
     public static void TakeDamage()

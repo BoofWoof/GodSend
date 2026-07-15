@@ -34,6 +34,17 @@ public class ChannelChanger : MonoBehaviour
         LockSwitch(false);
     }
 
+    public void ForceWinCommand(bool ForceLoseInstead = false)
+    {
+        if (ForceLoseInstead)
+        {
+            AerialDefenseScript.Instance.ForceLoss();
+        }
+
+        AerialDefenseScript.Instance.ForceWin();
+        PurificationGameScript.instance.ForceWin();
+    }
+
     public void LockSwitch(bool PhoneUnlock = true)
     {
         if (GameStateMonitor.DangerActive) return;

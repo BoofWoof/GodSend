@@ -29,6 +29,9 @@ MonoBehaviour:
     reward.
   MascotDialogue: Finally a perk that might apply to you. It's always good to be
     able to shuffle the peons around effectively.
+  AdText: 'FEAR MOTIVATES
+
+    GATHER YOUR FORTUNE'
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 'Activating a new biometric sensor!<n>
@@ -52,5 +55,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   PointPerPoint: 30
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

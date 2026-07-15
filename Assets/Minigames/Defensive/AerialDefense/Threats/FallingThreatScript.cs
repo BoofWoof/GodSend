@@ -140,7 +140,6 @@ public class FallingThreatScript : MonoBehaviour
         OnObjectDestroy?.Invoke();
 
         FallingThreatScripts.Remove(this);
-        AerialDefenseScript.ThreatDestroyed();
     }
 
     public void SpawnExplosionPing()

@@ -27,6 +27,7 @@ MonoBehaviour:
   UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: Nice work! This rank is the end of the 'free trial' for most users,
     but I'm sure you'll find ways around the ceiling. You seem resourceful!
+  AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 'Came back for the rest of the story did you?
@@ -104,5 +105,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

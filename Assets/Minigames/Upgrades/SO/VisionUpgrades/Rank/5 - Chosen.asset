@@ -27,6 +27,7 @@ MonoBehaviour:
     Each puzzle now earns you more credits.
   UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: 
+  AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue: []
   Credits: 0
   FlockRenown: 1
@@ -40,5 +41,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

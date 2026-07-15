@@ -67,6 +67,8 @@ public abstract class UpgradesAbstract : ScriptableObject
     public string UpgradeMechanicDescription;
     [TextArea]
     public string MascotDialogue;
+    [TextArea]
+    public string AdText;
     public List<MascotDialogueOverride> OverrideDialogue = new List<MascotDialogueOverride>();
 
     [Header("Costs")]
@@ -90,6 +92,60 @@ public abstract class UpgradesAbstract : ScriptableObject
     public List<ShopprTags> STags;
 
     public bool CloseMenuOnBuy = false;
+
+    public float PercentBuyable()
+    {
+        if (UpgradeBought) return 0f;
+        if (AutoBuy) return 0f;
+
+        if (UpgradesGroup.Count > 0)
+        {
+            float HighestCompletion = 0f;
+            foreach (UpgradesAbstract subUpgrade in UpgradesGroup)
+            {
+                float subPercent = subUpgrade.PercentBuyable();
+                if(subPercent > HighestCompletion) HighestCompletion = subPercent;
+            }
+            return HighestCompletion;
+        }
+
+        int PercentSources = 0;
+        float TotalPercent = 0f;
+
+        if(Credits > 0f)
+        {
+            TotalPercent += (float)(CurrencyData.Credits / Credits);
+            PercentSources++;
+        }
+
+        if (FlockRenown > 0f)
+        {
+            TotalPercent += (float)(CurrencyData.RenownFlock / FlockRenown);
+            PercentSources++;
+        }
+
+        if (FoundationRenown > 0f)
+        {
+            TotalPercent += (float)(CurrencyData.RenownFoundation / FoundationRenown);
+            PercentSources++;
+        }
+
+        if (AssscensssionRenown > 0f)
+        {
+            TotalPercent += (float)(CurrencyData.RenownAscension / AssscensssionRenown);
+            PercentSources++;
+        }
+
+        if (RevolutionRenown > 0f)
+        {
+            TotalPercent += (float)(CurrencyData.RenownRevolution / RevolutionRenown);
+            PercentSources++;
+        }
+
+        if (PercentSources == 0) return 1f;
+
+        return TotalPercent / PercentSources;
+    }
 
     public bool CanBuy()
     {

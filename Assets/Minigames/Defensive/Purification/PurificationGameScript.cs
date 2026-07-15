@@ -312,6 +312,13 @@ public class PurificationGameScript : MonoBehaviour
         WinAS.Play();
     }
 
+    public void ForceWin()
+    {
+        if (!LevelRunning) return;
+        Debug.Log("Forcing Win for Purification Game.");
+        EndGame();
+    }
+
     public void ResetPipeRoutes()
     {
         foreach (GameObject vent in VentGridData.PipeStacks)
@@ -330,31 +337,36 @@ public class PurificationGameScript : MonoBehaviour
         }
         else
         {
-            TotalTime += Time.time - StartingTime;
-
-            ChannelChanger.instance.StartCoroutine(VolumeFade(0f));
-
-            Debug.Log("LevelPackComplete");
-            VentGridData.ClearGrid();
-            FogSource.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-            MusicSelectorScript.SetOverworldSong(1);
-
-            GameStateMonitor.DangerActive = false;
-            ChannelChanger.ActiveChannelChanger.LockSwitch();
-
-            if (associatedLevelHolder != null && associatedLevelHolder.HallucinationResets.Count > 0)
-            {
-                PlayerBlinkScript.StartBlink(associatedLevelHolder.HallucinationResets);
-            }
-            if (associatedLevelHolder != null && !string.IsNullOrEmpty(associatedLevelHolder.EndingVoiceLinePath))
-            {
-                CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.EndingVoiceLinePath);
-            }
-
-            LevelRunning = false;
-
-            OverworldBehavior.AriesBehavior("judge");
+            EndGame();
         }
+    }
+
+    public void EndGame()
+    {
+        TotalTime += Time.time - StartingTime;
+
+        ChannelChanger.instance.StartCoroutine(VolumeFade(0f));
+
+        Debug.Log("LevelPackComplete");
+        VentGridData.ClearGrid();
+        FogSource.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        MusicSelectorScript.SetOverworldSong(1);
+
+        GameStateMonitor.DangerActive = false;
+        ChannelChanger.ActiveChannelChanger.LockSwitch();
+
+        if (associatedLevelHolder != null && associatedLevelHolder.HallucinationResets.Count > 0)
+        {
+            PlayerBlinkScript.StartBlink(associatedLevelHolder.HallucinationResets);
+        }
+        if (associatedLevelHolder != null && !string.IsNullOrEmpty(associatedLevelHolder.EndingVoiceLinePath))
+        {
+            CharacterSpeechScript.CentralNode.StartBroadcastSpeechAttempt("", associatedLevelHolder.EndingVoiceLinePath);
+        }
+
+        LevelRunning = false;
+
+        OverworldBehavior.AriesBehavior("judge");
     }
 
     public void SpawnWinScreen()

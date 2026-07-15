@@ -28,6 +28,7 @@ MonoBehaviour:
   UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: Two down, an unknown number to go. The heads of Flock don't actually
     keep the full ranking system accessible to anyone outside of their numbers.
+  AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 'This is an amazing occassion!<n>
@@ -60,5 +61,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

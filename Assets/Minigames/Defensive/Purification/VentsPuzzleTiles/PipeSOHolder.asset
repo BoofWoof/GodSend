@@ -37,7 +37,7 @@ MonoBehaviour:
     SinkVersion: {fileID: 21300000, guid: 2f49ec714c7bb064dbbdac8bea925448, type: 3}
     CapVersion: {fileID: 21300000, guid: 64165b07685a8b04a9599d8d9420f950, type: 3}
     EnableBackdrop: 1
-    ShowFan: 1
+    ShowFan: 0
     UpConnection: 1
     UpSecondaryVentConnection: 0
     DownConnection: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
     SinkVersion: {fileID: 21300000, guid: 5eca1a3e2c52d63428dab1d7fae47883, type: 3}
     CapVersion: {fileID: 21300000, guid: 822a86173d382ec449698211c8ddcc48, type: 3}
     EnableBackdrop: 1
-    ShowFan: 1
+    ShowFan: 0
     UpConnection: 1
     UpSecondaryVentConnection: 0
     DownConnection: 0

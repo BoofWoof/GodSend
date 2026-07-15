@@ -60,6 +60,7 @@ public class ThreatSpawnerScript : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
+        AerialDefenseScript.Instance.WinOutcomes();
         AerialDefenseScript.Instance.StopWave();
     }
 

@@ -27,6 +27,7 @@ MonoBehaviour:
   UpgradeMechanicDescription: Make all puzzles reward significantly more.
   MascotDialogue: 'Usually it takes hours to get this far, but you''ve been zooming
     through the ranks. You probably earned it through hard work. c:'
+  AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 'Have you ever heard of <color=#87F8FA>Arkae</color>, the
@@ -126,5 +127,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

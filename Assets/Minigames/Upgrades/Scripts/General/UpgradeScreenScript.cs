@@ -67,6 +67,17 @@ public class UpgradeScreenScript : MonoBehaviour
         }
     }
 
+    public float UpgradePercent()
+    {
+        float highestPercentage = 0f;
+        foreach (UpgradesAbstract upgrade in UpgradeClones)
+        {
+            float upgradePercentage = upgrade.PercentBuyable();
+            if(upgradePercentage > highestPercentage) highestPercentage = upgradePercentage;
+        }
+        return highestPercentage;
+    }
+
     public bool UpgradeAffordable()
     {
         foreach(UpgradesAbstract upgrade in UpgradeClones)
@@ -74,6 +85,14 @@ public class UpgradeScreenScript : MonoBehaviour
             if (upgrade.CanBuy()) return true;
         }
         return false;
+    }
+    public UpgradesAbstract RecommendedUpgradeAffordable()
+    {
+        foreach (UpgradesAbstract upgrade in UpgradeClones)
+        {
+            if (upgrade.GoldenUpgrade && upgrade.CanBuy()) return upgrade;
+        }
+        return null;
     }
 
     public void AddNewUpgrades(List<UpgradesAbstract> newUpgrades, bool showNotification = true)

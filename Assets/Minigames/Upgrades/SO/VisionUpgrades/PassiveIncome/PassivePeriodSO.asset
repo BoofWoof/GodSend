@@ -26,6 +26,7 @@ MonoBehaviour:
   UpgradeDescription: Growing impatient.
   UpgradeMechanicDescription: Gain passive income faster.
   MascotDialogue: 
+  AdText: EASY MONEY AWAITS
   OverrideDialogue: []
   Credits: 0
   FlockRenown: 0
@@ -39,4 +40,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   NewPeriod: 5

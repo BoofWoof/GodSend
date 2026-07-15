@@ -29,6 +29,7 @@ MonoBehaviour:
 
     Did you expect me to say more? Nah, I wouldn''t waste
     a VIPs time.'
+  AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 'Do you understand what you just did?<n>
@@ -59,5 +60,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

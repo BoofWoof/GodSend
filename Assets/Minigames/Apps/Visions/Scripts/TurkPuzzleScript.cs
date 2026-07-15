@@ -44,10 +44,9 @@ public class TurkPuzzleScript : MonoBehaviour
     public Transform EmptyHolder;
     public TMP_Text PuzzleName;
     public TMP_Text NewRecordText;
+    public GameObject BuyBlessingsNow;
     public ParticleSystem NewRecordParticles;
     public ParticleSystem NewRecordParticles2;
-
-    public GameObject NewDifficultyUnlockGlow;
 
     public int RepeatsBannedFor = 3;
 
@@ -131,6 +130,8 @@ public class TurkPuzzleScript : MonoBehaviour
     {
         instance = this;
 
+        BuyBlessingsNow.SetActive(false);
+
         TimeRecords = new Dictionary<int, float>();
         PuzzlesCompleted = new Dictionary<int, int>();
 
@@ -169,14 +170,6 @@ public class TurkPuzzleScript : MonoBehaviour
         GeneratePuzzle();
 
         UpdateDifficultyButtons();
-    }
-
-    public void Update()
-    {
-        if (CurrentDifficutly >= MaxAvailableDifficutly || CurrentDifficutly == 0)
-        {
-            NewDifficultyUnlockGlow.SetActive(false);
-        }
     }
 
     public void OnAppOpen()
@@ -481,6 +474,13 @@ public class TurkPuzzleScript : MonoBehaviour
             CurrencyData.Credits += reward;
         }
 
+        UpgradesAbstract selectedUpgrade = UpgradeScreenScript.upgradeScreenScripts[Minigame.Visions].RecommendedUpgradeAffordable();
+        if (selectedUpgrade != null)
+        {
+            BuyBlessingsNow.SetActive(true);
+            BuyBlessingsNow.GetComponent<BuyNowScript>().UpdateDescriptions(selectedUpgrade);
+        }
+
         VisionMascotScript.SayText(selectedGridData.MascotStatement);
         VisionMascotScript.EnableProgress = false;
 
@@ -501,7 +501,7 @@ public class TurkPuzzleScript : MonoBehaviour
         while (true)
         {
             yield return null;
-            if(Input.GetMouseButtonDown(0)) break;
+            if(Input.GetMouseButtonUp(0)) break;
         }
         NewPuzzleSound.Play();
         ClickToContinueText.SetActive(false);
@@ -518,6 +518,7 @@ public class TurkPuzzleScript : MonoBehaviour
         PieceHolderScript.PickupEnabled = true;
 
         InteractionBlocker.SetActive(false);
+        BuyBlessingsNow.SetActive(false);
     }
 
     public float QuickCalculateReward(int completitionDifficulty)

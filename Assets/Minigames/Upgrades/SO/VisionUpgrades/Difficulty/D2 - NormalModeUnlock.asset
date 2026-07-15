@@ -29,6 +29,7 @@ MonoBehaviour:
     higher earnings.
   MascotDialogue: Did you know a <b>really</b> nice telescope costs about as much
     as a hot tub. Sometimes it's better to trade passion for luxury.
+  AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 

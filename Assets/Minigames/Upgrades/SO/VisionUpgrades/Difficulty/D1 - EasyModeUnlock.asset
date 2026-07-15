@@ -31,6 +31,7 @@ MonoBehaviour:
 
     I''ll just up
     the pay in there to make your life more comfortable. '
+  AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 

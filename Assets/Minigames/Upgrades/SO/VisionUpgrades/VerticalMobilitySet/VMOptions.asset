@@ -20,9 +20,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28ce7938c408fa546bd7770ff3457faf, type: 2}
   - {fileID: 11400000, guid: a63dd126269ce684a8400aa0425dde7e, type: 2}
   UpgradeName: VMOptions
-  UpgradeIcon: {fileID: 0}
+  UpgradeIcon: {fileID: -2140385114, guid: c5fe5212be599964b9de15878c200a47, type: 3}
   PrioritySortOverride: -1
-  GoldenUpgrade: 0
+  GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
   CompleteQuest: 0
@@ -30,6 +30,7 @@ MonoBehaviour:
   UpgradeDescription: 
   UpgradeMechanicDescription: 
   MascotDialogue: 
+  AdText: CHOOSE YOUR FUTURE
   OverrideDialogue: []
   Credits: 0
   FlockRenown: 0
@@ -43,4 +44,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   PosterName: 

@@ -50,11 +50,16 @@ public class PipeStackScript : MonoBehaviour
     public PipeSOHolder PipeTypes;
     [HideInInspector] public int PipeTypeIdx = 0;
 
+    [Header("Vent Openings")]
+    public Image BottomVentOpening;
+    public Image RightVentOpening;
+    public Image LeftVentOpening;
+    public Image UpVentOpening;
+
     [Header ("Components")]
     public GameObject Pipe;
     public GameObject PipeSecondLayer;
     public GameObject Backdrop;
-    public GameObject LightLayer;
     public GameObject FanLayer;
     public GameObject Gear;
 
@@ -124,6 +129,8 @@ public class PipeStackScript : MonoBehaviour
         InstantRotation();
 
         StartCoroutine(SlideIn());
+
+        UpdateVentOpeningTint();
     }
 
     public IEnumerator SlideIn()
@@ -336,6 +343,30 @@ public class PipeStackScript : MonoBehaviour
         CloseOpenings();
     }
 
+    public void UpdateVentOpeningTint()
+    {
+        UpVentOpening.color = Color.white;
+        if(UpConnection == PipeConnectionType.Closed)
+        {
+            UpVentOpening.color = Color.grey;
+        }
+        BottomVentOpening.color = Color.white;
+        if (DownConnection == PipeConnectionType.Closed)
+        {
+            BottomVentOpening.color = Color.grey;
+        }
+        LeftVentOpening.color = Color.white;
+        if (LeftConnection == PipeConnectionType.Closed)
+        {
+            LeftVentOpening.color = Color.grey;
+        }
+        RightVentOpening.color = Color.white;
+        if (RightConnection == PipeConnectionType.Closed)
+        {
+            RightVentOpening.color = Color.grey;
+        }
+    }
+
     public void CloseOpenings()
     {
         if (!isNormalWithCaps) return;
@@ -359,6 +390,7 @@ public class PipeStackScript : MonoBehaviour
             LeftConnection = PipeConnectionType.Capped;
             LeftSecondary = true;
         }
+        UpdateVentOpeningTint();
     }
 
     public void CapOverride()
@@ -375,6 +407,8 @@ public class PipeStackScript : MonoBehaviour
 
         if (LeftConnection != PipeConnectionType.Closed) LeftConnection = PipeConnectionType.Capped;
         LeftSecondary = false;
+
+        UpdateVentOpeningTint();
     }
 
     public void EnableRotation()
@@ -402,25 +436,24 @@ public class PipeStackScript : MonoBehaviour
 
         LeftConnection = RotateConnection(3);
         LeftSecondary = RotateSecondary(3);
+
+        UpdateVentOpeningTint();
     }
 
     public void SetLightIdle()
     {
-        LightLayer.GetComponent<Image>().sprite = IdleLight;
         fanSpinning = false;
         lightActive = false;
     }
 
     public void SetLightActive()
     {
-        LightLayer.GetComponent<Image>().sprite = InUseLight;
         fanSpinning = true;
         lightActive = true;
     }
 
     public void SetLightLeaking()
     {
-        LightLayer.GetComponent<Image>().sprite = DisconnectedLight;
         fanSpinning = false;
         lightActive = false;
     }
@@ -611,6 +644,8 @@ public class PipeStackScript : MonoBehaviour
                 break;
         }
 
+        UpdateVentOpeningTint();
+
         if (connectionType == PipeConnectionType.Closed || connectionType == PipeConnectionType.All) return connectionType;
 
         int connectionTypeIdx = Array.IndexOf(RotationLoop, connectionType);
@@ -636,12 +671,10 @@ public class PipeStackScript : MonoBehaviour
     public void HideBackdrop()
     {
         if (Backdrop) Backdrop.GetComponent<Image>().color = Color.grey;
-        if (LightLayer) LightLayer.SetActive(false);
     }
     public void ShowBackdrop()
     {
         if (Backdrop) Backdrop.GetComponent<Image>().color = Color.white;
-        if (LightLayer) LightLayer.SetActive(true);
     }
 
     public List<BADdirections> GetPossibleExpansions(BADdirections fumeEntranceVelocity)
