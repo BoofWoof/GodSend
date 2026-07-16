@@ -24,7 +24,7 @@ MonoBehaviour:
   CompleteQuest: 1
   ProgressQuest: 0
   UpgradeDescription: The lies of the body have begun to crack.
-  UpgradeMechanicDescription: Make all puzzles reward significantly more.
+  UpgradeMechanicDescription: Raises puzzle rewards significantly.
   MascotDialogue: 'Usually it takes hours to get this far, but you''ve been zooming
     through the ranks. You probably earned it through hard work. c:'
   AdText: GROW YOUR SPIRIT AND FINANCES

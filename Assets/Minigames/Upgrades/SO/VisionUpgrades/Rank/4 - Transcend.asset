@@ -24,7 +24,7 @@ MonoBehaviour:
   CompleteQuest: 1
   ProgressQuest: 0
   UpgradeDescription: You're almost ready. Show patience with yourself. Keep working.
-  UpgradeMechanicDescription: Make all puzzles reward significantly more.
+  UpgradeMechanicDescription: Raises puzzle rewards significantly.
   MascotDialogue: Nice work! This rank is the end of the 'free trial' for most users,
     but I'm sure you'll find ways around the ceiling. You seem resourceful!
   AdText: GROW YOUR SPIRIT AND FINANCES

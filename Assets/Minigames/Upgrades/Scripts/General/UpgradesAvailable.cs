@@ -10,6 +10,7 @@ public class UpgradesAvailable : MonoBehaviour
     public UpgradeScreenScript UpgradeScreen;
 
     public TMP_Text UpgradeText;
+    public Color AvailableTextColor;
     private Color UpgradeColor;
 
     public Color StartFillColor;
@@ -33,7 +34,7 @@ public class UpgradesAvailable : MonoBehaviour
             bool UpgradeAvailable = UpgradePercentage >= 1f;
 
             ButtonGlow.SetActive(UpgradeAvailable);
-            if (UpgradeAvailable) UpgradeText.color = new Color(1f, 0.98f, 0.67f, 1f);
+            if (UpgradeAvailable) UpgradeText.color = AvailableTextColor;
             else UpgradeText.color = UpgradeColor;
 
             if (UpgradeAvailable) FillPanel.color = CompleteFillColor;

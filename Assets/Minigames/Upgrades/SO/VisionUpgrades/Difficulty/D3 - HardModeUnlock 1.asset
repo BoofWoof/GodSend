@@ -25,8 +25,8 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
     comes responsibility!
-  UpgradeMechanicDescription: Gain access to a higher difficulty that gives significantly
-    higher earnings.
+  UpgradeMechanicDescription: Gain access to a higher difficulty that pays significantly
+    more.
   MascotDialogue: Please don't make me fly again... I like the bird bath.
   AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:

@@ -25,7 +25,7 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: You are ready for a grand challenge. Trust in your brethern.
     Each puzzle now earns you more credits.
-  UpgradeMechanicDescription: Make all puzzles reward significantly more.
+  UpgradeMechanicDescription: Raises puzzle rewards significantly.
   MascotDialogue: 
   AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue: []

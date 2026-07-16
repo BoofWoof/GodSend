@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class UpgradeItemScript : MonoBehaviour
     public Image UpgradeImage;
 
     public Button BuyButton;
+
+    public Image AffordabilityFill;
 
     private bool DisablePurchases = false;
 
@@ -64,8 +67,11 @@ public class UpgradeItemScript : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 continue;
             }
+            float purchaseProgress = AssociatedUpgrade.PercentBuyable();
 
-            if (AssociatedUpgrade.CanBuy() && !DisablePurchases) BuyButton.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            if(AffordabilityFill != null) AffordabilityFill.fillAmount = 1f - purchaseProgress;
+
+            if (purchaseProgress >= 1f && !DisablePurchases) BuyButton.GetComponent<Image>().color = new Color(1f, 1f, 1f);
             else BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);
             yield return new WaitForSeconds(0.2f);
         }

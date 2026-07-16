@@ -24,7 +24,7 @@ MonoBehaviour:
   CompleteQuest: 1
   ProgressQuest: 0
   UpgradeDescription: Prove your loyalty to Flock and start learning universal truths.
-  UpgradeMechanicDescription: Make all puzzles reward significantly more.
+  UpgradeMechanicDescription: Raises puzzle rewards significantly.
   MascotDialogue: 'Nice!
 
     Did you expect me to say more? Nah, I wouldn''t waste
