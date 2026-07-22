@@ -50,11 +50,11 @@ public class AerialDefenseScript : MonoBehaviour
         LevelData = targetLevel;
     }
 
-    public void StartLevel()
+    public void StartLevel(bool forceActivate = false)
     {
         int CurrentWave = 0;
 
-        if (GameStateMonitor.DangerActive) return;
+        if (GameStateMonitor.DangerActive && !forceActivate) return;
         ChannelChanger.instance.AerialSwitch();
         GameStateMonitor.DangerActive = true;
 
@@ -72,22 +72,27 @@ public class AerialDefenseScript : MonoBehaviour
         GameRunning = true;
     }
 
-    public void StopWave()
+    public void StopWave(bool StopDanger = true)
     {
         GameRunning = false;
 
         RemainingHealth = MaxHealth;
         UpdateHealthFill();
 
-        CrossfadeScript.TransitionSong(1);
-
-        if (LevelData.OptionalVolume != null)
+        if (StopDanger)
         {
-            StartCoroutine(StopVolume(LevelData.OptionalVolume));
-        }
+            CrossfadeScript.TransitionSong(1);
 
-        GameStateMonitor.DangerActive = false;
+            if (LevelData.OptionalVolume != null)
+            {
+                StartCoroutine(StopVolume(LevelData.OptionalVolume));
+            }
+
+            GameStateMonitor.DangerActive = false;
+        }
         ChannelChanger.ActiveChannelChanger.LockSwitch();
+
+        FallingThreatScript.DestroyAllThreats();
     }
 
     public void ForceWin()
@@ -101,8 +106,14 @@ public class AerialDefenseScript : MonoBehaviour
     {
         if (!GameRunning) return;
         Debug.Log("Forcing Loss for Aerial Defense.");
+        Lose();
+    }
+    public void Lose()
+    {
         LoseOutcomes();
-        StopWave();
+        StopWave(false);
+
+        if (LevelData.RestartOnFailure) ChannelChanger.instance.StartCoroutine(ChannelChanger.instance.RestartAerialDefenseAfterXSeconds(2f));
     }
     public void WinOutcomes()
     {
@@ -138,9 +149,7 @@ public class AerialDefenseScript : MonoBehaviour
 
         if (Instance.RemainingHealth <= 0)
         {
-            Instance.LoseOutcomes();
-            FallingThreatScript.DestroyAllThreats();
-            Instance.StopWave();
+            Instance.Lose();
         }
     }
 

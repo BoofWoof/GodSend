@@ -80,7 +80,7 @@ public class MusicSelectorScript : MonoBehaviour
     }
     public static void SetPhoneSong(double newSongID, bool instant = false)
     {
-        if (SongLock) return;
+        if (SongLock || newSongID == instance.PhoneMusicID) return;
         instance.PhoneMusicID = (int)newSongID;
         if (PhonePositionScript.raised)
         {

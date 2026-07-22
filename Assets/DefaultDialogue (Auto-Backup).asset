@@ -12465,7 +12465,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 26.5625, y: 0}
+    canvasScrollPosition: {x: 15.625, y: 1332.8118}
     canvasZoom: 0.6400004
   - id: 11
     fields:
@@ -30909,7 +30909,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/6Condensor.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/6TheProcess.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -30968,7 +30968,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/7GeenLight.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/7NoLeaks.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -31027,7 +31027,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/8HereItComes.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/8_OutOfTime.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -31061,65 +31061,6 @@ MonoBehaviour:
       - originConversationID: 19
         originDialogueID: 43
         destinationConversationID: 19
-        destinationDialogueID: 44
-        isConnector: 0
-        priority: 2
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 80
-        y: 5342
-        width: 160
-        height: 30
-    - id: 44
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/9SendAReminder.asset
-        type: 0
-        typeString: CustomFieldType_Files
-      - title: Actor
-        value: 7
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 4
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: SendAReminder
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 19
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 19
-        originDialogueID: 44
-        destinationConversationID: 19
         destinationDialogueID: 45
         isConnector: 0
         priority: 2
@@ -31130,8 +31071,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
-        y: 5426
+        x: 78.809525
+        y: 5342
         width: 160
         height: 30
     - id: 45
@@ -31186,7 +31127,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 80
-        y: 5508.6665
+        y: 5506.815
         width: 160
         height: 30
     - id: 46
@@ -33882,8 +33823,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 3879.5122}
-    canvasZoom: 0.54000014
+    canvasScrollPosition: {x: 265.33337, y: 1866.6309}
+    canvasZoom: 0.75
   - id: 20
     fields:
     - title: Title
@@ -60113,7 +60054,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Mercenary? Is that Aries? We already know him! He's why he can't leave!
+        value: Mercenary? Is that Aries? We already know him! He's why we can't leave!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -63567,7 +63508,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 21.649475, y: 3381.4448}
+    canvasScrollPosition: {x: 0, y: 762.88684}
     canvasZoom: 0.97
   - id: 25
     fields:
@@ -77277,9 +77218,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'SetQuest("Great Leviathan")
-
-        FadeInSong(5)'
+      userScript: SetQuest("Great Leviathan")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -77392,7 +77331,7 @@ MonoBehaviour:
       - originConversationID: 35
         originDialogueID: 0
         destinationConversationID: 35
-        destinationDialogueID: 6
+        destinationDialogueID: 7
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -77461,8 +77400,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 168
-        y: 157
+        x: 188
+        y: 323
         width: 160
         height: 30
     - id: 2
@@ -77520,8 +77459,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 164
-        y: 216
+        x: 184
+        y: 381
         width: 160
         height: 30
     - id: 3
@@ -77579,8 +77518,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 156
-        y: 285
+        x: 176
+        y: 451
         width: 160
         height: 30
     - id: 4
@@ -77632,8 +77571,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 164
-        y: 355
+        x: 184
+        y: 521
         width: 160
         height: 30
     - id: 6
@@ -77691,12 +77630,71 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 159
-        y: 88
+        x: 179
+        y: 254
+        width: 160
+        height: 30
+    - id: 7
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: 
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 8
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 35
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 35
+        originDialogueID: 7
+        destinationConversationID: 35
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: StartDay()
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 175
+        y: 139
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 9, y: 39}
     canvasZoom: 1
   - id: 36
     fields:
@@ -77717,7 +77715,7 @@ MonoBehaviour:
       type: 5
       typeString: CustomFieldType_Actor
     - title: IsMacro
-      value: False
+      value: True
       type: 2
       typeString: CustomFieldType_Boolean
     - title: AllowRepeat
@@ -77814,8 +77812,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 203
-        y: 51
+        x: 373.87378
+        y: 49.029114
         width: 160
         height: 30
     - id: 1
@@ -77863,7 +77861,7 @@ MonoBehaviour:
       - originConversationID: 36
         originDialogueID: 1
         destinationConversationID: 36
-        destinationDialogueID: 3
+        destinationDialogueID: 4
         isConnector: 0
         priority: 2
       conditionsString: Variable["LatestAerialOutcome"] == 1
@@ -77922,17 +77920,17 @@ MonoBehaviour:
       - originConversationID: 36
         originDialogueID: 2
         destinationConversationID: 36
-        destinationDialogueID: 3
+        destinationDialogueID: 4
         isConnector: 0
         priority: 2
-      conditionsString: Variable["LatestAerialOutcome"] == 2
+      conditionsString: 
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 333
+        x: 332.02914
         y: 219
         width: 160
         height: 30
@@ -77981,7 +77979,19 @@ MonoBehaviour:
       - originConversationID: 36
         originDialogueID: 3
         destinationConversationID: 36
-        destinationDialogueID: 4
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      - originConversationID: 36
+        originDialogueID: 3
+        destinationConversationID: 36
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
+      - originConversationID: 36
+        originDialogueID: 3
+        destinationConversationID: 36
+        destinationDialogueID: 10
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -77991,8 +78001,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 211
-        y: 346
+        x: 223
+        y: 385
         width: 160
         height: 30
     - id: 4
@@ -78040,30 +78050,18 @@ MonoBehaviour:
       - originConversationID: 36
         originDialogueID: 4
         destinationConversationID: 36
-        destinationDialogueID: 6
-        isConnector: 0
-        priority: 2
-      - originConversationID: 36
-        originDialogueID: 4
-        destinationConversationID: 36
-        destinationDialogueID: 7
-        isConnector: 0
-        priority: 2
-      - originConversationID: 36
-        originDialogueID: 4
-        destinationConversationID: 36
-        destinationDialogueID: 10
+        destinationDialogueID: 3
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: SetSong(13)
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 212
-        y: 421
+        x: 223.43689
+        y: 312.94174
         width: 160
         height: 30
     - id: 5
@@ -78115,7 +78113,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -78292,7 +78290,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -78469,7 +78467,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -79679,7 +79677,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("VIPSet0")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -79738,7 +79736,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("VIPSet1")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -80275,7 +80273,11 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: 'RevertSong()
+
+        UnlockApp("Visions")
+
+        IncrementQuest()'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -80286,8 +80288,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 1617}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 0, y: 1583.1431}
+    canvasZoom: 0.73000026
   syncInfo:
     syncActors: 0
     syncItems: 0

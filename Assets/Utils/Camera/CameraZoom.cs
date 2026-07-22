@@ -32,7 +32,7 @@ public class CameraZoom : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.CompareTag("NoZoom"))
+            if (hit.collider.CompareTag("NoZoom") && GameStateMonitor.DangerActive)
             {
                 TargetCamera.fieldOfView = DefaultFOV;
             }

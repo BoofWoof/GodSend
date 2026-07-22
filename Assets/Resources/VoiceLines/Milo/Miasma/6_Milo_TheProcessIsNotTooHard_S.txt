@@ -1,0 +1,2 @@
+0,
+6, The process isn't too hard, just look for vent segments with rotation enabled and use them to guide the gas from the in takes to the purifiers.

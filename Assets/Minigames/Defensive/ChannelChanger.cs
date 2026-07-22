@@ -47,7 +47,7 @@ public class ChannelChanger : MonoBehaviour
 
     public void LockSwitch(bool PhoneUnlock = true)
     {
-        if (GameStateMonitor.DangerActive) return;
+        //if (GameStateMonitor.DangerActive) return;
         if (PhoneUnlock) PhonePositionScript.UnlockPhone();
 
         AerialDefense.SetActive(false);
@@ -101,5 +101,14 @@ public class ChannelChanger : MonoBehaviour
         yield return new WaitForSeconds(1.37f);
 
         MaskAnimator.Play("MaskExpand");
+    }
+    public IEnumerator RestartAerialDefenseAfterXSeconds(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        while (GameStateMonitor.isSpeakingSourceActive())
+            yield return null;
+
+        AerialDefenseScript.Instance.StartLevel(true);
     }
 }

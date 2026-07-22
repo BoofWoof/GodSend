@@ -7,6 +7,8 @@ public class HandScript : MonoBehaviour
 
     public GameObject SpawnedObject;
 
+    public bool HoldingObject = false;
+
     [ContextMenu("Spawn In Hand")] // Adds right-click menu option
     public void SpawnInHandInterface()
     {
@@ -32,6 +34,8 @@ public class HandScript : MonoBehaviour
         SpawnedObject.transform.localPosition = Vector3.zero;
         SpawnedObject.transform.localRotation = Quaternion.identity;
 
+        HoldingObject = true;
+
         #if UNITY_EDITOR
                 UnityEditor.Undo.RegisterCreatedObjectUndo(SpawnedObject, "Spawn Object In Hand");
         #endif
@@ -45,11 +49,15 @@ public class HandScript : MonoBehaviour
     public void DestroyHeldObject()
     {
         Destroy(SpawnedObject);
+
+        HoldingObject = false;
     }
 
     public void ReleaseHandObject(int releaseIdx)
     {
         SpawnedObject.GetComponent<CarryableObject>().GoTo(releaseIdx);
+
+        HoldingObject = false;
     }
 
     public void PickupHandObject(string objectName)
@@ -67,5 +75,7 @@ public class HandScript : MonoBehaviour
         SpawnedObject.transform.parent = transform;
         SpawnedObject.transform.localPosition = Vector3.zero;
         SpawnedObject.transform.localRotation = Quaternion.identity;
+
+        HoldingObject = true;
     }
 }

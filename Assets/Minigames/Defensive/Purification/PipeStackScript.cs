@@ -226,7 +226,7 @@ public class PipeStackScript : MonoBehaviour
         Pipe.GetComponent<Image>().sprite = PipeStructData.SinkVersion;
         PipeSecondLayer.SetActive(false);
 
-        FanLayer.SetActive(true);
+        FanLayer.SetActive(false);
 
         GridSource.Sources.Remove(this);
         GridSource.Goals.Remove(this);

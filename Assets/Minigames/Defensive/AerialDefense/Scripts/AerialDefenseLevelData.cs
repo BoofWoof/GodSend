@@ -7,6 +7,7 @@ public class AerialDefenseLevelData : MonoBehaviour
 {
     public string LevelName;
     public List<ADWaveInfoSO> LevelWaves;
+    public bool RestartOnFailure;
 
     [Header("Quick Dialogues")]
     public string FailureVoiceLinePath;

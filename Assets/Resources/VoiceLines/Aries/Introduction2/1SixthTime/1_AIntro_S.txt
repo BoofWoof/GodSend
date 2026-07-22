@@ -1,0 +1,8 @@
+0,
+12, Again...
+80, This is the seventh time you've contacted me.
+176, And it will be the seventh time you invite ruin upon yourselves.
+335, Why do you keep coming back?
+479, [God Language]
+588, Don't bother with more messages.
+654, Save your gunpowder, it's already too late.

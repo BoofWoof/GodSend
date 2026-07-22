@@ -12465,7 +12465,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 26.5625, y: 0}
+    canvasScrollPosition: {x: 15.625, y: 1332.8118}
     canvasZoom: 0.6400004
   - id: 11
     fields:
@@ -30909,7 +30909,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/6Condensor.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/6TheProcess.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -30968,7 +30968,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/7GeenLight.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/7NoLeaks.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -31027,7 +31027,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/8HereItComes.asset
+        value: Assets/Resources/VoiceLines/Milo/Miasma/8_OutOfTime.asset
         type: 0
         typeString: CustomFieldType_Files
       - title: Actor
@@ -31061,65 +31061,6 @@ MonoBehaviour:
       - originConversationID: 19
         originDialogueID: 43
         destinationConversationID: 19
-        destinationDialogueID: 44
-        isConnector: 0
-        priority: 2
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 80
-        y: 5342
-        width: 160
-        height: 30
-    - id: 44
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: VoiceLinesSO
-        value: Assets/Resources/VoiceLines/Milo/Miasma/9SendAReminder.asset
-        type: 0
-        typeString: CustomFieldType_Files
-      - title: Actor
-        value: 7
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 4
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: SendAReminder
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 19
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 19
-        originDialogueID: 44
-        destinationConversationID: 19
         destinationDialogueID: 45
         isConnector: 0
         priority: 2
@@ -31130,8 +31071,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
-        y: 5426
+        x: 78.809525
+        y: 5342
         width: 160
         height: 30
     - id: 45
@@ -33882,8 +33823,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 4392.4756}
-    canvasZoom: 0.54000014
+    canvasScrollPosition: {x: 265.33337, y: 1866.6309}
+    canvasZoom: 0.75
   - id: 20
     fields:
     - title: Title
@@ -77519,7 +77460,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 184
-        y: 382
+        y: 381
         width: 160
         height: 30
     - id: 3
@@ -77749,11 +77690,11 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 175
-        y: 140
+        y: 139
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 9, y: 39}
     canvasZoom: 1
   - id: 36
     fields:
@@ -77989,7 +77930,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 333
+        x: 332.02914
         y: 219
         width: 160
         height: 30
@@ -78113,14 +78054,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: SetSong(13)
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 238
-        y: 311
+        x: 223.43689
+        y: 312.94174
         width: 160
         height: 30
     - id: 5
@@ -78172,7 +78113,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -78349,7 +78290,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -78526,7 +78467,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: IncrementQuest()
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -79736,7 +79677,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("VIPSet0")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -79795,7 +79736,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("VIPSet1")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -80332,7 +80273,11 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: 'RevertSong()
+
+        UnlockApp("Visions")
+
+        IncrementQuest()'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -80343,8 +80288,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 15.145629, y: 6.553385}
-    canvasZoom: 1.03
+    canvasScrollPosition: {x: 0, y: 1583.1431}
+    canvasZoom: 0.73000026
   syncInfo:
     syncActors: 0
     syncItems: 0

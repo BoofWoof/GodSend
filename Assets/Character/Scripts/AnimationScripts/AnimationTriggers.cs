@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationTriggers : MonoBehaviour
@@ -7,6 +8,7 @@ public class AnimationTriggers : MonoBehaviour
 
     public HandScript RightHand;
     public HandScript LeftHand;
+    public List<HandScript> ExtraPropHolders;
 
     public LookScript LookControl;
     private float LastHeadLookWeight;
@@ -66,6 +68,7 @@ public class AnimationTriggers : MonoBehaviour
 
     public void RightHandSpawn(int SpawnID)
     {
+        if (RightHand.HoldingObject) return;
         RightHand.SpawnInHand(SpawnID);
     }
 
@@ -91,6 +94,7 @@ public class AnimationTriggers : MonoBehaviour
 
     public void LeftHandSpawn(int SpawnID)
     {
+        if (LeftHand.HoldingObject) return;
         LeftHand.SpawnInHand(SpawnID);
     }
 
@@ -118,6 +122,17 @@ public class AnimationTriggers : MonoBehaviour
     {
         LeftHand.ReleaseHandObject(ReleaseID);
         LeftHand.Activate();
+    }
+
+    public void ExtraSpawn0(int SpawnID)
+    {
+        if (ExtraPropHolders[0].HoldingObject) return;
+        ExtraPropHolders[0].SpawnInHand(SpawnID);
+    }
+
+    public void ExtraPickup0(string objectName)
+    {
+        ExtraPropHolders[0].PickupHandObject(objectName);
     }
 
     public void BroadcastActivation(string TriggerName)

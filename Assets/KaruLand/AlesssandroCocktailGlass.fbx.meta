@@ -3,7 +3,22 @@ guid: 5852227fcb0ea7942b0f952ff25f1f57
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MartiniFluid
+    second: {fileID: 2100000, guid: 968dcbe0dcf6ca049b30fad5d17c86d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 4ed07e94ec6d76d4caf920a58b782182, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: b8866950c6823a940852e94e4d582a26, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
