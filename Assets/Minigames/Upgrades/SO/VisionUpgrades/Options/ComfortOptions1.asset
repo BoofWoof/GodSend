@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b857a58f9e81d41a937856044fd38f, type: 3}
   m_Name: ComfortOptions1
   m_EditorClassIdentifier: 
-  Prioirty: 0
+  Prioirty: 3
   UpgradeID: c3b3501e-2bab-476b-803b-000cc7a2a124
   UpgradesGroup:
   - {fileID: 11400000, guid: d9ce9ab20c30e614cb076bfaff132be9, type: 2}
   - {fileID: 11400000, guid: dd071b9dc270c314bbf1c7850b1723f3, type: 2}
+  OverrideGroupCost: 1
   UpgradeName: 
   UpgradeIcon: {fileID: 0}
   PrioritySortOverride: -1
@@ -28,8 +29,9 @@ MonoBehaviour:
   UpgradeDescription: 
   UpgradeMechanicDescription: 
   MascotDialogue: 
+  AdText: 
   OverrideDialogue: []
-  Credits: 0
+  Credits: 0.00000313
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0
@@ -41,4 +43,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 0100000002000000
   STags: 
+  CloseMenuOnBuy: 0
   PosterName: 

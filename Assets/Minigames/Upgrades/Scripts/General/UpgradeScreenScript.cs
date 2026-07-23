@@ -113,13 +113,25 @@ public class UpgradeScreenScript : MonoBehaviour
         for(int i = newUpgradeClones.Count - 1; i >= 0; i--)
         {
             UpgradesAbstract newUpgrade = newUpgradeClones[i];
-            int newPriority = newUpgrade.Prioirty;
+            float cost = newUpgrade.Credits;
+            if (newUpgrade.GoldenUpgrade) cost *= 0.95f;
             int insertionIndex = 0;
+            if (newUpgrade.FlockRenown > 0f) //THIS IS A TEMPORARY FIX, ACTUALLY SORT FOR FLOCK RENOWN EVENTUALLY
+            {
+                cost = 99999f;
+            }
             foreach (UpgradesAbstract upgrade in UpgradeClones)
+            {
+                float compareCost = upgrade.Credits;
+                if (upgrade.GoldenUpgrade) compareCost *= 0.95f;
+                if (cost <= compareCost) break;
+                insertionIndex++;
+            }
+            /*foreach (UpgradesAbstract upgrade in UpgradeClones)
             {
                 if (newPriority <= upgrade.Prioirty) break;
                 insertionIndex++;
-            }
+            }*/
             UpgradeClones.Insert(insertionIndex, newUpgrade);
         }
 

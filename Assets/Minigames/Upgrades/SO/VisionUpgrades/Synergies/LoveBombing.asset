@@ -15,6 +15,7 @@ MonoBehaviour:
   Prioirty: 4
   UpgradeID: bdedeb73c0e9f8342af5124b306e5052
   UpgradesGroup: []
+  OverrideGroupCost: 0
   UpgradeName: Love Bombing
   UpgradeIcon: {fileID: 895661343, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
   PrioritySortOverride: -1
@@ -28,6 +29,7 @@ MonoBehaviour:
     of a free puzzle completion.
   MascotDialogue: This blessing is specifically made for <b>VIP<b>s like you. It
     plays well with your special perks.
+  AdText: 
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: This one seems pretty useless, doesn't it! Maybe it will
@@ -44,5 +46,6 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 00000000
   STags: 
+  CloseMenuOnBuy: 0
   CompletionDifficulty: 0
   PrayerRequired: 5

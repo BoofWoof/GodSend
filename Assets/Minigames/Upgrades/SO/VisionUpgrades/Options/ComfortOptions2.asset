@@ -17,6 +17,7 @@ MonoBehaviour:
   UpgradesGroup:
   - {fileID: 11400000, guid: 675b695145be4fb4d8dc660a05679421, type: 2}
   - {fileID: 11400000, guid: bdedeb73c0e9f8342af5124b306e5052, type: 2}
+  OverrideGroupCost: 1
   UpgradeName: 
   UpgradeIcon: {fileID: 0}
   PrioritySortOverride: -1
@@ -28,8 +29,9 @@ MonoBehaviour:
   UpgradeDescription: 
   UpgradeMechanicDescription: 
   MascotDialogue: 
+  AdText: 
   OverrideDialogue: []
-  Credits: 0
+  Credits: 0.0000156
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

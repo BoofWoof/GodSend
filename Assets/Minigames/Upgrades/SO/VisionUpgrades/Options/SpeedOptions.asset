@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b857a58f9e81d41a937856044fd38f, type: 3}
   m_Name: SpeedOptions
   m_EditorClassIdentifier: 
-  Prioirty: 0
+  Prioirty: 2
   UpgradeID: c20cb4b5-5e0c-44e3-974c-51881060e129
   UpgradesGroup:
   - {fileID: 11400000, guid: 25ef69827139cf64f871ea99034edb5a, type: 2}
   - {fileID: 11400000, guid: 45064eb0b035bf54e989bb7b86d0d5d5, type: 2}
+  OverrideGroupCost: 1
   UpgradeName: 
   UpgradeIcon: {fileID: -1538940867, guid: c5fe5212be599964b9de15878c200a47, type: 3}
   PrioritySortOverride: -1
@@ -30,7 +31,7 @@ MonoBehaviour:
   MascotDialogue: 
   AdText: MAKE YOUR TIME WORK FOR YOU!!!
   OverrideDialogue: []
-  Credits: 0
+  Credits: 0.00000025
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

@@ -94,6 +94,9 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public bool CloseMenuOnBuy = false;
 
+    public delegate void OnUpgradeBoughtDelegate(string upgradeID);
+    public static OnUpgradeBoughtDelegate OnUpgradeBought;
+
     public float PercentBuyable()
     {
         if (UpgradeBought) return 0f;
@@ -186,6 +189,8 @@ public abstract class UpgradesAbstract : ScriptableObject
         bool canBuy = CanBuy();
         if (!canBuy && !forceBuy) return canBuy;
         UpgradeBought = true;
+
+        OnUpgradeBought?.Invoke(UpgradeID);
 
         CurrencyData.Credits -= Credits;
         CurrencyData.RenownFlock -= FlockRenown;
