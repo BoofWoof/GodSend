@@ -111,6 +111,7 @@ public class UpgradeItemListScript : MonoBehaviour
             if ((SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID) && !AssociatedUpgrade.UpgradeBought) ||
                 (!SourceScreen.PreboughtUpgradeIDs.Contains(targetUpgrade.UpgradeID) && AssociatedUpgrade.UpgradeBought)
                 ) continue;
+            if (AssociatedUpgrade.OverrideGroupCost) targetUpgrade.Credits = AssociatedUpgrade.Credits;
             UpgradeItemScript uiScript = AddUpgradeToList(targetUpgrade);
         }
         GetComponent<Image>().color = MultiColor;

@@ -15,7 +15,7 @@ MonoBehaviour:
   AudioData: {fileID: 8300000, guid: 873471703f0499044870429eef7937bf, type: 3}
   PhenomeData: {fileID: 4900000, guid: dab8d5f97d07c4148963d12dad335643, type: 3}
   SubtitleData: {fileID: 4900000, guid: c5b84dc44962b0d4cb533d33d91e9035, type: 3}
-  GestureData: {fileID: 0}
+  GestureData: {fileID: 4900000, guid: e3b574e9b8fb00c4c8b4b5d5e26191f1, type: 3}
   FocusLevel: 1
   PauseBeforeStart: 8
   PauseAfterEnd: 0

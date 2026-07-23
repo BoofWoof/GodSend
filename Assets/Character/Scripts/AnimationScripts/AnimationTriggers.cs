@@ -118,6 +118,15 @@ public class AnimationTriggers : MonoBehaviour
         LeftHand.Activate();
     }
 
+    public void LeftHandRumble()
+    {
+        LeftHand.TurnOnMovementRumble();
+    }
+    public void LeftHandStopRumble()
+    {
+        LeftHand.TurnOffMovementRumble();
+    }
+
     public void LeftHandDropAndActivate(int ReleaseID)
     {
         LeftHand.ReleaseHandObject(ReleaseID);
@@ -138,5 +147,15 @@ public class AnimationTriggers : MonoBehaviour
     public void BroadcastActivation(string TriggerName)
     {
         ActiveBroadcast.BroadcastActivation(TriggerName);
+    }
+
+    public void SetRumbleToHeld()
+    {
+        MoveCamera.moveCamera.SetToHeld(true);
+    }
+
+    public void SetRumbleToRelease()
+    {
+        MoveCamera.moveCamera.SetToHeld(false);
     }
 }

@@ -48,6 +48,7 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     //This is only used for upgrade options.
     public List<UpgradesAbstract> UpgradesGroup;
+    public bool OverrideGroupCost = false;
 
     public string UpgradeName;
     public Sprite UpgradeIcon;

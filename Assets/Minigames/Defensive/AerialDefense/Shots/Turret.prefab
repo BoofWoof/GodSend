@@ -631,8 +631,8 @@ MonoBehaviour:
   ChargeRate: 0.065
   CurrentCharge: 0
   MaxCharge: 1
-  OnHitRechargePercent: 0.4
-  ShotCost: 0.2
+  OnHitRechargePercent: 0.5
+  ShotCost: 0.15
   diageticTurretScript: {fileID: 0}
   AimBeam: {fileID: 7457039982224218047}
   OnShoot:

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -8,6 +9,9 @@ public class HandScript : MonoBehaviour
     public GameObject SpawnedObject;
 
     public bool HoldingObject = false;
+
+    private bool RumbleOn = false;
+    private Vector3 PreviousPosition;
 
     [ContextMenu("Spawn In Hand")] // Adds right-click menu option
     public void SpawnInHandInterface()
@@ -39,6 +43,39 @@ public class HandScript : MonoBehaviour
         #if UNITY_EDITOR
                 UnityEditor.Undo.RegisterCreatedObjectUndo(SpawnedObject, "Spawn Object In Hand");
         #endif
+    }
+
+    public void TurnOnMovementRumble()
+    {
+        if (RumbleOn) return;
+        StartCoroutine(MovementRumbleIEnumerator());
+    }
+    public void TurnOffMovementRumble()
+    {
+        StopAllCoroutines();
+        RumbleOn = false;
+    }
+
+    public IEnumerator MovementRumbleIEnumerator()
+    {
+        RumbleOn = true;
+
+        PreviousPosition = transform.position;
+
+        while (true)
+        {
+            yield return null;
+            float distance = Vector3.Distance(PreviousPosition, transform.position);
+
+            if (Time.deltaTime == 0) continue;
+
+            float rumbleAdd = (distance / Time.deltaTime) / 100f;
+
+            MoveCamera.moveCamera.AddMovementToRumble(rumbleAdd);
+            Debug.Log(rumbleAdd);
+
+            PreviousPosition = transform.position;
+        }
     }
 
     public void Activate()

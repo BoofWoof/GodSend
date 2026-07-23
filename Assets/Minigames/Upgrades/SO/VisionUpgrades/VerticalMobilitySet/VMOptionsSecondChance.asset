@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b857a58f9e81d41a937856044fd38f, type: 3}
   m_Name: VMOptionsSecondChance
   m_EditorClassIdentifier: 
-  Prioirty: -1
+  Prioirty: 1
   UpgradeID: ce7d35df-d64f-4601-8e83-c2ec06d3ca8b
   UpgradesGroup:
   - {fileID: 11400000, guid: 0b735852b19a82148b0711cd82d0f5b2, type: 2}
   - {fileID: 11400000, guid: 7463e7a6756341046b93cfdd098164cf, type: 2}
   - {fileID: 11400000, guid: 28ce7938c408fa546bd7770ff3457faf, type: 2}
   - {fileID: 11400000, guid: a63dd126269ce684a8400aa0425dde7e, type: 2}
+  OverrideGroupCost: 1
   UpgradeName: VMOptions
   UpgradeIcon: {fileID: -2140385114, guid: c5fe5212be599964b9de15878c200a47, type: 3}
-  PrioritySortOverride: -1
+  PrioritySortOverride: 1
   GoldenUpgrade: 1
   DayToTrigger: -1
   DialogueToTrigger: 
@@ -32,7 +33,7 @@ MonoBehaviour:
   MascotDialogue: 
   AdText: CHOOSE YOUR FUTURE
   OverrideDialogue: []
-  Credits: 0
+  Credits: 0.000000025
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

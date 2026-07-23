@@ -133,6 +133,8 @@ public class FallingThreatScript : MonoBehaviour
 
     private void OnDestroy()
     {
+        AerialDefenseScript.TotalProjectilesDestroyed += 1;
+
         if (RenderMaterial != null)
             DestroyImmediate(RenderMaterial);
 
