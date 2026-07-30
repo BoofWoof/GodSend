@@ -81,11 +81,9 @@ public class MusicSelectorScript : MonoBehaviour
     public static void SetPhoneSong(double newSongID, bool instant = false)
     {
         if (SongLock || newSongID == instance.PhoneMusicID) return;
+        if (!PhonePositionScript.raised) return;
         instance.PhoneMusicID = (int)newSongID;
-        if (PhonePositionScript.raised)
-        {
-            CrossfadeScript.TransitionSong(instance.PhoneMusicID, instant);
-        }
+        CrossfadeScript.TransitionSong(instance.PhoneMusicID, instant);
     }
     public static void RevertPhoneSong()
     {

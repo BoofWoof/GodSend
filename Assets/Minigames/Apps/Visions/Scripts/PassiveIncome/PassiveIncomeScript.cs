@@ -8,8 +8,11 @@ public class PassiveIncomeScript : MonoBehaviour
 
     private static bool PassiveIncomeActive = false;
     private static float PassiveIncomeQuantity = 0f;
+    private static float PassiveIncomeQuantityMultiplier = 1f;
+    private static int PassiveIncomeTriggerCount = 0;
+    public static bool ActivateTriggerMultiplier = false;
 
-    private static float PayoutPeriod = 10f;
+    private static float PayoutPeriod = 3f;
 
     public TMP_Text PassiveIncomeText;
 
@@ -22,6 +25,10 @@ public class PassiveIncomeScript : MonoBehaviour
         instance = this;
         PassiveIncomeText.gameObject.SetActive(false);
         PassiveIncomeText.text = "";
+
+        PassiveIncomeQuantityMultiplier = 1f;
+        PassiveIncomeTriggerCount = 0;
+        ActivateTriggerMultiplier = false;
     }
 
     public static void StartPassiveIncome()
@@ -31,6 +38,17 @@ public class PassiveIncomeScript : MonoBehaviour
         instance.PassiveIncomeText.gameObject.SetActive(true);
         instance.UpdateText();
         instance.StartPayoutCoroutine();
+    }
+
+    public static void InstantPayout()
+    {
+        CurrencyData.Credits += PassiveIncomeQuantity * PassiveIncomeQuantityMultiplier;
+
+        if (ActivateTriggerMultiplier)
+        {
+            PassiveIncomeTriggerCount++;
+            PassiveIncomeQuantityMultiplier = 1f + PassiveIncomeTriggerCount / 10f;
+        } 
     }
 
     public void StartPayoutCoroutine()
@@ -56,7 +74,7 @@ public class PassiveIncomeScript : MonoBehaviour
                 }
                 yield return null;
             }
-            CurrencyData.Credits += PassiveIncomeQuantity;
+            InstantPayout();
             if (!AppScript.CheckIfActive("Visions")) continue;
             GetComponentInChildren<Animator>().Play("PopUp");
             GetComponent<AudioSource>().Play();
@@ -67,6 +85,8 @@ public class PassiveIncomeScript : MonoBehaviour
     {
         PassiveIncomeQuantity += increase;
         instance.UpdateText();
+
+        InstantPayout();
     }
 
     public static void ImproveIncomePeriod(float newPeriod)
@@ -75,13 +95,13 @@ public class PassiveIncomeScript : MonoBehaviour
         {
             PayoutPeriod = newPeriod;
             instance.UpdateText();
-            instance.GetComponent<AudioSource>().volume = 0.2f / (10 / newPeriod);
+            instance.GetComponent<AudioSource>().volume = 0.2f / (3 / newPeriod);
         }
     }
 
     public void UpdateText(string timeText = "")
     {
-        PassiveIncomeText.text = $"+ <sprite index=1> <b>{PassiveIncomeQuantity.NumberToString().TrimEnd()}</b> <size=15>IN</size> <b>{timeText}</b> <size=15>SECS</size>";
+        PassiveIncomeText.text = $"+ <sprite index=1> <b>{PassiveIncomeQuantity.NumberToString().TrimEnd()} x {PassiveIncomeQuantityMultiplier.ToString("F1")}</b> <size=15>IN</size> <b>{timeText}</b> <size=15>SECS</size>";
     }
 
     public static bool isPassiveIncomeActive()

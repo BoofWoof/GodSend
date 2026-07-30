@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PassivePeriodSO 2
   m_EditorClassIdentifier: 
   Prioirty: 3
-  UpgradeID: c063cc03a648ac4408885eb2137f4b5b
+  UpgradeID: pip3
   UpgradesGroup: []
   OverrideGroupCost: 0
   UpgradeName: Faster Passive
@@ -42,4 +42,4 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 0
-  NewPeriod: 1.5
+  NewPeriod: 0.5

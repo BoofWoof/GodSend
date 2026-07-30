@@ -19,7 +19,19 @@ public class CrossfadeScript : MonoBehaviour
     public Coroutine TransitionCoroutine;
     public Coroutine CutoffTransitionCoroutine;
 
-    private static bool MusicPaused = true;
+    private static bool _MusicPaused = false;
+    private static bool MusicPaused
+    {
+        get
+        {
+            return _MusicPaused;
+        }
+        set
+        {
+            Debug.Log($"PAUSE IS CHANGING TO {value}.");
+            _MusicPaused = value;
+        }
+    }
 
     public AudioMixer masterMixer;
     public bool cutoffTriggered = false;
@@ -34,7 +46,7 @@ public class CrossfadeScript : MonoBehaviour
     public void Awake()
     {
         MusicPlayer = this;
-        PauseMusic();
+        //PauseMusic();
         oldTrack.volume = 0;
     }
 
@@ -101,6 +113,8 @@ public class CrossfadeScript : MonoBehaviour
     {
         if (MusicSelectorScript.instance.SongList[SongID].Name == MusicPlayer.CurrentSong.Name) return;
 
+        Debug.Log("A");
+
         if (MusicPlayer.TransitionCoroutine != null) MusicPlayer.StopCoroutine(MusicPlayer.TransitionCoroutine);
 
         MusicPlayer.CurrentSongID = SongID;
@@ -117,6 +131,7 @@ public class CrossfadeScript : MonoBehaviour
             MusicPlayer.currentTrack.time = MusicPlayer.CurrentSong.StartTime;
             return;
         }
+        Debug.Log("B");
         MusicPlayer.TransitionCoroutine = MusicPlayer.StartCoroutine(MusicPlayer.FadeInAndOutTransition(MusicSelectorScript.instance.SongList[SongID]));
     }
 
@@ -174,6 +189,7 @@ public class CrossfadeScript : MonoBehaviour
 
         if (NewSong.GroupID != MusicPlayer.CurrentSong.GroupID)
         {
+            Debug.Log($"Instantly starting song. {NewSong.Name}");
             InstantStartSong(SongID, instant);
             return;
         }

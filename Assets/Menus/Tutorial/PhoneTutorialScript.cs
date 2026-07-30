@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -5,6 +6,15 @@ using UnityEngine.UI;
 
 public class PhoneTutorialScript : MonoBehaviour
 {
+    [Serializable]
+    public class TutorialDayStartTriggers
+    {
+        public int TargetDay;
+        public int StartingTutorialStep;
+        public int MaxTutorialStep;
+        public bool Skip = false;
+    }
+
     private List<Transform> TutorialScreens;
     private int TutorialStep = 0;
     public bool CompletedTutorial = false;
@@ -12,9 +22,29 @@ public class PhoneTutorialScript : MonoBehaviour
 
     public int MaxTutorialStep = 999;
 
+    public TutorialDayStartTriggers[] NewDayTriggerArray;
+
     private void Start()
     {
         StartTutorial();
+
+        foreach (TutorialDayStartTriggers trigger in NewDayTriggerArray)
+        {
+            if(trigger.TargetDay == DayInfo.CurrentDay)
+            {
+                SetMaxTutorialSteps(trigger.MaxTutorialStep);
+
+                if (trigger.Skip)
+                {
+                    TutorialScreens[TutorialStep].gameObject.SetActive(false);
+                    CompletedTutorial = true;
+                    GetComponent<Image>().enabled = false;
+                    break;
+                }
+                JumpTutorial(trigger.StartingTutorialStep);
+                break;
+            }
+        }
     }
 
     public void RestartTutorial()
@@ -30,6 +60,18 @@ public class PhoneTutorialScript : MonoBehaviour
             child.gameObject.SetActive(false);
         }
         GetComponent<Image>().enabled = false;
+    }
+
+    public void JumpTutorial(int TargetStep)
+    {
+        TutorialScreens[TutorialStep].gameObject.SetActive(false);
+        TutorialStep = TargetStep;
+        TutorialScreens[TutorialStep].gameObject.SetActive(true);
+    }
+
+    public void SetMaxTutorialSteps(int NewMax)
+    {
+        MaxTutorialStep = NewMax;
     }
 
     public void StartTutorial()

@@ -121,6 +121,7 @@ public class AppMenuScript : AppScript
             if (FirstAppOpened) AnnouncementScript.StartAnnouncement("[RIGHT CLICK] to exit any app.");
             FirstAppOpened = false;
             PointerEventData pointerData = (PointerEventData)eventData;
+            Sequencer.Message(appData.AppName);
             if (pointerData.button != PointerEventData.InputButton.Left) return;
             ClickSound.Play();
             OnAppRelease(appData);
