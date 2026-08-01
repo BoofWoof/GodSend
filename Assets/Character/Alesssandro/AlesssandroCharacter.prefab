@@ -580,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectIDToSpawn: 2
   SpawnedObject: {fileID: 0}
+  HoldingObject: 0
 --- !u!135 &5276209065860343065
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -842,7 +843,7 @@ GameObject:
   - component: {fileID: 3266555634349211198}
   - component: {fileID: 2576091660359010243}
   m_Layer: 0
-  m_Name: RightGrabber
+  m_Name: ExtraGrabber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -877,6 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectIDToSpawn: 2
   SpawnedObject: {fileID: 0}
+  HoldingObject: 0
 --- !u!135 &2576091660359010243
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1385,8 +1387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b4ac1eb1031db409fcf0256c1eb777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectIDToSpawn: 2
+  ObjectIDToSpawn: 3
   SpawnedObject: {fileID: 0}
+  HoldingObject: 1
 --- !u!135 &691126442125670398
 SphereCollider:
   m_ObjectHideFlags: 0

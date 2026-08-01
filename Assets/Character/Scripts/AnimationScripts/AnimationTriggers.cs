@@ -92,6 +92,15 @@ public class AnimationTriggers : MonoBehaviour
         RightHand.Activate();
     }
 
+    public void RightHandRumble()
+    {
+        RightHand.TurnOnMovementRumble();
+    }
+    public void RightHandStopRumble()
+    {
+        RightHand.TurnOffMovementRumble();
+    }
+
     public void LeftHandSpawn(int SpawnID)
     {
         if (LeftHand.HoldingObject) return;

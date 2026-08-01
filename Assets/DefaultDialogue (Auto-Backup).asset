@@ -27757,7 +27757,7 @@ MonoBehaviour:
       - title: Dialogue Text
         value: Luckily, the creators of Vision, Flock, seem to allow you to invest
           your earnings back into the app, to gain better privelages, pay, and benefits.
-          They seem to call it blessings.
+          They call it blessings.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -28382,7 +28382,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 550.6414
+        x: 549.54254
         y: 1368.6636
         width: 160
         height: 30
@@ -29563,7 +29563,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 262.63742, y: 698.9009}
+    canvasScrollPosition: {x: 182.4177, y: 710.98895}
     canvasZoom: 0.9100002
   - id: 19
     fields:
