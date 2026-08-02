@@ -26,7 +26,7 @@ public class PrayerMultiSO : ValueModifierAbstract
     {
         int totalPrayers = PrayerScript.TotalPrayerCount;
 
-        float multiplier = totalPrayers / 4f + 1f;
+        float multiplier = totalPrayers / 2f + 1f;
 
         if (multiplier > 1.01f)
         {

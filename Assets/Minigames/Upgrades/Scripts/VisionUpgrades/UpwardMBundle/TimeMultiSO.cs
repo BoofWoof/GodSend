@@ -26,7 +26,7 @@ public class TimeMultiSO : ValueModifierAbstract
     {
         float timePassed = EndOfDayScript.GetDayTimePassed();
 
-        float multiplier = timePassed / 600f + 1f;
+        float multiplier = timePassed / 300f + 1f;
 
         if (multiplier > 1.01f)
         {

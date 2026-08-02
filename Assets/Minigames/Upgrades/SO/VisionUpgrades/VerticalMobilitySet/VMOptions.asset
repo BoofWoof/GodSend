@@ -33,7 +33,7 @@ MonoBehaviour:
   MascotDialogue: 
   AdText: CHOOSE YOUR FUTURE
   OverrideDialogue: []
-  Credits: 0
+  Credits: 0.000000001
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

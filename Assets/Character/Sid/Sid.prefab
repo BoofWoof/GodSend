@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 4872889134503403988}
   - component: {fileID: 6769725684477370809}
   - component: {fileID: 5109849521636388121}
+  - component: {fileID: 6202502482993437284}
   m_Layer: 0
   m_Name: Sid
   m_TagString: Untagged
@@ -735,6 +736,41 @@ MonoBehaviour:
   - {fileID: 8282875739836613344}
   - {fileID: 798083248905150844}
   - {fileID: 8396920664645787830}
+--- !u!114 &6202502482993437284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060006611093629885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: MacroSid
+  persistentDataName: 
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 0}
+  cameraAngles: {fileID: 0}
+  audioSource: {fileID: 0}
+  barkUISettings:
+    barkUI: {fileID: 0}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1066423316511899238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,12 +2024,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameSource: {fileID: 6210181630088082117}
   CharacterName: 
-  CurrentNode: 4
-  RootTransform: {fileID: 936260259666243109}
+  InitialNodeValue: 6
+  CurrentStation: 0
+  CharacterTransform: {fileID: 0}
   GestureControl: {fileID: 1671303607010753951}
   CharacterMobile: 0
   Speed: 0.5
   RotationSpeed: 90
+  OnWalkStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3633279938413741431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,12 +2938,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dd81de74b9a724f90194d529dce2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeadLookWeight: 1
   EyeL: {fileID: 8040755191058942862}
+  TargetEyeL: {fileID: 0}
   EyeR: {fileID: 9066512893407283345}
+  TargetEyeR: {fileID: 0}
   Head: {fileID: 6193085848682832423}
-  Flip: 1
+  TargetHead: {fileID: 0}
+  FlipX: 0
+  FlipY: 0
+  FlipZ: 0
+  Aries: 1
+  HeadYBias: -5
   Target: {fileID: 0}
+  DistractionTarget: {fileID: 0}
+  HeadRotLimits:
+    NegHor: -30
+    PosHor: 50
+    NegVer: -15
+    PosVer: 35
   lookSpeed: 15
+  NearLookAwayDistance: 0.5
+  LookAwayValue: 45
+  MaxDistrationWait: 60
+  MinDistrationWait: 30
+  DistractionPoints: []
+  IsAries: 1
+  ForceDistracted: 0
 --- !u!1 &5481483770710076831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b6cff07feb8845a562818acd9ce07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCentralNode: 0
   SpeakerName: MacroSid
   NickName: S
   MacroSpeech: 1
@@ -2961,6 +3023,9 @@ MonoBehaviour:
   LipSync: {fileID: 7199911882317101266}
   Gesture: {fileID: 1671303607010753951}
   debugVoiceLine: {fileID: 11400000, guid: f1542711910378946987099183a87370, type: 2}
+  SkyCamera: {fileID: 0}
+  CharacterCamera: {fileID: 0}
+  ReferenceBone: {fileID: 0}
 --- !u!114 &1671303607010753951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2977,6 +3042,8 @@ MonoBehaviour:
   FPS: 24
   CharacterAnimator: {fileID: 4872889134503403988}
   Mood: {fileID: 0}
+  TheScriptThatDoesTheEyes: {fileID: 0}
+  speechScript: {fileID: 0}
 --- !u!114 &3332971093480620251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,6 +3058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Subtitles: {fileID: 4900000, guid: b90d331b138a4134784e4fa23b600e0d, type: 3}
   FPS: 24
+  speechScript: {fileID: 0}
 --- !u!114 &7199911882317101266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3007,6 +3075,7 @@ MonoBehaviour:
   TargetMesh: {fileID: 8871791657165973287}
   PhenomeAsset: {fileID: 4900000, guid: b0839b2bca5ee8041b5bb5044aaa5b48, type: 3}
   FPS: 24
+  speechScript: {fileID: 0}
 --- !u!82 &7621335057336366625
 AudioSource:
   m_ObjectHideFlags: 0

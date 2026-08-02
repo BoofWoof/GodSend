@@ -26,7 +26,7 @@ public class MissileMultiSO : ValueModifierAbstract
     {
         int threatsDestroyed = AerialDefenseScript.TotalProjectilesDestroyed;
 
-        float multiplier = threatsDestroyed / 20f + 1f;
+        float multiplier = threatsDestroyed / 15f + 1f;
 
         if (multiplier > 1.01f)
         {

@@ -22,10 +22,10 @@ MonoBehaviour:
   OpennessModifier: 2
   FalconSpeed: 30
   MiloRecord: 5
-  MinPieces: 3
-  MaxPieces: 3
+  MinPieces: 4
+  MaxPieces: 4
   RotationEnabled: 1
-  FakersEnabled: 0
+  FakersEnabled: 1
   DifficultyMultiplier: -1
   SongIndex: 9
   SteamAPIName: Vision:VIP

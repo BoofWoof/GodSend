@@ -31,6 +31,9 @@ public class OverworldBehavior : MonoBehaviour
     virtual public void ExecuteBehavior(string submitName, string behavior, float wait)
     {
     }
+    virtual public void ExecuteSelfBehavior(string behavior, float wait)
+    {
+    }
 
     public static void AriesBehavior(string behavior)
     {

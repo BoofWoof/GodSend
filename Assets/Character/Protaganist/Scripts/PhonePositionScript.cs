@@ -59,6 +59,12 @@ public class PhonePositionScript : MonoBehaviour
         if (raised) StartCoroutine(LowerPhone());
         else StartCoroutine(RaisePhone());
     }
+    public void ForceTogglePhone()
+    {
+        if (raised) StartCoroutine(LowerPhone());
+        else StartCoroutine(RaisePhone());
+    }
+
     public IEnumerator RaisePhone()
     {
         if (FirstPhoneRaise)

@@ -102,13 +102,15 @@ public abstract class UpgradesAbstract : ScriptableObject
         if (UpgradeBought) return 0f;
         if (AutoBuy) return 0f;
 
-        if (UpgradesGroup.Count > 0)
+        if (UpgradesGroup.Count > 0 && !OverrideGroupCost)
         {
             float HighestCompletion = 0f;
             foreach (UpgradesAbstract subUpgrade in UpgradesGroup)
             {
                 float subPercent = subUpgrade.PercentBuyable();
                 if(subPercent > HighestCompletion) HighestCompletion = subPercent;
+                Debug.Log(HighestCompletion);
+                Debug.Log("AAAAAAAAAAAA");
             }
             return HighestCompletion;
         }
@@ -156,7 +158,7 @@ public abstract class UpgradesAbstract : ScriptableObject
         if (UpgradeBought) return false;
         if (AutoBuy) return false;
 
-        if (UpgradesGroup.Count > 0)
+        if (UpgradesGroup.Count > 0 && !OverrideGroupCost)
         {
             foreach (UpgradesAbstract subUpgrade in UpgradesGroup)
             {

@@ -17,6 +17,6 @@ MonoBehaviour:
   SubtitleData: {fileID: 4900000, guid: d851283ca5055f345a8433ccc61d02c2, type: 3}
   GestureData: {fileID: 0}
   FocusLevel: 1
-  PauseBeforeStart: 0
+  PauseBeforeStart: 0.5
   PauseAfterEnd: 0
   SpeakerOverride: 

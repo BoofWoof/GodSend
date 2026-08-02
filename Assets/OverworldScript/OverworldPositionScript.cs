@@ -76,6 +76,8 @@ public class OverworldPositionScript : MonoBehaviour
     {
         Transform targetNode = TravelNodeTracker.Instance.PositionNodes[CurrentStationIdx].transform;
 
+        if (CharacterTransform == null) return;
+
         CharacterTransform.SetPositionAndRotation(targetNode.position, CharacterTransform.rotation);
 
         if (forceAngle)

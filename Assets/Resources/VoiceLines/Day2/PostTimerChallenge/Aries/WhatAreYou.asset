@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
+  m_Name: WhatAreYou
+  m_EditorClassIdentifier: 
+  AudioData: {fileID: 8300000, guid: 13161eaf207287f47b6e8fe84589d60b, type: 3}
+  PhenomeData: {fileID: 4900000, guid: 5aea22682537c91419569f2c11b075c8, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 33a6fbc737e8a1f4c9297221c3948d79, type: 3}
+  GestureData: {fileID: 0}
+  FocusLevel: 1
+  PauseBeforeStart: 0
+  PauseAfterEnd: 0
+  SpeakerOverride: 

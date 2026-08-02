@@ -5452,6 +5452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectIDToSpawn: 1
   SpawnedObject: {fileID: 0}
+  HoldingObject: 0
 --- !u!135 &4049615815493914605
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6177,6 +6178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterRoot: {fileID: 6194338006524971743}
+  TakenName: 
 --- !u!114 &3750169662431981314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6364,6 +6366,7 @@ GameObject:
   - component: {fileID: 5761751940446068696}
   - component: {fileID: 9021594059168706339}
   - component: {fileID: 8486017916514660202}
+  - component: {fileID: 7959784701506568147}
   m_Layer: 0
   m_Name: AriesCharacterReal
   m_TagString: Untagged
@@ -6440,6 +6443,7 @@ MonoBehaviour:
   animator: {fileID: 8486017916514660202}
   RightHand: {fileID: 8640323202934402648}
   LeftHand: {fileID: 4602894978367874210}
+  ExtraPropHolders: []
   LookControl: {fileID: 3937134105385684646}
 --- !u!114 &5761751940446068696
 MonoBehaviour:
@@ -6634,6 +6638,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7959784701506568147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194338006524971743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: MacroAries
+  persistentDataName: 
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 0}
+  cameraAngles: {fileID: 0}
+  audioSource: {fileID: 0}
+  barkUISettings:
+    barkUI: {fileID: 0}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6350395306311841585
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,6 +6846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectIDToSpawn: 2
   SpawnedObject: {fileID: 0}
+  HoldingObject: 0
 --- !u!135 &999553484476437815
 SphereCollider:
   m_ObjectHideFlags: 0

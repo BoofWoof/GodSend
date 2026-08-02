@@ -30,7 +30,7 @@ public class PuzlMultiSO : ValueModifierAbstract
             totalPuzzles += solved;
         }
 
-        float multiplier = totalPuzzles/2f + 1f;
+        float multiplier = totalPuzzles + 1f;
 
         if (multiplier > 1.01f)
         {

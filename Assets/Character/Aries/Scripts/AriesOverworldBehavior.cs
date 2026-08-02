@@ -233,4 +233,9 @@ public class AriesOverworldBehavior : OverworldBehavior
             StartCoroutine(PlaceCard(wait));
         }
     }
+
+    public override void ExecuteSelfBehavior(string behavior, float wait)
+    {
+        ExecuteBehavior(NameSource.SpeakerName, behavior, wait);
+    }
 }

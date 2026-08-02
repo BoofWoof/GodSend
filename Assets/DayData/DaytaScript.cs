@@ -79,10 +79,9 @@ public class DaytaScript : MonoBehaviour
             CharacterActivationScript.DisableCharacter("MacroSid");
             CharacterActivationScript.DisableCharacter("MacroAlesssandro");
         }
-        if (DayInfo.CurrentDay == 2 && !SkipStart)
+        if (DayInfo.CurrentDay == 2)
         {
             CharacterActivationScript.DisableCharacter("MacroSid");
-            CharacterActivationScript.DisableCharacter("MacroAries");
 
             StartCoroutine(PreStartDayTwo());
         }
@@ -116,17 +115,18 @@ public class DaytaScript : MonoBehaviour
     public IEnumerator PreStartDayTwo()
     {
         yield return null;
+
+        OverworldPositionScript.GoTo("A", 12);
         TeleportPointScript.TeleportPlayerTo("Day2IntroPoint");
 
         QuestManager.ChangeQuest("Zzz");
 
-        PlayerCam.EnableCameraMovement = false;
-
-        MessageQueue.addDialogue("D2Intro");
-
-        OverworldPositionScript.GoTo("A", 12);
-
-        CrossfadeScript.PauseMusic();
+        if (!SkipStart)
+        {
+            PlayerCam.EnableCameraMovement = false;
+            MessageQueue.addDialogue("D2Intro");
+            CrossfadeScript.PauseMusic();
+        }
     }
     public IEnumerator StartDayTwo()
     {
