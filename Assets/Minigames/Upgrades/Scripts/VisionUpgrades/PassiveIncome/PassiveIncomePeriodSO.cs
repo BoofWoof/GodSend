@@ -4,7 +4,7 @@ using UnityEngine;
 public class PassiveIncomePeriodSO : UpgradesAbstract
 {
     public float NewPeriod = 5f;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         PassiveIncomeScript.ImproveIncomePeriod(NewPeriod);
     }

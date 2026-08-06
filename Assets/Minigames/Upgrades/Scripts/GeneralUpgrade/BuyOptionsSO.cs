@@ -6,7 +6,7 @@ public class BuyOptionsSO : UpgradesAbstract
     [Header("Poster Name")]
     public string PosterName;
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
 
     }

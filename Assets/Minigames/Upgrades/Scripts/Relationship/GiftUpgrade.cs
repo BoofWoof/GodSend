@@ -5,7 +5,7 @@ using UnityEngine;
 public class GiftUpgrade : UpgradesAbstract
 {
     public string DialogueName;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         Debug.Log("Lol, jk no gift 4 u.");
     }

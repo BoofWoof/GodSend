@@ -4,7 +4,7 @@ using UnityEngine;
 public class ComfortingWordsSO : UpgradesAbstract
 {
     public float AngerReductionIncrease;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         PrayerScript.instance.AngerReduction += AngerReductionIncrease;
     }

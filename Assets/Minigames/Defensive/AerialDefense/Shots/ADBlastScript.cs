@@ -16,6 +16,8 @@ public class ADBlastScript : MonoBehaviour
     public float Speed = 20f;
     public float LifeTime = 3f;
 
+    private bool Hit = false;
+
     private TurretScript Source;
 
     public void Start()
@@ -36,7 +38,10 @@ public class ADBlastScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "ADThreat")
         {
-            collision.gameObject.GetComponent<FallingThreatScript>().TakeDamage(DamageAmount, transform);
+            if (Hit) return;
+            Hit = true;
+
+            collision.gameObject.GetComponent<ThreatScript>().TakeDamage(DamageAmount, transform);
 
             Source.HitRegenerate();
 

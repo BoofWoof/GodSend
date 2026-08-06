@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19f08fafc24ff74da31ba289f7a6410, type: 3}
   m_Name: Molt
   m_EditorClassIdentifier: 
-  Prioirty: 2
+  Prioirty: 3
   UpgradeID: ad6b923625c21f14eaa3121ad2d46ca1
   UpgradesGroup: []
+  OverrideGroupCost: 0
   UpgradeName: Molt
   UpgradeIcon: {fileID: 1924011614, guid: c5fe5212be599964b9de15878c200a47, type: 3}
   PrioritySortOverride: -1
@@ -28,12 +29,13 @@ MonoBehaviour:
     of city health.
   MascotDialogue: Ugh, I hate molting... Oh wait! I'm an AI! I don't actually do
     that! Sweeeeet.
+  AdText: 
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: Why would you take a sick day? You'd be rotting in a bed
       when you could be working to buy an <color=#FFC0CB>ASSSCENSSSION</color> brand
       cure for your ailment!
-  Credits: 0.000000025
+  Credits: 0
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0
@@ -45,4 +47,5 @@ MonoBehaviour:
   TriggerOnLoadBuy: 1
   VTags: 01000000
   STags: 
+  CloseMenuOnBuy: 0
   HealAmount: 3

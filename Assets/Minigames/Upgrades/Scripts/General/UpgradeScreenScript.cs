@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Events;
 
 public class UpgradeScreenScript : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class UpgradeScreenScript : MonoBehaviour
     private ShopprTags ShopprFilter;
     private bool EnableVisionFilter;
     private VisionTags VisionFilter;
+
+    public UnityEvent OnPanelOpen;
 
     public void Awake()
     {
@@ -142,6 +145,8 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void OnEnable()
     {
+        OnPanelOpen?.Invoke();
+
         if (WaitToOpen) ConversationManagerScript.instance.ForceNextDialogue();
         UpgradeBoughtEvent += UpgradeAudioPlay;
         UpgradeBoughtEvent += RecordUpgradeBought;
@@ -170,6 +175,8 @@ public class UpgradeScreenScript : MonoBehaviour
     public void RecordUpgradeBought(UpgradesAbstract upgrade)
     {
         if (upgrade.AssociatedMinigame != AssociatedMinigame) return;
+        Debug.Log($"Upgrade {upgrade.UpgradeName} with ID {upgrade.UpgradeID} bought and added to {AssociatedMinigame}.");
+
         string newID = upgrade.UpgradeID;
         if(!PreboughtUpgradeIDs.Contains(newID)) PreboughtUpgradeIDs.Add(newID);
     }

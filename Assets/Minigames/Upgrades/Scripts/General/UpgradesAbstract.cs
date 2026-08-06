@@ -200,6 +200,8 @@ public abstract class UpgradesAbstract : ScriptableObject
         CurrencyData.RenownAscension -= AssscensssionRenown;
         CurrencyData.RenownRevolution -= RevolutionRenown;
 
+        if (!forceBuy) AddToPurchasedList();
+
         OnBuy();
 
         if(AssociatedMinigame == Minigame.Visions) {
@@ -216,8 +218,6 @@ public abstract class UpgradesAbstract : ScriptableObject
         }
 
         if(CloseMenuOnBuy) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
-
-        if (!forceBuy) AddToPurchasedList();
 
         bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
         if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
@@ -273,5 +273,5 @@ public abstract class UpgradesAbstract : ScriptableObject
         return outputText;
     }
 
-    public abstract void OnBuy();
+    public abstract void OnBuy(bool load = false);
 }

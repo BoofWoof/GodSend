@@ -15,6 +15,7 @@ MonoBehaviour:
   Prioirty: 3
   UpgradeID: d327a1ece25e42d4d8a680c52078f5fc
   UpgradesGroup: []
+  OverrideGroupCost: 0
   UpgradeName: Sights Beyond
   UpgradeIcon: {fileID: 309433619, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
   PrioritySortOverride: -1
@@ -32,7 +33,7 @@ MonoBehaviour:
   OverrideDialogue:
   - OverrideDay: 1
     ReplacementDialogue: 
-  Credits: 0.00000313
+  Credits: 0.0000025
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

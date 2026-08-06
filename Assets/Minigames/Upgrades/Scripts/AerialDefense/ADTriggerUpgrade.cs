@@ -5,7 +5,7 @@ using UnityEngine;
 public class ADTriggerUpgrade : UpgradesAbstract
 {
     public string LevelName;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         AerialDefenseLevelData.PrepLevelByName(LevelName);
 

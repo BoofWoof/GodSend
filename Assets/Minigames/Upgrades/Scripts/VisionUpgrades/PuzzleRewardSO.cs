@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class PuzzleRewardSO : ValueModifierAbstract
     public Color DisplayColor = Color.green;
 
     public static float TotalMultiplier = 1f;
-    public static bool Subscribed = false;
 
     public override string ModifierDescription()
     {
@@ -22,12 +22,27 @@ public class PuzzleRewardSO : ValueModifierAbstract
         return;
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TotalMultiplier *= MultiplyReward;
-        if (Subscribed) return;
+        if (IsAlreadySubscribed()) return;
         TurkPuzzleScript.secondaryMuliplierListModifier += ListModifier;
-        Subscribed = true;
+    }
+
+    public bool IsAlreadySubscribed()
+    {
+        if (TurkPuzzleScript.secondaryMuliplierListModifier == null)
+            return false;
+
+        foreach (Delegate d in TurkPuzzleScript.secondaryMuliplierListModifier.GetInvocationList())
+        {
+            if (d.Method.DeclaringType == typeof(PuzzleRewardSO))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void ListModifier(ref List<SecondaryMultiplier> referenceValue)

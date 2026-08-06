@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurrettUnlockUpgrade : UpgradesAbstract
 {
     public string DialogueName;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurretManagerScript.IncreaseTurretCountStatic();
     }

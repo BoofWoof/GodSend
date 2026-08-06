@@ -15,6 +15,7 @@ MonoBehaviour:
   Prioirty: 2
   UpgradeID: 1733799aeee9bd34b943d441950ea99a
   UpgradesGroup: []
+  OverrideGroupCost: 0
   UpgradeName: Awakening
   UpgradeIcon: {fileID: -632570387, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
   PrioritySortOverride: -1
@@ -49,7 +50,7 @@ MonoBehaviour:
       going to help both our futures!<n>
 
       We got this!'
-  Credits: 0.000000375
+  Credits: 0.0000005
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

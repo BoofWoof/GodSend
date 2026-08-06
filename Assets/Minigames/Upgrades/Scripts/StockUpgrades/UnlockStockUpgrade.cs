@@ -5,7 +5,7 @@ public class UnlockStockUpgrade : UpgradesAbstract
 {
     public StockNames UnlockStock;
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         StockUnlockScript.instance.UnlockStock(UnlockStock);
     }

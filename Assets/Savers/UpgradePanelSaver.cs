@@ -26,6 +26,14 @@ public class UpgradePanelSaver : Saver
 
         if (saveData == null) return;
 
+        Debug.Log(gameObject.name);
+        Debug.Log("AAAAAAAAAAAAA");
+        foreach (string preboughID in saveData.PreboughtUpgradeIDs)
+        { 
+            Debug.Log(preboughID);
+        }
+        Debug.Log("BBBBBBBBBBBBB");
+
         TargetScreen.PreBuyUpgrades(saveData.PreboughtUpgradeIDs);
     }
 }

@@ -19,7 +19,7 @@ public class FearMotivatesSO : ValueModifierAbstract
         return;
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurkPuzzleScript.secondaryMuliplierListModifier += ListModifier;
     }

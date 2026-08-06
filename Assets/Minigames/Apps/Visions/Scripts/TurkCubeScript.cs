@@ -140,6 +140,26 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         foreach (Directions connectionKey in DirectionHelper.CardinalDirections)
         {
             Vector2Int posShift = connectionKey.ToCordShift();
+            Vector2Int targetPos = cord + posShift;
+            foreach(TurkCubeScript otherCubes in rootPiece.Pieces)
+            {
+                ConnectedDirections[connectionKey] = false;
+                if(otherCubes.cord == targetPos)
+                {
+                    Debug.Log("AAAAAAAAA");
+                    Debug.Log(targetPos);
+                    Debug.Log(otherCubes.cord);
+                    ConnectedDirections[connectionKey] = true;
+                    break;
+                }
+            }
+        }
+    }
+    /*public void ConnectionCheck()
+    {
+        foreach (Directions connectionKey in DirectionHelper.CardinalDirections)
+        {
+            Vector2Int posShift = connectionKey.ToCordShift();
             if (!TurkPuzzleScript.IsCoordinateInsideGrid(cord.x + posShift.x, cord.y + posShift.y))
             {
                 ConnectedDirections[connectionKey] = false;
@@ -149,7 +169,7 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 ConnectedDirections[connectionKey] = TurkPuzzleScript.puzzlePieceGrid[cord.x + posShift.x, cord.y + posShift.y].GetComponent<TurkCubeScript>().GroupID == GroupID;
             }
         }
-    }
+    }*/
     #endregion
 
     public void UpdateSprite()

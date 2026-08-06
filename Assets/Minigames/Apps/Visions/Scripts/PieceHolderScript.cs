@@ -126,6 +126,14 @@ public class PieceHolderScript : MonoBehaviour
         return false;
     }
 
+    public void AddFakeSquares()
+    {
+        foreach (TurkCubeScript piece in Pieces)
+        {
+            TurkPuzzleScript.puzzlePieceSquares.Add(piece.gameObject);
+        }
+    }
+
     public bool UpdateCord()
     {
         //Checks if we can.
@@ -138,7 +146,7 @@ public class PieceHolderScript : MonoBehaviour
 
             if (TurkPuzzleScript.IsCordTaken(newCord, Pieces)) return false;
 
-            Vector2 newPos = TurkPuzzleScript.GridIdxToPos(new Vector2Int(newCord.x, newCord.y));
+            //Vector2 newPos = TurkPuzzleScript.GridIdxToPos(new Vector2Int(newCord.x, newCord.y));
         }
 
         if(!PieceInValidZone()) return false;

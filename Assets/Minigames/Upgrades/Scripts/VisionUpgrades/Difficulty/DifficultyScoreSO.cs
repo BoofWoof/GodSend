@@ -15,7 +15,7 @@ public class DifficultyScoreSO : ValueModifierAbstract
         return UpgradeName + ": x" + CalculateMultiplier().ToString("n0") + " <color=#808080>(" + BasePower.ToString("n0") + "^DifficultyLevel)</color>";
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurkPuzzleScript.secondaryMuliplierListModifier += ListModifier;
     }

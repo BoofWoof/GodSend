@@ -43,6 +43,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0.5
     - _ColorMask: 15
+    - _DamageGlow: 0
     - _Dissolve: 0
     - _Gradient: 100
     - _NoiseScale: 3000
@@ -56,6 +57,7 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _ImpactPoint: {r: 0, g: -2000, b: 0, a: 0}
+    - _DamageGlowColor: {r: 16, g: 0, b: 0, a: 1}
+    - _ImpactPoint: {r: 10000, g: 343.42117, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

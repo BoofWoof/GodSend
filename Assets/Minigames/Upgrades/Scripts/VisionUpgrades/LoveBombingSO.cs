@@ -9,7 +9,7 @@ public class LoveBombingSO : UpgradesAbstract
 
     private int PrayersSubmitted = 0;
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         PrayerScript.PrayerSubmitted += OnPrayerSubmission;
     }

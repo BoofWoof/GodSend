@@ -63,6 +63,9 @@ MonoBehaviour:
   FinalRippleValue: 1
   DeathPeriod: 0.25
   DamagePeriod: 0.1
+  StartImmediately: 0
+  InitialSpeedBoost: {x: 0, y: 200}
+  DecayRate: 1.5
   DropSpeed: 75
   WindSpeed: 0
   FormationSpeedModifier: 1

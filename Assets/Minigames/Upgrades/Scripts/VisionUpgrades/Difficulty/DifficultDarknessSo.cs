@@ -10,7 +10,7 @@ public class DifficultDarknessSo : ValueModifierAbstract
         return "";
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurkMaterialUpdaterScript.VisionStrengthModifier += ValueModifier;
     }

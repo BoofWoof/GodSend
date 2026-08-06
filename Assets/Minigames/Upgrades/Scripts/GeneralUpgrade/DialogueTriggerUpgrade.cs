@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueTriggerUpgrade : UpgradesAbstract
 {
     public string DialogueName;
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         ConversationManagerScript.instance.StartDialogue(DialogueName);
     }

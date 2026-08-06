@@ -15,6 +15,7 @@ MonoBehaviour:
   Prioirty: 4
   UpgradeID: 78a90b1238549aa4d9e7d5ab7092e3c7
   UpgradesGroup: []
+  OverrideGroupCost: 0
   UpgradeName: Transcend
   UpgradeIcon: {fileID: 2117758218, guid: d819fb2037a677d4a9e3a91a7d9ceba8, type: 3}
   PrioritySortOverride: -1
@@ -93,7 +94,7 @@ MonoBehaviour:
 
       Come check out the rest of
       our family, would you?'
-  Credits: 0.000375
+  Credits: 0.000313
   FlockRenown: 0
   FoundationRenown: 0
   AssscensssionRenown: 0

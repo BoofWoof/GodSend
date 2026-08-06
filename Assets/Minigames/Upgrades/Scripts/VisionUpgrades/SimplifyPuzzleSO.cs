@@ -18,7 +18,7 @@ public class SimplifyPuzzleSO : ValueModifierAbstract
         referenceValue -= GetPieceChange();
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurkPuzzleScript.pieceCountModifier += ValueModifier;
     }

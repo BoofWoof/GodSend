@@ -13,7 +13,7 @@ public class HealOnCompleteSO : ValueModifierAbstract
         return "";
     }
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         TurkPuzzleScript.OnPuzzleComplete += HealCity;
     }

@@ -52,6 +52,7 @@ public class TurretScript : MonoBehaviour
         newRectTransform.position = gun.position;
         newRectTransform.localRotation = gun.localRotation;
         newRectTransform.SetSiblingIndex(0);
+        newBlast.transform.SetAsLastSibling();
 
         newBlast.GetComponent<ADBlastScript>().SetSource(this);
 

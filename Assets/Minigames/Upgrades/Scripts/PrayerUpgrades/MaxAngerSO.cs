@@ -6,7 +6,7 @@ public class MaxAngerSO : UpgradesAbstract
     [Header("IncreasedMaxAnger")]
     public float MaxAngerIncrease;
 
-    public override void OnBuy()
+    public override void OnBuy(bool load)
     {
         PrayerScript.instance.IncreaseAngerThreshold(MaxAngerIncrease);
     }

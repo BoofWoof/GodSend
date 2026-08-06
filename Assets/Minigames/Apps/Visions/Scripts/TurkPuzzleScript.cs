@@ -104,6 +104,10 @@ public class TurkPuzzleScript : MonoBehaviour
     public List<GameObject> FakePieces;
 
     public Image CloudPanel;
+
+    [HideInInspector]
+    public int FailedToBuyAnImportantUpgrade = 0;
+    public UnityEvent OnFailureToBuyImportantUpgrades;
     public static ModifierMenuText.RewardModifier RewardBaseModifier 
     { 
         get => rewardBaseModifier;
@@ -158,6 +162,16 @@ public class TurkPuzzleScript : MonoBehaviour
 
         PuzzleCenter = gameObject;
         puzzleScript = this;
+    }
+
+    public void OnEnable()
+    {
+        UpgradesAbstract.OnUpgradeBought += ResetFailureToBuyCounter;
+    }
+
+    public void OnDisable()
+    {
+        UpgradesAbstract.OnUpgradeBought -= ResetFailureToBuyCounter;
     }
 
     public void Start()
@@ -378,6 +392,11 @@ public class TurkPuzzleScript : MonoBehaviour
         return true;
     }
 
+    public void ResetFailureToBuyCounter(string ignore = "")
+    {
+        FailedToBuyAnImportantUpgrade = 0;
+    }
+
     public IEnumerator WinCutscene()
     {
         ClearFakePieces();
@@ -479,6 +498,12 @@ public class TurkPuzzleScript : MonoBehaviour
         {
             BuyBlessingsNow.SetActive(true);
             BuyBlessingsNow.GetComponent<BuyNowScript>().UpdateDescriptions(selectedUpgrade);
+            FailedToBuyAnImportantUpgrade++;
+
+            if(FailedToBuyAnImportantUpgrade >= 3)
+            {
+                OnFailureToBuyImportantUpgrades?.Invoke();
+            }
         }
 
         VisionMascotScript.SayText(selectedGridData.MascotStatement);
@@ -642,16 +667,17 @@ public class TurkPuzzleScript : MonoBehaviour
                 break;
             }
         }
+
+        if (currentDifficulty.FakersEnabled)
+        {
+            AddFakePiece();
+        }
+
         //Second connection pass.
         foreach (GameObject piece in puzzlePieceSquares)
         {
             TurkCubeScript pieceScript = piece.GetComponent<TurkCubeScript>();
             pieceScript.ConnectionCheck();
-        }
-
-        if (currentDifficulty.FakersEnabled)
-        {
-            AddFakePiece();
         }
     }
 
@@ -661,8 +687,9 @@ public class TurkPuzzleScript : MonoBehaviour
         GameObject FakePiece = Instantiate(FakePieces[randomIdx]);
         FakePiece.transform.parent = transform;
         FakePiece.transform.localScale = Vector3.one * squareSize/50f;
-        FakePiece.transform.localRotation = Quaternion.identity; 
+        FakePiece.transform.localRotation = Quaternion.identity;
 
+        FakePiece.GetComponent<PieceHolderScript>().AddFakeSquares();
         puzzlePiece.Add(FakePiece.GetComponent<PieceHolderScript>());
     }
     public void ClearFakePieces()
