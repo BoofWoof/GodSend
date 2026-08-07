@@ -45,7 +45,8 @@ public class FallingThreatScript : ThreatScript
     {
         if (FallTriggered) return;
         FallTriggered = true;
-        CanBeHurt = true;
+
+        StartCoroutine(DamageWait());
 
         OnStageEnter?.Invoke();
 
@@ -61,6 +62,15 @@ public class FallingThreatScript : ThreatScript
         }
 
         SetupMaterial();
+    }
+
+    public IEnumerator DamageWait()
+    {
+        Color prevColor = thisImage.color;
+        thisImage.color = Color.grey;
+        yield return new WaitForSeconds(InvulnerabilityTime);
+        thisImage.color = prevColor;
+        CanBeHurt = true;
     }
 
 

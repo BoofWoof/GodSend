@@ -41,9 +41,13 @@ public class ADBlastScript : MonoBehaviour
             if (Hit) return;
             Hit = true;
 
-            collision.gameObject.GetComponent<ThreatScript>().TakeDamage(DamageAmount, transform);
+            ThreatScript threatScript = collision.gameObject.GetComponent<ThreatScript>();
 
-            Source.HitRegenerate();
+            if(threatScript != null)
+            {
+                threatScript.TakeDamage(DamageAmount, transform);
+                Source.HitRegenerate();
+            }
 
             Trail.Stop();
             TrailObject.transform.SetParent(transform.parent);

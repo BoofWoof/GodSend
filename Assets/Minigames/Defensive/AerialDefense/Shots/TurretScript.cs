@@ -8,8 +8,6 @@ public class TurretScript : MonoBehaviour
     public RectTransform target;
     public RectTransform gun;
 
-    public RectTransform bulletParent;
-
     public GameObject blastObject;
 
     public Image chargeMeter;
@@ -47,12 +45,13 @@ public class TurretScript : MonoBehaviour
 
         OnShoot?.Invoke();
 
-        GameObject newBlast = Instantiate(blastObject, bulletParent);
+        GameObject newBlast = Instantiate(blastObject);
+        newBlast.transform.SetParent(AerialDefenseScript.Instance.BlastSpawn);
         RectTransform newRectTransform = newBlast.GetComponent<RectTransform>();
         newRectTransform.position = gun.position;
-        newRectTransform.localRotation = gun.localRotation;
-        newRectTransform.SetSiblingIndex(0);
-        newBlast.transform.SetAsLastSibling();
+        newRectTransform.rotation = gun.rotation;
+        newRectTransform.localScale = Vector3.one;
+
 
         newBlast.GetComponent<ADBlastScript>().SetSource(this);
 

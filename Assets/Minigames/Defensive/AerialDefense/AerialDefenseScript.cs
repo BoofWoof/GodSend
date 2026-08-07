@@ -7,6 +7,9 @@ public class AerialDefenseScript : MonoBehaviour
 {
     public static AerialDefenseScript Instance;
 
+    public Transform CombatSpawn;
+    public Transform BlastSpawn;
+
     public static int TotalProjectilesDestroyed = 0;
 
     //Put stats here: Firing rate and ect.

@@ -146,9 +146,6 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 ConnectedDirections[connectionKey] = false;
                 if(otherCubes.cord == targetPos)
                 {
-                    Debug.Log("AAAAAAAAA");
-                    Debug.Log(targetPos);
-                    Debug.Log(otherCubes.cord);
                     ConnectedDirections[connectionKey] = true;
                     break;
                 }

@@ -68,7 +68,7 @@ public class ThreatSpawnerScript : MonoBehaviour
     {
         if(FallingThreatScript.isEnemiesRemaining())
         {
-            Debug.Log("Remaining Enemies");
+            //Debug.Log("Remaining Enemies");
             return false;
         }
         Debug.Log("Clear");

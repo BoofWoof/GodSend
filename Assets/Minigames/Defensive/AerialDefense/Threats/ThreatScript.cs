@@ -21,12 +21,15 @@ public class ThreatScript : MonoBehaviour
     public float DeathPeriod = 0.5f;
     public float DamagePeriod = 0.1f;
     protected bool Dying = false;
+    public ThreatScript[] WeakPoints;
 
     [Header("Health and Damage")]
+    public float InvulnerabilityTime = 0f;
     public int Health = 1;
     public bool CanBeHurt = true;
     public bool CanHurtCity = true;
     public bool ScaleWithHealth = false;
+    public bool IndirectDamageOnly = false;
     protected Vector2 BaseScale;
 
     [Header("Prefabs")]
@@ -42,7 +45,7 @@ public class ThreatScript : MonoBehaviour
     {
         FallingThreatScripts.Add(this);
 
-        if(!KeepParent) transform.SetParent(ThreatSpawnerScript.Instance.transform);
+        if(!KeepParent) transform.SetParent(AerialDefenseScript.Instance.CombatSpawn);
         transform.rotation = Quaternion.identity;
 
         thisRB2D = GetComponent<Rigidbody2D>();
@@ -57,6 +60,23 @@ public class ThreatScript : MonoBehaviour
         if (thisImage != null) thisImage.maskable = true;
 
         if (ScaleWithHealth && Health > 1f) SetScale(1f + (Health - 1f) / 2f);
+
+        if (WeakPoints.Length > 0) SetupWeakPoints();
+
+    }
+
+    public void SetupWeakPoints()
+    {
+        Health = 0;
+        foreach(ThreatScript threat in WeakPoints)
+        {
+            threat.OnObjectDestroy.AddListener(() => OnWeakPointDestroyed(threat));
+            Health++;
+        }
+    }
+    public void OnWeakPointDestroyed(ThreatScript threatSource)
+    {
+        TakeDamage(1, threatSource.transform, true);
     }
 
     public void SetupMaterial()
@@ -121,6 +141,8 @@ public class ThreatScript : MonoBehaviour
 
         thisRB2D.simulated = false;
 
+        Debug.Log(explosionPoint);
+
         RenderMaterial.SetVector("_ImpactPoint", explosionPoint);
         RenderMaterial.SetFloat("_DamageGlow", 0f);
 
@@ -130,6 +152,7 @@ public class ThreatScript : MonoBehaviour
             yield return null;
             timePassed += Time.deltaTime;
             float progress = timePassed / DeathPeriod;
+            Debug.Log(progress);
             float rippleValue = Mathf.Lerp(0.1f * FinalRippleValue, FinalRippleValue, progress);
             RenderMaterial.SetFloat("_RippleProgress", rippleValue);
         }
@@ -162,11 +185,12 @@ public class ThreatScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageValue, Transform source)
+    public void TakeDamage(int damageValue, Transform source, bool indirectDaamge = false)
     {
         if (thisImage == null) return;
         if (!CanBeHurt) return;
         if (Dying) return;
+        if (IndirectDamageOnly && !indirectDaamge) return;
 
         Health -= damageValue;
         if (Health <= 0)
