@@ -9958,6 +9958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d8cf5e3073cb64ba31477da3b7a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitNoise: {fileID: 8300000, guid: 6b0b442e032de884a81cc1794769818f, type: 3}
+  BlockNoise: {fileID: 8300000, guid: cb904463cab755a4cbd72ca135f49287, type: 3}
+  TargetGroup: {fileID: 4747471722608807175, guid: e9e2adb90d7e6ae4eb746f5d98732dd8, type: 2}
   TrailObject: {fileID: 280646788856143089}
   Trail: {fileID: 1167957221013195759}
   BurstObject: {fileID: 424221005312178491}
@@ -10016,7 +10019,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 45ec8c245ffe266438d41b30b966f6bb, type: 3}
   m_Resource: {fileID: 8300000, guid: 45ec8c245ffe266438d41b30b966f6bb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.457
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 0
   Mute: 0

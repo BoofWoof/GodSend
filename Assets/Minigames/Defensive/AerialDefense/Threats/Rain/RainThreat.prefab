@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3910893253371121158}
   - component: {fileID: 6535995716211452762}
   - component: {fileID: -1388306352098958231}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: RainThreat
   m_TagString: ADThreat
   m_Icon: {fileID: 0}
@@ -51,36 +51,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01779397fff72bf44aa3408d1ecf2ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisImage: {fileID: 4032028281241151053}
+  KeepParent: 0
+  sfxGroup: {fileID: 0}
   DestructionNoises:
   - {fileID: 8300000, guid: eb99fe3d1da03874daf89b3453542a06, type: 3}
   - {fileID: 8300000, guid: 074eaf5c565e79047839fe3f9a3751b7, type: 3}
   - {fileID: 8300000, guid: ba77644ead31d7f4582f7230391b4f78, type: 3}
+  DamageNoises: []
+  thisImage: {fileID: 4032028281241151053}
+  FinalRippleValue: 1
+  DeathPeriod: 0.25
+  DamagePeriod: 0.1
+  WeakPoints: []
+  InvulnerabilityTime: 0
   Health: 1
   CanBeHurt: 1
   CanHurtCity: 1
   ScaleWithHealth: 0
-  FinalRippleValue: 1
-  DeathPeriod: 0.25
-  DamagePeriod: 0.1
-  StartImmediately: 0
-  InitialSpeedBoost: {x: 0, y: 200}
-  DecayRate: 1.5
-  DropSpeed: 75
-  WindSpeed: 0
-  FormationSpeedModifier: 1
+  IndirectDamageOnly: 0
   DestructionPingPrefab: {fileID: 0}
-  DetectionPingPrefab: {fileID: 0}
-  RadarNeeded: 0
-  FadeInPeriod: 1
-  FadeOutPeriod: 1
-  MaintainPeriod: 0.5
   OnStageEnter:
     m_PersistentCalls:
       m_Calls: []
   OnObjectDestroy:
     m_PersistentCalls:
       m_Calls: []
+  LockRotation: 0
+  StartImmediately: 0
+  InitialSpeedBoost: {x: 0, y: 200}
+  DecayRate: 1.5
+  DropSpeed: 75
+  WindSpeed: 0
+  HorizontalWave: 0
+  HorizontalWaveFrequency: 0
+  FormationSpeedModifier: 1
 --- !u!61 &6535995716211452762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +150,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -165,7 +169,7 @@ GameObject:
   - component: {fileID: 7750755591887881160}
   - component: {fileID: 634379100824092255}
   - component: {fileID: 4032028281241151053}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Image
   m_TagString: ADThreat
   m_Icon: {fileID: 0}

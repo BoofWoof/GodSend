@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -183871975207276367}
   - component: {fileID: 6520213923215752743}
   - component: {fileID: 318812401228526691}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 8171578758120687739}
   - component: {fileID: 7784611476921867355}
   - component: {fileID: 1138267946708159416}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

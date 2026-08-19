@@ -5,6 +5,8 @@ public class FallingThreatScript : ThreatScript
 {
     private bool FallTriggered = false;
 
+    public bool LockRotation = false;
+
     [Header("Personal Speeds")]
     public bool StartImmediately = false;
     public Vector2 InitialSpeedBoost;
@@ -12,6 +14,10 @@ public class FallingThreatScript : ThreatScript
     private float StartFallTime = 0f;
     public float DropSpeed = 20f;
     public float WindSpeed = 0f;
+    public float HorizontalWave = 0f;
+    public float HorizontalWaveFrequency = 0f;
+
+    private float StartSwayTime;
 
     [Header("External Speeds")]
     public float FormationSpeedModifier = 1f;
@@ -52,7 +58,7 @@ public class FallingThreatScript : ThreatScript
 
         StartFallTime = Time.time;
 
-        if (InitialSpeedBoost.magnitude > 0)
+        if (InitialSpeedBoost.magnitude > 0 || HorizontalWave > 0)
         {
             StartCoroutine(ContinuousUpdatePath());
         } else
@@ -63,17 +69,6 @@ public class FallingThreatScript : ThreatScript
 
         SetupMaterial();
     }
-
-    public IEnumerator DamageWait()
-    {
-        Color prevColor = thisImage.color;
-        thisImage.color = Color.grey;
-        yield return new WaitForSeconds(InvulnerabilityTime);
-        thisImage.color = prevColor;
-        CanBeHurt = true;
-    }
-
-
 
     public void SingleUpdatePath()
     {
@@ -87,6 +82,7 @@ public class FallingThreatScript : ThreatScript
     }
     public IEnumerator ContinuousUpdatePath()
     {
+        StartSwayTime = Time.time;
         while (true)
         {
             yield return new WaitForFixedUpdate();
@@ -96,14 +92,33 @@ public class FallingThreatScript : ThreatScript
             float dropRate = DropSpeed + (decay * InitialSpeedBoost.y);
             float horzRate = decay * InitialSpeedBoost.x;
 
+            float swayTimePassed = Time.time - StartSwayTime;
+            float horzWaveSpeed = HorizontalWave * Mathf.Cos(swayTimePassed * 2f * Mathf.PI * HorizontalWaveFrequency);
+
             Vector2 DownSpeed = Vector2.down * dropRate * transform.parent.lossyScale;
-            Vector2 HorizontalSpeed = Vector2.right * (WindSpeed + WindScript.StageWind + horzRate) * transform.lossyScale;
+            Vector2 HorizontalSpeed = Vector2.right * (WindSpeed + WindScript.StageWind + horzRate + horzWaveSpeed) * transform.lossyScale;
             Vector2 TotalSpeed = (DownSpeed + HorizontalSpeed) * WaveSpeedModifier * FormationSpeedModifier;
             thisRB2D.linearVelocity = TotalSpeed;
 
-            float angle = Mathf.Atan2(TotalSpeed.x, TotalSpeed.y) * Mathf.Rad2Deg;
-            thisRB2D.MoveRotation(-angle - 180f);
+            if (!LockRotation)
+            {
+                float angle = Mathf.Atan2(TotalSpeed.x, TotalSpeed.y) * Mathf.Rad2Deg;
+                thisRB2D.MoveRotation(-angle - 180f);
+            }
         }
+    }
+
+    public void SetSwayAmplitude(float amplitude)
+    {
+
+        StartSwayTime = Time.time;
+        HorizontalWave = amplitude;
+    }
+    public void SetSwayFrequency(float frequency)
+    {
+
+        StartSwayTime = Time.time;
+        HorizontalWaveFrequency = frequency;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ADBlastScript : MonoBehaviour
 {
     private RectTransform thisRect;
     private Rigidbody2D thisRB2D;
+
+    public AudioClip HitNoise;
+    public AudioClip BlockNoise;
+    [SerializeField] private AudioMixerGroup TargetGroup;
 
     [Header("Particles")]
     public GameObject TrailObject;
@@ -47,7 +52,13 @@ public class ADBlastScript : MonoBehaviour
             {
                 threatScript.TakeDamage(DamageAmount, transform);
                 Source.HitRegenerate();
+
+                if (HitNoise) AudioExtensions.PlayClipAtPointWithMixer(HitNoise, transform.position, TargetGroup);
+            } else
+            {
+                if (BlockNoise) AudioExtensions.PlayClipAtPointWithMixer(BlockNoise, transform.position, TargetGroup);
             }
+
 
             Trail.Stop();
             TrailObject.transform.SetParent(transform.parent);

@@ -13,4 +13,9 @@ public class SpinScript : MonoBehaviour
 
         transform.Rotate(RotateX ? rotation : 0f, RotateY ? rotation : 0f, RotateZ ? rotation : 0f, Space.Self);
     }
+
+    public void SetSpin(float newSpeed)
+    {
+        rotationSpeed = newSpeed;
+    }
 }

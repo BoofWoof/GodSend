@@ -30,7 +30,7 @@ public class TurretScript : MonoBehaviour
 
     public void Start()
     {
-        AimBeam.SetActive(false);
+        //AimBeam.SetActive(false);
     }
 
     public bool IsTurretCharged()
@@ -51,6 +51,8 @@ public class TurretScript : MonoBehaviour
         newRectTransform.position = gun.position;
         newRectTransform.rotation = gun.rotation;
         newRectTransform.localScale = Vector3.one;
+
+        newBlast.GetComponent<Image>().color = AimBeam.GetComponent<Image>().color;
 
 
         newBlast.GetComponent<ADBlastScript>().SetSource(this);

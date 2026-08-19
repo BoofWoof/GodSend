@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7449680668068873157}
   - component: {fileID: 3424412364161237177}
   - component: {fileID: 1256719514154279805}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: ScrewThreat
   m_TagString: ADThreat
   m_Icon: {fileID: 0}
@@ -52,7 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeepParent: 0
-  DestructionNoises: []
+  sfxGroup: {fileID: -4375722594351893467, guid: e9e2adb90d7e6ae4eb746f5d98732dd8, type: 2}
+  DestructionNoises:
+  - {fileID: 8300000, guid: acdc26fb3c2ab7a449489aa047e520af, type: 3}
+  DamageNoises: []
   thisImage: {fileID: 3633395936838115960}
   FinalRippleValue: 1
   DeathPeriod: 0.25
@@ -63,6 +66,7 @@ MonoBehaviour:
   CanBeHurt: 1
   CanHurtCity: 1
   ScaleWithHealth: 0
+  IndirectDamageOnly: 0
   DestructionPingPrefab: {fileID: 0}
   OnStageEnter:
     m_PersistentCalls:
@@ -70,11 +74,15 @@ MonoBehaviour:
   OnObjectDestroy:
     m_PersistentCalls:
       m_Calls: []
+  EnemyPhases: []
+  LockRotation: 0
   StartImmediately: 1
   InitialSpeedBoost: {x: 0, y: 200}
   DecayRate: 1.5
   DropSpeed: 75
   WindSpeed: 0
+  HorizontalWave: 0
+  HorizontalWaveFrequency: 0
   FormationSpeedModifier: 1
 --- !u!61 &3424412364161237177
 BoxCollider2D:
@@ -141,7 +149,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -161,7 +169,7 @@ GameObject:
   - component: {fileID: 8579361800071504195}
   - component: {fileID: 3633395936838115960}
   - component: {fileID: 810347514590846605}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Image
   m_TagString: ADThreat
   m_Icon: {fileID: 0}

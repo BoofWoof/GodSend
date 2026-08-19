@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AddThreatSpawner : MonoBehaviour
 {
     public GameObject[] ThreatPrefabs;
+
+    public AudioClip SpawnNoise;
+    [SerializeField] private AudioMixerGroup TargetGroup;
 
     [Header("Release Stats")]
     public Vector2Int BurstSizeRange = new Vector2Int(1, 1);
@@ -16,6 +20,8 @@ public class AddThreatSpawner : MonoBehaviour
 
     public void SpawnThreats()
     {
+        if (SpawnNoise) AudioExtensions.PlayClipAtPointWithMixer(SpawnNoise, transform.position, TargetGroup);
+
         int burstSize = Random.Range(BurstSizeRange.x, BurstSizeRange.y + 1);
         for (int i = 0; i < burstSize; i++)
         {

@@ -6,6 +6,8 @@ public class TurretManagerScript : MonoBehaviour
     public static TurretManagerScript Instance;
 
     public List<TurretScript> Turrets;
+    public List<TurretScript> LeftTurrets;
+    public List<TurretScript> RightTurrets;
 
     public int ActiveTurrets = 2;
 
@@ -56,15 +58,20 @@ public class TurretManagerScript : MonoBehaviour
         {
             if (ADTargetScript.ValidTarget)
             {
-                for(int i = 0; i < ActiveTurrets; i++)
+                for (int i = 0; i < LeftTurrets.Count; i++)
                 {
-                    int turretIdx = (CurrentFireIndex + i) % ActiveTurrets;
-                    if (Turrets[turretIdx].FireBeam())
-                    {
-                        CurrentFireIndex = (turretIdx + 1) % ActiveTurrets;
-                        FindNextAvailableTurret();
-                        return;
-                    }
+                    if (LeftTurrets[i].isActiveAndEnabled) LeftTurrets[i].FireBeam();
+                }
+                FireError();
+            }
+        }
+        if (Input.GetMouseButtonDown(1) || AutoFire)
+        {
+            if (ADTargetScript.ValidTarget)
+            {
+                for (int i = 0; i < RightTurrets.Count; i++)
+                {
+                    if (RightTurrets[i].isActiveAndEnabled) RightTurrets[i].FireBeam();
                 }
                 FireError();
             }
@@ -73,20 +80,24 @@ public class TurretManagerScript : MonoBehaviour
 
     public void UpdateFireBeams()
     {
+        /*
         for (int i = 0; i < ActiveTurrets; i++)
         {
             Turrets[i].AimBeam.SetActive(i == CurrentFireIndex);
         }
         SearchForNextTurret = false;
+        */
     }
 
     public void ClearFireBeams()
     {
+        /*
         for (int i = 0; i < ActiveTurrets; i++)
         {
             Turrets[i].AimBeam.SetActive(false);
         }
         SearchForNextTurret = true;
+        */
     }
 
     public bool FindNextAvailableTurret()
