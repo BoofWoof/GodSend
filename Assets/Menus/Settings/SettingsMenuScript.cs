@@ -77,7 +77,7 @@ public class SettingsMenuScript : MonoBehaviour
 
     public void SetCursorOpacity(float newCursorOpacity)
     {
-        SettingsManager.SetVibrationIntensity(newCursorOpacity);
+        SettingsManager.SetCursorOpacity(newCursorOpacity);
     }
     public void SetQuestVisiblity(bool questVisibility)
     {

@@ -45,12 +45,12 @@ public class CameraZoom : MonoBehaviour
 
         if (context.started)
         {
-            Debug.Log("ZOOM");
+            //Debug.Log("ZOOM");
             TargetFOV = ZoomFOV;
         }
         if (context.canceled)
         {
-            Debug.Log("UnZOOM");
+            //Debug.Log("UnZOOM");
             TargetFOV = DefaultFOV;
         }
 

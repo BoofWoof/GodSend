@@ -123,7 +123,7 @@ public class ThreatScript : MonoBehaviour
 
     public static void DestroyAllThreats()
     {
-        foreach (FallingThreatScript fallingThreatScript in FallingThreatScripts)
+        foreach (ThreatScript fallingThreatScript in FallingThreatScripts)
         {
             fallingThreatScript.SpawnExplosionPing();
             Destroy(fallingThreatScript.gameObject);
@@ -212,6 +212,7 @@ public class ThreatScript : MonoBehaviour
         InvulnerabilityTime = invulnerabilityTime;
         foreach(ThreatScript ts in WeakPoints)
         {
+            if (ts == null) continue;
             StartCoroutine(ts.DamageWait());
         }
     }
