@@ -35,6 +35,18 @@ public class ThreatSpawnerScript : MonoBehaviour
             ADWaveInfoSO waveInfo = Instantiate(levelData.LevelWaves[i]);
             FallingThreatScript.WaveSpeedModifier = waveInfo.WaveSpeedModifier;
 
+            if (waveInfo.OnStartBroadcasts.Count > 0)
+            {
+                ActiveBroadcast.BroadcastActivation(waveInfo.OnStartBroadcasts);
+            }
+
+            if (waveInfo.PeekTime > 0)
+            {
+                ChannelChanger.instance.ScreenPositionChange(true);
+                yield return new WaitForSeconds(waveInfo.PeekTime);
+                ChannelChanger.instance.ScreenPositionChange(false);
+            }
+
             textController.TurnOn(waveInfo, levelData, i+1);
 
             float timePassed = 0;
@@ -58,6 +70,18 @@ public class ThreatSpawnerScript : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
             }
             yield return new WaitForSeconds(0.2f);
+
+            if (waveInfo.OnEndBroadcasts.Count > 0)
+            {
+                ActiveBroadcast.BroadcastActivation(waveInfo.OnEndBroadcasts);
+            }
+
+            if (waveInfo.PeekExitTime > 0)
+            {
+                ChannelChanger.instance.ScreenPositionChange(true);
+                yield return new WaitForSeconds(waveInfo.PeekExitTime);
+                if (i < levelData.LevelWaves.Count - 1) ChannelChanger.instance.ScreenPositionChange(false);
+            }
         }
 
         AerialDefenseScript.Instance.WinOutcomes();

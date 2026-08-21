@@ -209,7 +209,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pivot
+    path: Arms/Pivot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -423,7 +423,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot/ArmBase/Pivot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -619,7 +619,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pivot (1)
+    path: Arms/Pivot (1)
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -833,7 +833,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -846,7 +846,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1567512304
+      path: 3078588009
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -855,7 +855,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2364212200
+      path: 1018914800
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -864,7 +864,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 859101025
+      path: 1844667401
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -873,7 +873,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1563935441
+      path: 4137562245
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1100,10 +1100,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1301,10 +1301,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1502,10 +1502,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1721,10 +1721,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1940,10 +1940,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2159,10 +2159,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2360,10 +2360,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Pivot (1)
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2561,10 +2561,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Pivot (1)
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2762,10 +2762,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Pivot (1)
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2981,10 +2981,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3200,10 +3200,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3419,10 +3419,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   m_EulerEditorCurves:
   - serializedVersion: 2
     curve:
@@ -3432,7 +3432,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3444,7 +3444,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3456,7 +3456,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pivot/ArmBase/Pivot
+    path: Arms/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3468,7 +3468,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pivot (1)
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3480,7 +3480,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pivot (1)
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3492,7 +3492,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pivot (1)
+    path: Arms/Pivot/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3504,7 +3504,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pivot
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3516,7 +3516,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pivot
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3528,7 +3528,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pivot
+    path: Arms/Pivot (1)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3540,7 +3540,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3552,7 +3552,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -3564,7 +3564,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pivot (1)/ArmBase/Pivot
+    path: Arms/Pivot (1)/ArmBase/Pivot
     classID: 224
     script: {fileID: 0}
     flags: 0

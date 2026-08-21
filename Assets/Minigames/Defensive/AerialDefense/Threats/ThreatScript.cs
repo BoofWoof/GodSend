@@ -254,8 +254,7 @@ public class ThreatScript : MonoBehaviour
             {
                 ep.Triggered = true;
                 ep.OnTriggerEvents?.Invoke();
-                CurrentPhase++;
-                GetComponent<Animator>().SetInteger("Phase", CurrentPhase);
+                IncreasePhase();
             }
         }
 
@@ -275,5 +274,11 @@ public class ThreatScript : MonoBehaviour
             DamageCoroutine = StartCoroutine(DamageAnimation(source.localPosition));
             if (ScaleWithHealth) SetScale(1f + (Health - 1f) / 2f);
         }
+    }
+
+    public void IncreasePhase()
+    {
+        CurrentPhase++;
+        GetComponent<Animator>().SetInteger("Phase", CurrentPhase);
     }
 }

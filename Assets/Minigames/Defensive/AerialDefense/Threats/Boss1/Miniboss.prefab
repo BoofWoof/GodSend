@@ -995,13 +995,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828226391881327770}
-  m_LocalRotation: {x: 0, y: 0, z: -0.28351322, w: 0.95896834}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000011224059}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: 2.3764657e-15, y: -0, z: -0.28351322, w: 0.95896834}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00015010344}
+  m_LocalScale: {x: 0.6999999, y: 0.70000005, z: 0.70000005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2739124981573719471}
-  m_Father: {fileID: 1752190807526040112}
+  m_Father: {fileID: 900503901790270232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.94}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1899,6 +1899,43 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 6.2, y: -146.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2161874768941955069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900503901790270232}
+  m_Layer: 17
+  m_Name: Arms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &900503901790270232
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161874768941955069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9202797641619271839}
+  - {fileID: 861270438730295471}
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2231440205197411406
@@ -2942,13 +2979,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3375097452297768079}
-  m_LocalRotation: {x: 0, y: 0, z: 0.28351322, w: 0.95896834}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: -3.908726e-15, y: -0, z: 0.28351322, w: 0.95896834}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00008966435}
+  m_LocalScale: {x: 0.6999999, y: 0.7000001, z: 0.70000005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5462828902460709735}
-  m_Father: {fileID: 1752190807526040112}
+  m_Father: {fileID: 900503901790270232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 32.94}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4868,6 +4905,60 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5409468227078303623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933780312421999939}
+  - component: {fileID: 4551850297617380629}
+  m_Layer: 17
+  m_Name: DiageticKill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1933780312421999939
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5409468227078303623}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00009842645}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4551850297617380629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5409468227078303623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e7608ec70a8f44bb512c04bb46ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BroadcastData:
+  - BroadcastName: KillFly0
+    UseValue: 0
+    BroadcastValue: 0
+    UseString: 0
+    BroadcastString: 
 --- !u!1 &5589363944235053502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5809,6 +5900,60 @@ MonoBehaviour:
   PeriodicWaitLoop: []
   AngleRange: {x: -180, y: 0}
   StartingSpeedRange: {x: 300, y: 600}
+--- !u!1 &6215469395641787382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8276369170897129813}
+  - component: {fileID: 3079155759880191860}
+  m_Layer: 17
+  m_Name: DiageticDamage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8276369170897129813
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215469395641787382}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00009842645}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3079155759880191860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215469395641787382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e7608ec70a8f44bb512c04bb46ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BroadcastData:
+  - BroadcastName: DamageFly0
+    UseValue: 0
+    BroadcastValue: 0
+    UseString: 0
+    BroadcastString: 
 --- !u!1 &6257811770277666015
 GameObject:
   m_ObjectHideFlags: 0
@@ -9989,9 +10134,10 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 900503901790270232}
   - {fileID: 8128645133304209618}
-  - {fileID: 9202797641619271839}
-  - {fileID: 861270438730295471}
+  - {fileID: 8276369170897129813}
+  - {fileID: 1933780312421999939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -10017,7 +10163,7 @@ MonoBehaviour:
   DamageNoises:
   - {fileID: 8300000, guid: 3fdcf9ff643fdd845b868a5e2be16198, type: 3}
   thisImage: {fileID: 5135965937023085116}
-  FinalRippleValue: 4
+  FinalRippleValue: 6
   DeathPeriod: 1
   DamagePeriod: 1
   WeakPoints:
@@ -10067,7 +10213,31 @@ MonoBehaviour:
       m_Calls: []
   OnObjectDestroy:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5882352654025662185}
+        m_TargetAssemblyTypeName: ThreatScript, Assembly-CSharp
+        m_MethodName: IncreasePhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4551850297617380629}
+        m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
+        m_MethodName: OnTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   EnemyPhases:
   - Triggered: 0
     HealthPercentageTrigger: 0.93
@@ -10098,8 +10268,20 @@ MonoBehaviour:
             m_StringArgument: NextPhase
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 3079155759880191860}
+          m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
+          m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 3
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
   - Triggered: 0
-    HealthPercentageTrigger: 0.75
+    HealthPercentageTrigger: 0.6
     OnTriggerEvents:
       m_PersistentCalls:
         m_Calls:
@@ -10123,7 +10305,72 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 3
+            m_FloatArgument: 4
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5142713186913361994}
+          m_TargetAssemblyTypeName: SpinScript, Assembly-CSharp
+          m_MethodName: SetSpin
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3079155759880191860}
+          m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
+          m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Triggered: 0
+    HealthPercentageTrigger: 0.3
+    OnTriggerEvents:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5882352654025662185}
+          m_TargetAssemblyTypeName: ThreatScript, Assembly-CSharp
+          m_MethodName: WeakPointDamageImmunityPeriod
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 4
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5142713186913361994}
+          m_TargetAssemblyTypeName: SpinScript, Assembly-CSharp
+          m_MethodName: SetSpin
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 60
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3079155759880191860}
+          m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
+          m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
             m_StringArgument: NextPhase
             m_BoolArgument: 0
           m_CallState: 2

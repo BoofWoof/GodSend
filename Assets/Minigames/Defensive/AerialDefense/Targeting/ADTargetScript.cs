@@ -4,8 +4,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ADTargetScript : MonoBehaviour
 {
-    public RectTransform canvasRect;   // Your world-space canvas
-    public Camera worldCamera;         // The camera looking at the canvas
+    public RectTransform canvasRect;
+    public Camera worldCamera;
     public RectTransform thisRect;
 
     public int targetIdx = 0;
@@ -37,7 +37,7 @@ public class ADTargetScript : MonoBehaviour
                 if (localPoint.x > 950) return;
                 if (localPoint.x < -950) return;
                 if (localPoint.y > 500) return;
-                if (localPoint.y < -300) return;
+                if (localPoint.y < -420) return;
                 thisRect.anchoredPosition = localPoint;
                 ValidTarget = true;
             }

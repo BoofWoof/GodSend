@@ -15,6 +15,15 @@ MonoBehaviour:
   LevelPrefab: {fileID: 117052679914980714, guid: 64ae363f62ceac746b9854202f61cfd1, type: 3}
   CurrentWave: 0
   BossWave: 0
-  WaveName: ???
+  WaveName: Hostile Marketing
   WaveFlavor: A challenger approaches.
   WaveSpeedModifier: 1.7
+  OnStartBroadcasts:
+  - BroadcastName: ActivateFly0
+    UseValue: 0
+    BroadcastValue: 0
+    UseString: 0
+    BroadcastString: 
+  PeekTime: 10
+  OnEndBroadcasts: []
+  PeekExitTime: 0
