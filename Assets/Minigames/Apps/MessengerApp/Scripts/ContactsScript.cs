@@ -1,12 +1,13 @@
 using DS;
-using JetBrains.Annotations;
 using PixelCrushers;
 using PixelCrushers.DialogueSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -71,6 +72,8 @@ public class ContactsScript : Saver
     private LocalCharacterInfo tempSpeakingCharacter;
 
     public AudioSource SelectionSound;
+
+    private List<string> CharactersSceneThisConversation = new();
 
     override public void Start()
     {
@@ -144,6 +147,25 @@ public class ContactsScript : Saver
     public IEnumerator SendSingleMessage(LocalCharacterInfo newSpeaker, string message_text, bool continueConversation = true)
     {
         yield return new WaitForSeconds((MessagingVariables.TimeBetweenMessages + MessagingVariables.TimePerCharacter * message_text.Length) / MessagingVariables.SetTimeDivider);
+
+        if (!CharactersSceneThisConversation.Contains(tempSpeakingCharacter.Name))
+        {
+            CharactersSceneThisConversation.Add(tempSpeakingCharacter.Name);
+            if (!messengerApp.Active || activeCharacter.Name != newSpeaker.Name) {
+                UnityEvent swapover = new();
+                swapover.AddListener(() => SwapToCharacterMessanger(newSpeaker));
+                string previewText = "<b>New Message:</b>\n" + message_text.Substring(0, Math.Min(message_text.Length, 200)).Replace("\n", "");
+                if (message_text.Length > 200) previewText += "...";
+
+                AppNotificationScript.SetNotification( new AppNotificationScript.NotificationInfo {
+                    SourceApp = null,
+                    PreviewImage = newSpeaker.portrait,
+                    PreviewText = previewText,
+                    AdditionalActions = swapover
+                });
+            }
+        }
+
         CheckContacts(newSpeaker);
         messengerApp.AddLeftMessage(newSpeaker.id, message_text);
         RebuildContacts();
@@ -174,6 +196,8 @@ public class ContactsScript : Saver
 
     public void OnConversationEndTrigger(Transform actor)
     {
+        CharactersSceneThisConversation.Clear();
+
         if (!isActiveAndEnabled) return;
         messengerApp.AddDivisionBar(speakingCharacterId);
         speakingCharacterId = -1;

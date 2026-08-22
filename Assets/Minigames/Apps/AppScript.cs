@@ -1,10 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class AppScript : MonoBehaviour
 {
+    private static string DefaultApp = "AppMenu";
+
     public Transform ActiveTarget;
     public Transform InactiveTarget;
 
@@ -27,6 +30,8 @@ public class AppScript : MonoBehaviour
     public UnityEvent OnDeactivateApp;
     public UnityEvent OnRaiseRefreshApp;
 
+    public static Dictionary<string, AppScript> AppsDict = new();
+
     public void Awake()
     {
         ActiveAppName = "";
@@ -46,14 +51,18 @@ public class AppScript : MonoBehaviour
         }
     }
 
-    public void OnEnable()
+    virtual public void OnEnable()
     {
         PhonePositionScript.PhoneToggled += TryRaiseRefresh;
+
+        Debug.Log(AppName);
+        AppsDict.Add(AppName, this);
     }
 
-    public void OnDisable()
+    virtual public void OnDisable()
     {
         PhonePositionScript.PhoneToggled -= TryRaiseRefresh;
+        AppsDict.Remove(AppName);
     }
 
     public void OnDestroy()
@@ -70,7 +79,14 @@ public class AppScript : MonoBehaviour
 
     public void HidePressed(InputAction.CallbackContext c)
     {
-        if (AppAnimator.instance.TransitionActive || !Active || PreviousApp == null) return;
+        if (AppAnimator.instance.TransitionActive || !Active || AppName == DefaultApp) return;
+
+        foreach(string name in AppsDict.Keys)
+        {
+            Debug.Log(name);
+        }
+
+        if (PreviousApp == null) PreviousApp = AppsDict[DefaultApp];
 
         if (!Input.GetMouseButton(0)) AppAnimator.instance.SwitchToAppStart(PreviousApp, -Vector3.up * 900f);
     }
@@ -78,7 +94,7 @@ public class AppScript : MonoBehaviour
     public static void Swap(AppScript newApp)
     {
         if (newApp == null) return;
-        newApp.PreviousApp = ActiveApp;
+        //newApp.PreviousApp = ActiveApp;
         AppAnimator.instance.SwitchToAppStart(newApp, Vector3.up * 900f);
         //newApp.Show(AppRoot);
         //Hide(false);

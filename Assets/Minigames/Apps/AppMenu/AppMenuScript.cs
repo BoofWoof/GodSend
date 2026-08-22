@@ -34,6 +34,8 @@ public class AppMenuScript : AppScript
 
     private void OnEnable()
     {
+        base.OnEnable();
+
         NameToApp = new Dictionary<string, AppMenuObjectData>();
         foreach(AppMenuObjectData AppData in AppDatas)
         {
@@ -45,8 +47,9 @@ public class AppMenuScript : AppScript
         MakeButtons();
     }
 
-    private void OnDisable()
+    override public void OnDisable()
     {
+        base.OnDisable();
         ClearButtons();
     }
 

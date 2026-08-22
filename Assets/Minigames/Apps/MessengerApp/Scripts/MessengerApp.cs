@@ -227,9 +227,13 @@ namespace DS
         public void SelectOption(int optionIdx)
         {
             int targetID = Choices.SourceID;
-            Response[] targetOptions = Choices.Choices;
-            (DialogueManager.dialogueUI as AbstractDialogueUI).OnClick(targetOptions[optionIdx]);
-            AddRightMessage(targetID, targetOptions[optionIdx].formattedText.text);
+            Response targetOption = Choices.Choices[optionIdx];
+            (DialogueManager.dialogueUI as AbstractDialogueUI).OnClick(targetOption);
+            string message = targetOption.formattedText.text;
+            string replacementLookup = Field.LookupValue(targetOption.destinationEntry.fields, "MiloReplacementText");
+            if (!string.IsNullOrEmpty(replacementLookup)) message = replacementLookup;
+
+            AddRightMessage(targetID, message);
 
             OptionSelectedAudio.Play();
 

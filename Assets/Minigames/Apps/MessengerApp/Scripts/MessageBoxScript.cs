@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class MessageBoxScript : MonoBehaviour
 {
+    public Image PanelBacking;
     public GameObject ReplacementMessageBox;
 
     [Header("Objects")]
@@ -72,6 +73,17 @@ public class MessageBoxScript : MonoBehaviour
                 emotionParticle?.Play();
                 break;
             }
+        }
+
+        string checkText2 = $"<milo>";
+        if (nextTextAltered.ToLower().Contains(checkText2))
+        {
+            if (ColorUtility.TryParseHtmlString("#FFD388", out Color customColor))
+            {
+                PanelBacking.color = customColor;
+            }
+            //#FFD388
+            nextTextAltered = nextTextAltered.Replace(checkText2, "");
         }
 
         text_object.text = nextTextAltered;

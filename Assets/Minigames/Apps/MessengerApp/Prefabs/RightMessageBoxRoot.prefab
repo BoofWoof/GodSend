@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010bf4e3cc62a62489b3f06596c87ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelBacking: {fileID: 5419704009643616124}
   ReplacementMessageBox: {fileID: 0}
   text_object: {fileID: 5419704007947491075}
   profile_image: {fileID: 0}
