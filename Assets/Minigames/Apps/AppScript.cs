@@ -8,6 +8,8 @@ public class AppScript : MonoBehaviour
 {
     private static string DefaultApp = "AppMenu";
 
+    public Sprite AssociatedIcon;
+
     public Transform ActiveTarget;
     public Transform InactiveTarget;
 

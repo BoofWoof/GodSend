@@ -16,7 +16,7 @@ MonoBehaviour:
   UpgradeID: d327a1ece25e42d4d8a680c52078f5fc
   UpgradesGroup: []
   OverrideGroupCost: 0
-  UpgradeName: Sights Beyond
+  UpgradeName: Promotion
   UpgradeIcon: {fileID: 309433619, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
   PrioritySortOverride: -1
   GoldenUpgrade: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
     comes responsibility!
-  UpgradeMechanicDescription: Gain access to a higher difficulty that pays significantly
+  UpgradeMechanicDescription: Gain a chance at a promotion that pays significantly
     more.
   MascotDialogue: Please don't make me fly again... I like the bird bath.
   AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!

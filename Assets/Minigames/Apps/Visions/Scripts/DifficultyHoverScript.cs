@@ -22,7 +22,7 @@ public class DifficultyHoverScript : MonoBehaviour
         int currentDifficulty = TurkPuzzleScript.CurrentDifficutly;
         VisionsDifficultySO difficultyData = TurkPuzzleScript.instance.LevelSets[currentDifficulty];
         string DName = difficultyData.PuzzleSetName;
-        string DMultiplier = Mathf.Pow(5, currentDifficulty).ToString();
+        string DMultiplier = difficultyData.DifficultyMultiplier + "x";
         string DLightnessMultiplier = difficultyData.DarknessModifier.ToString();
         string DFalconCutoffText = System.TimeSpan.FromSeconds(difficultyData.FalconSpeed).ToString("m\\:ss");
         string DMiloRecordText = System.TimeSpan.FromSeconds(difficultyData.MiloRecord).ToString("m\\:ss"); ;
@@ -32,11 +32,11 @@ public class DifficultyHoverScript : MonoBehaviour
         string LightnessMultiplier = "?";
         string FalconCutoffText = "?";
         string MiloRecordText = "?";
-        if (nextDifficulty >= 0)
+        if (nextDifficulty >= TurkPuzzleScript.MinAvailableDifficulty)
         {
             VisionsDifficultySO nextDifficultyData = TurkPuzzleScript.instance.LevelSets[nextDifficulty];
             NextName = nextDifficultyData.PuzzleSetName;
-            Multiplier = Mathf.Pow(5, nextDifficulty).ToString() + "x";
+            Multiplier = nextDifficultyData.DifficultyMultiplier + "x";
             LightnessMultiplier = nextDifficultyData.DarknessModifier.ToString() + "x";
             float FalconCutoff = nextDifficultyData.FalconSpeed;
             FalconCutoffText = System.TimeSpan.FromSeconds(FalconCutoff).ToString("m\\:ss");

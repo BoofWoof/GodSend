@@ -74,6 +74,8 @@ public class AppNotificationScript : MonoBehaviour
 
             ScrolldownAnimator.Play("DipUp");
 
+            yield return new WaitForSeconds(2f);
+
             Notifications.RemoveAt(0);
         }
 

@@ -54,7 +54,21 @@ public class ArchiveDataHolderScript : Saver
         Submitted = true;
         ArchiveScript.AddArchiveStatic(ArchiveDatas, Priority);
 
-        if (UnlockAnnouncement.Length > 0 && sendAnnouncement) AnnouncementScript.StartAnnouncement(UnlockAnnouncement);
+        if (UnlockAnnouncement.Length > 0 && sendAnnouncement)
+        {
+            AppScript targetApp = AppScript.AppsDict["Archives"];
+            string appName = targetApp.AppName;
+            string previewText = $"<b>New Data Available:</b>\nHead to <b>{appName}</b> to check it out!";
+
+            AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+            {
+                SourceApp = targetApp,
+                PreviewImage = targetApp.AssociatedIcon,
+                PreviewText = previewText,
+                AdditionalActions = null
+            });
+            //AnnouncementScript.StartAnnouncement(UnlockAnnouncement);
+        }
 
         if (!AutomaticallySubmitAtStart) ArchiveScript.instance.ShowNotification();
     }

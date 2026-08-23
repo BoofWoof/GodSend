@@ -25,7 +25,7 @@ public class UpgradeHolder : ActiveBroadcast
         
         if (AutoSubmit)
         {
-            SubmitUpgrades();
+            SubmitUpgrades(false);
         } else
         {
             ActivationEvents.AddListener(SubmitUpgrades);
@@ -39,8 +39,12 @@ public class UpgradeHolder : ActiveBroadcast
             holder.SubmitUpgrades();
         }
     }
-
     public void SubmitUpgrades()
+    {
+        SubmitUpgrades(true);
+    }
+
+    public void SubmitUpgrades(bool announce)
     {
         if (Submitted) return;
         foreach (UpgradesAbstract upgrade in Upgrades)
@@ -54,7 +58,23 @@ public class UpgradeHolder : ActiveBroadcast
             }
         }
 
-        UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].AddNewUpgrades(Upgrades, !AutoSubmit);
+        UpgradeScreenScript associatedScreen = UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame];
+        if (announce)
+        {
+            string appName = associatedScreen.AssociatedApp.AppName;
+            string previewText = $"<b>New Upgrades Available:</b>\nHead to <b>{appName}</b> to check them out!";
+            AppScript targetApp = associatedScreen.AssociatedApp;
+
+            AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+            {
+                SourceApp = targetApp,
+                PreviewImage = targetApp.AssociatedIcon,
+                PreviewText = previewText,
+                AdditionalActions = null
+            });
+        }
+
+        associatedScreen.AddNewUpgrades(Upgrades, !AutoSubmit);
         Submitted = true;
     }
 }

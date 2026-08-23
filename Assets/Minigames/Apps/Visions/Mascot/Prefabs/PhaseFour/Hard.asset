@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterVideo: {fileID: 32900000, guid: 307626eb10f190d43836e5ddbc44ca60, type: 3}
   SpeechSound: {fileID: 8300000, guid: d1d63ae3fd7647e469aa0a6143d272c0, type: 3}
   TriggerFirstIncreaseOnDay: 1
-  FirstIncrease: 0
+  FirstIncrease: 1
   IncreaseOccurrences: 0
   FirstDifficultyIncreaseDialogues: 'Wow...<n>
 
@@ -56,7 +56,7 @@ MonoBehaviour:
     to fly too. <3<n>
 
     [PLEASE GIVE THE APP FIVE STARS AND RECOMMEND IT TO A
-    FRIEND!]<t>'
+    FRIEND!]<t=Rotation>'
   DifficultyIncreaseDialogues:
   - I'm flying so high!
   - I can almost touch the stars!

@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class UpgradeScreenScript : MonoBehaviour
 {
+    public AppScript AssociatedApp;
+
     public Sprite NotificationSprite;
 
     public Minigame AssociatedMinigame;
@@ -46,6 +48,7 @@ public class UpgradeScreenScript : MonoBehaviour
     private VisionTags VisionFilter;
 
     public UnityEvent OnPanelOpen;
+    public UnityEvent OnUpgradeAdded;
 
     public void Awake()
     {
@@ -107,9 +110,11 @@ public class UpgradeScreenScript : MonoBehaviour
         {
             newUpgradeClones.Add(Instantiate(upgrade));
         }
+        bool noBuy = true;
         foreach (UpgradesAbstract upgrade in newUpgradeClones)
         {
             if (upgrade.AutoBuy) upgrade.Buy(true);
+            else noBuy = false;
         }
 
         //Find which index to add to.
@@ -141,6 +146,8 @@ public class UpgradeScreenScript : MonoBehaviour
         CheckForPrebought();
 
         if(gameObject.activeInHierarchy) Refresh();
+
+        if(!noBuy) OnUpgradeAdded?.Invoke();
     }
 
     public void OnEnable()

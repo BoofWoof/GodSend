@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static ArchiveScript;
@@ -87,6 +88,17 @@ public class AchievementListScript : Saver
                 }
                 if (pAchievement.Achievement.FirstCompletionCheck && pAchievement.Achievement.CheckCompletionCriteria())
                 {
+                    string previewText = "<b>Achievement Unlocked:</b>\nHead to <b>Glimmer</b> to collect your reward!";
+                    AppScript targetApp = AppScript.AppsDict["Achievements"];
+
+                    AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+                    {
+                        SourceApp = targetApp,
+                        PreviewImage = targetApp.AssociatedIcon,
+                        PreviewText = previewText,
+                        AdditionalActions = null
+                    });
+
                     AchieveUnlockScript.instance.ShowUnlock(title);
                     pAchievement.Achievement.FirstCompletionCheck = false;
                 }

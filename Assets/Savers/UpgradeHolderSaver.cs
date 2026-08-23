@@ -26,6 +26,6 @@ public class UpgradeHolderSaver : Saver
 
         if (saveData == null) return;
 
-        if (saveData.Submitted) GetComponent<UpgradeHolder>().SubmitUpgrades();
+        if (saveData.Submitted) GetComponent<UpgradeHolder>().SubmitUpgrades(false);
     }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterVideo: {fileID: 32900000, guid: 8c78797836c43354193e59068df6a99f, type: 3}
   SpeechSound: {fileID: 8300000, guid: e8826ae004715ff44913dd94da14c311, type: 3}
   TriggerFirstIncreaseOnDay: 1
-  FirstIncrease: 0
+  FirstIncrease: 1
   IncreaseOccurrences: 0
   FirstDifficultyIncreaseDialogues: 'You''re so brave, willing to accept new challenges,
     to improve yourself.<n>
@@ -41,7 +41,7 @@ MonoBehaviour:
     to make things interesting, maybe I''ll share a few concepts of my own.<n>
 
     Doesn''t
-    that sound fun?<t>'
+    that sound fun?<t=Fake>'
   DifficultyIncreaseDialogues:
   - I'm back and better than ever!~
   - I can finally take my telescope back out of storage.

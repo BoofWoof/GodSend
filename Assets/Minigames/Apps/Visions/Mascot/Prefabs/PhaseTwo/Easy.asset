@@ -29,34 +29,22 @@ MonoBehaviour:
     But uhhh... I must admit... I''m a bit hesitant
     to leave my shell. Everything is so new and scary...<n>
 
-    Oh, hey! Maybe
-    you''d be nice enough to help me!? Things are easier with a friend!
+    Oh, hey! Maybe you''d
+    be nice enough to help me!? Things are easier with a friend!
 
-    <c=Sure>
-    Thank you so much!<n>
+    <c=Sure> Thank
+    you so much!<n>
 
-    Oh, btw, a silly archaic law requires me to remind
-    you that by opening this app-<n>
+    Oh, btw, a silly archaic law requires me to remind you that
+    by opening this app-<n>
 
-    You''ve already agreed to all privacy
-    terms associated with your local <b>NEST</b> database!
+    You''ve already agreed to all privacy terms associated
+    with your local <b>NEST</b> database!
 
-    But what are a few
-    secrets between friends?<n>
+    But what are a few secrets between
+    friends?<n>
 
-    Speaking of friends, I have a <b>gift</b> for
-    you!<n>
-
-    See that <i>''x5''</i> near the difficulty buttons?<n>
-
-    The
-    more you help me grow, the more I''ll help your earnings grow!<n>
-
-    As long
-    as you''re at this difficulty, you''ll get that multiplier to your earnings!<n>
-
-    Now,
-    please friend, show me your stars!'
+    Now, please friend, show me your stars!<t=Promotion>'
   DifficultyIncreaseDialogues:
   - I can see again!
   - Ahh, the light!

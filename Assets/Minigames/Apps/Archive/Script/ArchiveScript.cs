@@ -65,11 +65,16 @@ public class ArchiveScript : Saver
     }
     #endregion
 
+    override public void Awake()
+    {
+        base.Awake();
+        instance = this;
+        ReadDocuments = new List<string>();
+    }
+
     override public void Start()
     {
         base.Start();
-        instance = this;
-        ReadDocuments = new List<string>();
     }
 
     override public void OnEnable()

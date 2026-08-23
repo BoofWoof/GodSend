@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,7 +43,7 @@ public class VisionMascotScript : MonoBehaviour
 
     public Animator MessageBoxAnimator;
 
-    public PhoneTutorialScript PhoneTutorial;
+    public NewTutorialScript PhoneTutorial;
 
     void Awake()
     {
@@ -147,7 +148,18 @@ public class VisionMascotScript : MonoBehaviour
         {
             string editedString = s;
             bool showNewTutorial = false;
-            if(editedString.Contains("<t>")){
+
+            Match match = Regex.Match(editedString, @"<t=""?(?<value>[^"">]+)""?\s*/?>");
+            string tutorialName = "";
+            if (match.Success)
+            {
+                tutorialName = match.Groups["value"].Value;
+                editedString = Regex.Replace(editedString, @"<t=""?[^"">]+""?\s*/?>", "").Trim();
+                showNewTutorial = true;
+            }
+
+
+            if (editedString.Contains("<t>")){
                 editedString = editedString.Replace("<t>", "").Trim();
                 showNewTutorial = true;
             }
@@ -157,7 +169,7 @@ public class VisionMascotScript : MonoBehaviour
             if (!SkipWait) yield return new WaitForSeconds(1f);
             WaitForText = true;
             if (!SkipWait) while (WaitForText) { yield return null; }
-            if (showNewTutorial) PhoneTutorial.UnlockNewTutorialStep();
+            if (showNewTutorial) PhoneTutorial.UnlockGroupByName(tutorialName);
 
             MessageBoxAnimator.Play("Wiggle");
 

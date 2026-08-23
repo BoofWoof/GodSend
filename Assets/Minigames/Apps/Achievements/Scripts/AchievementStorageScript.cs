@@ -1,6 +1,7 @@
 using PixelCrushers;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AchievementStorageScript : Saver
 {
@@ -63,7 +64,7 @@ public class AchievementStorageScript : Saver
         AchievementListScript.AddAchievementsStatic(Achievements, Priority);
         Submitted = true;
 
-        if (!SubmitAtStart && announce) AchievementListScript.instance.ShowNotification();
+        //if (!SubmitAtStart && announce) AchievementListScript.instance.ShowNotification();
 
         if(announce) MakeAnnouncement();
     }
@@ -71,6 +72,18 @@ public class AchievementStorageScript : Saver
     public void MakeAnnouncement()
     {
         if (AnnouncementText.Length == 0) return;
-        AnnouncementScript.StartAnnouncement(AnnouncementText);
+        //AnnouncementScript.StartAnnouncement(AnnouncementText);
+
+        AppScript targetApp = AppScript.AppsDict["Glimmer"];
+        string appName = targetApp.AppName;
+        string previewText = $"<b>New Achievements Available:</b>\nHead to <b>{appName}</b> to check them out!";
+
+        AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+        {
+            SourceApp = targetApp,
+            PreviewImage = targetApp.AssociatedIcon,
+            PreviewText = previewText,
+            AdditionalActions = null
+        });
     }
 }

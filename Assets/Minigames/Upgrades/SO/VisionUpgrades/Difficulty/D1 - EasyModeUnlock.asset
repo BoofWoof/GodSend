@@ -15,7 +15,8 @@ MonoBehaviour:
   Prioirty: 1
   UpgradeID: 8897932af6cfb134b9fcb4d5a3ced3e9
   UpgradesGroup: []
-  UpgradeName: Sights Beyond
+  OverrideGroupCost: 0
+  UpgradeName: Promotion
   UpgradeIcon: {fileID: 2059918034, guid: 330a92ca238066f4f838d09a403f771a, type: 3}
   PrioritySortOverride: -1
   GoldenUpgrade: 1
@@ -25,7 +26,7 @@ MonoBehaviour:
   ProgressQuest: 0
   UpgradeDescription: You've proven yourself to have a place here, and with capability
     comes responsibility!
-  UpgradeMechanicDescription: Gain access to a higher difficulty that pays significantly
+  UpgradeMechanicDescription: Gain a chance at a promotion that pays significantly
     more.
   MascotDialogue: 'Feel free to stay in the <b>VIP</b> room.<n>
 
