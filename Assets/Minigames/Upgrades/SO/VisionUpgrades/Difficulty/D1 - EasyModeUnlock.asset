@@ -49,3 +49,5 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 1
+  VisionChallengePrefab: {fileID: 4074052858596317957, guid: 06913771baadfb143b0ccb0e01ba2981, type: 3}
+  OnlyRunChallengeDayOne: 0

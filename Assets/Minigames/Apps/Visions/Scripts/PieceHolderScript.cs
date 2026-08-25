@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PieceHolderScript : MonoBehaviour
 {
+    public string GroupName;
+
     public TurkCubeScript SeedPiece;
     public List<TurkCubeScript> Pieces = new List<TurkCubeScript>();
 
@@ -162,7 +164,8 @@ public class PieceHolderScript : MonoBehaviour
             Vector2Int newCord = TurkPuzzleScript.PosToGridIdx((Vector2)adjustedPiecePosition);
 
             puzzlePiece.cord = newCord;
-            if (TurkPuzzleScript.IsCoordinateInsideGrid(oldCord.x, oldCord.y)) TurkPuzzleScript.holeGrid[oldCord.x, oldCord.y].GetComponent<TurkHoleScript>().EmptyHole();
+            
+            if (VisionEmptyGroup.IsEmptyInAnyLookup(oldCord)) VisionEmptyGroup.HoleLookupAny(oldCord).EmptyHole();
             fillers.Add(puzzlePiece.GetComponent<TurkCubeScript>());
         }
         FillHoles();
@@ -175,7 +178,7 @@ public class PieceHolderScript : MonoBehaviour
         foreach (TurkCubeScript filler in Pieces)
         {
             Vector2Int cord = filler.cord;
-            if (!TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
+            if (!VisionEmptyGroup.IsEmptyInAnyLookup(cord))
             {
                 FullyFilled = false;
             }
@@ -183,9 +186,9 @@ public class PieceHolderScript : MonoBehaviour
         foreach (TurkCubeScript filler in Pieces)
         {
             Vector2Int cord = filler.cord;
-            if (TurkPuzzleScript.IsCoordinateInsideGrid(cord.x, cord.y))
+            if (VisionEmptyGroup.IsEmptyInAnyLookup(cord))
             {
-                TurkPuzzleScript.holeGrid[cord.x, cord.y].GetComponent<TurkHoleScript>().FillHole(filler, FullyFilled);
+                VisionEmptyGroup.HoleLookupAny(cord).FillHole(filler, FullyFilled);
             }
         }
     }
@@ -428,7 +431,7 @@ public class PieceHolderScript : MonoBehaviour
             return;
         }
 
-        if (TurkPuzzleScript.CheckWin()) return;
+        TurkPuzzleScript.CheckWin();
     }
 
     public void SendToPieceHolder(bool PlaySounds = false)
@@ -441,7 +444,8 @@ public class PieceHolderScript : MonoBehaviour
             foreach (TurkCubeScript puzzlePiece in Pieces)
             {
                 Vector2Int oldCord = puzzlePiece.GetComponent<TurkCubeScript>().cord;
-                if (TurkPuzzleScript.IsCoordinateInsideGrid(oldCord.x, oldCord.y)) TurkPuzzleScript.holeGrid[oldCord.x, oldCord.y].GetComponent<TurkHoleScript>().EmptyHole();
+                
+                if (VisionEmptyGroup.IsEmptyInAnyLookup(oldCord)) VisionEmptyGroup.HoleLookupAny(oldCord).EmptyHole();
                 puzzlePiece.GetComponent<TurkCubeScript>().cord = new Vector2Int(-99, -99);
             }
         }

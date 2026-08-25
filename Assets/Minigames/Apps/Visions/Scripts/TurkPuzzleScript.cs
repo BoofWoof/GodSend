@@ -60,11 +60,18 @@ public class TurkPuzzleScript : MonoBehaviour
     public AudioSource NewPuzzleSound;
     public AudioSource RotateSound;
 
-    public GameObject EmptyTile;
+    public GameObject EmptyTileGroup;
     public Material ConstMat;
     public Material ActiveConstMat;
 
     public TMP_Text ArtistCredit;
+
+    [Header("Challenge Change")]
+    public GameObject BlessingShop;
+    private bool BlessingShopWasOn;
+    public GameObject PromotionSwitcher;
+    private bool PromotionSwitcherWasOn;
+    private VisionChallengeScript ActiveChallenge;
 
     [Header("Grid Settings")]
     public List<VisionsDifficultySO> LevelSets;
@@ -82,13 +89,8 @@ public class TurkPuzzleScript : MonoBehaviour
     public static float squareSize = 45f;      // Size of each square
     public TileSetSO constallationTiles;         // Sprite to use for the grid squares
 
-    public static List<GameObject> gridSquares = new List<GameObject>();
     public static List<GameObject> puzzlePieceSquares = new List<GameObject>();
     public static List<PieceHolderScript> puzzlePiece = new List<PieceHolderScript>();
-
-    public static GameObject[,] puzzlePieceGrid;
-    public static GameObject[,] holeGrid;
-    private static GameObject PuzzleCenter;
 
     public static TurkPuzzleScript puzzleScript;
 
@@ -160,8 +162,32 @@ public class TurkPuzzleScript : MonoBehaviour
 
         PuzzleName.gameObject.SetActive(false);
 
-        PuzzleCenter = gameObject;
         puzzleScript = this;
+    }
+
+    public void GeneratePuzzle()
+    {
+        PieceHolderScript.ClearPieces();
+        OnBeforePuzzleGenerate?.Invoke();
+
+        PuzzleEarningsText.gameObject.SetActive(false);
+        UpdatePuzzleIdx();
+
+        selectedGridData = SamplePuzzles();
+        GenerateGrid();
+        GeneratePuzzlePieces();
+        GroupPuzzlePieces();
+        Shuffle();
+        UpdateTileSprites();
+        PlacePieces();
+        ScrambleCords();
+        ShowArtist();
+        UpdateStatText();
+        StartingTime = Time.time;
+
+        OnPuzzleGenerate?.Invoke();
+
+        StartCoroutine(GraphicScan());
     }
 
     public void OnEnable()
@@ -186,14 +212,55 @@ public class TurkPuzzleScript : MonoBehaviour
         UpdateDifficultyButtons();
     }
 
+    public void StartChallenge(GameObject visionChallenge)
+    {
+        PieceHolderScript.ClearPieces();
+        OnBeforePuzzleGenerate?.Invoke();
+
+        ClearPuzzlePieces();
+        ClearEmpties();
+
+        BlessingShopWasOn = BlessingShop.activeInHierarchy;
+        PromotionSwitcherWasOn = PromotionSwitcher.activeInHierarchy;
+        BlessingShop.SetActive(false);
+        PromotionSwitcher.SetActive(false);
+
+        GameObject challengeObject = Instantiate(visionChallenge);
+        Transform challengeTransform = challengeObject.transform;
+        challengeTransform.SetParent(transform);
+        challengeTransform.localPosition = Vector3.zero;
+        challengeTransform.localRotation = Quaternion.identity;
+        challengeTransform.localScale = Vector3.one;
+
+        VisionChallengeScript vcs = challengeObject.GetComponent<VisionChallengeScript>();
+        if (vcs == null) Debug.LogError("A non-valid prefab was given. The challenge prefab must have a visionchallenge script attached.");
+
+        ActiveChallenge = vcs;
+        vcs.StartChallenge();
+    }
+
+    public void EndChallenge()
+    {
+        if (BlessingShopWasOn) BlessingShop.SetActive(true);
+        if (PromotionSwitcherWasOn) PromotionSwitcher.SetActive(true);
+
+        ActiveChallenge = null;
+    }
+
     public void OnAppOpen()
     {
         if (!FirstOpen) return;
         FirstOpen = false;
         StartingTime = Time.time;
     }
-    public void UpdateStatText()
+    public void UpdateStatText(bool show = true)
     {
+        if (!show)
+        {
+            PuzzleSolvedText.text = "<b>Puzzles Solved:</b> ?";
+            BestTimeText.text = "<b>Fastest Time:</b> ?:??";
+            return;
+        }
         if (!PuzzlesCompleted.ContainsKey(CurrentDifficutly))
         {
             PuzzleSolvedText.text = "<b>Puzzles Solved:</b> 0";
@@ -308,31 +375,6 @@ public class TurkPuzzleScript : MonoBehaviour
         UniquePuzzlesSolvedText.text = puzzleIdx.ToString() + "/" + maxLength.ToString();
     }
 
-    public void GeneratePuzzle()
-    {
-        PieceHolderScript.ClearPieces();
-        OnBeforePuzzleGenerate?.Invoke();
-
-        PuzzleEarningsText.gameObject.SetActive(false);
-        UpdatePuzzleIdx();
-
-        selectedGridData = SamplePuzzles();
-        GenerateGrid();
-        GeneratePuzzlePieces();
-        GroupPuzzlePieces();
-        Shuffle();
-        UpdateTileSprites();
-        PlacePieces();
-        ScrambleCords();
-        ShowArtist();
-        UpdateStatText();
-        StartingTime = Time.time;
-
-        OnPuzzleGenerate?.Invoke();
-
-        StartCoroutine(GraphicScan());
-    }
-
     public IEnumerator GraphicScan()
     {
         Shader.SetGlobalFloat("_RevealScanValue", 0);
@@ -354,9 +396,9 @@ public class TurkPuzzleScript : MonoBehaviour
         yield return null;
     }
 
-    public void ShowArtist()
+    public void ShowArtist(bool show = true)
     {
-        if (selectedGridData == null)
+        if (selectedGridData == null || !show)
         {
             ArtistCredit.text = "";
             return;
@@ -381,12 +423,13 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public static bool CheckWin()
     {
-        bool failedCheck = false;
-        foreach(GameObject gridSquare in gridSquares)
+        if (instance.ActiveChallenge != null)
         {
-            if (!gridSquare.GetComponent<TurkHoleScript>().isFilled()) failedCheck = true;
+            instance.ActiveChallenge.CheckForWin();
+            return false;
         }
-        if (failedCheck) return false;
+
+        if (!VisionEmptyGroup.CheckForAnyWin()) return false;
 
         instance.StartCoroutine(instance.WinCutscene());
         return true;
@@ -565,7 +608,7 @@ public class TurkPuzzleScript : MonoBehaviour
         return reward;
     }
 
-    private void ScrambleCords()
+    public void ScrambleCords()
     {
         foreach (GameObject piece in puzzlePieceSquares)
         {
@@ -573,7 +616,7 @@ public class TurkPuzzleScript : MonoBehaviour
         }
     }
 
-    private void PlacePieces()
+    public void PlacePieces()
     {
         VisionsDifficultySO currentDifficulty = LevelSets[CurrentDifficutly];
         PieceHolderScript.RotationEnabled = currentDifficulty.RotationEnabled;
@@ -594,27 +637,19 @@ public class TurkPuzzleScript : MonoBehaviour
         }
     }
 
-    public static Vector2Int PosToGridIdx(Vector2 Pos)
+    public static Vector2Int PosToGridIdx(Vector2 pos)
     {
-        Vector2 offset = Pos - PuzzleCenter.GetComponent<RectTransform>().anchoredPosition;
-        offset += puzzleScript.GetComponent<RectTransform>().anchoredPosition;
-
-        Vector2 center_idx = new Vector2(selectedGridData.GetWidth() / 2f, selectedGridData.GetHeight() / 2f);
-        Vector2Int gridIdx = Vector2Int.FloorToInt(offset / squareSize + center_idx);
-
+        Vector2Int gridIdx = Vector2Int.RoundToInt(pos / squareSize);
         return gridIdx;
     }
 
-    public static Vector2 GridIdxToPos(Vector2Int GridIdx)
+    public static Vector2 GridIdxToPos(Vector2Int gridIdx)
     {
-        Vector2 center_idx = new Vector2(selectedGridData.GetWidth() / 2f - 0.5f, selectedGridData.GetHeight() / 2f - 0.5f);
         return new Vector2(
-            (GridIdx.x - center_idx.x) * squareSize,
-            (GridIdx.y - center_idx.y) * squareSize
-            );
-
+            gridIdx.x * squareSize,
+            gridIdx.y * squareSize
+        );
     }
-
     private void GroupPuzzlePieces()
     {
         VisionsDifficultySO currentDifficulty = LevelSets[CurrentDifficutly];
@@ -681,6 +716,48 @@ public class TurkPuzzleScript : MonoBehaviour
         }
     }
 
+    public void ClearPuzzlePieces()
+    {
+        foreach (GameObject piece in puzzlePieceSquares)
+        {
+            Destroy(piece.gameObject);
+        }
+        puzzlePieceSquares.Clear();
+    }
+
+    private void GeneratePuzzlePieces()
+    {
+        ClearPuzzlePieces();
+
+        foreach (TurkHoleScript hole in VisionEmptyGroup.GetAllHoles())
+        {
+            // Instantiate a new square
+            GameObject newSquare = new GameObject("PuzzlePiece_" + puzzlePieceSquares.Count.ToString());
+            newSquare.transform.parent = transform;
+
+            RectTransform rectTransform = newSquare.AddComponent<RectTransform>();
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            rectTransform.sizeDelta = new Vector2(squareSize, squareSize);
+
+            // Set the position of the square
+            newSquare.transform.localRotation = Quaternion.identity;
+            newSquare.transform.localScale = Vector2.one;
+            newSquare.transform.localPosition = hole.transform.localPosition;
+
+            // Add an Image component and set the sprite
+            Image imageComponent = newSquare.AddComponent<Image>();
+            imageComponent.sprite = constallationTiles.GetSprite(true, true, true, true);
+            imageComponent.color = Color.white;
+            imageComponent.material = ConstMat;
+            //imageComponent.material.SetTexture("_MainTex", imageComponent.sprite.ExtractSpriteTexture());
+
+            TurkCubeScript turkCubeScript = newSquare.AddComponent<TurkCubeScript>();
+            turkCubeScript.cord = hole.cord;
+
+            puzzlePieceSquares.Add(newSquare);
+        }
+    }
+
     public void AddFakePiece()
     {
         int randomIdx = Random.Range(0, FakePieces.Count);
@@ -717,10 +794,10 @@ public class TurkPuzzleScript : MonoBehaviour
 
     private List<GameObject> SelectRandomSquares(int numberOfSquares)
     {
-        if (numberOfSquares > gridSquares.Count)
+        if (numberOfSquares > VisionEmptyGroup.GetTotalEmpties())
         {
-            Debug.LogWarning("Requested more squares than available. Returning all squares.");
-            return new List<GameObject>(gridSquares);
+            Debug.LogError("Requested more squares than available. Returning all squares.");
+            return new();
         }
 
         List<int> allPieceIndexes = Enumerable.Range(0,puzzlePieceSquares.Count).ToList();
@@ -769,106 +846,23 @@ public class TurkPuzzleScript : MonoBehaviour
         return selectedPieces;
     }
 
-    private void GeneratePuzzlePieces()
+    public void ClearEmpties()
     {
-        // Clear existing squares if any
-        foreach (GameObject square in puzzlePieceSquares)
-        {
-            Destroy(square);
-        }
-        puzzlePieceSquares.Clear();
-
-        puzzlePieceGrid = new GameObject[selectedGridData.GetWidth(), selectedGridData.GetHeight()];
-
-        foreach (GameObject hole in gridSquares)
-        {
-            // Instantiate a new square
-            GameObject newSquare = new GameObject("PuzzlePiece");
-            newSquare.transform.parent = transform;
-
-            RectTransform rectTransform = newSquare.AddComponent<RectTransform>();
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            rectTransform.sizeDelta = new Vector2(squareSize, squareSize);
-
-            // Set the position of the square
-            newSquare.transform.localRotation = Quaternion.identity;
-            newSquare.transform.localScale = Vector2.one;
-            newSquare.transform.localPosition = hole.transform.localPosition;
-
-            // Add an Image component and set the sprite
-            Image imageComponent = newSquare.AddComponent<Image>();
-            imageComponent.sprite = constallationTiles.GetSprite(true, true, true, true);
-            imageComponent.color = Color.white;
-            imageComponent.material = ConstMat;
-            //imageComponent.material.SetTexture("_MainTex", imageComponent.sprite.ExtractSpriteTexture());
-
-            TurkCubeScript turkCubeScript = newSquare.AddComponent<TurkCubeScript>();
-            turkCubeScript.cord = hole.GetComponent<TurkHoleScript>().cord;
-
-            puzzlePieceSquares.Add(newSquare);
-            puzzlePieceGrid[turkCubeScript.cord.x, turkCubeScript.cord.y] = newSquare;
-        }
+        VisionEmptyGroup.DestroyAllEmptyGroups();
     }
 
     void GenerateGrid()
     {
-        // Clear existing squares if any
-        foreach (GameObject square in gridSquares)
-        {
-            Destroy(square);
-        }
-        gridSquares.Clear();
+        ClearEmpties();
 
-        holeGrid = new GameObject[selectedGridData.GetWidth(), selectedGridData.GetHeight()];
+        GameObject newEmptyGroup = Instantiate(EmptyTileGroup);
 
-        Vector2 center_idx = new Vector2(selectedGridData.GetWidth()/2f - 0.5f, selectedGridData.GetHeight()/2f - 0.5f); 
-        for (int y = 0; y < selectedGridData.GetHeight(); y++)
-        {
-            for (int x = 0; x < selectedGridData.GetWidth(); x++)
-            {
-                // Skip hole positions
-                if (selectedGridData.IsHole(x, y))
-                {
-                    continue;
-                }
+        newEmptyGroup.transform.parent = transform;
+        newEmptyGroup.transform.localPosition = Vector3.zero;
+        newEmptyGroup.transform.localRotation = Quaternion.identity;
+        newEmptyGroup.transform.localScale = Vector3.one;
 
-                // Instantiate a new square
-                GameObject newSquare = Instantiate(EmptyTile);
-                newSquare.transform.parent = EmptyHolder;
-
-                RectTransform rectTransform = newSquare.GetComponent<RectTransform>();
-                rectTransform.pivot = new Vector2(0.5f, 0.5f);
-                rectTransform.sizeDelta = new Vector2(squareSize, squareSize);
-
-                // Set the position of the square
-                newSquare.transform.localRotation = Quaternion.identity;
-                newSquare.transform.localScale = Vector3.one;
-                rectTransform.localPosition = new Vector2(
-                    (x - center_idx.x) * squareSize,
-                    (y - center_idx.y) * squareSize
-                    );
-
-                // Add an Image component and set the sprite
-                Image imageComponent = newSquare.GetComponent<Image>();
-                imageComponent.color = new Color(255, 255, 255, 1f);
-
-                // Add a collider.
-                newSquare.GetComponent<BoxCollider2D>();
-
-                TurkHoleScript turkCubeScript = newSquare.GetComponent<TurkHoleScript>();
-                turkCubeScript.cord = new Vector2Int(x, y);
-
-                gridSquares.Add(newSquare);
-                holeGrid[x, y] = newSquare;
-            }
-        }
-    }
-    public static bool IsCoordinateInsideGrid(int x, int y)
-    {
-        // Check if the coordinates are within the bounds of the grid
-        if (!(x >= 0 && x < puzzlePieceGrid.GetLength(0) && y >= 0 && y < puzzlePieceGrid.GetLength(1))) return false;
-        if (selectedGridData.IsHole(x, y)) return false;
-        return true;
+        newEmptyGroup.GetComponent<VisionEmptyGroup>().GenerateEmptyFromShapeSO(selectedGridData);
     }
 
     public static bool IsCordTaken(Vector2Int testCord, List<TurkCubeScript> mask)

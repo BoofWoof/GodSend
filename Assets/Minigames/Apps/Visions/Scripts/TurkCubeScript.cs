@@ -5,7 +5,20 @@ using UnityEngine.UI;
 
 public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Vector2Int cord;
+    public Vector2Int _cord = new Vector2Int(-9999,-9999);
+    public Vector2Int cord
+    {
+        get
+        {
+            return _cord;
+        }
+
+        set {
+            if(CubePosLookupDictionary.ContainsKey(_cord)) CubePosLookupDictionary.Remove(_cord);
+            _cord = value;
+            if (!CubePosLookupDictionary.ContainsKey(_cord)) CubePosLookupDictionary.Add(_cord, this);
+        }
+    }
 
     public Dictionary<Directions, bool> CardinalExpands = new Dictionary<Directions, bool>
     {
@@ -42,6 +55,21 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public List<TurkCubeScript> ExpandedToScripts = new List<TurkCubeScript>();
 
     public PieceHolderScript rootPiece;
+
+    private static List<TurkCubeScript> AllCubeScripts = new();
+    private static Dictionary<Vector2Int, TurkCubeScript> CubePosLookupDictionary = new();
+
+    public void OnEnable()
+    {
+        AllCubeScripts.Add(this);
+        if (!CubePosLookupDictionary.ContainsKey(_cord)) CubePosLookupDictionary.Add(cord, this);
+    }
+
+    public void OnDisable()
+    {
+        AllCubeScripts.Remove(this);
+        if (CubePosLookupDictionary.ContainsKey(_cord)) CubePosLookupDictionary.Remove(cord);
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -112,9 +140,11 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
 
         Vector2Int expandCordShift = ExpandDirection.ToCordShift();
-        if (!TurkPuzzleScript.IsCoordinateInsideGrid(cord.x + expandCordShift.x, cord.y + expandCordShift.y)) return null;
-        GameObject expandedTo = TurkPuzzleScript.puzzlePieceGrid[cord.x + expandCordShift.x, cord.y + expandCordShift.y];
-        TurkCubeScript expandToScript = expandedTo.GetComponent<TurkCubeScript>();
+        Vector2Int newCordPos = cord + expandCordShift;
+
+        if (!CubePosLookupDictionary.ContainsKey(newCordPos)) return null;
+        
+        TurkCubeScript expandToScript = CubePosLookupDictionary[newCordPos];
 
         if (expandToScript.Linked &&
             expandToScript.GroupID != GroupID
@@ -132,7 +162,7 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         expandToScript.Linked = true;
         expandToScript.GroupID = GroupID;
 
-        return expandedTo;
+        return expandToScript.gameObject;
     }
 
     public void ConnectionCheck()
@@ -169,7 +199,7 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     }*/
     #endregion
 
-    public void UpdateSprite()
+    public void UpdateSprite(TileSetSO tileset = null)
     {
         transform.localRotation = Quaternion.Euler(0, 0, 90f * rootPiece.Rotations);
 
@@ -186,7 +216,9 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             AdjustedRight = AdjustedRight.TurnCounterClockwise();
         }
 
-        GetComponent<Image>().sprite = TurkPuzzleScript.instance.constallationTiles.GetSprite(
+        if (TurkPuzzleScript.instance != null) tileset = TurkPuzzleScript.instance.constallationTiles;
+
+        GetComponent<Image>().sprite = tileset.GetSprite(
             !ConnectedDirections[AdjustedUp],
             !ConnectedDirections[AdjustedDown],
             !ConnectedDirections[AdjustedLeft],

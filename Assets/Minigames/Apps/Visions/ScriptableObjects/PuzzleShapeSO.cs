@@ -16,11 +16,15 @@ public class PuzzleShapeSO : ScriptableObject
 
     private void OnEnable()
     {
+        GenerateHoles();
+    }
+
+    public void GenerateHoles()
+    {
         if (puzzleTexture == null)
             return;
 
         width = puzzleTexture.width;
-        int height = puzzleTexture.height;
 
         Color[] pixels = puzzleTexture.GetPixels();
         holeMap = new bool[pixels.Length];
