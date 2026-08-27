@@ -28,10 +28,7 @@ MonoBehaviour:
     comes responsibility!
   UpgradeMechanicDescription: Gain a chance at a promotion that pays significantly
     more.
-  MascotDialogue: 'Feel free to stay in the <b>VIP</b> room.<n>
-
-    I''ll just up
-    the pay in there to make your life more comfortable. '
+  MascotDialogue: 
   AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:
   - OverrideDay: 1

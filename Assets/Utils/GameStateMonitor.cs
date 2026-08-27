@@ -77,9 +77,25 @@ public static class GameStateMonitor
         PrintGameState();
     }
 
+    private static bool _ChallengeActive = false;
+    public static OnEventChangeDelegate OnChallengeChange;
+    public static bool ChallengeActive
+    {
+        get
+        {
+            return _ChallengeActive;
+        }
+        set
+        {
+            if (_ChallengeActive == value) return;
+            _ChallengeActive = value;
+            OnChallengeChange?.Invoke(_ChallengeActive);
+        }
+    }
+
     public static bool isEventActive()
     {
-        return (ActiveSpeakingSource.Count > 0) || (ActivePrayer) || (DangerActive) || ForceEventActive;
+        return (ActiveSpeakingSource.Count > 0) || (ActivePrayer) || (DangerActive) || (ChallengeActive) || ForceEventActive;
     }
 
     public static void PrintGameState()

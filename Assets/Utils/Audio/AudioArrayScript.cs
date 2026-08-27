@@ -18,8 +18,7 @@ public class AudioArrayScript : MonoBehaviour
     {
         if(targetIndex >= AudioClips.Length)
         {
-            Debug.LogError($"Attempt to play nonexistant audio line at index: {targetIndex}");
-            return;
+            targetIndex = targetIndex % AudioClips.Length;
         }
         TargetAudioSource.clip = AudioClips[targetIndex];
         TargetAudioSource.Play();

@@ -7,8 +7,9 @@ public class BusySignScript : MonoBehaviour
     private enum SignMode
     {
         Leisure = 0,
-        Meeting = 120,
-        Danger = 240
+        Meeting = 90,
+        Danger = 180,
+        Challenge = 270
     }
 
     public Transform RotatingSign;
@@ -16,6 +17,7 @@ public class BusySignScript : MonoBehaviour
 
     private bool DangerActive;
     private bool ConversationActive;
+    private bool ChallengeActive;
 
     private SignMode currentMode = SignMode.Leisure;
 
@@ -34,12 +36,14 @@ public class BusySignScript : MonoBehaviour
     public void OnEnable()
     {
         GameStateMonitor.OnDangerChange += OnDangerChange;
+        GameStateMonitor.OnChallengeChange += OnChallengeChange;
         ConversationManagerScript.OnConversationChange += OnConversationChange;
     }
 
     public void OnDisable()
     {
         GameStateMonitor.OnDangerChange -= OnDangerChange;
+        GameStateMonitor.OnChallengeChange -= OnChallengeChange;
         ConversationManagerScript.OnConversationChange -= OnConversationChange;
     }
 
@@ -57,12 +61,20 @@ public class BusySignScript : MonoBehaviour
         CheckRotationUpdate();
     }
 
+    private void OnChallengeChange(bool challengeBool)
+    {
+        ChallengeActive = challengeBool;
+
+        CheckRotationUpdate();
+    }
+
     private void CheckRotationUpdate()
     {
         Debug.Log(gameObject.name);
         SignMode newMode = SignMode.Leisure;
         if(ConversationActive) newMode = SignMode.Meeting;
         if(DangerActive) newMode = SignMode.Danger;
+        if (ChallengeActive) newMode = SignMode.Challenge;
 
         if (newMode == currentMode) return;
 

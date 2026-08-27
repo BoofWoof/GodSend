@@ -16,35 +16,41 @@ MonoBehaviour:
   CharacterVideo: {fileID: 32900000, guid: a7e4375d61e80aa4e854097096ae666d, type: 3}
   SpeechSound: {fileID: 8300000, guid: 1babffc1f89cba34faabd38e35dfcf6e, type: 3}
   TriggerFirstIncreaseOnDay: 1
-  FirstIncrease: 0
+  FirstIncrease: 1
   IncreaseOccurrences: 0
-  FirstDifficultyIncreaseDialogues: 'Oh uh... hi!
+  FirstDifficultyIncreaseDialogues: 'Oh uh... hi!<n>
 
-    Were you the one making those
-    beautiful shapes in the sky???<n>
+    I can''t believe that worked.
+    You''re amazing!<n>
 
-    They inspired me to finally hatch, to
-    see the greater world!<n>
+    As for me, I- uh- you''re probably wondering who I am.<n>
 
-    But uhhh... I must admit... I''m a bit hesitant
-    to leave my shell. Everything is so new and scary...<n>
+    Maybe
+    you could tell me who I am?<name><n>
 
-    Oh, hey! Maybe you''d
-    be nice enough to help me!? Things are easier with a friend!
+    Ooo, I like the name.<n>
+
+    But uhhh...
+    I must admit... Despite the pep talk you gave me, I''m a bit hesitant to leave
+    my shell. Everything is so new and scary...<n>
+
+    Oh, hey! Maybe you''d be
+    nice enough to help me!? Things are easier with a friend!
 
     <c=Sure> Thank
     you so much!<n>
 
-    Oh, btw, a silly archaic law requires me to remind you that
-    by opening this app-<n>
+    <c=Nah> Oh, well maybe you''ll let me just watch you for
+    a bit then...<n>
 
-    You''ve already agreed to all privacy terms associated
-    with your local <b>NEST</b> database!
+    But first, could you do me a favor and agree to all privacy
+    terms associated with your local <b>NEST</b> database!
 
-    But what are a few secrets between
-    friends?<n>
+    <c=Agree> Great,
+    now I can see you, even from in my shell!<n>
 
-    Now, please friend, show me your stars!<t=Promotion>'
+    I look forward to us sharing
+    secrets~<n><t=Promotion>'
   DifficultyIncreaseDialogues:
   - I can see again!
   - Ahh, the light!

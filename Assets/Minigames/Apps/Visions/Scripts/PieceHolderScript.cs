@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,10 +30,15 @@ public class PieceHolderScript : MonoBehaviour
 
     public static List<PieceHolderScript> PieceList = new List<PieceHolderScript>();
 
-    public bool LastPlaceFilled = false;
     public bool FullyFilled = false;
 
     private GameObject Shadow;
+
+    public Color OriginalColor;
+
+    public Vector3 LastKnownGoodPosition;
+
+    public bool LockPiece = false;
 
     public void Awake()
     {
@@ -43,9 +49,34 @@ public class PieceHolderScript : MonoBehaviour
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(DestroySelf);
     }
 
+    public void UpdateColors(Color newColor)
+    {
+        foreach (TurkCubeScript piece in Pieces)
+        {
+            piece.GetComponent<Image>().color = newColor;
+        }
+    }
+
+    public void GetCurrentColor()
+    {
+        OriginalColor = Pieces[0].GetComponent<Image>().color;
+    }
+
     public void Start()
     {
         PieceList.Add(this);
+        StartCoroutine(DelayedPlaceDown());
+    }
+
+    public IEnumerator DelayedPlaceDown()
+    {
+        yield return null;
+        yield return null; Vector2 startPos = GetComponent<RectTransform>().anchoredPosition;
+        Vector2Int gridIdx = TurkPuzzleScript.PosToGridIdx(startPos);
+        Vector2 pos = TurkPuzzleScript.GridIdxToPos(gridIdx);
+        GetComponent<RectTransform>().anchoredPosition = pos;
+
+        UpdateCord();
     }
 
     public void OnDestroy()
@@ -138,6 +169,7 @@ public class PieceHolderScript : MonoBehaviour
 
     public bool UpdateCord()
     {
+
         //Checks if we can.
         foreach (TurkCubeScript puzzlePiece in Pieces)
         {
@@ -145,6 +177,8 @@ public class PieceHolderScript : MonoBehaviour
 
             Vector3 adjustedPiecePosition = TurkPuzzleScript.instance.transform.InverseTransformPoint(puzzleTransform.position);
             Vector2Int newCord = TurkPuzzleScript.PosToGridIdx((Vector2)adjustedPiecePosition);
+
+            if (puzzlePiece.cord == newCord) return false;
 
             if (TurkPuzzleScript.IsCordTaken(newCord, Pieces)) return false;
 
@@ -361,6 +395,7 @@ public class PieceHolderScript : MonoBehaviour
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (LockPiece) return;
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (!PickupEnabled || !isDragging) return;
 
@@ -399,7 +434,8 @@ public class PieceHolderScript : MonoBehaviour
 
         if (successfulUpdate)
         {
-            if (FullyFilled && !LastPlaceFilled)
+            LastKnownGoodPosition = transform.localPosition;
+            if (FullyFilled)
             {
                 int Filled = -1;
                 foreach(PieceHolderScript piece in PieceList)
@@ -409,12 +445,11 @@ public class PieceHolderScript : MonoBehaviour
                 Debug.Log(Filled);
                 Debug.Log(PieceList.Count);
                 //TurkPuzzleScript.instance.DropGood.pitch = Mathf.Lerp(1f, 2f, ((float)Filled)/PieceList.Count);
-                TurkPuzzleScript.instance.DropGood.GetComponent<AudioArrayScript>().PlayAudioByIndex(Filled);
+                TurkPuzzleScript.instance.PlayGoodDropAudio(Filled);
             } else
             {
                 TurkPuzzleScript.instance.Drop.Play();
             }
-            LastPlaceFilled = FullyFilled;
             PreviousValidRotations = Rotations;
         }
         else
@@ -426,7 +461,7 @@ public class PieceHolderScript : MonoBehaviour
             {
                 CenterRotate();
             }
-            GetComponent<RectTransform>().anchoredPosition = TurkPuzzleScript.GridIdxToPos(SeedPiece.cord);
+            transform.localPosition = LastKnownGoodPosition;
             TurkPuzzleScript.CheckWin();
             return;
         }

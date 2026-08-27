@@ -28,7 +28,7 @@ MonoBehaviour:
     comes responsibility!
   UpgradeMechanicDescription: Gain a chance at a promotion that pays significantly
     more.
-  MascotDialogue: Please don't make me fly again... I like the bird bath.
+  MascotDialogue: 
   AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:
   - OverrideDay: 1
@@ -46,3 +46,5 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 1
+  VisionChallengePrefab: {fileID: 0}
+  OnlyRunChallengeDayOne: 0

@@ -28,8 +28,7 @@ MonoBehaviour:
     comes responsibility!
   UpgradeMechanicDescription: Gain a chance at a promotion that pays significantly
     more.
-  MascotDialogue: Did you know a <b>really</b> nice telescope costs about as much
-    as a hot tub. Sometimes it's better to trade passion for luxury.
+  MascotDialogue: 
   AdText: UNLOCK A NEW CHALLENGE FOR MORE RICHES!
   OverrideDialogue:
   - OverrideDay: 1
@@ -47,3 +46,5 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 1
+  VisionChallengePrefab: {fileID: 7106446418105188207, guid: 2195deffc78509742b2baa17a52fc7ae, type: 3}
+  OnlyRunChallengeDayOne: 0

@@ -62,7 +62,9 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public GameObject EmptyTileGroup;
     public Material ConstMat;
+    private Material TempMat;
     public Material ActiveConstMat;
+    public Material TempActiveMat;
 
     public TMP_Text ArtistCredit;
 
@@ -71,7 +73,9 @@ public class TurkPuzzleScript : MonoBehaviour
     private bool BlessingShopWasOn;
     public GameObject PromotionSwitcher;
     private bool PromotionSwitcherWasOn;
+    private GameObject ChallengeReference;
     private VisionChallengeScript ActiveChallenge;
+    private int ChallengesAttempted = 0;
 
     [Header("Grid Settings")]
     public List<VisionsDifficultySO> LevelSets;
@@ -163,6 +167,9 @@ public class TurkPuzzleScript : MonoBehaviour
         PuzzleName.gameObject.SetActive(false);
 
         puzzleScript = this;
+
+        TempMat = ConstMat;
+        TempActiveMat = ActiveConstMat;
     }
 
     public void GeneratePuzzle()
@@ -214,6 +221,19 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void StartChallenge(GameObject visionChallenge)
     {
+        VisionChallengeScript matVCS = visionChallenge.GetComponent<VisionChallengeScript>();
+        if (matVCS.ReplaceOffMat != null)
+        {
+            ConstMat = matVCS.ReplaceOffMat;
+        }
+        if (matVCS.ReplaceOnMat != null)
+        {
+            ActiveConstMat = matVCS.ReplaceOnMat;
+        }
+
+        ChallengesAttempted++;
+        ChallengeReference = visionChallenge;
+
         PieceHolderScript.ClearPieces();
         OnBeforePuzzleGenerate?.Invoke();
 
@@ -226,6 +246,7 @@ public class TurkPuzzleScript : MonoBehaviour
         PromotionSwitcher.SetActive(false);
 
         GameObject challengeObject = Instantiate(visionChallenge);
+        challengeObject.name = challengeObject.name + ChallengesAttempted.ToString();
         Transform challengeTransform = challengeObject.transform;
         challengeTransform.SetParent(transform);
         challengeTransform.localPosition = Vector3.zero;
@@ -244,7 +265,20 @@ public class TurkPuzzleScript : MonoBehaviour
         if (BlessingShopWasOn) BlessingShop.SetActive(true);
         if (PromotionSwitcherWasOn) PromotionSwitcher.SetActive(true);
 
+        Destroy(ActiveChallenge.gameObject);
+
         ActiveChallenge = null;
+        ChallengeReference = null;
+
+        ConstMat = TempMat;
+        ActiveConstMat = TempActiveMat;
+    }
+
+    public void ResetChallenge()
+    {
+        GameObject temp = ChallengeReference;
+        EndChallenge();
+        StartChallenge(temp);
     }
 
     public void OnAppOpen()
@@ -440,155 +474,6 @@ public class TurkPuzzleScript : MonoBehaviour
         FailedToBuyAnImportantUpgrade = 0;
     }
 
-    public IEnumerator WinCutscene()
-    {
-        ClearFakePieces();
-
-        PieceHolderScript.ClearPieces();
-        InteractionBlocker.SetActive(true);
-
-        OnPuzzleFinish?.Invoke();
-
-        bool newBestTime = false;
-        if (!PuzzlesCompleted.ContainsKey(CurrentDifficutly))
-        {
-            PuzzlesCompleted[CurrentDifficutly] = 1;
-        }
-        else
-        {
-            PuzzlesCompleted[CurrentDifficutly] += 1;
-        }
-
-        SteamManager.UpdateIntStat(LevelSets[CurrentDifficutly].SteamAPIName, PuzzlesCompleted[CurrentDifficutly]);
-
-        float TotalTime = Time.time - StartingTime;
-        if (!TimeRecords.ContainsKey(CurrentDifficutly))
-        {
-            newBestTime = true;
-            TimeRecords[CurrentDifficutly] = TotalTime;
-            NewRecordText.text = "NEW BEST TIME " + System.TimeSpan.FromSeconds(TimeRecords[CurrentDifficutly]).ToString("m\\:ss");
-        }
-        else
-        {
-            if ( TotalTime < TimeRecords[CurrentDifficutly])
-            {
-                newBestTime = true;
-                TimeRecords[CurrentDifficutly] = TotalTime;
-                NewRecordText.text = "NEW BEST TIME " + System.TimeSpan.FromSeconds(TimeRecords[CurrentDifficutly]).ToString("m\\:ss");
-            }
-        }
-        UpdateStatText();
-
-
-        PieceHolderScript.PickupEnabled = false;
-        Win.Play();
-
-        Debug.Log("Turk Puzzle Complete!");
-        //Show Earnings
-        PuzzleName.text = selectedGridData.Name;
-        PuzzleName.gameObject.SetActive(true);
-        PuzzleEarningsText.gameObject.SetActive(true);
-        PuzzleEarningsText.text = "";
-
-        TurkData.PuzzlesSolved += 1;
-        float reward = TurkData.CreditsPerPuzzle;
-
-        PuzzleEarningsText.text = "+ <sprite index=1> ";
-        string finalEarningText = reward.AllSignificantDigits(3);
-
-        //Puzzle Material Update
-        float timePass = 0f;
-        float transitionPeriod = 1.5f;
-        while (timePass < transitionPeriod)
-        {
-            timePass += Time.deltaTime;
-            float progress = timePass / transitionPeriod;
-            Shader.SetGlobalFloat("_TurkCompletion", progress);
-
-            int showCharacters = (int)Mathf.Lerp(0, finalEarningText.Length, progress);
-            PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText.Substring(0, showCharacters);
-
-            yield return null;
-        }
-        Shader.SetGlobalFloat("_TurkCompletion", 1);
-        PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText;
-
-        //Show Multipliers
-        List<SecondaryMultiplier> secondaryMultipliers = new List<SecondaryMultiplier>();
-        secondaryMuliplierListModifier?.Invoke(ref secondaryMultipliers);
-        ScoreMultiplierText.text = "";
-        foreach (SecondaryMultiplier secondaryMultiplier in secondaryMultipliers)
-        {
-            //MultiplierSource.pitch = 0.8f + 0.2f / (1 + Mathf.Log(secondaryMultiplier.multiplier)/4f);
-            MultiplierSource.Play();
-            ScoreMultiplierText.gameObject.SetActive(true);
-            ScoreMultiplierText.text += secondaryMultiplier.description + "\r\n";
-            reward *= secondaryMultiplier.multiplier;
-            PuzzleEarningsText.text = "+ <sprite index=1> " + reward.AllSignificantDigits(2);
-            yield return new WaitForSeconds(0.4f);
-        }
-
-        if (PassiveIncomeScript.isPassiveIncomeActive())
-        {
-            PassiveIncomeScript.IncreasePassiveIncome(reward);
-        } else
-        {
-            CurrencyData.Credits += reward;
-        }
-
-        UpgradesAbstract selectedUpgrade = UpgradeScreenScript.upgradeScreenScripts[Minigame.Visions].RecommendedUpgradeAffordable();
-        if (selectedUpgrade != null)
-        {
-            BuyBlessingsNow.SetActive(true);
-            BuyBlessingsNow.GetComponent<BuyNowScript>().UpdateDescriptions(selectedUpgrade);
-            FailedToBuyAnImportantUpgrade++;
-
-            if(FailedToBuyAnImportantUpgrade >= 3)
-            {
-                OnFailureToBuyImportantUpgrades?.Invoke();
-            }
-        }
-
-        VisionMascotScript.SayText(selectedGridData.MascotStatement);
-        VisionMascotScript.EnableProgress = false;
-
-        yield return new WaitForSeconds(0.5f);
-
-        if (newBestTime)
-        {
-            NewRecordText.gameObject.SetActive(true);
-            NewRecordSource.Play();
-            NewRecordParticles.Play();
-            NewRecordParticles2.Play();
-            yield return new WaitForSeconds(1.0f);
-        }
-
-        ClickToContinueText.SetActive(true);
-        VisionMascotScript.EnableProgress = true;
-
-        while (true)
-        {
-            yield return null;
-            if(Input.GetMouseButtonUp(0)) break;
-        }
-        NewPuzzleSound.Play();
-        ClickToContinueText.SetActive(false);
-
-        VisionMascotScript.ClearText();
-
-        ScoreMultiplierText.gameObject.SetActive(false);
-
-        PuzzleName.gameObject.SetActive(false);
-        NewRecordText.gameObject.SetActive(false);
-        Shader.SetGlobalFloat("_TurkCompletion", 0);
-        OnPuzzleComplete?.Invoke(TurkData.PuzzlesSolved, this);
-        puzzleScript.GeneratePuzzle();
-        PieceHolderScript.PickupEnabled = true;
-
-        InteractionBlocker.SetActive(false);
-        BuyBlessingsNow.SetActive(false);
-    }
-
     public float QuickCalculateReward(int completitionDifficulty)
     {
         int tempDifficulty = CurrentDifficutly;
@@ -620,6 +505,7 @@ public class TurkPuzzleScript : MonoBehaviour
     {
         VisionsDifficultySO currentDifficulty = LevelSets[CurrentDifficutly];
         PieceHolderScript.RotationEnabled = currentDifficulty.RotationEnabled;
+
         if (currentDifficulty.RotationEnabled)
         {
             foreach (PieceHolderScript pieceRoot in puzzlePiece)
@@ -633,6 +519,8 @@ public class TurkPuzzleScript : MonoBehaviour
 
         foreach (PieceHolderScript pieceRoot in puzzlePiece)
         {
+            pieceRoot.GetCurrentColor();
+
             pieceRoot.SendToPieceHolder();
         }
     }
@@ -876,6 +764,17 @@ public class TurkPuzzleScript : MonoBehaviour
         return false;
     }
 
+    public void PlayGoodDropAudio(int correctPlacement)
+    {
+        if(ActiveChallenge != null && ActiveChallenge.AltPlacementAudio != null)
+        {
+            ActiveChallenge.AltPlacementAudio.PlayAudioByIndex(correctPlacement);
+            return;
+        }
+
+        DropGood.GetComponent<AudioArrayScript>().PlayAudioByIndex(correctPlacement);
+    }
+
     private Coroutine SkyHoleCoroutine;
     public IEnumerator OpenSkyHole(float finalValue)
     {
@@ -900,5 +799,179 @@ public class TurkPuzzleScript : MonoBehaviour
     {
         if (!PuzzlesCompleted.ContainsKey(difficultyLevel)) return false;
         return PuzzlesCompleted[difficultyLevel] >= instance.LevelSets[difficultyLevel].Puzzles.Count;
+    }
+
+    public IEnumerator WinCutscene()
+    {
+        ClearFakePieces();
+
+        PieceHolderScript.ClearPieces();
+        InteractionBlocker.SetActive(true);
+
+        OnPuzzleFinish?.Invoke();
+
+        bool newBestTime = false;
+        if (!PuzzlesCompleted.ContainsKey(CurrentDifficutly))
+        {
+            PuzzlesCompleted[CurrentDifficutly] = 1;
+        }
+        else
+        {
+            PuzzlesCompleted[CurrentDifficutly] += 1;
+        }
+
+        SteamManager.UpdateIntStat(LevelSets[CurrentDifficutly].SteamAPIName, PuzzlesCompleted[CurrentDifficutly]);
+
+        float TotalTime = Time.time - StartingTime;
+        if (!TimeRecords.ContainsKey(CurrentDifficutly))
+        {
+            newBestTime = true;
+            TimeRecords[CurrentDifficutly] = TotalTime;
+            NewRecordText.text = "NEW BEST TIME " + System.TimeSpan.FromSeconds(TimeRecords[CurrentDifficutly]).ToString("m\\:ss");
+        }
+        else
+        {
+            if (TotalTime < TimeRecords[CurrentDifficutly])
+            {
+                newBestTime = true;
+                TimeRecords[CurrentDifficutly] = TotalTime;
+                NewRecordText.text = "NEW BEST TIME " + System.TimeSpan.FromSeconds(TimeRecords[CurrentDifficutly]).ToString("m\\:ss");
+            }
+        }
+        UpdateStatText();
+
+
+        PieceHolderScript.PickupEnabled = false;
+        Win.Play();
+
+        Debug.Log("Turk Puzzle Complete!");
+        //Show Earnings
+        PuzzleName.text = selectedGridData.Name;
+        PuzzleName.gameObject.SetActive(true);
+        PuzzleEarningsText.gameObject.SetActive(true);
+        PuzzleEarningsText.text = "";
+
+        TurkData.PuzzlesSolved += 1;
+        float reward = TurkData.CreditsPerPuzzle;
+
+        PuzzleEarningsText.text = "+ <sprite index=1> ";
+        string finalEarningText = reward.AllSignificantDigits(3);
+
+        //Puzzle Material Update
+        float transitionPeriod = 1.5f;
+        StartCoroutine(RevealShine(Color.white, transitionPeriod));
+        float timePass = 0f;
+        while (timePass < transitionPeriod)
+        {
+            timePass += Time.deltaTime;
+            float progress = timePass / transitionPeriod;
+
+            int showCharacters = (int)Mathf.Lerp(0, finalEarningText.Length, progress);
+            PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText.Substring(0, showCharacters);
+
+            yield return null;
+        }
+        PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText;
+
+        //Show Multipliers
+        List<SecondaryMultiplier> secondaryMultipliers = new List<SecondaryMultiplier>();
+        secondaryMuliplierListModifier?.Invoke(ref secondaryMultipliers);
+        ScoreMultiplierText.text = "";
+        foreach (SecondaryMultiplier secondaryMultiplier in secondaryMultipliers)
+        {
+            //MultiplierSource.pitch = 0.8f + 0.2f / (1 + Mathf.Log(secondaryMultiplier.multiplier)/4f);
+            MultiplierSource.Play();
+            ScoreMultiplierText.gameObject.SetActive(true);
+            ScoreMultiplierText.text += secondaryMultiplier.description + "\r\n";
+            reward *= secondaryMultiplier.multiplier;
+            PuzzleEarningsText.text = "+ <sprite index=1> " + reward.AllSignificantDigits(2);
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        if (PassiveIncomeScript.isPassiveIncomeActive())
+        {
+            PassiveIncomeScript.IncreasePassiveIncome(reward);
+        }
+        else
+        {
+            CurrencyData.Credits += reward;
+        }
+
+        UpgradesAbstract selectedUpgrade = UpgradeScreenScript.upgradeScreenScripts[Minigame.Visions].RecommendedUpgradeAffordable();
+        if (selectedUpgrade != null)
+        {
+            BuyBlessingsNow.SetActive(true);
+            BuyBlessingsNow.GetComponent<BuyNowScript>().UpdateDescriptions(selectedUpgrade);
+            FailedToBuyAnImportantUpgrade++;
+
+            if (FailedToBuyAnImportantUpgrade >= 3)
+            {
+                OnFailureToBuyImportantUpgrades?.Invoke();
+            }
+        }
+
+        VisionMascotScript.SayText(selectedGridData.MascotStatement);
+        VisionMascotScript.EnableProgress = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (newBestTime)
+        {
+            NewRecordText.gameObject.SetActive(true);
+            NewRecordSource.Play();
+            NewRecordParticles.Play();
+            NewRecordParticles2.Play();
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        ClickToContinueText.SetActive(true);
+        VisionMascotScript.EnableProgress = true;
+
+        while (true)
+        {
+            yield return null;
+            if (Input.GetMouseButtonUp(0)) break;
+        }
+        NewPuzzleSound.Play();
+        ClickToContinueText.SetActive(false);
+
+        VisionMascotScript.ClearText();
+
+        ScoreMultiplierText.gameObject.SetActive(false);
+
+        PuzzleName.gameObject.SetActive(false);
+        NewRecordText.gameObject.SetActive(false);
+        ResetShine();
+        OnPuzzleComplete?.Invoke(TurkData.PuzzlesSolved, this);
+        puzzleScript.GeneratePuzzle();
+        PieceHolderScript.PickupEnabled = true;
+
+        InteractionBlocker.SetActive(false);
+        BuyBlessingsNow.SetActive(false);
+    }
+
+    public IEnumerator RevealShine(Color targetColor, float transitionPeriod)
+    {
+
+        float timePass = 0f;
+        while (timePass < transitionPeriod)
+        {
+            timePass += Time.deltaTime;
+            float progress = timePass / transitionPeriod;
+            Shader.SetGlobalFloat("_TurkCompletion", progress);
+
+            foreach (PieceHolderScript puzzlePiece in puzzlePiece)
+            {
+                puzzlePiece.UpdateColors(Color.Lerp(puzzlePiece.OriginalColor, targetColor, progress));
+            }
+
+            yield return null;
+        }
+        Shader.SetGlobalFloat("_TurkCompletion", 1);
+    }
+
+    public void ResetShine()
+    {
+        Shader.SetGlobalFloat("_TurkCompletion", 0);
     }
 }
