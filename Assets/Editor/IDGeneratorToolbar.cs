@@ -8,8 +8,21 @@ public class IDGeneratorToolbar
     [MenuItem("Tools/Generate Missing IDs")]
     public static void GenerateIDs()
     {
-        SpecialPrayerSetSO[] targets = Resources.FindObjectsOfTypeAll<SpecialPrayerSetSO>();
+        OCSO[] targetsOC = Resources.FindObjectsOfTypeAll<OCSO>();
         int count = 0;
+        foreach (OCSO target in targetsOC)
+        {
+            if (string.IsNullOrEmpty(target.UniqueID))
+            {
+                Undo.RecordObject(target, "Generate Unique ID");
+
+                target.UniqueID = Guid.NewGuid().ToString();
+
+                EditorUtility.SetDirty(target);
+                count++;
+            }
+        }
+        SpecialPrayerSetSO[] targets = Resources.FindObjectsOfTypeAll<SpecialPrayerSetSO>();
         foreach (SpecialPrayerSetSO target in targets)
         {
             if (string.IsNullOrEmpty(target.ID))

@@ -134,6 +134,7 @@ public class VisionChallengeScript : MonoBehaviour
 
     public void CompleteChallenge()
     {
+        TurkPuzzleScript.instance.ResetShine();
         TurkPuzzleScript.instance.EndChallenge();
         TurkPuzzleScript.instance.UnlockNewDifficulty();
         GameStateMonitor.ChallengeActive = false;

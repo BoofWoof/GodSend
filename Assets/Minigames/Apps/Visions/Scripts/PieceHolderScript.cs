@@ -341,6 +341,7 @@ public class PieceHolderScript : MonoBehaviour
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (LockPiece) return;
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (!PickupEnabled) return;
 
