@@ -107,7 +107,6 @@ public class ContactsScript : Saver
 
     public void OnConversationLineTrigger(Subtitle subtitle)
     {
-        Debug.Log(subtitle.formattedText.ToString());
         if (subtitle.speakerInfo.GetFieldBool("WaitThem"))
         {
             ConversationManagerScript.WaitingForEvent = true;

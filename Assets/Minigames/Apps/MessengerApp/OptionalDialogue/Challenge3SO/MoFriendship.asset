@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422c2983f3608094e80df1b530b7c816, type: 3}
+  m_Name: MoFriendship
+  m_EditorClassIdentifier: 
+  UniqueID: 52a82b9d-45bd-40a0-94e3-asdfser2
+  OCSName: Will you be my friend?
+  OCSDescription: <b>Visions</b> wants you to find a few friends to tell about their
+    religion. Maybe Aries will help... but probably not.
+  AssociatedActor: Mo
+  OCSDialogueName: OCMoFriendship
+  CanRunDuringEvents: 1
+  Day0Available: 1
+  Day1Available: 1
+  Day2Available: 0
+  Day3Available: 0
+  Day4Available: 0
+  Day5Available: 0

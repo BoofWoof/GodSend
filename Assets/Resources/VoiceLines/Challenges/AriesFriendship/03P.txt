@@ -1,0 +1,21 @@
+MohoSwitch1
+0 AI
+10 etc
+19 rest
+40 rest
+39 WQ
+43 AI
+47 etc
+51 AI
+55 etc
+59 AI
+63 rest
+65 rest
+64 etc
+68 E
+71 rest
+73 rest
+72 etc
+76 AI
+80 etc
+86 rest

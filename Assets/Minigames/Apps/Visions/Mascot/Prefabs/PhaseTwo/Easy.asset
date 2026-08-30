@@ -102,25 +102,6 @@ MonoBehaviour:
   - Such wisdom! I'll always remember that pop up.
   - Maybe we'll get another one soon?
   SetSolutionDialogues:
-  - CompletionName: NameMe
-    CompletionCount: 4
-    SolutionDialogues: 'Hey, I was thinking...<n>
-
-      We''re getting so close
-      and talking so much...<n>
-
-      And it''s weird that we don''t have each other''s
-      names yet... or at least you don''t have mine!<n>
-
-      But sadly, I don''t
-      have a name to give you...<n>
-
-      Maybe you could give me one? <name><n>
-
-      Wow,
-      how cool! Thanks! <3'
-    TriggerOnDay: 1
-    Triggered: 0
   - CompletionName: Rename
     CompletionCount: 19
     SolutionDialogues: 'Just because I''m nervous... you do like the name you gave

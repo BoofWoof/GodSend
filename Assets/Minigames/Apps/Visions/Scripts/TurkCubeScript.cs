@@ -59,6 +59,11 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private static List<TurkCubeScript> AllCubeScripts = new();
     private static Dictionary<Vector2Int, TurkCubeScript> CubePosLookupDictionary = new();
 
+    public void Start()
+    {
+        if(!rootPiece.LockPiece) cord = new Vector2Int(-9999, -9999);
+    }
+
     public void OnEnable()
     {
         AllCubeScripts.Add(this);

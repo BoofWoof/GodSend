@@ -45,6 +45,9 @@ public class VisionMascotScript : MonoBehaviour
 
     public NewTutorialScript PhoneTutorial;
 
+    private List<string> DialogueList = new();
+    private bool SayTextLoopActive;
+
     void Awake()
     {
         instance = this;
@@ -62,11 +65,32 @@ public class VisionMascotScript : MonoBehaviour
         UpdateCharacter();
     }
 
+    public IEnumerator SayTextCoroutine()
+    {
+        SayTextLoopActive = true;
+        while (DialogueList.Count > 0)
+        {
+            while (TextBox.gameObject.activeInHierarchy)
+            {
+                yield return null;
+            }
+            MascotSayText(DialogueList[0]);
+            DialogueList.RemoveAt(0);
+            while (TextBox.gameObject.activeInHierarchy)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(1f);
+        }
+        SayTextLoopActive = false;
+    }
+
     public static void SayText(string text)
     {
         if (text.Length == 0) return;
 
-        instance.MascotSayText(text);
+        instance.DialogueList.Add(text);
+        if (!instance.SayTextLoopActive) instance.StartCoroutine(instance.SayTextCoroutine());
     }
 
     private void MascotSayText(string SayText)
@@ -238,7 +262,7 @@ public class VisionMascotScript : MonoBehaviour
                 if (!textData.Triggered && textData.TriggerOnDay == DayInfo.CurrentDay)
                 {
                     textData.Triggered = true;
-                    MascotSayText(textData.SolutionDialogues);
+                    SayText(textData.SolutionDialogues);
                     yield break;
                 }
             }
@@ -261,14 +285,15 @@ public class VisionMascotScript : MonoBehaviour
                 }
             }
         }
-        */
 
+        //This used to proivde difficulty change reminders.
         if (TurkPuzzleScript.CurrentDifficutly == TurkPuzzleScript.MaxAvailableDifficutly) NewDifficultyUnlocked = false;
         if (NewDifficultyUnlocked)
         {
             MascotSayText(currentDifficultyDialogue.DifficultyReminder);
             NewDifficultyUnlocked = false;
         }
+        */
     }
     public void OnPuzzleGeneration()
     {

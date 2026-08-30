@@ -10,6 +10,8 @@ public class ConversationManagerScript : MonoBehaviour
 
     public delegate void OnConversationChangeDelegate(bool conversationBool);
     public static OnConversationChangeDelegate OnConversationChange;
+    public delegate void OnConversationEndDelegate(string conversationString);
+    public static OnConversationEndDelegate OnConversationEndEvent;
     public static bool _ConversationOngoing = false;
     public static bool ConversationOngoing
     {
@@ -21,6 +23,8 @@ public class ConversationManagerScript : MonoBehaviour
         }
     }
 
+
+    private string CurrentConversation;
 
     public static bool isMacroConvo = false;
     public static bool WaitingForEvent = false;
@@ -70,6 +74,8 @@ public class ConversationManagerScript : MonoBehaviour
     {
         Debug.Log($"Conversation Starting {newConversation}");
 
+        CurrentConversation = newConversation;
+
         Conversation newConv = DialogueManager.masterDatabase.GetConversation(newConversation);
         bool allowRepeat = Field.LookupBool(newConv.fields, "AllowRepeat");
         if(!allowRepeat) BannedDialogues.Add(newConversation);
@@ -98,6 +104,8 @@ public class ConversationManagerScript : MonoBehaviour
         WaitingForEvent = false;
 
         Debug.Log($"The conversation is now over.");
+
+        OnConversationEndEvent?.Invoke(CurrentConversation);
 
         Resources.UnloadUnusedAssets();
     }

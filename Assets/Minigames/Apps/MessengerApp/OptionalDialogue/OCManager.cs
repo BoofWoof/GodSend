@@ -17,14 +17,15 @@ public class OCManager : MonoBehaviour
 
     private int SecretNumber;
 
-    public void Start()
+    public void Awake()
     {
+        instance = this;
         gameObject.SetActive(false);
     }
 
+
     public void OnEnable()
     {
-        instance = this;
 
         RefreshOptions();
     }

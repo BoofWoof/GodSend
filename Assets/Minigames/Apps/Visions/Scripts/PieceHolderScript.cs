@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class PieceHolderScript : MonoBehaviour
     public List<TurkCubeScript> Pieces = new List<TurkCubeScript>();
 
     public bool FirstRelease = true;
+    public bool EverReleased = false;
 
     public int Rotations = 0;
     public int PreviousValidRotations = 0;
@@ -39,6 +41,8 @@ public class PieceHolderScript : MonoBehaviour
     public Vector3 LastKnownGoodPosition;
 
     public bool LockPiece = false;
+
+    public UnityEvent OnSuccessfulPlacement;
 
     public void Awake()
     {
@@ -435,6 +439,7 @@ public class PieceHolderScript : MonoBehaviour
 
         if (successfulUpdate)
         {
+            EverReleased = true;
             LastKnownGoodPosition = transform.localPosition;
             if (FullyFilled)
             {
@@ -452,6 +457,8 @@ public class PieceHolderScript : MonoBehaviour
                 TurkPuzzleScript.instance.Drop.Play();
             }
             PreviousValidRotations = Rotations;
+
+            OnSuccessfulPlacement?.Invoke();
         }
         else
         {
