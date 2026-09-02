@@ -83,6 +83,12 @@ public class AppScript : MonoBehaviour
     {
         if (AppAnimator.instance.TransitionActive || !Active || AppName == DefaultApp) return;
 
+        if (SharedAppData.BackLock)
+        {
+            SharedAppData.ReplacementBack?.Invoke();
+            return;
+        }
+
         foreach(string name in AppsDict.Keys)
         {
             Debug.Log(name);

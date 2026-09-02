@@ -77,6 +77,11 @@ public class VisionChallengeScript : MonoBehaviour
         }
     }
 
+    public void ChangeExitText(string newExitText)
+    {
+        MascotExitText = newExitText;
+    }
+
     public void CheckForWin()
     {
         bool AllCorrectSolved = true;
@@ -115,6 +120,13 @@ public class VisionChallengeScript : MonoBehaviour
     {
         OnCorrectSolution?.Invoke();
         yield return TurkPuzzleScript.instance.StartCoroutine(TurkPuzzleScript.instance.RevealShine(CorrectPieceColor, ColorSwapPeriod));
+
+        if (!string.IsNullOrEmpty(MascotExitText)) VisionMascotScript.SayText(MascotExitText);
+        while (VisionMascotScript.instance.MascotTextIsActive())
+        {
+            yield return null;
+        }
+
         yield return new WaitForSeconds(ColorHoldPeriod);
         AfterCorrectColorSwap?.Invoke();
     }

@@ -6,5 +6,7 @@ public class TutorialScreenScript : MonoBehaviour
     public bool ShowOnlyOnce = false;
     public bool Shown = false;
 
+    public bool TriggerOnAllTrigger = true;
+
     public UnityEvent ONShow;
 }

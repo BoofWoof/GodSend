@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,6 +98,10 @@ public abstract class UpgradesAbstract : ScriptableObject
     public delegate void OnUpgradeBoughtDelegate(string upgradeID);
     public static OnUpgradeBoughtDelegate OnUpgradeBought;
 
+    public AlphaMovieSO StartingMovie;
+
+    private static bool BuyingActive = false;
+
     public float PercentBuyable()
     {
         if (UpgradeBought) return 0f;
@@ -187,26 +192,48 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public bool Buy(bool forceBuy = false)
     {
+        if (BuyingActive) return false;
         if (UpgradeBought) return false;
         bool canBuy = CanBuy();
         if (!canBuy && !forceBuy) return canBuy;
         UpgradeBought = true;
-
         OnUpgradeBought?.Invoke(UpgradeID);
+        if (!forceBuy) AddToPurchasedList();
 
+        if (ScreenMoviePlayerScript.instance != null) ScreenMoviePlayerScript.instance.StartCoroutine(BuyCoroutine(forceBuy));
+        else BuyTriggers();
+
+        return canBuy;
+    }
+
+    public IEnumerator BuyCoroutine(bool forceBuy)
+    {
+        BuyingActive = true;
+        if (StartingMovie != null && !forceBuy) ScreenMoviePlayerScript.instance.PlayVideo(StartingMovie);
+        while (ScreenMoviePlayerScript.instance.VideoPlaying)
+        {
+            yield return null;
+        }
+
+        BuyTriggers();
+
+        BuyingActive = false;
+    }
+
+    public void BuyTriggers()
+    {
         CurrencyData.Credits -= Credits;
         CurrencyData.RenownFlock -= FlockRenown;
         CurrencyData.RenownFoundation -= FoundationRenown;
         CurrencyData.RenownAscension -= AssscensssionRenown;
         CurrencyData.RenownRevolution -= RevolutionRenown;
 
-        if (!forceBuy) AddToPurchasedList();
-
         OnBuy();
 
-        if(AssociatedMinigame == Minigame.Visions) {
+        if (AssociatedMinigame == Minigame.Visions)
+        {
             string sayDialogue = MascotDialogue;
-            foreach(MascotDialogueOverride mdo in OverrideDialogue)
+            foreach (MascotDialogueOverride mdo in OverrideDialogue)
             {
                 if (mdo.triggerToday())
                 {
@@ -217,14 +244,12 @@ public abstract class UpgradesAbstract : ScriptableObject
             VisionMascotScript.SayText(sayDialogue);
         }
 
-        if(CloseMenuOnBuy) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
+        if (CloseMenuOnBuy) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
 
         bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
         if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
         if (CompleteQuest && triggerDay) QuestManager.CompleteQuest(QuestManager.currentQuest);
         if (ProgressQuest && triggerDay) QuestManager.IncrementQuest();
-
-        return canBuy;
     }
 
     public void AddToPurchasedList()

@@ -30,14 +30,25 @@ public class OCManager : MonoBehaviour
         RefreshOptions();
     }
 
-    public void OnPurchase(OCSO purchasedOCSD)
+    public void OnPurchase(OCSO selectedOCSO)
     {
-        Debug.Log($"Starting Optional Dialogue {purchasedOCSD.OCSDialogueName}");
-        ConversationManagerScript.instance.StartDialogue(purchasedOCSD.OCSDialogueName);
+        Conversation AssociatedConversation = DialogueManager.masterDatabase.GetConversation(selectedOCSO.OCSDialogueName);
 
-        UsedUpOC.Add(purchasedOCSD.UniqueID);
+        bool isMacroConvo = Field.LookupBool(AssociatedConversation.fields, "IsMacro");
 
-        LocalCharacterInfo targetSpeaker = new LocalCharacterInfo().FromName(purchasedOCSD.AssociatedActor);
+        Debug.Log($"Starting Optional Dialogue {selectedOCSO.OCSDialogueName}");
+        ConversationManagerScript.instance.StartDialogue(selectedOCSO.OCSDialogueName);
+
+
+        if (isMacroConvo)
+        {
+            PhonePositionScript.instance.ForceTogglePhone();
+            return;
+        }
+
+        UsedUpOC.Add(selectedOCSO.UniqueID);
+
+        LocalCharacterInfo targetSpeaker = new LocalCharacterInfo().FromName(selectedOCSO.AssociatedActor);
         ContactsScript.instance.CheckContacts(targetSpeaker);
         ContactsScript.instance.SwapToCharacterMessanger(targetSpeaker);
 

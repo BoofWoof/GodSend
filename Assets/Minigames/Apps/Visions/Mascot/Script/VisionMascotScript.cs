@@ -65,6 +65,14 @@ public class VisionMascotScript : MonoBehaviour
         UpdateCharacter();
     }
 
+    public bool MascotTextIsActive()
+    {
+        if (TextBox.gameObject.activeInHierarchy) return true;
+        if (DialogueActive) return true;
+        if (DialogueList.Count > 0) return true;
+        return false;
+    }
+
     public IEnumerator SayTextCoroutine()
     {
         SayTextLoopActive = true;
@@ -80,7 +88,7 @@ public class VisionMascotScript : MonoBehaviour
             {
                 yield return null;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
         SayTextLoopActive = false;
     }

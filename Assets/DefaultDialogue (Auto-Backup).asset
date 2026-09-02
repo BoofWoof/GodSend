@@ -97339,12 +97339,6 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
-      - originConversationID: 41
-        originDialogueID: 0
-        destinationConversationID: 41
-        destinationDialogueID: 21
-        isConnector: 0
-        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -97446,7 +97440,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hey puppy, can we be friend?
+        value: Hey puppy, can we be friends?
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -98536,7 +98530,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: I also need to tell you the a small blue bird wants your labor.
+        value: I also need to tell you about a small bird that wants your labor.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -98632,64 +98626,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 537
-        y: 894
-        width: 160
-        height: 30
-    - id: 21
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: VoiceLinesSO
-        value: 
-        type: 0
-        typeString: CustomFieldType_Files
-      - title: Actor
-        value: 3
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 4
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: MiloReplacementText
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 41
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 254
-        y: 92
+        y: 892.6842
         width: 160
         height: 30
     - id: 22
@@ -98942,7 +98879,7 @@ MonoBehaviour:
       - originConversationID: 41
         originDialogueID: 25
         destinationConversationID: 41
-        destinationDialogueID: 26
+        destinationDialogueID: 29
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -98952,65 +98889,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 289
-        y: 1116
-        width: 160
-        height: 30
-    - id: 26
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: VoiceLinesSO
-        value: 
-        type: 0
-        typeString: CustomFieldType_Files
-      - title: Actor
-        value: 3
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 4
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: MiloReplacementText
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 41
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 426
-        y: 1167
+        x: 288
+        y: 1115
         width: 160
         height: 30
     - id: 27
@@ -99123,13 +99003,70 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 660
-        y: 1067
+        x: 662
+        y: 1075
+        width: 160
+        height: 30
+    - id: 29
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: VoiceLinesSO
+        value: 
+        type: 0
+        typeString: CustomFieldType_Files
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Bye...
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: MiloReplacementText
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 288
+        y: 1165
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 75, y: 780}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 0, y: 457.89462}
+    canvasZoom: 0.7600002
   - id: 42
     fields:
     - title: Title
@@ -99815,7 +99752,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 419
-        y: 160.80847
+        y: 159.74463
         width: 160
         height: 30
     - id: 3
@@ -101263,7 +101200,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: I think they're blue... maybe.
+        value: I think they're an owl... maybe.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -101296,7 +101233,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 676.8723
-        y: 696.7446
+        y: 695.68085
         width: 160
         height: 30
     - id: 26
@@ -102831,7 +102768,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 11.702148, y: 637.2339}
+    canvasScrollPosition: {x: 237.23407, y: 1167.021}
     canvasZoom: 0.94000006
   - id: 44
     fields:
@@ -104061,7 +103998,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 423}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 1
   syncInfo:
     syncActors: 0

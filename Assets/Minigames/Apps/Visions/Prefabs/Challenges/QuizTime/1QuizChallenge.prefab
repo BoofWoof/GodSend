@@ -14947,11 +14947,20 @@ MonoBehaviour:
   - {fileID: 8179822785178836518}
   - {fileID: 1094885592004698911}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 1
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &348045505328786545
 GameObject:
   m_ObjectHideFlags: 0
@@ -56770,11 +56779,20 @@ MonoBehaviour:
   - {fileID: 6089451949808982569}
   - {fileID: 235888424373348820}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 1
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1647755211033733771
 GameObject:
   m_ObjectHideFlags: 0
@@ -111380,11 +111398,20 @@ MonoBehaviour:
   - {fileID: 6144621684522908601}
   - {fileID: 6742526117287183519}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 1
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2739995473698563605
 GameObject:
   m_ObjectHideFlags: 0
@@ -168246,6 +168273,9 @@ MonoBehaviour:
   - {fileID: 7444407382589589225}
   - {fileID: 4467190586315606792}
   AltPlacementAudio: {fileID: 1528367612412169487}
+  ReplaceOffMat: {fileID: 0}
+  ReplaceOnMat: {fileID: 0}
+  StartingMovie: {fileID: 11400000, guid: 1ca6295558cfb20428e54f312428502c, type: 2}
 --- !u!1 &4116080908287919815
 GameObject:
   m_ObjectHideFlags: 0
@@ -193560,11 +193590,20 @@ MonoBehaviour:
   - {fileID: 5709514756265735380}
   - {fileID: 5623029830721735494}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 1
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4639244195684779224
 GameObject:
   m_ObjectHideFlags: 0
@@ -296472,11 +296511,20 @@ MonoBehaviour:
   Pieces:
   - {fileID: 4513238210281011377}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 1
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8031601190482376047
 GameObject:
   m_ObjectHideFlags: 0

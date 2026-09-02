@@ -49,6 +49,8 @@ public class TruePieceHolderScript : MonoBehaviour
     {
         selectedPiece.gameObject.SetActive(true);
 
+        selectedPiece.OnShowInPieceHolder?.Invoke();
+
         selectedPiece.transform.parent = transform;
 
         Vector2 Offset = selectedPiece.CalcualteCenterOffset();

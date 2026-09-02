@@ -50,11 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8e0dc1247341042b269a024cae1447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupName: 
+  GroupName: Friend
   SeedPiece: {fileID: 0}
   Pieces:
   - {fileID: 7031162633960078041}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -63,6 +64,9 @@ MonoBehaviour:
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
   OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 805304299566549170}

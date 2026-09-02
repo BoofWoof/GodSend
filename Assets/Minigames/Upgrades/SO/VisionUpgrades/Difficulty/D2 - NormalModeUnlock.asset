@@ -46,5 +46,6 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 1
+  StartingMovie: {fileID: 11400000, guid: 1ca6295558cfb20428e54f312428502c, type: 2}
   VisionChallengePrefab: {fileID: 7106446418105188207, guid: 2195deffc78509742b2baa17a52fc7ae, type: 3}
   OnlyRunChallengeDayOne: 0

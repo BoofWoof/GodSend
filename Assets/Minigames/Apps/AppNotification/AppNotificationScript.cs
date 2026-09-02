@@ -49,6 +49,12 @@ public class AppNotificationScript : MonoBehaviour
         StartCoroutine(DisplayNotifications());
     }
 
+    public void Skip()
+    {
+        NotificationIgnored = false;
+        ScrolldownAnimator.Play("DipUp", 0, 1f);
+    }
+
     public IEnumerator DisplayNotifications()
     {
         if (NotificationShowing) yield break;
@@ -72,9 +78,13 @@ public class AppNotificationScript : MonoBehaviour
                 yield return null;
             }
 
-            ScrolldownAnimator.Play("DipUp");
+            if (NotificationIgnored)
+            {
+                ScrolldownAnimator.Play("DipUp");
+                yield return new WaitForSeconds(0.5f);
+            }
 
-            yield return new WaitForSeconds(2f);
+            yield return null;
 
             Notifications.RemoveAt(0);
         }
@@ -85,7 +95,7 @@ public class AppNotificationScript : MonoBehaviour
     public void OnNotificationClick()
     {
         if (CurrentNotification.SourceApp != null) AppScript.Swap(CurrentNotification.SourceApp);
-        ScrolldownAnimator.Play("DipDown", 0, 1f);
+        ScrolldownAnimator.Play("DipUp", 0, 1f);
         NotificationIgnored = false;
         CurrentNotification.AdditionalActions?.Invoke();
     }

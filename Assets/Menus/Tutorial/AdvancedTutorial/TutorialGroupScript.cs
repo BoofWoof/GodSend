@@ -30,7 +30,7 @@ public class TutorialGroupScript : MonoBehaviour
 
         foreach (TutorialScreenScript screen in GroupScreens)
         {
-            screen.ONShow?.Invoke();
+            if(screen.TriggerOnAllTrigger) screen.ONShow?.Invoke();
         }
     }
 

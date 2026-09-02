@@ -9,6 +9,7 @@ public class VisionEmptyGroup : MonoBehaviour
 
     //Any group is accepted by default.
     public string AcceptedGroupName;
+    public bool RequireAllHaveSameGroupName;
 
     public List<TurkHoleScript> Holes = new();
     public Dictionary<Vector2Int, TurkHoleScript> HoleLookupDict = new();
@@ -191,6 +192,12 @@ public class VisionEmptyGroup : MonoBehaviour
 
     public bool CheckForWin()
     {
+        if (RequireAllHaveSameGroupName)
+        {
+            if (!Holes[0].isFilled()) return false;
+            AcceptedGroupName = Holes[0].FilledWith.rootPiece.GroupName;
+        }
+
         foreach (TurkHoleScript hole in Holes)
         {
             if (string.IsNullOrEmpty(AcceptedGroupName))

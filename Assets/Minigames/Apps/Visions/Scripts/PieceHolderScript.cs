@@ -43,6 +43,7 @@ public class PieceHolderScript : MonoBehaviour
     public bool LockPiece = false;
 
     public UnityEvent OnSuccessfulPlacement;
+    public UnityEvent OnShowInPieceHolder;
 
     public void Awake()
     {

@@ -36421,6 +36421,7 @@ MonoBehaviour:
   - {fileID: 5492212509927603703}
   - {fileID: 7261331080388680895}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -36428,6 +36429,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &552516475758178404
 GameObject:
   m_ObjectHideFlags: 0
@@ -36486,6 +36493,7 @@ MonoBehaviour:
   - {fileID: 2508412997191020685}
   - {fileID: 3231428966265782827}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -36493,6 +36501,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &562730614099971652
 GameObject:
   m_ObjectHideFlags: 0
@@ -36847,6 +36861,7 @@ MonoBehaviour:
   - {fileID: 4404131594499066612}
   - {fileID: 2566209712192232972}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -36854,6 +36869,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 1
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &586359562294970033
 GameObject:
   m_ObjectHideFlags: 0
@@ -91294,6 +91315,7 @@ MonoBehaviour:
   - {fileID: 6463860563059557301}
   - {fileID: 4078040749998528884}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -91301,6 +91323,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 1
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1880773780601619706
 GameObject:
   m_ObjectHideFlags: 0
@@ -192440,6 +192468,7 @@ MonoBehaviour:
   - {fileID: 8253052884079108314}
   - {fileID: 7075086372214979811}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -192447,6 +192476,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3345303258150079574
 GameObject:
   m_ObjectHideFlags: 0
@@ -197716,6 +197751,7 @@ MonoBehaviour:
   - {fileID: 6762405766121345293}
   - {fileID: 2670633050596683014}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -197723,6 +197759,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3465935101665031599
 GameObject:
   m_ObjectHideFlags: 0
@@ -249075,6 +249117,7 @@ MonoBehaviour:
   - {fileID: 2983443633378753914}
   - {fileID: 5199296832240574144}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -249082,6 +249125,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 1
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4272512637206555690
 GameObject:
   m_ObjectHideFlags: 0
@@ -300816,6 +300865,7 @@ MonoBehaviour:
   - {fileID: 1769846275423159341}
   - {fileID: 4805409349956208884}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -300823,6 +300873,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5186511313985037000
 GameObject:
   m_ObjectHideFlags: 0
@@ -320643,6 +320699,7 @@ MonoBehaviour:
   - {fileID: 1665944164946170862}
   - {fileID: 5825402982762916874}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -320650,6 +320707,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5350105712047724102
 GameObject:
   m_ObjectHideFlags: 0
@@ -382389,6 +382452,7 @@ MonoBehaviour:
   - {fileID: 7243908150029618057}
   - {fileID: 9091994258120943126}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -382396,6 +382460,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6114723193004104419
 GameObject:
   m_ObjectHideFlags: 0
@@ -423184,6 +423254,7 @@ MonoBehaviour:
   - {fileID: 3106270602916413296}
   - {fileID: 2680476040401572869}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -423191,6 +423262,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6697377242027122502
 GameObject:
   m_ObjectHideFlags: 0
@@ -433242,6 +433319,7 @@ MonoBehaviour:
   - {fileID: 7667138761804342052}
   - {fileID: 5471343298634674939}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -433249,6 +433327,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 1
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6822780830888653607
 GameObject:
   m_ObjectHideFlags: 0
@@ -439120,6 +439204,7 @@ MonoBehaviour:
   AltPlacementAudio: {fileID: 3604699029756041784}
   ReplaceOffMat: {fileID: 2100000, guid: 7155229b8be2b8d41a89654c9257785d, type: 2}
   ReplaceOnMat: {fileID: 2100000, guid: 9fdcf5990dbc108458be2dd35393b218, type: 2}
+  StartingMovie: {fileID: 11400000, guid: 1ca6295558cfb20428e54f312428502c, type: 2}
 --- !u!1 &7131371252367099037
 GameObject:
   m_ObjectHideFlags: 0
@@ -460174,6 +460259,7 @@ MonoBehaviour:
   - {fileID: 5342319868333116563}
   - {fileID: 7446991675574506600}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -460181,6 +460267,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 1
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7512126202145142421
 GameObject:
   m_ObjectHideFlags: 0
@@ -479771,6 +479863,7 @@ MonoBehaviour:
   - {fileID: 9151947713853354250}
   - {fileID: 5927693237916068094}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
@@ -479778,6 +479871,12 @@ MonoBehaviour:
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
   LastKnownGoodPosition: {x: 0, y: 0, z: 0}
   LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7677842899689269958
 GameObject:
   m_ObjectHideFlags: 0
@@ -596698,6 +596797,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7422348591893001781}
     m_Modifications:
+    - target: {fileID: 749217862737897294, guid: 38f352b8eed7498469b310251b1bbd82, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2251228, guid: d58cca7bd7b09c1408088c9de3790053, type: 3}
+    - target: {fileID: 1086641637600681470, guid: 38f352b8eed7498469b310251b1bbd82, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1862424519, guid: d58cca7bd7b09c1408088c9de3790053, type: 3}
     - target: {fileID: 2340080516014382043, guid: 38f352b8eed7498469b310251b1bbd82, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -596790,6 +596897,14 @@ PrefabInstance:
       propertyPath: LockPiece
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5828335969201143034, guid: 38f352b8eed7498469b310251b1bbd82, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1377888231, guid: d58cca7bd7b09c1408088c9de3790053, type: 3}
+    - target: {fileID: 9120587177412521154, guid: 38f352b8eed7498469b310251b1bbd82, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1963975487, guid: d58cca7bd7b09c1408088c9de3790053, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

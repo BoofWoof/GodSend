@@ -129,5 +129,6 @@ MonoBehaviour:
   VTags: 00000000
   STags: 
   CloseMenuOnBuy: 0
+  StartingMovie: {fileID: 11400000, guid: 6d379738755b5c740b46ffc31133e828, type: 2}
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}
