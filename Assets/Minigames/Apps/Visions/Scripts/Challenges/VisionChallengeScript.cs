@@ -22,6 +22,8 @@ public class VisionChallengeScript : MonoBehaviour
     public float ColorSwapPeriod = 2f;
     public float ColorHoldPeriod = 1f;
 
+    public UnityEvent OnStartEvents;
+
     public UnityEvent OnCorrectSolution;
     public Color CorrectPieceColor = Color.green;
     public UnityEvent AfterCorrectColorSwap;
@@ -41,9 +43,12 @@ public class VisionChallengeScript : MonoBehaviour
 
     public void StartChallenge()
     {
+        OnStartEvents?.Invoke();
+
         GameStateMonitor.ChallengeActive = true;
 
         TurkPuzzleScript.instance.PuzzleEarningsText.gameObject.SetActive(false);
+        TurkPuzzleScript.instance.FundsObject.SetActive(false);
 
         TurkPuzzleScript.puzzlePiece.Clear();
         foreach (PieceHolderScript piece in CustomPieces)
@@ -151,5 +156,6 @@ public class VisionChallengeScript : MonoBehaviour
         TurkPuzzleScript.instance.UnlockNewDifficulty();
         GameStateMonitor.ChallengeActive = false;
         if(DayInfo.CurrentDay <= 1) TurkPuzzleScript.instance.IncreaseDifficultyToMax();
+        TurkPuzzleScript.instance.FundsObject.SetActive(true);
     }
 }

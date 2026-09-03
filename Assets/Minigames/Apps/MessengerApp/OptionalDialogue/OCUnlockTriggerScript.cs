@@ -1,15 +1,28 @@
+using PixelCrushers.DialogueSystem;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class OCUnlockTriggerScript : MonoBehaviour
 {
+    [Serializable]
+    public class ConditionalEventData
+    {
+        public string BoolName;
+        public bool VariableMustBeTrue = true;
+        public UnityEvent ConditionalEvent;
+    }
+
     public OCSO OCToRelease;
     private bool Released = false;
 
     public UnityEvent OnDialogueCompletion;
     public bool AutomaticallyRelease;
 
-    public void OnEnable()
+    public List<ConditionalEventData> ConditionalEvents;
+
+    public virtual void OnEnable()
     {
         ConversationManagerScript.OnConversationEndEvent += OnConversationEnd;
     }
@@ -19,7 +32,7 @@ public class OCUnlockTriggerScript : MonoBehaviour
         if (AutomaticallyRelease) Release();
     }
 
-    public void OnDisable()
+    public virtual void OnDisable()
     {
         ConversationManagerScript.OnConversationEndEvent -= OnConversationEnd;
     }
@@ -34,6 +47,15 @@ public class OCUnlockTriggerScript : MonoBehaviour
         if(conversationEnd == OCToRelease.OCSDialogueName)
         {
             OnDialogueCompletion?.Invoke();
+
+            foreach (ConditionalEventData conditionalEventData in ConditionalEvents)
+            {
+                bool trigger = DialogueLua.GetVariable(conditionalEventData.BoolName).asBool;
+                if(trigger == conditionalEventData.VariableMustBeTrue)
+                {
+                    conditionalEventData.ConditionalEvent?.Invoke();
+                }
+            }
         }
     }
 }

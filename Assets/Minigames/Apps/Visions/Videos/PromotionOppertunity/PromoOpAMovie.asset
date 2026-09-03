@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColorClip: {fileID: 32900000, guid: fae5594e48d3d7f48a68f2e6a3c79f78, type: 3}
   AlphaClip: {fileID: 32900000, guid: 0f59a4b1afdd9ad46968eb93f440afff, type: 3}
-  MovieAudio: {fileID: 0}
+  MovieAudio: {fileID: 8300000, guid: f0e25b3eb590c05439ee9049a5040633, type: 3}

@@ -168275,7 +168275,6 @@ MonoBehaviour:
   AltPlacementAudio: {fileID: 1528367612412169487}
   ReplaceOffMat: {fileID: 0}
   ReplaceOnMat: {fileID: 0}
-  StartingMovie: {fileID: 11400000, guid: 1ca6295558cfb20428e54f312428502c, type: 2}
 --- !u!1 &4116080908287919815
 GameObject:
   m_ObjectHideFlags: 0
@@ -183350,7 +183349,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 3cd4205eb367cdf4ab0d5a9f9f26fffa, type: 3}
   m_Resource: {fileID: 8300000, guid: 3cd4205eb367cdf4ab0d5a9f9f26fffa, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.798
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

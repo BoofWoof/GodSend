@@ -16,7 +16,7 @@ MonoBehaviour:
   OCSName: Mystery Kobold
   OCSDescription: 'A big number that consumes a large chunk of your horizon can''t
     be wrong! '
-  AssociatedActor: Sid
+  AssociatedActor: KD Support
   OCSDialogueName: OCSidHold
   CanRunDuringEvents: 1
   Day0Available: 1

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MiloFriendship
   m_EditorClassIdentifier: 
   UniqueID: 52a82b9d-45bd-40a0-94e3-1ecf2f312bf7
-  OCSName: Will you be my friend?
-  OCSDescription: <b>Visions</b> wants you to find a few friends to tell about their
-    religion. Maybe Milo will help!
+  OCSName: Will a Dog be my friend?
+  OCSDescription: <b>Visions</b> wants you to find a few friends that you can tell
+    about their religion. Maybe Milo will help!
   AssociatedActor: Milo
   OCSDialogueName: OCMiloFriendship
   CanRunDuringEvents: 1

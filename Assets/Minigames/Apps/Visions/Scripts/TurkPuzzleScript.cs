@@ -60,6 +60,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public AudioSource NewPuzzleSound;
     public AudioSource RotateSound;
 
+    public GameObject FundsObject;
     public GameObject EmptyTileGroup;
     public Material ConstMat;
     private Material TempMat;

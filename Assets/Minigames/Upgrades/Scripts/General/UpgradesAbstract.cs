@@ -198,7 +198,11 @@ public abstract class UpgradesAbstract : ScriptableObject
         if (!canBuy && !forceBuy) return canBuy;
         UpgradeBought = true;
         OnUpgradeBought?.Invoke(UpgradeID);
-        if (!forceBuy) AddToPurchasedList();
+        if (!forceBuy )
+        {
+            AddToPurchasedList();
+            if(StartingMovie == null || StartingMovie.MovieAudio == null) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].UpgradeAudioPlay();
+        }
 
         if (ScreenMoviePlayerScript.instance != null) ScreenMoviePlayerScript.instance.StartCoroutine(BuyCoroutine(forceBuy));
         else BuyTriggers();

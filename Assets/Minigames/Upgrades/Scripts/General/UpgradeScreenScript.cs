@@ -155,7 +155,6 @@ public class UpgradeScreenScript : MonoBehaviour
         OnPanelOpen?.Invoke();
 
         if (WaitToOpen) ConversationManagerScript.instance.ForceNextDialogue();
-        UpgradeBoughtEvent += UpgradeAudioPlay;
         UpgradeBoughtEvent += RecordUpgradeBought;
         Refresh();
 
@@ -163,7 +162,6 @@ public class UpgradeScreenScript : MonoBehaviour
     }
     public void OnDisable()
     {
-        UpgradeBoughtEvent -= UpgradeAudioPlay;
         UpgradeBoughtEvent -= RecordUpgradeBought;
 
     }
@@ -173,9 +171,8 @@ public class UpgradeScreenScript : MonoBehaviour
         WaitToOpen = true;
     }
 
-    public void UpgradeAudioPlay(UpgradesAbstract upgrade)
+    public void UpgradeAudioPlay()
     {
-        if (upgrade.AssociatedMinigame != AssociatedMinigame) return;
         UpgradeAudio.Play();
     }
 

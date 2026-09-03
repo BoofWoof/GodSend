@@ -1,16 +1,21 @@
+using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class SecretOCTriggerScript : OCUnlockTriggerScript
 {
+
     public static Dictionary<int, SecretOCTriggerScript> SecretOCDict = new();
     public int PhoneID;
 
-    public void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         SecretOCDict.Add(PhoneID, this);
     }
-    public void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         SecretOCDict.Remove(PhoneID);
     }
 

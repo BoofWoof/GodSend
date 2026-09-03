@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fe2f5e011245844b2649762f6c137d, type: 3}
   m_Name: RankUpAMovie
   m_EditorClassIdentifier: 
-  ColorClip: {fileID: 32900000, guid: 7b540c2ed13b2c64fab04f1cbf7b75a4, type: 3}
-  AlphaClip: {fileID: 32900000, guid: f76a54b4529ec17488da02347086cfab, type: 3}
-  MovieAudio: {fileID: 0}
+  ColorClip: {fileID: 32900000, guid: 1f6608ce0dd4b4240a1213f0a4a741a4, type: 3}
+  AlphaClip: {fileID: 32900000, guid: 1fb24be09b001e446be4f5a75c156682, type: 3}
+  MovieAudio: {fileID: 8300000, guid: 4328315e27e1a574d96fd6f36662d080, type: 3}

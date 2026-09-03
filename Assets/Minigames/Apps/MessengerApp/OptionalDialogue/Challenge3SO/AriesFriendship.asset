@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AriesFriendship
   m_EditorClassIdentifier: 
   UniqueID: 52a82b9d-45bd-40a0-94e3-1ecf2f312bf7
-  OCSName: Will you be my friend?
-  OCSDescription: <b>Visions</b> wants you to find a few friends to tell about their
-    religion. Maybe Milo will help!
+  OCSName: Will a Ram be my friend?
+  OCSDescription: <b>Visions</b> wants you to find a few friends that you can tell
+    about their religion. Maybe Aries will help... but probably not.
   AssociatedActor: MacroAries
   OCSDialogueName: OCAriesFriendship
   CanRunDuringEvents: 1

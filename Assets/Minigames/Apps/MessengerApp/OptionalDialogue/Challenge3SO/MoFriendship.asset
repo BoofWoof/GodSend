@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MoFriendship
   m_EditorClassIdentifier: 
   UniqueID: 52a82b9d-45bd-40a0-94e3-asdfser2
-  OCSName: Will you be my friend?
-  OCSDescription: <b>Visions</b> wants you to find a few friends to tell about their
-    religion. Maybe Aries will help... but probably not.
+  OCSName: Will an Alpaca be my friend?
+  OCSDescription: <b>Visions</b> wants you to find a few friends that you can tell
+    about their religion. Maybe Mo will help!
   AssociatedActor: Mo
   OCSDialogueName: OCMoFriendship
   CanRunDuringEvents: 1
