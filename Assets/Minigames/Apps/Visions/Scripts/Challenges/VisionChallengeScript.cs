@@ -40,9 +40,25 @@ public class VisionChallengeScript : MonoBehaviour
     public Material ReplaceOffMat;
     public Material ReplaceOnMat;
 
+    [Header("Piece Treatment")]
+    public bool LeavePiecesOnBoard;
+
+    [Header("Display")]
+    public bool HidePieceHolder = false;
+    public bool HideRedoTutorial = false;
+    public bool HideTalkToBird = false;
+    public bool HideDifficultyStats = true;
+    public bool HideCompletionstStats = true;
+
 
     public void StartChallenge()
     {
+        if(HidePieceHolder) TurkPuzzleScript.instance.PieceHolder.SetActive(false);
+        if (HideRedoTutorial) TurkPuzzleScript.instance.RedoTutorialButton.SetActive(false);
+        if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(false);
+        if (HideDifficultyStats) TurkPuzzleScript.instance.DifficultyStats.SetActive(false);
+        if (HideCompletionstStats) TurkPuzzleScript.instance.CompletionistStats.SetActive(false);
+
         OnStartEvents?.Invoke();
 
         GameStateMonitor.ChallengeActive = true;
@@ -69,8 +85,19 @@ public class VisionChallengeScript : MonoBehaviour
 
         TurkPuzzleScript.instance.Shuffle();
 
-        TurkPuzzleScript.instance.PlacePieces();
-        TurkPuzzleScript.instance.ScrambleCords();
+        if (LeavePiecesOnBoard)
+        {
+            foreach (PieceHolderScript piece in CustomPieces)
+            {
+                piece.RelockPiece();
+                PieceHolderScript.PieceHolderRestraint = false;
+            }
+        } else
+        {
+            TurkPuzzleScript.instance.PlacePieces();
+            TurkPuzzleScript.instance.ScrambleCords();
+        }
+
         TurkPuzzleScript.instance.ShowArtist(false);
         TurkPuzzleScript.instance.UpdateStatText(false);
 
@@ -91,8 +118,15 @@ public class VisionChallengeScript : MonoBehaviour
     {
         bool AllCorrectSolved = true;
         bool AnyIncorrectSolved = false;
+
+        int CorrectSolved = 0;
+
         foreach (SolutionData solution in Solutions)
         {
+            if (solution.TargetEmptyGroup.CheckForWin())
+            {
+                CorrectSolved++;
+            }
             if (solution.MustBeSolved && !solution.TargetEmptyGroup.CheckForWin())
             {
                 AllCorrectSolved = false;
@@ -111,6 +145,7 @@ public class VisionChallengeScript : MonoBehaviour
         {
             StartCoroutine(OnWin());
         }
+        Debug.Log($"Solved: {CorrectSolved}");
     }
 
     public IEnumerator OnLose()
@@ -151,9 +186,15 @@ public class VisionChallengeScript : MonoBehaviour
 
     public void CompleteChallenge()
     {
+        if (HidePieceHolder) TurkPuzzleScript.instance.PieceHolder.SetActive(true);
+        if (HideRedoTutorial) TurkPuzzleScript.instance.RedoTutorialButton.SetActive(true);
+        if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(true);
+        if (HideDifficultyStats) TurkPuzzleScript.instance.DifficultyStats.SetActive(true);
+        if (HideCompletionstStats) TurkPuzzleScript.instance.CompletionistStats.SetActive(true);
+
         TurkPuzzleScript.instance.ResetShine();
         TurkPuzzleScript.instance.EndChallenge();
-        TurkPuzzleScript.instance.UnlockNewDifficulty();
+        UpgradesAbstract.ChallengeReward.OnBuy();
         GameStateMonitor.ChallengeActive = false;
         if(DayInfo.CurrentDay <= 1) TurkPuzzleScript.instance.IncreaseDifficultyToMax();
         TurkPuzzleScript.instance.FundsObject.SetActive(true);

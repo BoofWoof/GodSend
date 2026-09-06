@@ -48,7 +48,6 @@ public class PieceHolderScript : MonoBehaviour
     public void Awake()
     {
         PickupEnabled = true;
-        PieceHolderRestraint = true;
         StorePiece = false;
 
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(DestroySelf);
@@ -172,25 +171,31 @@ public class PieceHolderScript : MonoBehaviour
         }
     }
 
-    public bool UpdateCord()
+    public bool UpdateCord(bool ForceUpdate = false)
     {
-
-        //Checks if we can.
-        foreach (TurkCubeScript puzzlePiece in Pieces)
+        if(!ForceUpdate)
         {
-            RectTransform puzzleTransform = puzzlePiece.GetComponent<RectTransform>();
+            //Checks if we can.
+            foreach (TurkCubeScript puzzlePiece in Pieces)
+            {
+                RectTransform puzzleTransform = puzzlePiece.GetComponent<RectTransform>();
 
-            Vector3 adjustedPiecePosition = TurkPuzzleScript.instance.transform.InverseTransformPoint(puzzleTransform.position);
-            Vector2Int newCord = TurkPuzzleScript.PosToGridIdx((Vector2)adjustedPiecePosition);
+                Vector3 adjustedPiecePosition = TurkPuzzleScript.instance.transform.InverseTransformPoint(puzzleTransform.position);
+                Vector2Int newCord = TurkPuzzleScript.PosToGridIdx((Vector2)adjustedPiecePosition);
 
-            if (puzzlePiece.cord == newCord) return false;
+                if (puzzlePiece.cord == newCord)
+                {
+                    FillHoles();
+                    return false;
+                }
 
-            if (TurkPuzzleScript.IsCordTaken(newCord, Pieces)) return false;
+                if (TurkPuzzleScript.IsCordTaken(newCord, Pieces)) return false;
 
-            //Vector2 newPos = TurkPuzzleScript.GridIdxToPos(new Vector2Int(newCord.x, newCord.y));
+                //Vector2 newPos = TurkPuzzleScript.GridIdxToPos(new Vector2Int(newCord.x, newCord.y));
+            }
+
+            if (!PieceInValidZone()) return false;
         }
-
-        if(!PieceInValidZone()) return false;
 
         List<TurkCubeScript> fillers = new List<TurkCubeScript>();
         //Applies it.
@@ -209,6 +214,17 @@ public class PieceHolderScript : MonoBehaviour
         }
         FillHoles();
         return true;
+    }
+
+    public void RelockPiece()
+    {
+        Vector2 startPos = GetComponent<RectTransform>().anchoredPosition;
+        Vector2Int gridIdx = TurkPuzzleScript.PosToGridIdx(startPos);
+        Vector2 pos = TurkPuzzleScript.GridIdxToPos(gridIdx);
+        GetComponent<RectTransform>().anchoredPosition = pos;
+        UpdateCord(true);
+        FirstRelease = false;
+        LastKnownGoodPosition = transform.localPosition;
     }
 
     public void FillHoles()

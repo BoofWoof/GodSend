@@ -48,4 +48,4 @@ MonoBehaviour:
   CloseMenuOnBuy: 1
   StartingMovie: {fileID: 11400000, guid: 1ca6295558cfb20428e54f312428502c, type: 2}
   VisionChallengePrefab: {fileID: 4074052858596317957, guid: 06913771baadfb143b0ccb0e01ba2981, type: 3}
-  OnlyRunChallengeDayOne: 0
+  ChallengeDayRange: {x: 1, y: 1}

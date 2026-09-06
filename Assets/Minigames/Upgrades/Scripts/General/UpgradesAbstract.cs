@@ -102,6 +102,11 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     private static bool BuyingActive = false;
 
+    [Header("Challenge")]
+    public GameObject VisionChallengePrefab;
+    public Vector2Int ChallengeDayRange;
+    public static UpgradesAbstract ChallengeReward;
+
     public float PercentBuyable()
     {
         if (UpgradeBought) return 0f;
@@ -160,6 +165,7 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public bool CanBuy()
     {
+        if (VisionChallengePrefab != null && IsValidDay() && GameStateMonitor.isEventActive()) return false;
         if (UpgradeBought) return false;
         if (AutoBuy) return false;
 
@@ -181,6 +187,11 @@ public abstract class UpgradesAbstract : ScriptableObject
         if (CurrencyData.RenownAscension < AssscensssionRenown) return false;
         if (CurrencyData.RenownRevolution < RevolutionRenown) return false;
         return true;
+    }
+
+    public bool IsValidDay()
+    {
+        return (ChallengeDayRange.x <= DayInfo.CurrentDay && ChallengeDayRange.y >= DayInfo.CurrentDay);
     }
 
     public void LoadBuy()
@@ -213,7 +224,7 @@ public abstract class UpgradesAbstract : ScriptableObject
     public IEnumerator BuyCoroutine(bool forceBuy)
     {
         BuyingActive = true;
-        if (StartingMovie != null && !forceBuy) ScreenMoviePlayerScript.instance.PlayVideo(StartingMovie);
+        if (StartingMovie != null && !forceBuy && IsValidDay()) ScreenMoviePlayerScript.instance.PlayVideo(StartingMovie);
         while (ScreenMoviePlayerScript.instance.VideoPlaying)
         {
             yield return null;
@@ -232,7 +243,14 @@ public abstract class UpgradesAbstract : ScriptableObject
         CurrencyData.RenownAscension -= AssscensssionRenown;
         CurrencyData.RenownRevolution -= RevolutionRenown;
 
-        OnBuy();
+        if(VisionChallengePrefab != null && IsValidDay())
+        {
+            TurkPuzzleScript.instance.StartChallenge(VisionChallengePrefab);
+            ChallengeReward = this;
+        } else
+        {
+            OnBuy();
+        }
 
         if (AssociatedMinigame == Minigame.Visions)
         {
@@ -248,7 +266,7 @@ public abstract class UpgradesAbstract : ScriptableObject
             VisionMascotScript.SayText(sayDialogue);
         }
 
-        if (CloseMenuOnBuy) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
+        if (CloseMenuOnBuy && IsValidDay()) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
 
         bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
         if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);

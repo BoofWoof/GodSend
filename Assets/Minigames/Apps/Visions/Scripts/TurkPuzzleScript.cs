@@ -69,6 +69,13 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public TMP_Text ArtistCredit;
 
+    [Header("UIObjects")]
+    public GameObject PieceHolder;
+    public GameObject RedoTutorialButton;
+    public GameObject TalkToBirdButton;
+    public GameObject DifficultyStats;
+    public GameObject CompletionistStats;
+
     [Header("Challenge Change")]
     public GameObject BlessingShop;
     private bool BlessingShopWasOn;

@@ -33,22 +33,42 @@ MonoBehaviour:
   AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
-    ReplacementDialogue: 'Do you understand what you just did?<n>
+    ReplacementDialogue: 'YOU <b>RANKED UP</b>!<n>
 
-      You took
-      the first steps to soar above the crowds!<n>
+      I gift you many happy
+      chirps and cheers from my tiny fledgling beak!<n>
 
-      The church of <color=blue>FLOCK</color>
-      now recognizes you as one of their fledglings!<n>
+      Oh, were you expecting
+      a <b>challenge</b> when you bought that <b>new rank</b>?
 
-      Not only does this
-      earn respect from your new peers, but it gains you higher pay!<n>
+      <c=Yes>Well,
+      let me educate you then!
 
-      Keep
-      going and you might earn enough respect to be taught the secrets of the universe!<n>
+      <c=No>Ah, you must have read one of our pamphlets!<n>
 
-      Just
-      make sure to stay on your best behavior!'
+      Within
+      the <b><color=blue>FLOCK</color></b> orginization, there are two ways to progress.<n>
+
+      You
+      can raise through the <b>hierarchy</b> of the church and you can raise through
+      the <b>hierarchy</b> of the business.<n>
+
+      You need to do a <b>challenge</b>
+      to get a <b>promotion</b>, but you only need to fill out some <b>paperwork</b>
+      for a <b>new rank</b>.<n>
+
+      However, we''ll let you skip the paperwork
+      this time!<n>
+
+      OH, AND I ALMOST FORGOT!<n>
+
+      Every <b>rank</b>
+      also gives you access to a new <b><color=blue>FLOCK</color></b> secret.<n>
+
+      Your
+      first <b>secret</b> is that...<n>
+
+      Bird loves you. <3'
   Credits: 0.00000002
   FlockRenown: 0
   FoundationRenown: 0
@@ -63,5 +83,7 @@ MonoBehaviour:
   STags: 
   CloseMenuOnBuy: 0
   StartingMovie: {fileID: 11400000, guid: 6d379738755b5c740b46ffc31133e828, type: 2}
+  VisionChallengePrefab: {fileID: 0}
+  ChallengeDayRange: {x: 0, y: 1}
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}

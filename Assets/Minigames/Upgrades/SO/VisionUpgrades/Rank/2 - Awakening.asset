@@ -32,24 +32,24 @@ MonoBehaviour:
   AdText: GROW YOUR SPIRIT AND FINANCES
   OverrideDialogue:
   - OverrideDay: 1
-    ReplacementDialogue: 'This is an amazing occassion!<n>
+    ReplacementDialogue: 'Your <b>awakening</b> is an important milestone in your
+      migration into Flock.<n>
 
-      Not everyone gets
-      this far!<n>
+      It''s the first time you get to learn any
+      <b>real</b> secrets!<n>
 
-      A lot of them uninstall the app before we even get to talk.
-      :c<n>
+      My secret for you is: Why we value the <color=yellow><b>stars</b></color>!<n>
 
-      But now our momentum can finally grow, because we''re both learning!<n>
+      You
+      see, amongst them is where our <color=87F8FA>God</color> lives!<n>
 
-      You''re
-      going to get some paperwork to your device soon, and I''m going to need you
-      to do your best to fill it out!<n>
+      A
+      <color=87F8FA>God</color> that once walked this planet like you do now!<n>
 
-      I know it can be boring, but it''s
-      going to help both our futures!<n>
+      But
+      that''s all you get to know for now.<n>
 
-      We got this!'
+      Enjoy your paperwork!'
   Credits: 0.0000005
   FlockRenown: 0
   FoundationRenown: 0
@@ -64,5 +64,7 @@ MonoBehaviour:
   STags: 
   CloseMenuOnBuy: 0
   StartingMovie: {fileID: 11400000, guid: 6d379738755b5c740b46ffc31133e828, type: 2}
+  VisionChallengePrefab: {fileID: 0}
+  ChallengeDayRange: {x: 0, y: 1}
   MultiplyReward: 5
   DisplayColor: {r: 0, g: 1, b: 0, a: 1}
