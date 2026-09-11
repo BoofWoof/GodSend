@@ -106,6 +106,7 @@ public abstract class UpgradesAbstract : ScriptableObject
     public GameObject VisionChallengePrefab;
     public Vector2Int ChallengeDayRange;
     public static UpgradesAbstract ChallengeReward;
+    public static string PostChallengeDialogue;
 
     public float PercentBuyable()
     {
@@ -237,6 +238,8 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public void BuyTriggers()
     {
+        bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
+
         CurrencyData.Credits -= Credits;
         CurrencyData.RenownFlock -= FlockRenown;
         CurrencyData.RenownFoundation -= FoundationRenown;
@@ -247,9 +250,12 @@ public abstract class UpgradesAbstract : ScriptableObject
         {
             TurkPuzzleScript.instance.StartChallenge(VisionChallengePrefab);
             ChallengeReward = this;
+            PostChallengeDialogue = DialogueToTrigger;
+            Debug.Log($"Setting up to do {PostChallengeDialogue} dialogue once this conversation is done.");
         } else
         {
             OnBuy();
+            if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
         }
 
         if (AssociatedMinigame == Minigame.Visions)
@@ -268,10 +274,16 @@ public abstract class UpgradesAbstract : ScriptableObject
 
         if (CloseMenuOnBuy && IsValidDay()) UpgradeScreenScript.upgradeScreenScripts[AssociatedMinigame].gameObject.SetActive(false);
 
-        bool triggerDay = DayToTrigger == DayInfo.CurrentDay;
-        if (DialogueToTrigger.Length > 0 && triggerDay) MessageQueue.addDialogue(DialogueToTrigger);
         if (CompleteQuest && triggerDay) QuestManager.CompleteQuest(QuestManager.currentQuest);
         if (ProgressQuest && triggerDay) QuestManager.IncrementQuest();
+    }
+
+    public void DelayedTrigger()
+    {
+        if (!string.IsNullOrEmpty(PostChallengeDialogue)) MessageQueue.addDialogue(PostChallengeDialogue);
+        ChallengeReward.OnBuy();
+        ChallengeReward = null;
+        PostChallengeDialogue = "";
     }
 
     public void AddToPurchasedList()

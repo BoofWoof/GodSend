@@ -86330,6 +86330,55 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &1827074899586971781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5610892673314373060}
+  - component: {fileID: 6391716805086152402}
+  m_Layer: 11
+  m_Name: UnlockPoster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5610892673314373060
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827074899586971781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7422348591893001781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6391716805086152402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827074899586971781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041fe748111093442908b6e77bc70d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PosterName: You Are Here
 --- !u!1 &1832386750741648629
 GameObject:
   m_ObjectHideFlags: 0
@@ -439140,6 +439189,7 @@ RectTransform:
   - {fileID: 8506919899839641172}
   - {fileID: 3566287076236384062}
   - {fileID: 8944571652578658298}
+  - {fileID: 5610892673314373060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -439183,6 +439233,9 @@ MonoBehaviour:
     <3'
   ColorSwapPeriod: 1.5
   ColorHoldPeriod: 0.5
+  OnStartEvents:
+    m_PersistentCalls:
+      m_Calls: []
   OnCorrectSolution:
     m_PersistentCalls:
       m_Calls:
@@ -439205,6 +439258,18 @@ MonoBehaviour:
       - m_Target: {fileID: 664618459049528952}
         m_TargetAssemblyTypeName: VisionChallengeScript, Assembly-CSharp
         m_MethodName: CompleteChallenge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6391716805086152402}
+        m_TargetAssemblyTypeName: PosterUnlockTrigger, Assembly-CSharp
+        m_MethodName: TriggerUnlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -439255,6 +439320,12 @@ MonoBehaviour:
   AltPlacementAudio: {fileID: 3604699029756041784}
   ReplaceOffMat: {fileID: 2100000, guid: 7155229b8be2b8d41a89654c9257785d, type: 2}
   ReplaceOnMat: {fileID: 2100000, guid: 9fdcf5990dbc108458be2dd35393b218, type: 2}
+  LeavePiecesOnBoard: 0
+  HidePieceHolder: 0
+  HideRedoTutorial: 1
+  HideTalkToBird: 1
+  HideDifficultyStats: 1
+  HideCompletionstStats: 1
 --- !u!1 &7131371252367099037
 GameObject:
   m_ObjectHideFlags: 0

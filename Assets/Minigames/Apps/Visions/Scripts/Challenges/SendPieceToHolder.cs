@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using static AppNotificationScript;
 
 public class SendPieceToHolder : MonoBehaviour
 {
@@ -16,6 +18,18 @@ public class SendPieceToHolder : MonoBehaviour
             phs.SendToPieceHolder(pieceClone);
             phs.AddFakeSquares();
         }
+
+        AppScript targetApp = AppScript.AppsDict["Visions"];
+        string appName = targetApp.AppName;
+        string previewText = $"A new piece has been added to your <b>{appName}</b>'s board!";
+
+        AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+        {
+            SourceApp = targetApp,
+            PreviewImage = targetApp.AssociatedIcon,
+            PreviewText = previewText,
+            AdditionalActions = null
+        });
 
     }
 }

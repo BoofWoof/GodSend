@@ -23,6 +23,8 @@ public class VisionChallengeScript : MonoBehaviour
     public float ColorHoldPeriod = 1f;
 
     public UnityEvent OnStartEvents;
+    public UnityEvent AfterStartDialogue;
+    public float WaitTillAfterStartDialogue = 0f;
 
     public UnityEvent OnCorrectSolution;
     public Color CorrectPieceColor = Color.green;
@@ -49,6 +51,8 @@ public class VisionChallengeScript : MonoBehaviour
     public bool HideTalkToBird = false;
     public bool HideDifficultyStats = true;
     public bool HideCompletionstStats = true;
+
+    private Action<float> OnCompletionCheck;
 
 
     public void StartChallenge()
@@ -107,6 +111,19 @@ public class VisionChallengeScript : MonoBehaviour
         {
             VisionMascotScript.SayText(MascotEntranceText);
         }
+
+        StartCoroutine(AfterStartDialogueCoroutine());
+    }
+
+    public IEnumerator AfterStartDialogueCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        while (VisionMascotScript.instance.MascotTextIsActive())
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(WaitTillAfterStartDialogue);
+        AfterStartDialogue?.Invoke();
     }
 
     public void ChangeExitText(string newExitText)
@@ -120,9 +137,11 @@ public class VisionChallengeScript : MonoBehaviour
         bool AnyIncorrectSolved = false;
 
         int CorrectSolved = 0;
+        int PuzzlesChecked = 0;
 
         foreach (SolutionData solution in Solutions)
         {
+            PuzzlesChecked++;
             if (solution.TargetEmptyGroup.CheckForWin())
             {
                 CorrectSolved++;
@@ -136,6 +155,9 @@ public class VisionChallengeScript : MonoBehaviour
                 AnyIncorrectSolved = true;
             }
         }
+
+        OnCompletionCheck?.Invoke((float)CorrectSolved / PuzzlesChecked);
+
         if (AnyIncorrectSolved)
         {
             StartCoroutine(OnLose());
@@ -145,6 +167,7 @@ public class VisionChallengeScript : MonoBehaviour
         {
             StartCoroutine(OnWin());
         }
+
         Debug.Log($"Solved: {CorrectSolved}");
     }
 
@@ -194,9 +217,18 @@ public class VisionChallengeScript : MonoBehaviour
 
         TurkPuzzleScript.instance.ResetShine();
         TurkPuzzleScript.instance.EndChallenge();
-        UpgradesAbstract.ChallengeReward.OnBuy();
+        if(UpgradesAbstract.ChallengeReward != null) UpgradesAbstract.ChallengeReward.DelayedTrigger();
         GameStateMonitor.ChallengeActive = false;
         if(DayInfo.CurrentDay <= 1) TurkPuzzleScript.instance.IncreaseDifficultyToMax();
         TurkPuzzleScript.instance.FundsObject.SetActive(true);
+    }
+
+    public void SubscribeToSolutionCheck(Action<float> newAction)
+    {
+        OnCompletionCheck += newAction;
+    }
+    public void UnSubscribeToSolutionCheck(Action<float> newAction)
+    {
+        OnCompletionCheck -= newAction;
     }
 }

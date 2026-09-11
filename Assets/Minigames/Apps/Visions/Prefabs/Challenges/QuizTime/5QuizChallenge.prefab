@@ -41,7 +41,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 702, y: -222}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6806057204979833817
@@ -68,11 +68,20 @@ MonoBehaviour:
   - {fileID: 5070104076171002847}
   - {fileID: 46693762044657763}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &815839203394472581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 562, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834196957005421447
@@ -1186,11 +1195,20 @@ MonoBehaviour:
   - {fileID: 6569137594505459534}
   - {fileID: 656450273570956209}
   FirstRelease: 1
+  EverReleased: 0
   Rotations: 0
   PreviousValidRotations: 0
   isStored: 0
   FullyFilled: 0
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  LastKnownGoodPosition: {x: 0, y: 0, z: 0}
+  LockPiece: 0
+  OnSuccessfulPlacement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowInPieceHolder:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7028639029548622884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2575,11 @@ PrefabInstance:
     - {fileID: 887313936994717501, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
     - {fileID: 6417117604033940282, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
     - {fileID: 6879378806207366588, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
+    - {fileID: 6842375386840029130, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
+    - {fileID: 4743522363440240553, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
+    - {fileID: 1322119452818567583, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
+    - {fileID: 6768229246482051122, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
+    - {fileID: 1895703133227341697, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5596244650610431224, guid: e414df01b0f0d304aa441be6f8e64031, type: 3}
       insertIndex: -1

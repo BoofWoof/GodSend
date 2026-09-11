@@ -67,8 +67,8 @@ public class VisionMascotScript : MonoBehaviour
 
     public bool MascotTextIsActive()
     {
-        if (TextBox.gameObject.activeInHierarchy) return true;
-        if (DialogueActive) return true;
+        if (TextChainActive) return true;
+        if (WaitForInteraction) return true;
         if (DialogueList.Count > 0) return true;
         return false;
     }
