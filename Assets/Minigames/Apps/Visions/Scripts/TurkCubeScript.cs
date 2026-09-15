@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Vector2Int _cord = new Vector2Int(-9999,-9999);
     public Vector2Int cord
@@ -59,8 +59,11 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private static List<TurkCubeScript> AllCubeScripts = new();
     private static Dictionary<Vector2Int, TurkCubeScript> CubePosLookupDictionary = new();
 
+    private bool Hovered = false;
+
     public void Start()
     {
+        if (rootPiece == null) rootPiece = transform.parent.GetComponent<PieceHolderScript>();
         if(!rootPiece.LockPiece) cord = new Vector2Int(-9999, -9999);
     }
 
@@ -246,5 +249,19 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         Image img = GetComponent<Image>();
         img.color = new Color(0, 0, 0, 0.7f);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (Hovered) return;
+        Hovered = true;
+        rootPiece.AddHover();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!Hovered) return;
+        Hovered = false;
+        rootPiece.RemoveHover();
     }
 }

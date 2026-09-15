@@ -20,37 +20,37 @@ MonoBehaviour:
   IncreaseOccurrences: 0
   FirstDifficultyIncreaseDialogues: 'Oh uh... hi!<n>
 
-    I can''t believe that worked.
-    You''re amazing!<n>
+    I can''t believe that
+    worked. You''re amazing!<n>
 
-    As for me, I- uh- you''re probably wondering who I am.<n>
+    As for me, I- uh- you''re probably wondering
+    who I am.<n>
 
-    Maybe
-    you could tell me who I am?<name><n>
+    Maybe you could tell me who I am?<name><n>
 
-    Ooo, I like the name.<n>
+    Ooo, I like
+    the name.<n>
 
-    But uhhh...
-    I must admit... Despite the pep talk you gave me, I''m a bit hesitant to leave
-    my shell. Everything is so new and scary...<n>
+    But uhhh... I must admit... Despite the pep talk you gave
+    me, I''m a bit hesitant to leave my shell. Everything is so new and scary...<n>
 
-    Oh, hey! Maybe you''d be
-    nice enough to help me!? Things are easier with a friend!
+    Oh,
+    hey! Maybe you''d be nice enough to help me!? Things are easier with a friend!
 
-    <c=Sure> Thank
-    you so much!<n>
+    <c=Sure>
+    Thank you so much!
 
-    <c=Nah> Oh, well maybe you''ll let me just watch you for
-    a bit then...<n>
+    <c=Nah> Oh, well maybe you''ll let me just watch you
+    for a bit then...<n>
 
-    But first, could you do me a favor and agree to all privacy
-    terms associated with your local <b>NEST</b> database!
+    But first, could you do me a favor and agree to all
+    privacy terms associated with your local <b>NEST</b> database!
 
-    <c=Agree> Great,
-    now I can see you, even from in my shell!<n>
+    <c=Agree>
+    Great, now I can see you, even from in my shell!<n>
 
-    I look forward to us sharing
-    secrets~<n><t=Promotion>'
+    I look forward to us
+    sharing secrets~<t=Promotion>'
   DifficultyIncreaseDialogues:
   - I can see again!
   - Ahh, the light!

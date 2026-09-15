@@ -26,6 +26,10 @@ public class ShopprHoverDescription : MonoBehaviour
 
     public List<RectTransform> ToRebuildOnCompletion;
 
+    public float DescriptionSizeMultiplier = 1f;
+
+    public AudioSource OnDisplayAudioSource;
+
     public void Awake()
     {
         Instances.Add(AssociatedMinigame, this);
@@ -38,7 +42,7 @@ public class ShopprHoverDescription : MonoBehaviour
 
     public void Clear()
     {
-        ObjectImage.gameObject.SetActive(false);
+        if (ObjectImage != null) ObjectImage.gameObject.SetActive(false);
         if (ShadowImage != null) ShadowImage.gameObject.SetActive(false);
 
         Title.text = "";
@@ -51,8 +55,10 @@ public class ShopprHoverDescription : MonoBehaviour
     {
         UpgradesAbstract upgrade = data.AssociatedUpgrade;
 
-        ObjectImage.gameObject.SetActive(true);
-        ObjectImage.sprite = upgrade.UpgradeIcon;
+        OnDisplayAudioSource?.Play();
+
+        if (ObjectImage != null) ObjectImage.gameObject.SetActive(true);
+        if (ObjectImage != null) ObjectImage.sprite = upgrade.UpgradeIcon;
         if (ShadowImage != null)
         {
             ShadowImage.gameObject.SetActive(true);
@@ -62,9 +68,9 @@ public class ShopprHoverDescription : MonoBehaviour
         Title.text = upgrade.UpgradeName;
         Price.text = upgrade.CostToText();
         StockCount.text = "Stock: 1/1";
-        Description.text = upgrade.UpgradeMechanicDescription +
+        Description.text = $"<b><size={DescriptionSizeMultiplier*Description.fontSize}>{upgrade.UpgradeMechanicDescription}</size></b>" +
             "\n\n" +
-            $"<i>({upgrade.UpgradeDescription})";
+            $"<color=grey><i>({upgrade.UpgradeDescription})</i></color>";
 
         foreach(RectTransform rect in ToRebuildOnCompletion)
         {

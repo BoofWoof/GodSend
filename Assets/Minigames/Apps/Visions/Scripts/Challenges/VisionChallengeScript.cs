@@ -51,6 +51,7 @@ public class VisionChallengeScript : MonoBehaviour
     public bool HideTalkToBird = false;
     public bool HideDifficultyStats = true;
     public bool HideCompletionstStats = true;
+    public bool PauseOnEndDialogue = true;
 
     private Action<float> OnCompletionCheck;
 
@@ -75,6 +76,7 @@ public class VisionChallengeScript : MonoBehaviour
         {
             if (piece.LockPiece) continue;
             TurkPuzzleScript.puzzlePiece.Add(piece);
+            piece.GetCurrentColor();
         }
 
         foreach(PieceHolderScript piece in CustomPieces)
@@ -185,7 +187,7 @@ public class VisionChallengeScript : MonoBehaviour
         yield return TurkPuzzleScript.instance.StartCoroutine(TurkPuzzleScript.instance.RevealShine(CorrectPieceColor, ColorSwapPeriod));
 
         if (!string.IsNullOrEmpty(MascotExitText)) VisionMascotScript.SayText(MascotExitText);
-        while (VisionMascotScript.instance.MascotTextIsActive())
+        while (VisionMascotScript.instance.MascotTextIsActive() && PauseOnEndDialogue)
         {
             yield return null;
         }

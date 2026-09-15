@@ -168301,6 +168301,7 @@ MonoBehaviour:
   HideTalkToBird: 0
   HideDifficultyStats: 1
   HideCompletionstStats: 1
+  PauseOnEndDialogue: 0
 --- !u!1 &4116080908287919815
 GameObject:
   m_ObjectHideFlags: 0

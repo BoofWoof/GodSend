@@ -50,6 +50,9 @@ public class UpgradeScreenScript : MonoBehaviour
     public UnityEvent OnPanelOpen;
     public UnityEvent OnUpgradeAdded;
 
+    public AudioSource OnFilterAudioSource;
+    public AudioSource OnShopOpenAudioSource;
+
     public void Awake()
     {
         upgradeScreenScripts[AssociatedMinigame] = this;
@@ -152,6 +155,7 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void OnEnable()
     {
+        if(OnShopOpenAudioSource != null) OnShopOpenAudioSource.Play();
         OnPanelOpen?.Invoke();
 
         if (WaitToOpen) ConversationManagerScript.instance.ForceNextDialogue();
@@ -267,6 +271,8 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void SetVisionsFilter(int enumIdx)
     {
+        if (OnFilterAudioSource != null) OnFilterAudioSource?.Play();
+
         VisionTags newTag = (VisionTags)enumIdx;
         EnableVisionFilter = true;
         VisionFilter = newTag;
@@ -275,6 +281,8 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void SetShopprFilter(int enumIdx)
     {
+        if (OnFilterAudioSource != null) OnFilterAudioSource?.Play();
+
         ShopprTags newTag = (ShopprTags)enumIdx;
         EnableShopprFilter = true;
         ShopprFilter = newTag;
@@ -283,6 +291,8 @@ public class UpgradeScreenScript : MonoBehaviour
 
     public void ResetFilters()
     {
+        if (OnFilterAudioSource != null) OnFilterAudioSource?.Play();
+
         EnableShopprFilter = false;
         EnableVisionFilter = false;
         Refresh();

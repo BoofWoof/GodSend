@@ -109,6 +109,10 @@ PrefabInstance:
       value: I'm starting to feel some energy! More!
       objectReference: {fileID: 0}
     - target: {fileID: 1071209591627564511, guid: 06913771baadfb143b0ccb0e01ba2981, type: 3}
+      propertyPath: PauseOnEndDialogue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071209591627564511, guid: 06913771baadfb143b0ccb0e01ba2981, type: 3}
       propertyPath: Solutions.Array.data[1].MustBeSolved
       value: 0
       objectReference: {fileID: 0}

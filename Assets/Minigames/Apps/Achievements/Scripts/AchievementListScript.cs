@@ -89,7 +89,7 @@ public class AchievementListScript : Saver
                 if (pAchievement.Achievement.FirstCompletionCheck && pAchievement.Achievement.CheckCompletionCriteria())
                 {
                     string previewText = "<b>Achievement Unlocked:</b>\nHead to <b>Glimmer</b> to collect your reward!";
-                    AppScript targetApp = AppScript.AppsDict["Achievements"];
+                    AppScript targetApp = AppScript.AppsDict["Glimmer"];
 
                     AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
                     {

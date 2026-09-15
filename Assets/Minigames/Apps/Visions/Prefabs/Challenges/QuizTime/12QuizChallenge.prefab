@@ -263,6 +263,10 @@ PrefabInstance:
         then I can finally hatch.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498456941551400225, guid: bd19152e7222f734486300b816bad93a, type: 3}
+      propertyPath: PauseOnEndDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498456941551400225, guid: bd19152e7222f734486300b816bad93a, type: 3}
       propertyPath: AfterCorrectColorSwap.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}

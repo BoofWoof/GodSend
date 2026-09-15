@@ -59,6 +59,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public AudioSource DropGood;
     public AudioSource NewPuzzleSound;
     public AudioSource RotateSound;
+    public AudioSource HoverSound;
 
     public GameObject FundsObject;
     public GameObject EmptyTileGroup;
@@ -513,6 +514,11 @@ public class TurkPuzzleScript : MonoBehaviour
     {
         VisionsDifficultySO currentDifficulty = LevelSets[CurrentDifficutly];
         PieceHolderScript.RotationEnabled = currentDifficulty.RotationEnabled;
+
+        foreach (PieceHolderScript pieceRoot in puzzlePiece)
+        {
+            pieceRoot.MoveToCenter();
+        }
 
         if (currentDifficulty.RotationEnabled)
         {

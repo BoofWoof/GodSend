@@ -1,6 +1,9 @@
+using JetBrains.Annotations;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -45,12 +48,27 @@ public class PieceHolderScript : MonoBehaviour
     public UnityEvent OnSuccessfulPlacement;
     public UnityEvent OnShowInPieceHolder;
 
+    private int HoverCount = 0;
+
+    private bool Centered = false;
+
+    private bool Hovered = false;
+    private static PieceHolderScript CurrentHover;
+
     public void Awake()
     {
         PickupEnabled = true;
         StorePiece = false;
 
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.AddListener(DestroySelf);
+    }
+
+    public void Start()
+    {
+        PieceList.Add(this);
+        StartCoroutine(DelayedPlaceDown());
+
+        GetCurrentColor();
     }
 
     public void UpdateColors(Color newColor)
@@ -64,12 +82,6 @@ public class PieceHolderScript : MonoBehaviour
     public void GetCurrentColor()
     {
         OriginalColor = Pieces[0].GetComponent<Image>().color;
-    }
-
-    public void Start()
-    {
-        PieceList.Add(this);
-        StartCoroutine(DelayedPlaceDown());
     }
 
     public IEnumerator DelayedPlaceDown()
@@ -580,6 +592,89 @@ public class PieceHolderScript : MonoBehaviour
         foreach (RectTransform child in Shadow.transform)
         {
             child.GetComponent<TurkCubeScript>().SetDark();
+        }
+    }
+
+    public void AddHover()
+    {
+        HoverCount++;
+        HoverCheck();
+    }
+    
+    public void RemoveHover()
+    {
+        HoverCount--;
+        HoverCheck();
+    }
+
+    public void HoverCheck()
+    {
+        if (isDragging) return;
+        if (CurrentHover != this && CurrentHover != null) return;
+        if (LockPiece) return;
+
+        if (Hovered)
+        {
+            if (HoverCount == 0) UnHoverEffect();
+            CurrentHover = null;
+        } else
+        {
+            if (HoverCount > 0) HoverEffect();
+            CurrentHover = this;
+        }
+    }
+
+    public void HoverEffect()
+    {
+        Hovered = true;
+
+        //TurkPuzzleScript.instance.HoverSound.Play();
+
+        MoveToCenter();
+
+        float scaleFactor = 1.03f;
+        int RaycastPadding = -5;
+        transform.localScale = Vector3.one * scaleFactor;
+        foreach (RectTransform child in transform)
+        {
+            Image imageComponent = child.GetComponent<Image>();
+            if (imageComponent == null) continue;
+            imageComponent.color = Color.white;
+
+            imageComponent.raycastPadding = new Vector4(RaycastPadding, RaycastPadding, RaycastPadding, RaycastPadding);
+        }
+    }
+    public void UnHoverEffect()
+    {
+        Hovered = false;
+
+        transform.localScale = Vector3.one;
+        foreach (RectTransform child in transform)
+        {
+            Image imageComponent = child.GetComponent<Image>();
+            if (imageComponent == null) continue;
+            imageComponent.color = OriginalColor;
+
+            imageComponent.raycastPadding = Vector4.zero;
+        }
+    }
+
+    public void MoveToCenter()
+    {
+        if (Centered) return;
+        Centered = true;
+
+        Vector2 startPos = CalcualteCenterOffset() + (Vector2)transform.localPosition;
+        Vector2Int gridIdx = TurkPuzzleScript.PosToGridIdx(startPos);
+        Vector2 pos = TurkPuzzleScript.GridIdxToPos(gridIdx);
+
+        Vector3 centerOffset = (Vector3)pos - transform.localPosition;
+
+        transform.localPosition += centerOffset;
+
+        foreach (Transform child in transform)
+        {
+            child.localPosition -= centerOffset;
         }
     }
 }
