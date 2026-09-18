@@ -58,7 +58,10 @@ public class VisionChallengeScript : MonoBehaviour
 
     public void StartChallenge()
     {
-        if(HidePieceHolder) TurkPuzzleScript.instance.PieceHolder.SetActive(false);
+        TurkPuzzleScript.instance.ResetTileSize();
+
+        TurkPuzzleScript.instance.BackPanel.SetActive(false);
+        if (HidePieceHolder) TurkPuzzleScript.instance.PieceHolder.SetActive(false);
         if (HideRedoTutorial) TurkPuzzleScript.instance.RedoTutorialButton.SetActive(false);
         if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(false);
         if (HideDifficultyStats) TurkPuzzleScript.instance.DifficultyStats.SetActive(false);
@@ -211,6 +214,7 @@ public class VisionChallengeScript : MonoBehaviour
 
     public void CompleteChallenge()
     {
+        TurkPuzzleScript.instance.BackPanel.SetActive(true);
         if (HidePieceHolder) TurkPuzzleScript.instance.PieceHolder.SetActive(true);
         if (HideRedoTutorial) TurkPuzzleScript.instance.RedoTutorialButton.SetActive(true);
         if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(true);

@@ -5,6 +5,8 @@ public class TwistScript : MonoBehaviour
     private Vector3 _StartPosition;
     private Quaternion _StartRotation;
 
+    public bool UpdatePosition = true;
+
     public float TwistAmount;
     public float TwistSpeed;
 
@@ -20,6 +22,6 @@ public class TwistScript : MonoBehaviour
     public void Update()
     {
         transform.localRotation = _StartRotation * Quaternion.Euler(0, 0, TwistAmount * Mathf.Sin(Time.time * TwistSpeed*2*Mathf.PI));
-        transform.localPosition = _StartPosition + BounceAmount * Mathf.Sin(Time.time * BounceSpeed * 2 * Mathf.PI);
+        if(UpdatePosition) transform.localPosition = _StartPosition + BounceAmount * Mathf.Sin(Time.time * BounceSpeed * 2 * Mathf.PI);
     }
 }

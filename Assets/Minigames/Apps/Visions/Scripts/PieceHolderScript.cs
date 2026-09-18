@@ -99,6 +99,8 @@ public class PieceHolderScript : MonoBehaviour
     {
         PieceList.Remove(this);
         TurkPuzzleScript.instance.OnBeforePuzzleGenerate.RemoveListener(DestroySelf);
+
+        if (TurkPuzzleScript.puzzlePiece.Contains(this)) TurkPuzzleScript.puzzlePiece.Remove(this);
     }
 
     public void DestroySelf()

@@ -23,6 +23,12 @@ public class PieceGeneratorScript : MonoBehaviour
         GeneratePuzzleFromShapeSO(shape);
     }
 
+    public GameObject CreateAndRetrievePiece(Texture2D sourceTexture)
+    {
+        GeneratePieceFromTexture(sourceTexture);
+        return transform.GetChild(0).gameObject;
+    }
+
     public void GeneratePuzzleFromShapeSO(PuzzleShapeSO sourceShapeSO)
     {
         // Instantiate a new square
@@ -35,7 +41,7 @@ public class PieceGeneratorScript : MonoBehaviour
 
         PieceHolderScript phs = pieceBase.AddComponent<PieceHolderScript>();
 
-        Vector2Int center_cord = Vector2Int.RoundToInt(new Vector2(sourceShapeSO.GetWidth() / 2f, sourceShapeSO.GetHeight() / 2f));
+        Vector2Int center_cord = Vector2Int.RoundToInt(new Vector2(sourceShapeSO.GetWidth() / 2f - 0.5f, sourceShapeSO.GetHeight() / 2f - 0.5f));
         for (int y = 0; y < sourceShapeSO.GetHeight(); y++)
         {
             for (int x = 0; x < sourceShapeSO.GetWidth(); x++)
@@ -54,7 +60,7 @@ public class PieceGeneratorScript : MonoBehaviour
                 RectTransform rectTransform = newSquare.AddComponent<RectTransform>();
                 rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
-                float squareSize = TurkPuzzleScript.squareSize;
+                float squareSize = TurkPuzzleScript.SquareSize;
                 rectTransform.sizeDelta = new Vector2(squareSize, squareSize);
 
                 // Set the position of the square

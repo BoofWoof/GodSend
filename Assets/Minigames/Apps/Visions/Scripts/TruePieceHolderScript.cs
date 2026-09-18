@@ -56,7 +56,7 @@ public class TruePieceHolderScript : MonoBehaviour
         Vector2 Offset = selectedPiece.CalcualteCenterOffset();
 
         selectedPiece.transform.localPosition = -Offset;
-        selectedPiece.transform.localRotation = Quaternion.identity;
+        //selectedPiece.transform.localRotation = Quaternion.identity;
         selectedPiece.transform.localScale = Vector3.one;
     }
     public void InteractableButtonCheck()

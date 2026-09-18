@@ -78,6 +78,7 @@ public class TurkPuzzleScript : MonoBehaviour
     public GameObject CompletionistStats;
 
     [Header("Challenge Change")]
+    public GameObject BackPanel;
     public GameObject BlessingShop;
     private bool BlessingShopWasOn;
     public GameObject PromotionSwitcher;
@@ -99,7 +100,8 @@ public class TurkPuzzleScript : MonoBehaviour
     public Button DifficultyDecreaseButton;
 
     private static PuzzleShapeSO selectedGridData;
-    public static float squareSize = 45f;      // Size of each square
+    public const float DefaultSquareSize = 45f;
+    public static float SquareSize = 45f;      // Size of each square
     public TileSetSO constallationTiles;         // Sprite to use for the grid squares
 
     public static List<GameObject> puzzlePieceSquares = new List<GameObject>();
@@ -116,7 +118,8 @@ public class TurkPuzzleScript : MonoBehaviour
     public ModifierMenuText modifierMenuText;
     private static ModifierMenuText.RewardModifier rewardBaseModifier;
 
-    public List<GameObject> FakePieces;
+    public List<Texture2D> FakePieces;
+    public PieceGeneratorScript PieceCreator;
 
     public Image CloudPanel;
 
@@ -190,6 +193,9 @@ public class TurkPuzzleScript : MonoBehaviour
         UpdatePuzzleIdx();
 
         selectedGridData = SamplePuzzles();
+        CalculateTileSize();
+
+
         GenerateGrid();
         GeneratePuzzlePieces();
         GroupPuzzlePieces();
@@ -204,6 +210,24 @@ public class TurkPuzzleScript : MonoBehaviour
         OnPuzzleGenerate?.Invoke();
 
         StartCoroutine(GraphicScan());
+    }
+
+    public void CalculateTileSize()
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        Vector2 usableSize = rt.sizeDelta;
+
+        float width = rt.sizeDelta.x / selectedGridData.GetWidth();
+        float height = rt.sizeDelta.y / selectedGridData.GetHeight();
+
+        float newHeight = Mathf.Min(width, height);
+
+        SquareSize = Mathf.Min(newHeight, 55f);
+    }
+
+    public void ResetTileSize()
+    {
+        SquareSize = DefaultSquareSize;
     }
 
     public void OnEnable()
@@ -541,15 +565,15 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public static Vector2Int PosToGridIdx(Vector2 pos)
     {
-        Vector2Int gridIdx = Vector2Int.RoundToInt(pos / squareSize);
+        Vector2Int gridIdx = Vector2Int.RoundToInt(pos / SquareSize);
         return gridIdx;
     }
 
     public static Vector2 GridIdxToPos(Vector2Int gridIdx)
     {
         return new Vector2(
-            gridIdx.x * squareSize,
-            gridIdx.y * squareSize
+            gridIdx.x * SquareSize,
+            gridIdx.y * SquareSize
         );
     }
     private void GroupPuzzlePieces()
@@ -639,7 +663,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
             RectTransform rectTransform = newSquare.AddComponent<RectTransform>();
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            rectTransform.sizeDelta = new Vector2(squareSize, squareSize);
+            rectTransform.sizeDelta = new Vector2(SquareSize, SquareSize);
 
             // Set the position of the square
             newSquare.transform.localRotation = Quaternion.identity;
@@ -663,9 +687,12 @@ public class TurkPuzzleScript : MonoBehaviour
     public void AddFakePiece()
     {
         int randomIdx = Random.Range(0, FakePieces.Count);
-        GameObject FakePiece = Instantiate(FakePieces[randomIdx]);
+        Texture2D FakePieceTexture = FakePieces[randomIdx];
+
+        GameObject FakePiece = PieceCreator.CreateAndRetrievePiece(FakePieceTexture);
+
         FakePiece.transform.parent = transform;
-        FakePiece.transform.localScale = Vector3.one * squareSize/50f;
+        FakePiece.transform.localScale = Vector3.one;
         FakePiece.transform.localRotation = Quaternion.identity;
 
         FakePiece.GetComponent<PieceHolderScript>().AddFakeSquares();
@@ -819,6 +846,8 @@ public class TurkPuzzleScript : MonoBehaviour
     {
         ClearFakePieces();
 
+        PieceHolder.SetActive(false);
+
         PieceHolderScript.ClearPieces();
         InteractionBlocker.SetActive(true);
 
@@ -835,6 +864,8 @@ public class TurkPuzzleScript : MonoBehaviour
         }
 
         SteamManager.UpdateIntStat(LevelSets[CurrentDifficutly].SteamAPIName, PuzzlesCompleted[CurrentDifficutly]);
+
+        PuzzleEarningsText.transform.parent.gameObject.SetActive(true);
 
         float TotalTime = Time.time - StartingTime;
         if (!TimeRecords.ContainsKey(CurrentDifficutly))
@@ -853,6 +884,7 @@ public class TurkPuzzleScript : MonoBehaviour
             }
         }
         UpdateStatText();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(PuzzleEarningsText.transform.parent.GetComponent<RectTransform>());
 
 
         PieceHolderScript.PickupEnabled = false;
@@ -863,29 +895,18 @@ public class TurkPuzzleScript : MonoBehaviour
         PuzzleName.text = selectedGridData.Name;
         PuzzleName.gameObject.SetActive(true);
         PuzzleEarningsText.gameObject.SetActive(true);
-        PuzzleEarningsText.text = "";
 
         TurkData.PuzzlesSolved += 1;
         float reward = TurkData.CreditsPerPuzzle;
 
-        PuzzleEarningsText.text = "+ <sprite index=1> ";
         string finalEarningText = reward.AllSignificantDigits(3);
+        PuzzleEarningsText.text = "+ <sprite index=1 tint=1> " + finalEarningText;
 
         //Puzzle Material Update
         float transitionPeriod = 1.5f;
-        StartCoroutine(RevealShine(Color.white, transitionPeriod));
-        float timePass = 0f;
-        while (timePass < transitionPeriod)
-        {
-            timePass += Time.deltaTime;
-            float progress = timePass / transitionPeriod;
+        yield return StartCoroutine(RevealShine(Color.white, transitionPeriod));
 
-            int showCharacters = (int)Mathf.Lerp(0, finalEarningText.Length, progress);
-            PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText.Substring(0, showCharacters);
-
-            yield return null;
-        }
-        PuzzleEarningsText.text = "+ <sprite index=1> " + finalEarningText;
+        yield return new WaitForSeconds(0.5f);
 
         //Show Multipliers
         List<SecondaryMultiplier> secondaryMultipliers = new List<SecondaryMultiplier>();
@@ -898,8 +919,18 @@ public class TurkPuzzleScript : MonoBehaviour
             ScoreMultiplierText.gameObject.SetActive(true);
             ScoreMultiplierText.text += secondaryMultiplier.description + "\r\n";
             reward *= secondaryMultiplier.multiplier;
-            PuzzleEarningsText.text = "+ <sprite index=1> " + reward.AllSignificantDigits(2);
-            yield return new WaitForSeconds(0.4f);
+            PuzzleEarningsText.text = "+ <sprite index=1 tint=1> " + reward.AllSignificantDigits(2);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(PuzzleEarningsText.transform.parent.GetComponent<RectTransform>());
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        if (newBestTime)
+        {
+            NewRecordText.gameObject.SetActive(true);
+            NewRecordSource.Play();
+            NewRecordParticles.Play();
+            NewRecordParticles2.Play();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(PuzzleEarningsText.transform.parent.GetComponent<RectTransform>());
         }
 
         if (PassiveIncomeScript.isPassiveIncomeActive())
@@ -927,18 +958,8 @@ public class TurkPuzzleScript : MonoBehaviour
         VisionMascotScript.SayText(selectedGridData.MascotStatement);
         VisionMascotScript.EnableProgress = false;
 
-        yield return new WaitForSeconds(0.5f);
-
-        if (newBestTime)
-        {
-            NewRecordText.gameObject.SetActive(true);
-            NewRecordSource.Play();
-            NewRecordParticles.Play();
-            NewRecordParticles2.Play();
-            yield return new WaitForSeconds(1.0f);
-        }
-
         ClickToContinueText.SetActive(true);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(PuzzleEarningsText.transform.parent.GetComponent<RectTransform>());
         VisionMascotScript.EnableProgress = true;
 
         while (true)
@@ -946,6 +967,9 @@ public class TurkPuzzleScript : MonoBehaviour
             yield return null;
             if (Input.GetMouseButtonUp(0)) break;
         }
+
+        PieceHolder.SetActive(true);
+
         NewPuzzleSound.Play();
         ClickToContinueText.SetActive(false);
 
@@ -962,6 +986,8 @@ public class TurkPuzzleScript : MonoBehaviour
 
         InteractionBlocker.SetActive(false);
         BuyBlessingsNow.SetActive(false);
+
+        PuzzleEarningsText.transform.parent.gameObject.SetActive(false);
     }
 
     public IEnumerator RevealShine(Color targetColor, float transitionPeriod)

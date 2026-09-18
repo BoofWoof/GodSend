@@ -79,6 +79,11 @@ public class TurkCubeScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (CubePosLookupDictionary.ContainsKey(_cord)) CubePosLookupDictionary.Remove(cord);
     }
 
+    public void OnDestroy()
+    {
+        if (TurkPuzzleScript.puzzlePieceSquares.Contains(gameObject)) TurkPuzzleScript.puzzlePieceSquares.Remove(gameObject);
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         rootPiece.OnPointerDown(eventData);
