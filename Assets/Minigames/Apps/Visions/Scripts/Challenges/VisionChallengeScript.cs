@@ -16,6 +16,8 @@ public class VisionChallengeScript : MonoBehaviour
 
     public string ChallengeName;
 
+    public int ChallengeSong = -1;
+
     [TextArea] public string MascotEntranceText;
     [TextArea] public string MascotExitText;
 
@@ -66,6 +68,12 @@ public class VisionChallengeScript : MonoBehaviour
         if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(false);
         if (HideDifficultyStats) TurkPuzzleScript.instance.DifficultyStats.SetActive(false);
         if (HideCompletionstStats) TurkPuzzleScript.instance.CompletionistStats.SetActive(false);
+
+        if(ChallengeSong >= 0)
+        {
+            TurkPuzzleScript.instance.AssociatedApp.StartSongInt = ChallengeSong;
+            MusicSelectorScript.SetPhoneSong(ChallengeSong, true);
+        }
 
         OnStartEvents?.Invoke();
 
@@ -220,6 +228,13 @@ public class VisionChallengeScript : MonoBehaviour
         if (HideTalkToBird) TurkPuzzleScript.instance.TalkToBirdButton.SetActive(true);
         if (HideDifficultyStats) TurkPuzzleScript.instance.DifficultyStats.SetActive(true);
         if (HideCompletionstStats) TurkPuzzleScript.instance.CompletionistStats.SetActive(true);
+
+        if (ChallengeSong >= 0)
+        {
+            int diffSong = TurkPuzzleScript.instance.LevelSets[TurkPuzzleScript.CurrentDifficutly].SongIndex;
+            TurkPuzzleScript.instance.AssociatedApp.StartSongInt = diffSong;
+            MusicSelectorScript.SetPhoneSong(diffSong);
+        }
 
         TurkPuzzleScript.instance.ResetShine();
         TurkPuzzleScript.instance.EndChallenge();

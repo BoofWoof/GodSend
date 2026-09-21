@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using PixelCrushers.DialogueSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -108,6 +109,11 @@ public abstract class UpgradesAbstract : ScriptableObject
     public static UpgradesAbstract ChallengeReward;
     public static string PostChallengeDialogue;
 
+    public bool EventBlocked()
+    {
+        return (VisionChallengePrefab != null && IsValidDay() && (GameStateMonitor.isEventActive() || ConversationManagerScript.WaitingForEvent || ConversationManagerScript.ConversationOngoing));
+    }
+
     public float PercentBuyable()
     {
         if (UpgradeBought) return 0f;
@@ -166,7 +172,7 @@ public abstract class UpgradesAbstract : ScriptableObject
 
     public bool CanBuy()
     {
-        if (VisionChallengePrefab != null && IsValidDay() && GameStateMonitor.isEventActive()) return false;
+        if (EventBlocked()) return false;
         if (UpgradeBought) return false;
         if (AutoBuy) return false;
 

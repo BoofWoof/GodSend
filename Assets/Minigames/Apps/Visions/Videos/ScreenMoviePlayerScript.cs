@@ -49,6 +49,7 @@ public class ScreenMoviePlayerScript : MonoBehaviour
         {
             AudioComponent.clip = targetMovie.MovieAudio;
             AudioComponent.Play();
+            CrossfadeScript.PauseMusic();
         }
 
         VideoPanel.gameObject.SetActive(true);
@@ -82,6 +83,8 @@ public class ScreenMoviePlayerScript : MonoBehaviour
 
         DimPanel.gameObject.SetActive(false);
         VideoPanel.gameObject.SetActive(false);
+
+        CrossfadeScript.ResumeMusic();
 
         Graphics.SetRenderTarget(ColorChannel.targetTexture);
         GL.Clear(true, true, Color.clear);

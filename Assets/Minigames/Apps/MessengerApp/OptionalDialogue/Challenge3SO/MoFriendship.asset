@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422c2983f3608094e80df1b530b7c816, type: 3}
   m_Name: MoFriendship
   m_EditorClassIdentifier: 
-  UniqueID: 52a82b9d-45bd-40a0-94e3-asdfser2
+  UniqueID: MoFriendshipID
   OCSName: Will an Alpaca be my friend?
   OCSDescription: <b>Visions</b> wants you to find a few friends that you can tell
     about their religion. Maybe Mo will help!

@@ -101,7 +101,7 @@ public class AppScript : MonoBehaviour
 
     public static void Swap(AppScript newApp)
     {
-        if (newApp == null) return;
+        if (newApp == null || newApp == ActiveApp) return;
         //newApp.PreviousApp = ActiveApp;
         AppAnimator.instance.SwitchToAppStart(newApp, Vector3.up * 900f);
         //newApp.Show(AppRoot);

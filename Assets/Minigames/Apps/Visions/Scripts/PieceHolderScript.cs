@@ -95,6 +95,14 @@ public class PieceHolderScript : MonoBehaviour
         UpdateCord();
     }
 
+    public void SendOffboard()
+    {
+        foreach(TurkCubeScript piece in Pieces)
+        {
+            piece.cord = new Vector2Int(-9999, -9999);
+        }
+    }
+
     public void OnDestroy()
     {
         PieceList.Remove(this);

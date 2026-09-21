@@ -31,6 +31,7 @@ public class OCItemScript : MonoBehaviour
     {
         AssignedOC = newOCSO;
         UpdateData();
+        UpdateAvailability();
     }
 
     public void UpdateData()
@@ -40,8 +41,15 @@ public class OCItemScript : MonoBehaviour
         Description.text = AssignedOC.OCSDescription;
     }
 
+    public void OnEnable()
+    {
+        UpdateAvailability();
+    }
+
     public bool UpdateAvailability()
     {
+        if (AssignedOC == null) return false;
+
         OCSO.OCAvailability availability = AssignedOC.CheckAvailability();
 
         switch(availability)

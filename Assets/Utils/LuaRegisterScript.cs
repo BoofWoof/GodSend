@@ -8,5 +8,6 @@ public class LuaRegisterScript : MonoBehaviour
         Lua.RegisterFunction("SetForceEvent", null, SymbolExtensions.GetMethodInfo(() => GameStateMonitor.SetForceEvent()));
         Lua.RegisterFunction("ReleaseForceEvent", null, SymbolExtensions.GetMethodInfo(() => GameStateMonitor.ReleaseForceEvent()));
         Lua.RegisterFunction("StartDay", null, SymbolExtensions.GetMethodInfo(() => DaytaScript.StaticStartDay()));
+        Lua.RegisterFunction("UnlockOC", null, SymbolExtensions.GetMethodInfo(() => OCUnlockTriggerScript.UnlockOCByName("")));
     }
 }

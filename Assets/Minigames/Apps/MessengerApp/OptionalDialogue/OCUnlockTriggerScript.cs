@@ -14,17 +14,36 @@ public class OCUnlockTriggerScript : MonoBehaviour
         public UnityEvent ConditionalEvent;
     }
 
+    public static Dictionary<string, OCUnlockTriggerScript> OCUnlockDict = new();
+
+    public string OCName;
+
     public OCSO OCToRelease;
-    private bool Released = false;
+    [SerializeField]private bool Released = false;
 
     public UnityEvent OnDialogueCompletion;
     public bool AutomaticallyRelease;
 
     public List<ConditionalEventData> ConditionalEvents;
 
+    public bool AdvertiseUnlock = false;
+
+    public static void UnlockOCByName(string ocName)
+    {
+        Debug.Log(ocName);
+
+        string lowerName = ocName.ToLower();
+
+        if (!OCUnlockDict.ContainsKey(lowerName)) return;
+        OCUnlockDict[lowerName].Release();
+    }
+
     public virtual void OnEnable()
     {
+        if (string.IsNullOrEmpty(OCName)) OCName = name;
+
         ConversationManagerScript.OnConversationEndEvent += OnConversationEnd;
+        if(!string.IsNullOrEmpty(OCName)) OCUnlockDict.Add(OCName.ToLower(), this);
     }
 
     public void Start()
@@ -35,15 +54,32 @@ public class OCUnlockTriggerScript : MonoBehaviour
     public virtual void OnDisable()
     {
         ConversationManagerScript.OnConversationEndEvent -= OnConversationEnd;
+        if (!string.IsNullOrEmpty(OCName)) OCUnlockDict.Remove(OCName);
     }
     public void Release()
     {
         if (Released) return;
         OCManager.instance.AddOC(OCToRelease);
+
+        if (AdvertiseUnlock)
+        {
+            string appName = "Contact";
+            string previewText = $"<b>A New Optional Dialogue Is Available:</b>\nHead to <b>Hex App</b> to check it out!";
+            AppScript targetApp = AppScript.AppsDict[appName];
+
+            AppNotificationScript.SetNotification(new AppNotificationScript.NotificationInfo
+            {
+                SourceApp = targetApp,
+                PreviewImage = targetApp.AssociatedIcon,
+                PreviewText = previewText,
+                AdditionalActions = null
+            });
+        }
     }
 
     public void OnConversationEnd(string conversationEnd)
     {
+        Debug.Log(conversationEnd);
         if(conversationEnd == OCToRelease.OCSDialogueName)
         {
             OnDialogueCompletion?.Invoke();

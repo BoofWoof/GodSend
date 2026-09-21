@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using static AppNotificationScript;
 
 public class SendPieceToHolder : MonoBehaviour
 {
@@ -15,8 +13,11 @@ public class SendPieceToHolder : MonoBehaviour
             PieceHolderScript phs = pieceClone.GetComponent<PieceHolderScript>();
 
             TurkPuzzleScript.puzzlePiece.Add(phs);
+            pieceClone.transform.SetParent(TruePieceHolderScript.instance.transform);
             phs.SendToPieceHolder(pieceClone);
             phs.AddFakeSquares();
+            phs.SendOffboard();
+            phs.transform.localRotation = Quaternion.identity;
         }
 
         AppScript targetApp = AppScript.AppsDict["Visions"];

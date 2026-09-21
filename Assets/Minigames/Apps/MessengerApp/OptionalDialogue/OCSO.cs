@@ -43,7 +43,7 @@ public class OCSO : ScriptableObject
 
     public OCAvailability CheckAvailability()
     {
-        if (ConversationManagerScript.ConversationOngoing || MessageQueue.GetQueueLength() > 0) return OCAvailability.DialogueActive;
+        if (ConversationManagerScript.ConversationOngoing || MessageQueue.GetQueueLength() > 0 || ConversationManagerScript.WaitingForEvent) return OCAvailability.DialogueActive;
         if (GameStateMonitor.DangerActive) return OCAvailability.DangerActive;
         if (GameStateMonitor.ChallengeActive && !CanRunDuringEvents) return OCAvailability.EventActive;
 

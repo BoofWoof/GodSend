@@ -59,6 +59,9 @@ public class UpgradeItemScript : MonoBehaviour
 
     public IEnumerator AffordCheck()
     {
+        yield return null;
+        Image parentImage = AssociatedList.GetComponent<Image>();
+        Color parentColor = parentImage.color;
         while (true)
         {
             if(AssociatedUpgrade == null)
@@ -68,7 +71,10 @@ public class UpgradeItemScript : MonoBehaviour
             }
             float purchaseProgress = AssociatedUpgrade.PercentBuyable();
 
-            if(AffordabilityFill != null) AffordabilityFill.fillAmount = 1f - purchaseProgress;
+            if (AssociatedUpgrade.EventBlocked()) parentImage.color = AssociatedList.EventBlockedColor;
+            else parentImage.color = parentColor;
+
+            if (AffordabilityFill != null) AffordabilityFill.fillAmount = 1f - purchaseProgress;
 
             if (purchaseProgress >= 1f && !DisablePurchases) BuyButton.GetComponent<Image>().color = new Color(1f, 1f, 1f);
             else BuyButton.GetComponent<Image>().color = new Color(0.35f, 0.3f, 0.3f);

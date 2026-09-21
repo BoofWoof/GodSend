@@ -30,7 +30,7 @@ public class AppAnimator : MonoBehaviour
 
     public IEnumerator SwitchToApp(AppScript targetApp, Vector3 offsetDirection)
     {
-        targetApp.ShowTriggers();
+        CurrentDisplayedApp.HideTriggers();
 
         Transform targetAppTransform = targetApp.AppRoot.transform;
         Transform displayedAppTransform = CurrentDisplayedApp.AppRoot.transform;
@@ -66,7 +66,7 @@ public class AppAnimator : MonoBehaviour
         displayedAppTransform.localPosition = Vector3.zero;
         displayedAppTransform.localRotation = Quaternion.identity;
 
-        CurrentDisplayedApp.HideTriggers();
+        targetApp.ShowTriggers();
 
         CurrentDisplayedApp = targetApp;
 

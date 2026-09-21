@@ -19,6 +19,7 @@ public class UpgradeItemListScript : MonoBehaviour
     public Color BaseColor;
     public Color SpecialColor;
     public Color MultiColor;
+    public Color EventBlockedColor;
 
     public float Duration = 1f;
 
