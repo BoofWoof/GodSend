@@ -1,9 +1,10 @@
+using PixelCrushers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TutorialGroupScript : MonoBehaviour
+public class TutorialGroupScript : UniqueIDScript
 {
     public string GroupName;
 
@@ -13,6 +14,8 @@ public class TutorialGroupScript : MonoBehaviour
     public bool Shown;
     public bool ShowOnlyOnce;
     public UnityEvent OnFirstClose;
+
+    public bool TriggerOnLoad = true;
 
     [HideInInspector]public bool Active = false;
     private bool Waiting = false;

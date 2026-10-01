@@ -2,6 +2,7 @@ using NUnit.Framework;
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class OCManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class OCManager : MonoBehaviour
 
     public List<OCSO> AvailableOC = new();
     public List<string> UsedUpOC = new();
+
+    public UnityEvent NewDialogueAdded;
 
     public Transform ContentHolder;
 
@@ -39,14 +42,13 @@ public class OCManager : MonoBehaviour
         Debug.Log($"Starting Optional Dialogue {selectedOCSO.OCSDialogueName}");
         ConversationManagerScript.instance.StartDialogue(selectedOCSO.OCSDialogueName);
 
+        UsedUpOC.Add(selectedOCSO.UniqueID);
 
         if (isMacroConvo)
         {
             PhonePositionScript.instance.ForceTogglePhone();
             return;
         }
-
-        UsedUpOC.Add(selectedOCSO.UniqueID);
 
         LocalCharacterInfo targetSpeaker = new LocalCharacterInfo().FromName(selectedOCSO.AssociatedActor);
         ContactsScript.instance.CheckContacts(targetSpeaker);
@@ -58,6 +60,9 @@ public class OCManager : MonoBehaviour
     public void AddOC(OCSO newOC)
     {
         if(!AvailableOC.Contains(newOC)) AvailableOC.Add(newOC);
+
+        NewDialogueAdded?.Invoke();
+
         RefreshOptions();
     }
 
@@ -79,7 +84,7 @@ public class OCManager : MonoBehaviour
     {
         List<OCSO> UpdatedList = new();
 
-        foreach (OCSO OC in  AvailableOC)
+        foreach (OCSO OC in AvailableOC)
         {
             if (UsedUpOC.Contains(OC.UniqueID)) continue;
             UpdatedList.Add(OC);

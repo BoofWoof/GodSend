@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TutorialScreenScript : MonoBehaviour
+public class TutorialScreenScript : UniqueIDScript
 {
     public bool ShowOnlyOnce = false;
     public bool Shown = false;

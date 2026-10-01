@@ -19,7 +19,7 @@ public class OCUnlockTriggerScript : MonoBehaviour
     public string OCName;
 
     public OCSO OCToRelease;
-    [SerializeField]private bool Released = false;
+    public bool Released = false;
 
     public UnityEvent OnDialogueCompletion;
     public bool AutomaticallyRelease;
@@ -43,10 +43,10 @@ public class OCUnlockTriggerScript : MonoBehaviour
         if (string.IsNullOrEmpty(OCName)) OCName = name;
 
         ConversationManagerScript.OnConversationEndEvent += OnConversationEnd;
-        if(!string.IsNullOrEmpty(OCName)) OCUnlockDict.Add(OCName.ToLower(), this);
+        if(!string.IsNullOrEmpty(OCName) && !OCUnlockDict.ContainsKey(OCName.ToLower())) OCUnlockDict.Add(OCName.ToLower(), this);
     }
 
-    public void Start()
+    public void CheckAutoRelease()
     {
         if (AutomaticallyRelease) Release();
     }
@@ -54,11 +54,12 @@ public class OCUnlockTriggerScript : MonoBehaviour
     public virtual void OnDisable()
     {
         ConversationManagerScript.OnConversationEndEvent -= OnConversationEnd;
-        if (!string.IsNullOrEmpty(OCName)) OCUnlockDict.Remove(OCName);
+        if (!string.IsNullOrEmpty(OCName)) OCUnlockDict.Remove(OCName.ToLower());
     }
     public void Release()
     {
         if (Released) return;
+        Released = true;
         OCManager.instance.AddOC(OCToRelease);
 
         if (AdvertiseUnlock)

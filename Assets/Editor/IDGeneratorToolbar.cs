@@ -64,6 +64,20 @@ public class IDGeneratorToolbar
             }
         }
 
+        UniqueIDScript[] uniqueIDTargets = Resources.FindObjectsOfTypeAll<UniqueIDScript>();
+        foreach (UniqueIDScript target in uniqueIDTargets)
+        {
+            if (string.IsNullOrEmpty(target.UniqueIDValue))
+            {
+                Undo.RecordObject(target, "Generate Unique ID");
+
+                target.UniqueIDValue = Guid.NewGuid().ToString();
+
+                EditorUtility.SetDirty(target);
+                count++;
+            }
+        }
+
         Debug.Log($"ID Generation Complete. Assigned {count} new IDs.");
     }
 }

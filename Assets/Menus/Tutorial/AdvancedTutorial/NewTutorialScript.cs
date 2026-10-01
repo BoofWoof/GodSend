@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewTutorialScript : MonoBehaviour
+public class NewTutorialScript : UniqueIDScript
 {
     public List<TutorialGroupScript> TutorialGroupsList = new();
     private Dictionary<string, TutorialGroupScript> TutorialGroupDict = new();
@@ -14,6 +14,8 @@ public class NewTutorialScript : MonoBehaviour
 
     public Image ViewBarrier;
 
+    private bool AllowShow = false;
+
     public void Awake()
     {
         ViewBarrier.enabled = false;
@@ -22,6 +24,14 @@ public class NewTutorialScript : MonoBehaviour
         {
             TutorialGroupDict[group.GroupName] = group;
         }
+
+        StartCoroutine(DelayTrigger());
+    }
+
+    public IEnumerator DelayTrigger()
+    {
+        yield return new WaitForSeconds(2f);
+        AllowShow = true;
     }
 
     public void UnlockAll()
@@ -43,6 +53,7 @@ public class NewTutorialScript : MonoBehaviour
 
     public void UnlockGroupByName(string name)
     {
+        if (!AllowShow) return;
         if (!TutorialGroupDict.ContainsKey(name)) return;
 
         TutorialGroupScript targetGroup = TutorialGroupDict[name];

@@ -80,24 +80,24 @@ public class EndOfDayScript : MonoBehaviour
         string totalVentTime = System.TimeSpan.FromSeconds(PurificationGameScript.TotalTime).ToString("m\\:ss");
 
         string FastestVeryEasy = "";
-        if (TurkPuzzleScript.TimeRecords.ContainsKey(0))
-        {
-            FastestVeryEasy = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[0]).ToString("m\\:ss");
-        }
-        string FastestEasy = "";
         if (TurkPuzzleScript.TimeRecords.ContainsKey(1))
         {
-            FastestEasy = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[1]).ToString("m\\:ss");
+            FastestVeryEasy = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[1]).ToString("m\\:ss");
         }
-        string FastestNormal = "";
+        string FastestEasy = "";
         if (TurkPuzzleScript.TimeRecords.ContainsKey(2))
         {
-            FastestNormal = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[2]).ToString("m\\:ss");
+            FastestEasy = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[2]).ToString("m\\:ss");
         }
-        string FastestHard = "";
+        string FastestNormal = "";
         if (TurkPuzzleScript.TimeRecords.ContainsKey(3))
         {
-            FastestHard = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[3]).ToString("m\\:ss");
+            FastestNormal = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[3]).ToString("m\\:ss");
+        }
+        string FastestHard = "";
+        if (TurkPuzzleScript.TimeRecords.ContainsKey(4))
+        {
+            FastestHard = System.TimeSpan.FromSeconds(TurkPuzzleScript.TimeRecords[4]).ToString("m\\:ss");
         }
         int puzzlesSolved = 0;
         foreach (int puzzleCount in TurkPuzzleScript.PuzzlesCompleted.Values)
