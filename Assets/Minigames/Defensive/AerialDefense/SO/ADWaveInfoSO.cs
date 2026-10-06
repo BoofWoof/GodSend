@@ -10,6 +10,8 @@ public class ADWaveInfoSO : ScriptableObject
     [HideInInspector] public int CurrentWave = 0;
     public bool BossWave = false;
 
+    public int WaveSong = 15;
+
     public string WaveName = "";
     public string WaveFlavor = "";
 

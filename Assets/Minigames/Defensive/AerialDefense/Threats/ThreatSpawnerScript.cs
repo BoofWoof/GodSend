@@ -35,6 +35,8 @@ public class ThreatSpawnerScript : MonoBehaviour
             ADWaveInfoSO waveInfo = Instantiate(levelData.LevelWaves[i]);
             FallingThreatScript.WaveSpeedModifier = waveInfo.WaveSpeedModifier;
 
+            MusicSelectorScript.SetOverworldSong(waveInfo.WaveSong);
+
             if (waveInfo.OnStartBroadcasts.Count > 0)
             {
                 ActiveBroadcast.BroadcastActivation(waveInfo.OnStartBroadcasts);

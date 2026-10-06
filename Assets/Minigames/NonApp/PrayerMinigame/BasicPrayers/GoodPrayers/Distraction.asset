@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Distraction
+  m_EditorClassIdentifier: 
+  GroupName: Distraction
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: "That audio play you put on the radio yesterday was sick! Could
+    you put on more? @SozanCinephile \r\nLord, please attend the Soza city annual
+    kite flying festival. Your presence and breath will be a great boon to its success!
+    @Kiel \r\nOh Great Ram, we wish you could visit our city! @MineIs5thWoolStreetBTW\r\nGreat
+    Ram, please direct your attention to East Soza in two days! We're holding a parade!
+    @ILoveA\r\nWe're almost done adding spirals to all the rooftops for you! I hope
+    you find them hypnotizing! @LilUzu\r\nLord overhead, we added amplifiers to our
+    concert hall in hopes that you'll hear us! @Baaaach\r\nI painted a mural of you!
+    Please look at it, I live on 71st Horn street on the 66th floor! I know it's
+    hard to see, but I made it as big as I could! @ArtistAardvark\r\nI am trying
+    to capture your splendor in a painting but I keep running out of grey paint trying
+    to depict your hugeness. Please smite those who do not carry enough of thine
+    divine pigment!! @TheMostBestFan"
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 

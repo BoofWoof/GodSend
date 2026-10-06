@@ -160,6 +160,10 @@ public class CharacterSpeechScript : MonoBehaviour
     {
         StartCoroutine(SpeechAttempt(name, voiceLinePath));
     }
+    public void StartSelfSpeechAttempt(string voiceLinePath)
+    {
+        StartCoroutine(SpeechAttempt(SpeakerName, voiceLinePath));
+    }
     public static IEnumerator SpeechAttempt(string name, string voiceLinePath)
     {
         ResourceRequest request = Resources.LoadAsync<VoiceLineSO>(voiceLinePath.CleanResourcePath()); // Replace GameObject with your asset type
@@ -237,6 +241,8 @@ public class CharacterSpeechScript : MonoBehaviour
         if (RadioSpeech) RadioObject.SetActive(false);
         yield return new WaitForSeconds(voiceLine.PauseAfterEnd);
 
+        if (!string.IsNullOrEmpty(voiceLine.ChainDialoguePath)) BroadcastSpeechAttempt(SpeakerName, voiceLine.ChainDialoguePath);
+
         GameStateMonitor.RemoveSpeakingSource(this);
     }
     public IEnumerator Speak(VoiceLineSO voiceLine)
@@ -265,6 +271,8 @@ public class CharacterSpeechScript : MonoBehaviour
         //WaitForMessage(FinishedSpeaking);
         Sequencer.Message("FinishedSpeaking");
         //Sequencer.Message("FinishedSpeaking");
+
+        if (!string.IsNullOrEmpty(voiceLine.ChainDialoguePath)) BroadcastSpeechAttempt(SpeakerName, voiceLine.ChainDialoguePath);
 
         GameStateMonitor.RemoveSpeakingSource(this);
     }

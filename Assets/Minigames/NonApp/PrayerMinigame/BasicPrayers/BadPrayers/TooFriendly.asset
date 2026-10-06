@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: TooFriendly
+  m_EditorClassIdentifier: 
+  GroupName: Too Friendly
+  GoodPrayer: 0
+  Responses: []
+  AlwaysAvailable: 'You''re so big! OwO I hope you don''t do anything bad to us!
+    U//U @KittyPriest01
+
+    I would kiss every inch of your soles if I could reach
+    them! @HoofsAreHoly
+
+    I''m envious of the crumbs that get to live under your
+    feet please stomp my district next! @StompMePlease
+
+    You single? Hmu my number
+    is 081-517 and my address is ''left horn street 67'' @SingleAndDesperateToMingle
+
+    Please
+    please pleasepleeeeeeease show us those hoooooooves @Hooflover1
+
+    Great Lord,
+    mighty and cruel, your will is my only law. Crush me, use me- Whatever you choose,
+    I exist to serve you. @Shiro
+
+    I keep my home filled with fast food in the
+    faintest hope you can taste it if you eat me next! @AMorselOfAMouse
+
+    Your
+    word is my command! Really, anything you do is something I''ll follow! @yourstocommand
+
+    I''ll
+    do anything you say or wish! @pleasepleasepleaseple'
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  CharacterTiedPrayersArray: []

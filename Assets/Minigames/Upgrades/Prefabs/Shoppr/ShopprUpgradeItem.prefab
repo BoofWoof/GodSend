@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f3a224c28a26f4b91fedcfba47943c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestructionRoot: {fileID: 0}
   AssociatedUpgrade: {fileID: 0}
   AssociatedUpgrades: []
   SourceScreen: {fileID: 0}
@@ -93,6 +94,7 @@ MonoBehaviour:
   BaseColor: {r: 0.14901961, g: 0.3647059, b: 0.41568628, a: 0}
   SpecialColor: {r: 0.47058824, g: 0.44313726, b: 0.21960784, a: 0}
   MultiColor: {r: 0.4117647, g: 0.22352941, b: 0.39607844, a: 0}
+  EventBlockedColor: {r: 1, g: 0.08962262, b: 0.08962262, a: 0}
   Duration: 1
   OnPurchaseTrigger:
     m_PersistentCalls:
@@ -109,6 +111,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TopTitle: {fileID: 0}
 --- !u!114 &4913680356663979655
 MonoBehaviour:
   m_ObjectHideFlags: 0

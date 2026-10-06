@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: GoodFood
+  m_EditorClassIdentifier: 
+  GroupName: Good Food
+  Responses: []
+  AlwaysAvailable: 'Have you tried wraps with fries in them? You should! They''re
+    good! @GondiWrapsOfficialAccount1
+
+    We have this one recipe for fried balls
+    of dough with cheese and I would gladly make you some, oh ram lord! @9thFleeceAveBakery
+
+    Are
+    milkshakes with burgers sinful, oh Lord? I hope not. @IDrinkUrMilkShake
+
+    Pancakes
+    or waffles, oh great ram god? The people must know! @FlatterY
+
+    My lord, please
+    absolve me of the sin of enjoying pineapple on pizza! @FingusTheDingus
+
+    Do
+    you prefer doughnuts or doughnut holes? @SquareDude99
+
+    Those drinks in the
+    machine look pretty good, I get jealous every time I see you get one! @Thorster
+
+    Does
+    the Ram God approve of curry? How does he take his and how can I send him enough?
+    @SpiceLordTheFirst2
+
+    They have Shawarma in boxes now, it''s a lot less messy
+    and still really good! @WrapsSupreme'
+  DayTwoAvailable: What was the world serpent drinking, it looked good! @Thirtsyyyy
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList:
+  - Prayer: Have you tried wraps with fries in them? You should! They're good!
+    Author: GondiWrapsOfficialAccount1
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: We have this one recipe for fried balls of dough with cheese and I would
+      gladly make you some, oh ram lord!
+    Author: 9thFleeceAveBakery
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Are milkshakes with burgers sinful, oh Lord? I hope not.
+    Author: IDrinkUrMilkShake
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Pancakes or waffles, oh great ram god? The people must know!
+    Author: FlatterY
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: My lord, please absolve me of the sin of enjoying pineapple on pizza!
+    Author: FingusTheDingus
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Do you prefer doughnuts or doughnut holes?
+    Author: SquareDude99
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Those drinks in the machine look pretty good, I get jealous every time
+      I see you get one!
+    Author: Thorster
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Does the Ram God approve of curry? How does he take his and how can I
+      send him enough?
+    Author: SpiceLordTheFirst2
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: They have Shawarma in boxes now, it's a lot less messy and still really
+      good!
+    Author: WrapsSupreme
+    SourcePrayer: {fileID: 11400000}

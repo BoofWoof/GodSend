@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public struct WaitingExpansion
@@ -56,6 +57,8 @@ public class PurificationGameScript : MonoBehaviour
 
     public VentDrawOverScript VentDrawOver;
 
+    public UnityEvent OnDefenseStart;
+
     public void Awake()
     {
         PipeStackScript.VentRotationEvent = null;
@@ -86,6 +89,8 @@ public class PurificationGameScript : MonoBehaviour
 
     public void StartGame()
     {
+        OnDefenseStart?.Invoke();
+
         ChannelChanger.instance.StartCoroutine(VolumeFade(1f));
 
         ChannelChanger.ActiveChannelChanger.PuritySwitch();

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Regrets
+  m_EditorClassIdentifier: 
+  GroupName: Regrets
+  Responses: []
+  AlwaysAvailable: 'What did you do before becoming a god? @CuriousityBat
+
+    What
+    sort of God works at a bar? What did you do before? @IworkatABarToo
+
+    You
+    look like the kind of guy who''s hurt a lot of people. @InexpensiveHeadwear
+
+    You
+    look like you''re good at what you do, but what you do isn''t very nice. @Marveling
+
+    Those
+    scars look like they have a cool backstory, wanna share it? @IGotScars2
+
+    I''m
+    pretty sure you''re a merc, right? Can we hire you to fuck off? @PleaseGiveDiscount
+
+    Did
+    you get fired or something? You don''t look like you''re steadily employed. @HowDoUPayRent?'
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

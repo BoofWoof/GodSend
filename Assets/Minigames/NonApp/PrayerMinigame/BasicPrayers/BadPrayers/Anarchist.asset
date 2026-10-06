@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Anarchist
+  m_EditorClassIdentifier: 
+  GroupName: Anarchist
+  Responses: []
+  AlwaysAvailable: 'You realize you''re breaking Sozan law, right? @legalTeamster
+
+    Hi
+    new PM! Sorry this isn''t a good prayer to send but keep up the good work! We
+    are with ya! @GoodLuckPM
+
+    Please stop breaking the ministry buildings! Our
+    taxes pay for those! @IdOntWantToPayMore
+
+    Do you personally choose the PM?
+    Can I be one? @IllBeAGoodPM
+
+    Can''t you make the ministry write better sermons?
+    Their current stuff is so boring! @Snozefest
+
+    Does the ministry have to
+    decorate everything with horns? It''s kind of bland if you ask me. @hoobodooboo
+
+    The
+    ministry makes you sound way nicer than you actually are. @ABCDEFG
+
+    Wish
+    our pantheon had the same leader turnover rate as the ministry. @wasdp
+
+    Hey
+    do you dictate the ministry tax laws? That sucks dude, you suck. Do better. @HateTax
+
+    Hey,
+    just to let you know you''re breaking so many ministry laws! @LegalFalcon
+
+    Search
+    www.ministryofficial.soza how 2 pray to Ram? @searchwww.minist'
+  DayTwoAvailable: Hey, is that snake dude your manager or something? Do we talk
+    to him to get you fired? @Karen
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray:
+  - FirstToUnlock: 2
+    Prayers: PM! Deimos snuck in a prayer! Don't send that one! Keep an eye out!
+      Please! Also don't send this one either!! @Milo
+  PrayerDataList: []

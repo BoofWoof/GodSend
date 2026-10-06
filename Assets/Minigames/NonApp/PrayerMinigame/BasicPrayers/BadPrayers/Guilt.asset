@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Guilt
+  m_EditorClassIdentifier: 
+  GroupName: Guilt
+  Responses: []
+  AlwaysAvailable: 'You crushed my car the other day... can I ask for an apology
+    without being smote? @PrettyPlease
+
+    I missed church service because you were
+    creating another disaster. Does that still count as a sin even though you caused
+    it? @WhatDoYouWant
+
+    You make me so afraid, I keep shaking. But I mix drinks,
+    so thanks... I think? @Fearet
+
+    You destroyed my home containing my 200 page
+    manuscript to your greatness! Thank you for giving me the chance to write even
+    more on how glorious you are, god! @ScholarlyStoat
+
+    Hey maybe refrain from
+    eating more of our plane. You''re really putting on weight and we can all see
+    it. @ItsTrue
+
+    Honestly, just go ahead and crush us all at this point. Saves
+    us the misery of having to be under your rule. @HurryUpAndDoIt
+
+    You crushed
+    everything I own and cared about so now I''m going to die broke and alone. We
+    have that in common. @PublicLibraryAccess#8944
+
+    You crushed my favorite boba
+    tea place. Life now sucks even more. @TsundererDeerer
+
+    Blessed are those
+    you ate because at least they don''t have to see your loser face anymore. @catificusMaximus
+
+    So
+    how many of us do you need to crush before you feel good about yourself? @Lllllllllllloyd
+
+    You
+    ate my home, workplace, bank, all of my savings, and a good portion of everyone
+    I knew and loved, but I will always trust the church and always love you! @Baa.Is.Best
+
+    My
+    heretic friend kept saying you werent really a god and then you crushed his whole
+    street. Could you tell him ''I told you so'' from me in the afterlife, oh lord?
+    @NeverDoubtDevut
+
+    They have not even managed to count how many lives you''ve
+    ruined. @no
+
+    murderer @youreacriminal
+
+    Somehow I''ve avoided losing anyone
+    to you... and yet I know it''s just a matter of time... @stopPlease
+
+    I''m
+    so tired of this I just want it to stop @stopitplease
+
+    Can you just crush
+    me already? Tired of waiting for the end. @justDOIt
+
+    Whatever. It''s all
+    over. I dont care anymore. @namehere
+
+    We''re scared! Please stop! @scared554
+
+    I''ll
+    give you everything I have just please dont hurt me! @everytingtoYOU
+
+    You
+    ate my friends... @NotIntoIt
+
+    Doesn''t matter how many of us you destroy,
+    you''re still pathetic and alone. @TruthSpeakerAnteater
+
+    If I were large
+    enough to avenge my friends you wouldn''t be reading this right now. @AaardvarkVenger
+
+    I
+    had a nice home and job and friends and now it''s nothing but a crater @lostEverything'
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

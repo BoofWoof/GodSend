@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Arm
+  m_EditorClassIdentifier: 
+  GroupName: Arm
+  Responses: []
+  AlwaysAvailable: 'What are those rings going into your neck? Can you get rid of
+    them? They look painful. @Naturalist
+
+    If you''re all powerful, can''t you
+    just fix the weird hook in your horn? Just saying. @BeNormal
+
+    Do those tubes
+    have an off switch? The glow keeps me up at nights. @RestlessReindeer
+
+    Bald.
+    No job. also no arm? @Ramhater
+
+    I can''t really blame your arm. I''d ditch
+    you too if I could. @fYOU
+
+    I know you don''t ever read this but those tubes
+    look ridiculous. @HawKING
+
+    Hey, what''s in those neck tubes? Loser juice?
+    @hahahah1124442
+
+    Horns aren''t supposed to look like that. @AntiLope
+
+    So
+    what purpose do your fake horns serve? Did you headbutt a wall and lose? @BiggestAntlers
+
+    Dude
+    please grease up that arm it looks rusted and grody. @ImAMechanic
+
+    Wow,
+    you lost a whole arm? that''s just careless. @BiArmBadass
+
+    Hey, can your
+    tubes go purple? Do we have to make you happy and angry at the same time for
+    that? @DivineDoubter
+
+    How''d you get that nasty face scar? Can''t you get
+    surgery to remove it? @DanganGrandpa
+
+    How''d you lose your arm? Looks like
+    it hurt. @ConcernedForU
+
+    Did you lose both eyes at the same time or one
+    at a time? @DingoDenial12
+
+    What did you do to need fake horns? How does
+    that even happen? @IHaveREALHornsBTW
+
+    Did you lose the whole arm or is there
+    something left of it? @FranSandisco
+
+    Are those your real eyes? They look
+    like implants. @MakingAMapofUrEYES
+
+    Hey, I''m an eye doctor and those don''t
+    look right. @PunIntended
+
+    I''m willing to bet you deserved all those scars.
+    @WouldScarU20'
+  DayTwoAvailable: Why don't you get a prettier arm like the cool snake dude? @SlitherSimp
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

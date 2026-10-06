@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Vaper
+  m_EditorClassIdentifier: 
+  GroupName: Vaper
+  Responses: []
+  AlwaysAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray:
+  - FirstToUnlock: 3
+    Prayers: "Dude, whatever that purple stuff you're inhaling is, keep it up! I
+      haven't felt so relaxed in months! @Waki\r\nI've heard legends of clouds, but
+      never thought I'd see one! Yours are so massive and vibrant! @GazingUpToYou\r\nCloud
+      watching is way cooler when you can see God making them in real time! @WeatherlyWeasel\r\nI
+      thought it was too bright out and then you filled the sky with purple clouds!
+      Thanks God! @ShadySeal\r\nThe clouds remind me of your divine wool! Blessed!
+      @Fleecity \r\nPlease blow more of that purple stuff at the city! I cant get
+      enough. I need it PLEASE PLEASE I NEED IT @RehabClinicServiceDesk\r\nYou're
+      supplying the whole city with a years worth of hallucinogens  with each puff!
+      Kind thanks! @3rdSozanGeneralHospital \r\nWhat flavor is that you\u2019re smoking?
+      Either way it makes the city smell way nicer! Thank you Ram God! @Sniffer3000
+      \r\nWhat are these objects on the table around us, my lord? Divine relics?
+      @GazingGazelle"
+  PrayerDataList:
+  - Prayer: Dude, whatever that purple stuff you're inhaling is, keep it up! I haven't
+      felt so relaxed in months!
+    Author: Waki
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I've heard legends of clouds, but never thought I'd see one! Yours are
+      so massive and vibrant!
+    Author: GazingUpToYou
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Cloud watching is way cooler when you can see God making them in real
+      time!
+    Author: WeatherlyWeasel
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I thought it was too bright out and then you filled the sky with purple
+      clouds! Thanks God!
+    Author: ShadySeal
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: The clouds remind me of your divine wool! Blessed!
+    Author: 'Fleecity '
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Please blow more of that purple stuff at the city! I cant get enough.
+      I need it PLEASE PLEASE I NEED IT
+    Author: RehabClinicServiceDesk
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You're supplying the whole city with a years worth of hallucinogens 
+      with each puff! Kind thanks!
+    Author: '3rdSozanGeneralHospital '
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: "What flavor is that you\u2019re smoking? Either way it makes the city
+      smell way nicer! Thank you Ram God!"
+    Author: 'Sniffer3000 '
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: What are these objects on the table around us, my lord? Divine relics?
+    Author: GazingGazelle
+    SourcePrayer: {fileID: 11400000}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d95574f4fa003a4581c279fdbf35a7b, type: 3}
+  m_Name: GoodPrayerGroups
+  m_EditorClassIdentifier: 
+  PrayerGroupList:
+  - {fileID: 11400000, guid: 0d0242b2cd31d914a88fb8ac257a8ef3, type: 2}
+  - {fileID: 11400000, guid: 0e82a15200082a647be161aa8e858e4b, type: 2}
+  - {fileID: 11400000, guid: 023eede853dd5784cb0e636361a2ecd6, type: 2}
+  - {fileID: 11400000, guid: 5a17a033842e1824bb6072b3dd9e7571, type: 2}
+  - {fileID: 11400000, guid: fb96ccfd3f0c21d4c8b90239668a4c7b, type: 2}
+  - {fileID: 11400000, guid: 0f6cb67031386774ca64bd0c954d2331, type: 2}
+  - {fileID: 11400000, guid: d52e7978d66af9e4f8ec9a9bf6f815bc, type: 2}
+  - {fileID: 11400000, guid: 92ee566a1e2a7894bba623084d38bcb9, type: 2}
+  - {fileID: 11400000, guid: afeddfb653e193648bba0be61099249b, type: 2}
+  - {fileID: 11400000, guid: 0469a63d40bcf1e4695945837daf2494, type: 2}
+  - {fileID: 11400000, guid: d1fe82532c6ffa149bc8c44e0d8bc1e5, type: 2}
+  - {fileID: 11400000, guid: 9548e0917b0d0374084f4c61c2ed1ae2, type: 2}
+  - {fileID: 11400000, guid: 198f115ec37165043b4fdc5444dc116c, type: 2}

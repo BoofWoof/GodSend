@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Validated
+  m_EditorClassIdentifier: 
+  GroupName: Validated
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: 'You''re the type of God I''d get a beer with... if I wouldn''t
+    drown in it. If we weren''t so far beneath you, I''d love to be friends! @BadSwimmer
+
+    I
+    found a Krona on the street the other day. It reminded me no matter how hard
+    things get, small blessing can be found. Thanks God! @Gully
+
+    I love your
+    monologues! You put so much thought into things! <3 @throwawayacc1337
+
+    When
+    I go to sleep, I hear your snoring on the horizon. It helps me sleep and reminds
+    me how similar all things are. @ServalS+
+
+    There are never enough hours in
+    the day, but it helps to take things one at a time. That''s why I pray and then
+    praise! @MouseInDaHouse
+
+    You''re not just my favorite God, you''re my favorite
+    person! @DevoutDoe
+
+    Lord, thank you for permitting us a chance to be humble!
+    You''re worth more than even you know. @Luca'
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 

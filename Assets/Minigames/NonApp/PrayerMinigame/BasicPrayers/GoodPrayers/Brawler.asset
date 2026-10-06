@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Brawler
+  m_EditorClassIdentifier: 
+  GroupName: Brawler
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: 'Lord, I challenge you to a duel. You vs. me at the top of the
+    tallest mountain in the city in one week @TheMightyMite
+
+    I double-dog dare
+    you to NOT crush our city. @Mochi
+
+    God Ram, God Ram! Those who shun him
+    will be damned! Goooooooo GOD RAM! @Cheery
+
+    You call that a bench press?
+    Get those weights lower, God! @FitNessy
+
+    In a fair fight I could probably
+    take you. @OverComeTheOdds
+
+    Easy being tough when you''re mountain sized.
+    Bet I could fold you like laundry if you were me sized. @LaundryFolder4
+
+    I''ll
+    fight you with one arm behind my back to make it fair. @ActualJudoMaster
+
+    Take
+    away that fancy metal arm and you''re nothing but a lamb! @BAAby
+
+    How about
+    you come down to my street so I can even out your arms? @FlexingOnU
+
+    I haven''t
+    met a sheep I couldn''t beat in arm wrestling yet. @Biceps FOR DAYS'
+  DayOneAvailable: 
+  DayTwoAvailable: If you and the world serpent fight, who wins? (I'm betting on
+    you BTW, lord!) @GamblingGoose1
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  CharacterTiedPrayersArray: []

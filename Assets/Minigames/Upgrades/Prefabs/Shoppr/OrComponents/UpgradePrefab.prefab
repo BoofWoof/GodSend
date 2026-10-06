@@ -447,7 +447,7 @@ MonoBehaviour:
   CostText: {fileID: 7003800172956112140}
   UpgradeImage: {fileID: 307413369963047511}
   BuyButton: {fileID: 2120189390309992128}
-  SourceScreen: {fileID: 0}
+  AffordabilityFill: {fileID: 0}
   PriceShadow: {fileID: 1737355025263484492}
   ImageShadow: {fileID: 8035702190845790883}
 --- !u!1 &5071326733258600971
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 4628833351381649004}
   - component: {fileID: 4849429814108380846}
   - component: {fileID: 3241082303404350663}
-  - component: {fileID: 1383203179051066271}
+  - component: {fileID: 7500875085259456147}
   m_Layer: 11
   m_Name: DescriptionTrigger
   m_TagString: Untagged
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AssociatedMinigame: 4
---- !u!114 &1383203179051066271
+--- !u!114 &7500875085259456147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -670,26 +670,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 6430793420683974547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: a110a0d40a3fd4647898c025f5f3bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3241082303404350663}
-          m_TargetAssemblyTypeName: ShopperHoverTriggerScript, Assembly-CSharp
-          m_MethodName: SendData
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 977626020983601496}
-            m_ObjectArgumentAssemblyTypeName: UpgradeItemScript, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  PointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3241082303404350663}
+        m_TargetAssemblyTypeName: ShopperHoverTriggerScript, Assembly-CSharp
+        m_MethodName: SendData
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 977626020983601496}
+          m_ObjectArgumentAssemblyTypeName: UpgradeItemScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PointerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3241082303404350663}
+        m_TargetAssemblyTypeName: ShopperHoverTriggerScript, Assembly-CSharp
+        m_MethodName: ClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6433640169190854864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1125,7 @@ GameObject:
   - component: {fileID: 8484922426722678427}
   - component: {fileID: 3422492358561419528}
   - component: {fileID: 5243156107751022878}
+  - component: {fileID: 8635375930451096930}
   m_Layer: 11
   m_Name: DescriptionTrigger (1)
   m_TagString: Untagged
@@ -1262,6 +1276,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8635375930451096930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880405133299893188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a110a0d40a3fd4647898c025f5f3bcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3422492358561419528}
+        m_TargetAssemblyTypeName: ShopperHoverTriggerScript, Assembly-CSharp
+        m_MethodName: ClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PointerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8871296141026670151
 GameObject:
   m_ObjectHideFlags: 0

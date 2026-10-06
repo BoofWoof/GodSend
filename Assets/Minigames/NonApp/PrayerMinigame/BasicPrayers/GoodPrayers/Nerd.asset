@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Nerd
+  m_EditorClassIdentifier: 
+  GroupName: Nerd
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: "An arm that huge can probably fit a ton of cool functions in
+    it! @GeekSquid\r\nHave you considered any voice activated tech? The kind that
+    activates with a cool catchphrase? @GoGoGidget\r\nCan your arm extend? Could
+    you reach us across the heavens!? @ArmyDillo\r\nCan your arm move, even when
+    removed? @EnterNameHere1\r\nWhat would you recommend in terms of technology for
+    limbs? @BuyCurious\r\nWhere can I get cool lights like yours? I wanna absolutely
+    dominate every rave party! (if they ever have more) @RavingRatto\r\nThat arm
+    looks like it could carry whole planets! How much horsepower does it have? @HorseWithAPrayerConsole\r\nCan
+    you control the lights on your body? It looks really cool during the night! @HeyHowManyLettersCanYouFitH
+    \r\nCan your arm do cool tricks? @FidgetFerret\r"
+  DayOneAvailable: 
+  DayTwoAvailable: The engravings on the snake's arm give no tactical advantage whatsoever,
+    unlike yours. @RotatingOcelot
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  CharacterTiedPrayersArray: []

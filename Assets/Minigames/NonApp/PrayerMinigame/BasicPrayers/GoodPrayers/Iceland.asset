@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Iceland
+  m_EditorClassIdentifier: 
+  GroupName: Iceland
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: "\"\xC9g D\xFDrkun \xDEig! I'm trying to learn the divine tongue
+    for you! @AspirantAnt\r\nWhat is that language you speak in? It sounds really
+    cool! @HatSoonMikeU\r\nEvery word of your divine tongue sounds like poetry! So
+    beautiful! @MusicToMyEars \r\nI get chills every time you speak in the language
+    of the gods! It sounds so mysterious! @DrifterTheVagabond\r\nPlease, God! Let
+    us hear more of your divine words! I wanna write a song in it! (About you, of
+    course!) @MuscalMustelid"
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  CharacterTiedPrayersArray: []

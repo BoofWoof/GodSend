@@ -12,4 +12,5 @@ public class VoiceLineSO : ScriptableObject
     public float PauseAfterEnd = 0;
 
     public string SpeakerOverride;
+    public string ChainDialoguePath;
 }

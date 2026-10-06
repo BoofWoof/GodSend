@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -35,6 +36,8 @@ public class AerialDefenseScript : MonoBehaviour
     public AerialDefenseLevelData LevelData;
     public int CurrentWave = 0;
 
+    public UnityEvent OnDefenseStart;
+
     public void Awake()
     {
         Instance = this;
@@ -55,6 +58,8 @@ public class AerialDefenseScript : MonoBehaviour
 
     public void StartLevel(bool forceActivate = false)
     {
+        OnDefenseStart?.Invoke();
+
         int CurrentWave = 0;
 
         if (GameStateMonitor.DangerActive && !forceActivate) return;

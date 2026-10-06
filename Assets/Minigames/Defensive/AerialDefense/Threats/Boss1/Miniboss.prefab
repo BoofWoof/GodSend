@@ -547,6 +547,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &231836419784463193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776450091601689041}
+  - component: {fileID: 73943938641818236}
+  m_Layer: 17
+  m_Name: DialoguePhase2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1776450091601689041
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231836419784463193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &73943938641818236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231836419784463193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c7fb02308041499d01d3d17cbbc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioPath: Assets/Resources/VoiceLines/Challenges/GunnerBoss1/3Spinning.asset
 --- !u!1 &288783224885519254
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,6 +4606,55 @@ MonoBehaviour:
   PeriodicWaitLoop: []
   AngleRange: {x: -180, y: 0}
   StartingSpeedRange: {x: 300, y: 600}
+--- !u!1 &4588018092295174715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8970855601645552907}
+  - component: {fileID: 4283528531897074614}
+  m_Layer: 17
+  m_Name: DialoguePhase3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8970855601645552907
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588018092295174715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4283528531897074614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588018092295174715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c7fb02308041499d01d3d17cbbc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioPath: Assets/Resources/VoiceLines/Challenges/GunnerBoss1/4MayCause.asset
 --- !u!1 &4689270377373925080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4632,6 +4730,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4921017172702866335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7370241902388331752}
+  - component: {fileID: 5719939787404038357}
+  m_Layer: 17
+  m_Name: DialoguePhase1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7370241902388331752
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921017172702866335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5719939787404038357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921017172702866335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c7fb02308041499d01d3d17cbbc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioPath: Assets/Resources/VoiceLines/Challenges/GunnerBoss1/2Aggressiive.asset
 --- !u!1 &5070886630731503154
 GameObject:
   m_ObjectHideFlags: 0
@@ -9951,6 +10098,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8346584163658836723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2464178525388405664}
+  - component: {fileID: 9211414506790500107}
+  m_Layer: 17
+  m_Name: DialogueEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2464178525388405664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346584163658836723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752190807526040112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9211414506790500107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346584163658836723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c7fb02308041499d01d3d17cbbc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioPath: Assets/Resources/VoiceLines/Challenges/GunnerBoss1/5Death.asset
 --- !u!1 &8365852035335216547
 GameObject:
   m_ObjectHideFlags: 0
@@ -10138,6 +10334,10 @@ RectTransform:
   - {fileID: 8128645133304209618}
   - {fileID: 8276369170897129813}
   - {fileID: 1933780312421999939}
+  - {fileID: 7370241902388331752}
+  - {fileID: 1776450091601689041}
+  - {fileID: 8970855601645552907}
+  - {fileID: 2464178525388405664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -10238,6 +10438,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9211414506790500107}
+        m_TargetAssemblyTypeName: TriggerStatement, Assembly-CSharp
+        m_MethodName: TriggerDialogueStatement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   EnemyPhases:
   - Triggered: 0
     HealthPercentageTrigger: 0.93
@@ -10271,6 +10483,18 @@ MonoBehaviour:
         - m_Target: {fileID: 3079155759880191860}
           m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
           m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 3
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5719939787404038357}
+          m_TargetAssemblyTypeName: TriggerStatement, Assembly-CSharp
+          m_MethodName: TriggerDialogueStatement
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10333,6 +10557,18 @@ MonoBehaviour:
             m_StringArgument: NextPhase
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 73943938641818236}
+          m_TargetAssemblyTypeName: TriggerStatement, Assembly-CSharp
+          m_MethodName: TriggerDialogueStatement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
   - Triggered: 0
     HealthPercentageTrigger: 0.3
     OnTriggerEvents:
@@ -10365,6 +10601,18 @@ MonoBehaviour:
         - m_Target: {fileID: 3079155759880191860}
           m_TargetAssemblyTypeName: TriggerActiveBroadcast, Assembly-CSharp
           m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: NextPhase
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4283528531897074614}
+          m_TargetAssemblyTypeName: TriggerStatement, Assembly-CSharp
+          m_MethodName: TriggerDialogueStatement
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

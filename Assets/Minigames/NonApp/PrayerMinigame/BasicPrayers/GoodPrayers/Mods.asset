@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Mods
+  m_EditorClassIdentifier: 
+  GroupName: Mods
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: 'The sky used to be so blindingly white. It hurt my eyes. Your
+    halos are so much more relaxing. @TanMan
+
+    I don''t even buy lightbulbs anymore,
+    your lights are all I need. Thank youuuu! @YeenQueen
+
+    Thank you for always
+    brightening our day with your godly radiance! @LilRay
+
+    Your mechanical arm
+    is super cool but like, wow your real arm is insane! Look at that biceps! It''s
+    HUGE!!! Must take a lot of effort! @Enthusio
+
+    How do you hold our world so
+    gently? That''s really impressive and cool and it makes my stomach tingle when
+    you do it! @LandroDandro
+
+    Your arm is so cool, ram God! Would you please
+    show it off more! @user90210
+
+    The way the light shines on your metal arm
+    is so beautiful, God! You must polish it all the time! @RegisteredUser9115521
+
+    That
+    mechanical arm has to be a miracle! It''s so precise and powerful! @HoldMeCLoserWollyDancer
+
+    The
+    range of colors from those tubes is endless! I didn''t know someone could be
+    so bright and vibrant! Truly divine! @RainbowGodLover
+
+    Where can I get cool
+    lights like yours? I wanna absolutely dominate every rave party! (if they ever
+    have more) @RavingRatto
+
+    You can see us with those eyes? Amazing! Wish I
+    had eyes that good! (To better observe you, my Lord!) @ObservingRespectfully'
+  DayOneAvailable: 
+  DayTwoAvailable: 'Who''s mechanical arms are better, yours or the snake''s? I''m
+    kidding, it''s obviously yours! @NotBiasedButGoRam! '
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  CharacterTiedPrayersArray:
+  - CharacterName: 
+    Prayers: 

@@ -31,13 +31,6 @@ public class MusicSelectorScript : MonoBehaviour
 
     private void OnEnable()
     {
-        Lua.RegisterFunction("SetSong", null, SymbolExtensions.GetMethodInfo(() => SetOverworldSong(0)));
-        Lua.RegisterFunction("FadeInSong", null, SymbolExtensions.GetMethodInfo(() => FadeInOverworldSong(0)));
-        Lua.RegisterFunction("SetPhoneSong", null, SymbolExtensions.GetMethodInfo(() => SetPhoneSong(0)));
-        Lua.RegisterFunction("RevertSong", null, SymbolExtensions.GetMethodInfo(() => RevertOverworldSong()));
-        Lua.RegisterFunction("RevertPhoneSong", null, SymbolExtensions.GetMethodInfo(() => RevertPhoneSong()));
-        Lua.RegisterFunction("PauseMusic", null, SymbolExtensions.GetMethodInfo(() => PauseMusic()));
-        Lua.RegisterFunction("ResumeMusic", null, SymbolExtensions.GetMethodInfo(() => ResumeMusic()));
         PhonePositionScript.PhoneToggled += PhoneToggleMusicSwap;
     }
     private void OnDisable()

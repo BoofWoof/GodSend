@@ -5,6 +5,7 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Events;
 using static PixelCrushers.AnimatorSaver;
+using static BasicPrayerGroupSO;
 
 public class PrayerResponse
 {
@@ -33,12 +34,10 @@ public class PrayerScript : MonoBehaviour
 
     public static PrayerScript instance;
 
-    public Dictionary<int, PrayerResponse> CurrentResponse;
+    public PrayerManagerSO GoodPrayerManager;
+    public PrayerManagerSO BadPrayerManager;
 
-    public TextAsset GoodPrayers;
-    private string[] GoodLines = null;
-    public TextAsset BadPrayers;
-    private string[] BadLines = null;
+    public Dictionary<int, PrayerResponse> CurrentResponse;
 
     public float RamAngyLevel = 0;
     public float AngerRate = 1f;
@@ -87,7 +86,9 @@ public class PrayerScript : MonoBehaviour
     {
         instance = this;
 
-        ProcessPrayers();
+        GoodPrayerManager.PrepareLists();
+        BadPrayerManager.PrepareLists();
+
         GenerateNewPrayers();
 
         PrayerSubmitted = null;
@@ -447,23 +448,6 @@ public class PrayerScript : MonoBehaviour
         }
     }
 
-    private void ProcessPrayers()
-    {
-        GoodLines = GoodPrayers.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        if (GoodLines.Length < 1)
-        {
-            Debug.LogError("Not enough lines in the text file!");
-            return;
-        }
-        BadLines = BadPrayers.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        // Ensure we have at least 3 lines to select from
-        if (BadLines.Length < 3)
-        {
-            Debug.LogError("Not enough lines in the text file!");
-            return;
-        }
-    }
-
     public void OnNewForcedPrayer()
     {
         if (GameStateMonitor.isEventActive()) return;
@@ -521,11 +505,6 @@ public class PrayerScript : MonoBehaviour
             return;
         }
 
-        Debug.Log("Generating Normal Prayer Set");
-
-        List<string> selectedGoodLine = GetRandomUniqueLines(GoodLines, 1);
-        List<string> selectedBadLines = GetRandomUniqueLines(BadLines, 2);
-
         List<PrayerResponse> prayerResponses = new List<PrayerResponse>();
         GoodIdx = Random.Range(0, 3);
         int badCount = 0;
@@ -536,12 +515,12 @@ public class PrayerScript : MonoBehaviour
             string[] split;
             if (GoodIdx == i)
             {
-                split = selectedGoodLine[0].Split(" @");
+                PrayerData prayerDataGood = GoodPrayerManager.SamplePrayer();
                 PrayerResponse newGoodResponse = new PrayerResponse
                 {
                     AssociatedIdx = -1,
-                    Prayer = split[0],
-                    Author = split[1],
+                    Prayer = prayerDataGood.Prayer,
+                    Author = prayerDataGood.Author,
                     GoodPrayer = true,
                     SpecialPrayer = false
                 };
@@ -583,12 +562,12 @@ public class PrayerScript : MonoBehaviour
                 }
             }
 
-            split = selectedBadLines[badCount].Split(" @");
+            PrayerData prayerDataBad = BadPrayerManager.SamplePrayer();
             PrayerResponse newBadResponse = new PrayerResponse
             {
                 AssociatedIdx = -1,
-                Prayer = split[0],
-                Author = split[1],
+                Prayer = prayerDataBad.Prayer,
+                Author = prayerDataBad.Author,
                 GoodPrayer = false,
                 SpecialPrayer = false
             };

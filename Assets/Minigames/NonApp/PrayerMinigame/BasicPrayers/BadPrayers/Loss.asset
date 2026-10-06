@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Loss
+  m_EditorClassIdentifier: 
+  GroupName: Loss
+  Responses: []
+  AlwaysAvailable: 'You got plenty of space, why not throw a party with all your
+    friends? @PariahDude
+
+    Being God looks lonely. Does God not get to have friends?@Mantithists
+
+    Our
+    pantheon is just two guys? Don''t you know any more people, lord? @TryMySocialDatingAppPLEASE
+
+    You
+    really need to find better friends since the ones you have seem to be ghosting
+    you. @LikeMe5
+
+    Who do you keep trying to call? If they''re not answering
+    it might be time to take a hint, buddy. @TheyreNotInterested
+
+    Did your charming
+    personality drive all your friends away or something? @SeriouslyUSuck'
+  DayTwoAvailable: 'How come we only ever see the snake visit you? Do you not have
+    other friends? @IcanBEFriend
+
+    How come you never seem to hang out with anyone?
+    The snake doesn''t count since it kind of looks like he''s your boss. @UwU4158851'
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

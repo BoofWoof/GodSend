@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Ego
+  m_EditorClassIdentifier: 
+  GroupName: Ego
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: "Can you create a rock so heavy not even you could lift it? I
+    doubt it, you're fucking swole, God. @Faithful\r\nI'm obsessed with God's horns.
+    The curls are hypnotizing. @Curly\r\nYou're so fucking cool! Wait... can I swear
+    in a prayer... @LooseLips\r\n<b>Hot.</b> @BigEarsBiggerC\r\nEvery morning I get
+    up early to copy your workout. It's the best part of my day! @DevoutDove79\r\nThe
+    shirt is so see through you might as well lose it... <3 @PecAppreciator1\r\nI
+    get tingles every time your movements shake our plane! You're so powerful! @HornyForHorns\r\nWhen
+    you're looming over us I can't see your face past your huge pecs! @GazingGazelle\r\nI
+    file my horns to look as much like you as I can but they're so small in comparison,
+    can you please grant me bigger horns to look like you? @AverageSizedHornFellow\r\nI
+    have but one humble request for you: can you share your horn care routine? They
+    always look supernaturally good! @Ramsey\r\nWould. @DownBaa~aad\r\nForgive me
+    for the sin of being too small to properly serve you my lord <3 <3  @wannaRideTheRam\r\nYour
+    body is my gym goals! @liftingLlama\r\nThank you for blessing our day with your
+    glorious voice! I didn't need windows anyway. @Kerberos\r\nLord, thank you for
+    causing that earthquake with your voice. Without it, I would have slept in. @Matt\r\nJust
+    want to inform you that you've broken every lifting record in Soza. We'd mail
+    you the certificate but...you know. @SozanRecordAssociation\r\nI'm trying to
+    sculpt you big guy but you keep bulking up and I can't uncarve. Slow down please,
+    lord! @DanesArtistry\r\nGlorious Lord, I knitted a sweater in your image but
+    it still doesn't hold a candle to your godly wool! @Glitch\r\nLove your voice!
+    Could and will listen for hours! @YayKitty\r\nHow'd you get so big? Our other
+    gods weren't so huge. @LuciouslyGrandAndGood\r\nHow should we live our lives
+    to best serve you, lord? @PlsScriptureIsConfusing\r\nO great Ram, blessed are
+    we who praise to thee, those who disagree we damn! @WrittenKitten \r\nDear lord,
+    could you turn our plane like 30 degrees clockwise? I can barely see you from
+    my apartment! @DownBadFawn.6969\r\nYou're the only god we've had that is proper
+    godlike! @DrewDivine!\r\nFor purely scientific reasons, is it possible to live
+    on you? @#1RamFan#8\r\nYour great raindrop of perspiration is a tremendous boon
+    to our farming district!  @Detty\r\nPraise the Ram! @DevoutDoe\r\nThank you for
+    looking down upon us mighty Lord, the gusts caused by your blinking has been
+    a great reprieve from the summer heat. @Alexei\r\nLord, did you mean to flex
+    just now or was that an earthquake? Anyhow thanks for waking me up! My alarm
+    clock stopped! @RamAlarm\r\nDo you have any direct commandments we should follow,
+    oh great ram god? @DevoutlyYours"
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 

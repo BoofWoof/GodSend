@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Snob
+  m_EditorClassIdentifier: 
+  GroupName: Snob
+  Responses: []
+  AlwaysAvailable: "u sml nice! @Sniiiiifff\r\nUr a bitch god fuk u @DaKongKroc\r\nThu
+    er saetur! Did I spell that correctly? Lmao your language is so weird x3 @Laerir\r\nR
+    shep mor blest than other peopl? @coolDUDE999\r\n#prayingForUToDie(smiley emoji)
+    @PrayersComeTrue\r\nPls dunt dot his @beging\r\nB @HowDoIErasePrayer?!\r\nCan
+    u send me us crypto wallet link I want to donate love u gret ram @notScam\r\nCould
+    you make the ministry have a shorter name? I don't even know how to pronounce
+    Agis, Aiges? Ageese? @ShrtNme\r\n*Horns emoji* *Eggplant Emojii* *Sweat Emojii*
+    @Ram\xB0<3\xB0Ram\xB0<3\xB0Ram\r\nHow do i get wol like u? @growingWOOL\r\nI
+    think you're way better than Alessandro! @Boufe7861\r\nc======3 @AnActualArtist\r\nWriting
+    preyers is hrd ;-; @howDoIDoThis!?"
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray:
+  - FirstToUnlock: 2
+    Prayers: Hey! Hih i hai hei hey hai! Pm ! pm! hey pm! It's Deimos! I managed
+      to sneke in a prayer, sendi t send it! @AriesFaovuriteLlama
+  PrayerDataList: []

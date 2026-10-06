@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Rebel
+  m_EditorClassIdentifier: 
+  GroupName: Rebel
+  GoodPrayer: 1
+  Responses: []
+  AlwaysAvailable: "Bank employees were fleeing from you so fast that they forgot
+    to lock up. Thanks God! @Robin\r\nThis semester of university was canceled due
+    to you removing the zip code my university was in. I can finally game! @NewHighScore\r\nYou're
+    way cooler than those losers in charge of our government! Praise the Ram! @Downwiththeministry!!!\r\nHey
+    God. Can you please punish everyone that keeps throwing me in jail? You're the
+    best! @Timothy McLout \r\nYour commands make so much more sense than that stupid
+    ministry! @Ramses12 \r\nWhy do we even have a PM? The Ram God is enough of a
+    ruler for a thousand cities! @GodIs#1\r\nIt's really based how you've destroyed
+    the ministry several times and it hasn't changed anything for us! @DisOrganizedReligion\r\nI
+    don't follow ministry law, I follow only your word, my lord! @ObeyTheRam \r\nWhy
+    do you need a PM to speak for you? I can hear your glorious words just fine!
+    @LoudRamEnjoyer \r\nI stopped paying my taxes and want to send my money straight
+    to you, oh lord! @CashForGod\r\nYou're how a faith should be! Direct and not
+    filtered by some pansy clerics in some high-rise building! @AntiTheOlogy\r\nWouldn't
+    mind seeing you smite my workplace lord, those jerks docked my pay! @SmiteMyManagerPlease\r\nHey,
+    lord? Would you mind taking out the financial district? They raised my loan payments
+    again and it would be really cool. @SinfulRates\r\nSeeing the high and mighty
+    ministry tower get flicked away like the trash it is was so cathartic, thank
+    you great ram god! @BuildingHater \r\nMinistry: 0, God's finger: 1@KeepingScoreGalore\r\nHey\u2013the
+    ministry has gotten really uppity as of late, lord. How about reminding them
+    again who's really got all the power? @AuthorityToRam\r\nMy neighborhood HOA
+    has been silent ever since you flattened half the neighborhood. Thank you so
+    much, now I can plant what I want! @Plantipus! \r\nThe new section of the city
+    that we built looks so much better than the one you ate! Thank you God! @DeerDiva420"
+  DayOneAvailable: 
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 

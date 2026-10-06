@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04277e5ae02784742ba1567b52d9bdc0, type: 3}
+  m_Name: Eloquent
+  m_EditorClassIdentifier: 
+  GroupName: Eloquent
+  Responses: []
+  AlwaysAvailable: "The radiant beauty of the light from your halos is matched only
+    by your stunning physique! @JohnFox#99912158\r\nThank you for sharing the bounty
+    of your presence, my Lord! You honor us. We are so lucky to bask in your shadow.
+    Bless our days and may you be merciful with us! @Val \r\nLord, brave and true,
+    I bid a smoocharoo from me to you @Theo\r\nI wake up early, whenever I can, and
+    stare up dearly, to praise the ram! @FleeceCapich\xE9\r\nDear Lord, like our
+    sun, stars and moon, your temperament may vary, but our love is immune. @Puck\r\nThe
+    Great Ram breathes in. Us Sozans look up to him. The Great Ram breathes out.
+    @HaiKuku\r\nRoses are red, violet is a hue, my day is never bad when praising
+    you!@LinguistLion\r\nInto thine hands, organic and of DRAM, I commend my being,
+    o lord of Rams! @DDDelight \r\nThe warmth of your light ignites my very spirit,
+    Great Ram God! @Gunk4Hire"
+  DayTwoAvailable: 
+  DayThreeAvailable: 
+  DayFourAvailable: 
+  DayFiveAvailable: 
+  GatedPrayersArray:
+  - FirstToUnlock: 1
+    Prayers: Our world he doth readily hold, Eyes of light and fleece white gold,
+      With strength beyond what we behold, And leagues better than any puny kobold.
+      @ProsePone
+  PrayerDataList:
+  - Prayer: The radiant beauty of the light from your halos is matched only by your
+      stunning physique!
+    Author: JohnFox#99912158
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Thank you for sharing the bounty of your presence, my Lord! You honor
+      us. We are so lucky to bask in your shadow. Bless our days and may you be merciful
+      with us!
+    Author: 'Val '
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Lord, brave and true, I bid a smoocharoo from me to you
+    Author: Theo
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I wake up early, whenever I can, and stare up dearly, to praise the ram!
+    Author: "FleeceCapich\xE9"
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Dear Lord, like our sun, stars and moon, your temperament may vary, but
+      our love is immune.
+    Author: Puck
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: The Great Ram breathes in. Us Sozans look up to him. The Great Ram breathes
+      out.
+    Author: HaiKuku
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Roses are red, violet is a hue, my day is never bad when praising you!@LinguistLion
+    Author: 
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Into thine hands, organic and of DRAM, I commend my being, o lord of
+      Rams!
+    Author: 'DDDelight '
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: The warmth of your light ignites my very spirit, Great Ram God!
+    Author: Gunk4Hire
+    SourcePrayer: {fileID: 11400000}
