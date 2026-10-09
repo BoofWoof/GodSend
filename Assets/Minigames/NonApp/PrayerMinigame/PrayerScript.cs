@@ -185,6 +185,7 @@ public class PrayerScript : MonoBehaviour
     #region Conversation
     public IEnumerator SubmitResponse(int answerIdx)
     {
+        GameStateMonitor.ActivePrayer = true;
         DisableButtons();
         SubmissionButtons[answerIdx].SetAuthorName("");
 
@@ -198,6 +199,8 @@ public class PrayerScript : MonoBehaviour
     public void OnConversationResponseMenu(Response[] responses)
     {
         if (!ConversationManagerScript.isMacroConvo) return;
+
+        GameStateMonitor.ActivePrayer = false;
 
         BalconyEventsScript.instance.StartSystem();
 

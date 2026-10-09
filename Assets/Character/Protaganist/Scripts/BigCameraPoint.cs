@@ -1,9 +1,7 @@
 using PixelCrushers.DialogueSystem;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 public class BigCameraPoint : MonoBehaviour
 {

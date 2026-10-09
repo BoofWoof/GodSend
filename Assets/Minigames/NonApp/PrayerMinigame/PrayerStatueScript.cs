@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PrayerStatueScript : MonoBehaviour
@@ -18,6 +19,8 @@ public class PrayerStatueScript : MonoBehaviour
 
     private Coroutine coroutine;
 
+    public static List<PrayerStatueScript> AllStatues = new();
+
     public void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -31,6 +34,24 @@ public class PrayerStatueScript : MonoBehaviour
         renderer.GetPropertyBlock(block, 3);
         block.SetColor("_EmissionColor", Color.black); // Example: Change color
         renderer.SetPropertyBlock(block, 3);
+    }
+
+    public void OnEnable()
+    {
+        AllStatues.Add(this);
+    }
+
+    public void OnDisable()
+    {
+        AllStatues.Remove(this);
+    }
+
+    public static void SetAllScrens(bool on)
+    {
+        foreach (PrayerStatueScript statue in AllStatues)
+        {
+            statue.PrayerScreen.SetActive(on);
+        }
     }
 
     public void StatueOn()
