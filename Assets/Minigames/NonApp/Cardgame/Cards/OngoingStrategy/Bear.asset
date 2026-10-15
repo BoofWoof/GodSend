@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259bbb1144876c6459daeb97d8e452c8, type: 3}
-  m_Name: Very Big Bull
+  m_Script: {fileID: 11500000, guid: e81266dacb4bbd5498f458b1b5c420f3, type: 3}
+  m_Name: Bear
   m_EditorClassIdentifier: 
   UniqueID: 
-  CardName: Very Big Bull
+  CardName: Bear
   CardArt: {fileID: 0}
-  TimeCost: 5
-  Description: Makes the stock value go MASSIVELY up.
+  TimeCost: 1
+  Description: Lower stock value a little.
   CardType: 0
   TargetType: 0
-  CardStrength: 1
   Required: 0
+  GraphChangeStrength: -1

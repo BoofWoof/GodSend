@@ -236,12 +236,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 074eaf5c565e79047839fe3f9a3751b7, type: 3}
   - {fileID: 8300000, guid: ba77644ead31d7f4582f7230391b4f78, type: 3}
   DamageNoises: []
-  thisImage: {fileID: 0}
+  thisImage: {fileID: 3368845665052231826}
   FinalRippleValue: 9
   DeathPeriod: 0.5
   DamagePeriod: 0.1
   WeakPoints: []
-  InvulnerabilityTime: 0
+  InvulnerabilityTime: 2
   Health: 4
   CanBeHurt: 1
   CanHurtCity: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   OnObjectDestroy:
     m_PersistentCalls:
       m_Calls: []
+  EnemyPhases: []
   LockRotation: 0
   StartImmediately: 0
   InitialSpeedBoost: {x: 0, y: 300}

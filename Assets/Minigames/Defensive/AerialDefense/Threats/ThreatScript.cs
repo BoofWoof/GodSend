@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
@@ -78,7 +79,7 @@ public class ThreatScript : MonoBehaviour
             thisImage = GetComponent<Image>();
         }
 
-        if(thisBoxCollider) BaseScale = thisBoxCollider.size;
+        if (thisBoxCollider) BaseScale = thisBoxCollider.size;
 
         if (thisImage != null) thisImage.maskable = true;
 
@@ -219,6 +220,12 @@ public class ThreatScript : MonoBehaviour
 
     public IEnumerator DamageWait()
     {
+        if (InvulnerabilityTime == 0)
+        {
+            CanBeHurt = true;
+            yield break;
+        }
+
         CanBeHurt = false;
         Color prevColor = thisImage.color;
         thisImage.color = Color.grey;

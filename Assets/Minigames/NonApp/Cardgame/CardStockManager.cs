@@ -21,12 +21,58 @@ public class CardStockManager : MonoBehaviour
 
     [SerializeField] private GameObject CardGameCanvas;
     public static Action<bool> CanvasStateChange;
+
+    public Transform ParticleLayer;
+
+    private StockCardLevelSO _Level;
+
+    public GraphManagerScript GraphManager;
+
+    public PlaySlotGenerator SlotManager;
+
+    public CardMakerScript CardMaker;
     public void Awake()
     {
         instance = this;
         Deck = Instantiate(StartingDeck);
         Deck.ShuffleDeck();
         TurnOff();
+    }
+
+    public void StartLevel(StockCardLevelSO targetLevel)
+    {
+        _Level = targetLevel;
+
+        StockCardLevelSO.PhaseData phaseOne = _Level.Phases[0];
+
+        SlotManager.ClearRow();
+
+        StartPhase(phaseOne, true);
+
+
+        StockCardLevelSO.PhaseData phaseTwo = _Level.Phases[1];
+        StartPhase(phaseTwo, false);
+    }
+
+    public void StartPhase(StockCardLevelSO.PhaseData phaseData, bool instantlyPlayCards)
+    {
+        if(SlotManager.GetSlotCount() != phaseData.CardPhase.Length) SlotManager.GeneratePlayRow(phaseData.CardPhase.Length);
+
+        int cardIndex = 0;
+        foreach(CardSO cardData in phaseData.CardPhase)
+        {
+            if (cardData == null)
+            {
+                cardIndex++;
+                continue;
+            }
+
+            GameObject newCard = CardMaker.MakeCard(cardData);
+            if(instantlyPlayCards) SlotManager.AddEnemyCard(newCard, cardIndex);
+            else SlotManager.AddQueuedEnemyCard(newCard, cardIndex);
+
+            cardIndex++;
+        }
     }
 
     public void TurnOn()
@@ -54,6 +100,14 @@ public class CardStockManager : MonoBehaviour
             {
                 HandManager.AddCard(DrawnCard);
             }
+        }
+    }
+
+    public void CleanupParticleLayer()
+    {
+        for(int i = ParticleLayer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(ParticleLayer.GetChild(i).gameObject);
         }
     }
 }

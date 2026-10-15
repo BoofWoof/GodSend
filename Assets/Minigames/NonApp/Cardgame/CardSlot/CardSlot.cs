@@ -1,3 +1,4 @@
+using Coffee.UIExtensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,12 +24,31 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public bool PlaySlot = false;
 
+    private bool ExhaustedSlot = false;
+
+    public UIParticle PosParticles;
+    public UIParticle NegParticles;
+    public UIParticle NeuParticles;
+
+    public TemporaryCardStorageScript PlayerCardStorage;
+    public TemporaryCardStorageScript EnemyCardStorage;
+
     public bool isAtLimit()
     {
-        return CardStack.Count >= CardLimit;
+        return GetActiveCardCount() >= CardLimit;
     }
 
-    public bool AddCardToStack(GameObject newCard)
+    public int GetActiveCardCount()
+    {
+        int activeCardCount = 0;
+        foreach (GameCardScript card in _CardStack)
+        {
+            if (card.gameObject.activeSelf) activeCardCount++;
+        }
+        return activeCardCount;
+    }
+
+    public bool AddCardToStack(GameObject newCard, bool instantly = false)
     {
         if (isAtLimit()) return false;
 
@@ -42,7 +62,26 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         CardStack.Add(gameCardScript);
         gameCardScript.CurrentSlot = this;
 
-        if (PlaySlot) OnCardPlay?.Invoke(gameCardScript);
+        if (PlaySlot)
+        {
+            gameCardScript.SetSettled(instantly);
+            gameCardScript.SetPlaced(true);
+            OnCardPlay?.Invoke(gameCardScript);
+
+            if (!instantly)
+            {
+                if (gameCardScript.PlayerCard)
+                {
+                    PlayerCardStorage.StoreCard(newCard);
+                }
+                else
+                {
+                    EnemyCardStorage.StoreCard(newCard);
+                }
+            }
+        }
+
+        gameCardScript.ExhaustionUpdate(ExhaustedSlot);
 
         return true;
     }
@@ -65,5 +104,71 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (HoveredSlot != this) return;
         HoveredSlot = null;
+    }
+
+    public GameCardScript GetActiveCard()
+    {
+        if(CardStack.Count <= 0) return null;
+        for (int i = CardStack.Count - 1; i >= 0; i--)
+        {
+            if (CardStack[i].cardIsActive()) return CardStack[i];
+        }
+
+        return null;
+    }
+
+    public void SetExhausted(bool exhausted)
+    {
+        ExhaustedSlot = exhausted;
+
+        foreach (GameCardScript card in CardStack)
+        {
+            card.ExhaustionUpdate(ExhaustedSlot);
+        }
+    }
+
+    public void SettleCard(GameObject settleCard)
+    {
+
+        settleCard.GetComponent<GameCardScript>().SetSettled(true);
+        settleCard.transform.SetParent(transform);
+        settleCard.transform.localPosition = Vector3.zero;
+        settleCard.SetActive(true);
+    }
+
+    public void LaunchParticles()
+    {
+        GameCardScript activeCard = GetActiveCard();
+
+        if (activeCard == null) return;
+
+        float changeValue = activeCard.GetOngoingValue();
+
+        if(changeValue > 0)
+        {
+            ParticleHelper(PosParticles);
+        } else if (changeValue < 0)
+        {
+            ParticleHelper(NegParticles);
+        }
+        else
+        {
+            ParticleHelper(NeuParticles);
+        }
+    }
+
+    private void ParticleHelper(UIParticle uiPrefab)
+    {
+        GameObject newUIParticle = Instantiate(uiPrefab.gameObject);
+
+        newUIParticle.transform.SetParent(uiPrefab.transform.parent);
+
+        newUIParticle.transform.localPosition = Vector3.zero;
+        newUIParticle.transform.localRotation = Quaternion.identity;
+        newUIParticle.transform.localScale = uiPrefab.transform.localScale;
+
+        newUIParticle.transform.SetParent(CardStockManager.instance.ParticleLayer, true);
+
+        newUIParticle.GetComponentInChildren<UIParticle>().Play();
     }
 }

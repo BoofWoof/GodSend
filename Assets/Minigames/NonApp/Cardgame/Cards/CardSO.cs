@@ -26,8 +26,6 @@ public class CardSO : ScriptableObject
     public CardTypeEnum CardType; //Decides When On Activate Triggers
     public CardTargetEnum TargetType; //Decides What You Can Target
 
-    public int CardStrength = 1; //Decides How Effective A Card Is (Has Different Meaning For Different Cards.
-
     [Header("Keywords")]
     public bool Required = false;
 

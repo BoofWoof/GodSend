@@ -21,11 +21,20 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     private bool PickedUp;
 
+    public Image CardExhaustionLayer;
+    private bool CardExhausted = false;
+
+    private bool CardPlaced = false;
+    private bool CardSettled = false;
+
+    public bool PlayerCard = true;
     public void Start()
     {
         ThisRec = GetComponent<RectTransform>();
         CurrentCanvas = GetComponentInParent<Canvas>();
         CurrentSlot = GetComponentInParent<CardSlot>();
+
+        ExhaustionUpdate(CardExhausted);
     }
 
     public void LateUpdate()
@@ -66,6 +75,8 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (CardPlaced) return;
+
         if (eventData.button != PointerEventData.InputButton.Left) return;
 
         PickedUp = true;
@@ -80,6 +91,8 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!PickedUp) return;
+
         if (eventData.button != PointerEventData.InputButton.Left) return;
 
         PickedUp = false;
@@ -113,5 +126,41 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         CardImage.sprite = CardData.CardArt;
         CardType.text = CardData.CardType.ToString();
         Description.text = CardData.Description;
+    }
+
+    public void ExhaustionUpdate(bool exhausted)
+    {
+        CardExhausted = exhausted;
+        GreyoutUpdate();
+    }
+
+    public void GreyoutUpdate()
+    {
+        CardExhaustionLayer.gameObject.SetActive(CardPlaced  && (CardExhausted || !CardSettled));
+
+    }
+
+    public void SetSettled(bool settled)
+    {
+        CardSettled = settled;
+        GreyoutUpdate();
+    }
+    public void SetPlaced(bool placed)
+    {
+        CardPlaced = placed;
+    }
+
+    public bool isSettled()
+    {
+        return CardSettled;
+    }
+    public bool cardIsActive()
+    {
+        return CardSettled;
+    }
+
+    public float GetOngoingValue()
+    {
+        return (CardData as OngoingCardSO).CalculateGraphChange();
     }
 }

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9b58df72028d54f912282f65ded0f4, type: 3}
+  m_Name: StockCardLevelSO
+  m_EditorClassIdentifier: 
+  WinsNeeded: 3
+  LossesAllowed: 3
+  DefaultSlots: 7
+  Phases:
+  - GoalDelta: 2
+    GreaterThanGoal: 1
+    CardPhase:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: b09485f69c016ba4ab0a3cf888aa29ec, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: b09485f69c016ba4ab0a3cf888aa29ec, type: 2}
+    - {fileID: 0}
+  - GoalDelta: 5
+    GreaterThanGoal: 1
+    CardPhase:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: b09485f69c016ba4ab0a3cf888aa29ec, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: b09485f69c016ba4ab0a3cf888aa29ec, type: 2}
+  - GoalDelta: 0
+    GreaterThanGoal: 1
+    CardPhase:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - GoalDelta: 0
+    GreaterThanGoal: 1
+    CardPhase:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - GoalDelta: 0
+    GreaterThanGoal: 1
+    CardPhase:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1b91ae48d80be47b3eb39ded4c0a0c, type: 3}
+  m_Name: TheSkyHolder
+  m_EditorClassIdentifier: 
+  Title: The Sky Holder
+  Description: 'Before <color=red>The Great Ram</color> took the sky from Soza, this
+    enormous column used to support a giant protective dome of blue light.
+
+    The
+    internals of this column are hollow and known to be the safest place for Sozan''s
+    to work. The top of it is used as a resource dropoff point.'
+  MinistryPopularity: 0.4
+  OperationalEfficiency: 0.8
+  PopulationRemaining: 0.98
