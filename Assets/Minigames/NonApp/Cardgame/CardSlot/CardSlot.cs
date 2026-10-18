@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -16,7 +17,6 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
     public Action<List<GameCardScript>> OnCardStackChange;
-    public Action<GameCardScript> OnCardPlay;
 
     public int CardLimit = 1; //Set to negative one if no card limit.
 
@@ -33,9 +33,73 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TemporaryCardStorageScript PlayerCardStorage;
     public TemporaryCardStorageScript EnemyCardStorage;
 
+    public GameObject CardHighlight;
+    private Image _HighlightImage;
+    private Color _HighlightColor;
+
+    public static Action<bool, CardSlot> SlotHovered;
+    private bool Hovered = false;
+
+    public static Action<CardSlot, GameCardScript> OnCardPlayedInSlot;
+    public static Action<CardSlot, GameCardScript> OnCardSettledInSlot;
+
+    private static List<CardSlot> PlaySlotList = new();
+
+    public void Start()
+    {
+        _HighlightImage = CardHighlight.GetComponent<Image>();
+        _HighlightColor = _HighlightImage.color;
+        HighlightCard(false, null);
+
+        if (PlaySlot)
+        {
+            PlaySlotList.Add(this);
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (PlaySlot) PlaySlotList.Remove(this);
+    }
+
+    public void OnEnable()
+    {
+        GameCardScript.CardPickedUp += HighlightCard;
+    }
+
+    public void OnDisable()
+    {
+        GameCardScript.CardPickedUp -= HighlightCard;
+    }
+
     public bool isAtLimit()
     {
         return GetActiveCardCount() >= CardLimit;
+    }
+
+    public bool isValidPlaySpace()
+    {
+        return !isAtLimit();
+    }
+
+    public static CardSlot GetSlot(int index)
+    {
+        if (index >= PlaySlotList.Count) return default;
+        return PlaySlotList[index];
+    }
+
+    public static int GetSlotCount()
+    {
+        return PlaySlotList.Count;
+    }
+
+    public void HighlightCard(bool showGlow, GameCardScript _)
+    {
+        if (!PlaySlot && showGlow) return;
+        if (CardHighlight == null) return;
+
+        CardHighlight.SetActive(showGlow && isValidPlaySpace());
+        _HighlightImage.color = _HighlightColor;
     }
 
     public int GetActiveCardCount()
@@ -50,7 +114,7 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public bool AddCardToStack(GameObject newCard, bool instantly = false)
     {
-        if (isAtLimit()) return false;
+        if (!isValidPlaySpace()) return false;
 
         newCard.transform.SetParent(transform);
         newCard.transform.localPosition = Vector3.zero;
@@ -64,9 +128,9 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (PlaySlot)
         {
-            gameCardScript.SetSettled(instantly);
+            OnCardPlayedInSlot?.Invoke(this, gameCardScript);
+            gameCardScript.SetSettled(false);
             gameCardScript.SetPlaced(true);
-            OnCardPlay?.Invoke(gameCardScript);
 
             if (!instantly)
             {
@@ -78,6 +142,9 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     EnemyCardStorage.StoreCard(newCard);
                 }
+            } else
+            {
+                SettleCard(newCard);
             }
         }
 
@@ -97,13 +164,21 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Hovered = true;
+        SlotHovered?.Invoke(true, this);
+
         HoveredSlot = this;
+        if (_HighlightImage != null) _HighlightImage.color = new Color(1, 1, 1, 1);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Hovered = false;
+        SlotHovered?.Invoke(false, this);
+
         if (HoveredSlot != this) return;
         HoveredSlot = null;
+        if (_HighlightImage != null) _HighlightImage.color = _HighlightColor;
     }
 
     public GameCardScript GetActiveCard()
@@ -116,7 +191,18 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         return null;
     }
+    
+    public GameCardScript GetPredictionCard()
+    {
+        if (Hovered && GameCardScript.CurrentHeldCard != null) return GameCardScript.CurrentHeldCard;
+        else return GetActiveCard();
+    }
 
+    public void AcitvateCard()
+    {
+        SetExhausted(true);
+        LaunchParticles();
+    }
     public void SetExhausted(bool exhausted)
     {
         ExhaustedSlot = exhausted;
@@ -129,11 +215,14 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void SettleCard(GameObject settleCard)
     {
-
-        settleCard.GetComponent<GameCardScript>().SetSettled(true);
+        GameCardScript gameCardScript = settleCard.GetComponent<GameCardScript>();
+        gameCardScript.SetSettled(true);
         settleCard.transform.SetParent(transform);
         settleCard.transform.localPosition = Vector3.zero;
         settleCard.SetActive(true);
+
+
+        OnCardSettledInSlot?.Invoke(this, gameCardScript);
     }
 
     public void LaunchParticles()

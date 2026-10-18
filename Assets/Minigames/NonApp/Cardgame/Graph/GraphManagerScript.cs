@@ -8,41 +8,29 @@ using System.Collections;
 
 public class GraphManagerScript : MonoBehaviour
 {
-    public int StartingValue = 10;
-    private List<int> GraphValues = new();
-
-
     public PlaySlotGenerator SlotData;
 
     public RectTransform GraphArea;
 
+    public int StartingValue = 10;
+    private List<int> GraphValues = new();
     private List<GameObject> GraphLines = new();
+
+    private static int AllGraphMin = 9999;
+    private static int AllGraphMax = -9999;
 
     public Color PositiveColor = Color.green;
     public Color NegativeColor = Color.red;
     public Color NeutralColor = Color.blue;
     public Color GoalColor = Color.yellow;
 
-    public int GoalValue = 15;
-    public bool GreaterThanGoal = true;
+    public bool UsePredictionValuesInstead;
+    private int TheoryTime;
+    private bool TheoryCardActive;
 
-    public TMP_Text WinText;
-    private int TotalWins = 0;
-    private int Wins = 0;
-    public TMP_Text LossText;
-    private int TotalLosses = 0;
-    private int Losses = 0;
+    private static bool PreparedToUpdate;
 
-    public TMP_Text TimeText;
-    private int CardGameTime = 0;
-    private int TotalCardGameTime = 0;
-    private static bool GraphTimeIsProgressing = false;
-
-    public RectTransform TimeRect;
-
-    private int RoundCount = 0;
-    public static Action<int> OnTimeEnd;
-    public static Action<int> OnRoundEnd;
+    private static List<GraphManagerScript> GraphManagerList = new();
 
     public void Start()
     {
@@ -52,145 +40,117 @@ public class GraphManagerScript : MonoBehaviour
         }
         GraphLines.Clear();
 
-        ResetTimer();
+        GraphManagerList.Add(this);
+    }
+    public void OnDestroy()
+    {
+        GraphManagerList.Remove(this);
+    }
+    public void OnEnable()
+    {
+        CardSlot.OnCardSettledInSlot += OnCardSettled;
+        if (UsePredictionValuesInstead) CardSlot.OnCardPlayedInSlot += OnCardPlayed;
+        PlaySlotGenerator.OnFullSlotGeneration += OnNewSlotsGenerated;
+        CardTimeManager.OnTimeTick += OnTimeTick;
+        if (UsePredictionValuesInstead) GameCardScript.CardHoveredPlaySlot += OnCardHover;
     }
 
-    public void ResetTimer()
+    public void OnDisable()
     {
-        TimeRect.sizeDelta = new Vector2(0, TimeRect.sizeDelta.y);
+        CardSlot.OnCardSettledInSlot -= OnCardSettled;
+        if (UsePredictionValuesInstead) CardSlot.OnCardPlayedInSlot -= OnCardPlayed;
+        PlaySlotGenerator.OnFullSlotGeneration -= OnNewSlotsGenerated;
+        CardTimeManager.OnTimeTick -= OnTimeTick;
+        if (UsePredictionValuesInstead) GameCardScript.CardHoveredPlaySlot -= OnCardHover;
     }
 
-    public bool CheckForWin()
+    public void OnCardHover(bool hovered, GameCardScript card,  CardSlot hoveredSlot)
     {
-        if (GreaterThanGoal)
+        if (!hovered)
         {
-            if (GraphValues[GraphValues.Count - 1] >= GoalValue)
-            {
-                return true;
-            }
-        } else
-        {
-            if (GraphValues[GraphValues.Count - 1] <= GoalValue)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void IncreaseWins()
-    {
-        TotalWins++;
-        Wins++;
-        WinText.text = Wins.ToString();
-    }
-
-    public void IncreaseLosses()
-    {
-        TotalLosses++;
-        Losses++;
-        LossText.text = Losses.ToString();
-    }
-
-    public void GenerateNewGoal()
-    {
-        //Placeholder
-        GoalValue = GoalValue + 7;
-        GreaterThanGoal = true;
-    }
-
-    public void OnCardPlay(GameCardScript playedCard)
-    {
-        if (!playedCard.PlayerCard) return;
-
-        Debug.Log("Test Card Played");
-
-        TotalCardGameTime += playedCard.CardData.TimeCost;
-        UpdateTimeText();
-
-        StartCoroutine(PassTime(playedCard.CardData.TimeCost));
-    }
-
-    private IEnumerator PassTime (int time)
-    {
-        GraphTimeIsProgressing = true;
-
-        for (int i = 0; i < time; i++)
-        {
-            CardGameTime++;
-
-
-            float timePassed = 0f;
-            float transitionPeriod = 0.4f;
-            float xSpacing = CalculateXSpacing();
-            float startXPos = (CardGameTime - 1) * xSpacing;
-            float endingXPos = (CardGameTime) * xSpacing;
-            bool graphUpdated = false;
-            while (timePassed < transitionPeriod)
-            {
-                timePassed += Time.deltaTime;
-                float progress = timePassed / transitionPeriod;
-                TimeRect.sizeDelta = new Vector2(Mathf.Lerp(startXPos, endingXPos, progress), TimeRect.sizeDelta.y);
-
-                if(timePassed > transitionPeriod / 2f && !graphUpdated)
-                {
-                    graphUpdated = true;
-
-                    CardSlot slot = SlotData.GetSlot(CardGameTime - 1);
-                    slot.SetExhausted(true);
-                    slot.LaunchParticles();
-                    UpdateGraph(CardGameTime);
-                }
-                yield return null;
-            }
-
-            if (CardGameTime >= GraphValues.Count - 1)
-            {
-                RoundCount++;
-                OnRoundEnd?.Invoke(RoundCount);
-
-                CardGameTime = 0;
-                StartingValue = GraphValues[GraphValues.Count - 1];
-                for (int j = 0; j < SlotData.GetSlotCount(); j++)
-                {
-                    SlotData.GetSlot(j).SetExhausted(false);
-                }
-                if (CheckForWin()) IncreaseWins();
-                else IncreaseLosses();
-
-                GenerateNewGoal();
-
-                UpdateGraph(CardGameTime);
-
-                ResetTimer();
-
-                yield return new WaitForSeconds(0.5f);
-            }
+            ResetTheory();
+            return;
         }
 
-        OnTimeEnd?.Invoke(CardGameTime);
-
-        UpdateGraph(CardGameTime);
-
-        CardStockManager.instance.CleanupParticleLayer();
-
-        GraphTimeIsProgressing = false;
+        TheoryCardActive = hovered;
+        TheoryTime = card.CardData.TimeCost;
+        MarkUpdateNeeded();
     }
 
-
-    public void UpdateTimeText()
+    public void OnCardPlayed(CardSlot slot, GameCardScript card)
     {
-        TimeText.text = $"Time: {TotalCardGameTime}";
+        ResetTheory();
     }
 
-    public void AddCardSlot(CardSlot slot)
+    public void ResetTheory()
     {
-        Debug.Log("CardPlayed");
-        slot.OnCardPlay += OnCardPlay;
+        TheoryCardActive = false;
+        TheoryTime = 0;
+        ClearGraphLines();
+    }
+
+    public void OnTimeTick(int currentTime)
+    {
+        MarkUpdateNeeded();
+    }
+
+    public void OnRoundEnd(int roundNumber)
+    {
+        StartingValue = GraphValues[GraphValues.Count - 1];
+        for (int j = 0; j < SlotData.GetSlotCount(); j++)
+        {
+            SlotData.GetSlot(j).SetExhausted(false);
+        }
+
+        MarkUpdateNeeded();
+    }
+
+    public void OnCardSettled(CardSlot playedSlot, GameCardScript playedCard)
+    {
+        MarkUpdateNeeded();
+    }
+
+    public void MarkUpdateNeeded()
+    {
+        StartCoroutine(PrepareGraphUpdate());
+    }
+
+    public IEnumerator PrepareGraphUpdate()
+    {
+        if (PreparedToUpdate) yield break;
+
+        PreparedToUpdate = true;
+
+        yield return null;
+
+        int currentGameTime = CardStockManager.instance.TimeManager.GetCardGameTime();
+        foreach (GraphManagerScript graphManager in GraphManagerList)
+        {
+            graphManager.UpdateGraph(currentGameTime);
+        }
+        CalculateMinMax();
+        foreach (GraphManagerScript graphManager in GraphManagerList)
+        {
+            graphManager.CreateLines(currentGameTime);
+        }
+
+        PreparedToUpdate = false;
+    }
+
+    public void OnNewSlotsGenerated(PlaySlotGenerator slotGenerator)
+    {
+        MarkUpdateNeeded();
     }
 
     public void UpdateGraph(int updateStartIndex)
     {
+        if (TheoryCardActive)
+        {
+            updateStartIndex += TheoryTime;
+        }
+
+        if (updateStartIndex > SlotData.GetSlotCount()) return;
+
         List<int> newGraphValues = new();
 
         int currentValue = StartingValue;
@@ -210,7 +170,14 @@ public class GraphManagerScript : MonoBehaviour
 
         for (int i = updateStartIndex; i < SlotData.GetSlotCount(); i++)
         {
-            GameCardScript activeCard = SlotData.GetSlot(i).GetActiveCard();
+            GameCardScript activeCard;
+            if (TheoryCardActive)
+            {
+                activeCard = SlotData.GetSlot(i).GetPredictionCard();
+            } else
+            {
+                activeCard = SlotData.GetSlot(i).GetActiveCard();
+            }
             if (activeCard != null)
             {
                 OngoingCardSO ongoingStrategy = activeCard.CardData as OngoingCardSO;
@@ -225,23 +192,41 @@ public class GraphManagerScript : MonoBehaviour
 
 
         GraphValues = newGraphValues;
-
-        CreateLines();
     }
-    private void CreateLines()
+
+    private static void CalculateMinMax()
+    {
+        AllGraphMax = -999999;
+        AllGraphMin = 999999;
+
+        foreach(GraphManagerScript graphManager in GraphManagerList)
+        {
+            if (graphManager.GraphValues.Count == 0) continue;
+
+            int localMax = graphManager.GraphValues.Max();
+            int localMin = graphManager.GraphValues.Min();
+
+            if (localMax > AllGraphMax) AllGraphMax = localMax;
+            if(localMin < AllGraphMin) AllGraphMin = localMin;
+        }
+
+        int goalValue = CardStockManager.instance.GoalValue;
+        if (AllGraphMax < goalValue) AllGraphMax = goalValue;
+        if (AllGraphMin > goalValue) AllGraphMin = goalValue;
+    }
+
+    private void CreateLines(int currentTimeIndex)
     {
         ClearGraphLines();
 
-        int maxValue = GraphValues.Max();
-        int minValue = GraphValues.Min();
+        if (GraphValues.Count == 0) return;
 
-        if(maxValue < GoalValue) maxValue = GoalValue;
-        if(minValue > GoalValue) minValue = GoalValue;
+        int goalValue = CardStockManager.instance.GoalValue;
 
-        int range = maxValue - minValue;
+        int range = AllGraphMax - AllGraphMin;
         if (range < 5) range = 5;
-        int maxY = (int)Math.Ceiling(maxValue + 0.05f * range);
-        int minY = (int)Math.Floor(minValue - 0.05f * range);
+        int maxY = (int)Math.Ceiling(AllGraphMax + 0.05f * range);
+        int minY = (int)Math.Floor(AllGraphMin - 0.05f * range);
         int finalRange = maxY - minY;
 
         float xSpacing = CalculateXSpacing();
@@ -272,13 +257,14 @@ public class GraphManagerScript : MonoBehaviour
                 lineColor = NeutralColor;
             }
 
-            float alpha = i > CardGameTime ? 0.1f : 1f; 
+            float alpha = i > currentTimeIndex ? 0.1f : 1f; 
 
             DrawLine(pointA, pointB, lineColor, alpha);
         }
 
-        Vector2 goalA = new Vector2(minXPos, minYPos + (GoalValue - minY) * ySpacing);
-        Vector2 goalB = new Vector2(-minXPos, minYPos + (GoalValue - minY) * ySpacing);
+        if (UsePredictionValuesInstead) return;
+        Vector2 goalA = new Vector2(minXPos, minYPos + (goalValue - minY) * ySpacing);
+        Vector2 goalB = new Vector2(-minXPos, minYPos + (goalValue - minY) * ySpacing);
         DrawLine(goalA, goalB, GoalColor);
     }
     public void DrawLine(Vector2 pointA, Vector2 pointB, Color lineColor, float alpha = 1)
@@ -309,19 +295,25 @@ public class GraphManagerScript : MonoBehaviour
     public void ClearGraphLines()
     {
         for(int i = GraphLines.Count - 1; i >= 0; i--) {
-            Destroy(GraphLines[i]);
+            if (Application.isPlaying)
+            {
+                Destroy(GraphLines[i]);
+            } else
+            {
+                DestroyImmediate(GraphLines[i]);
+            }
         }
         GraphLines.Clear();
-    }
-
-    public static bool IsGraphAvailable()
-    {
-        return GraphTimeIsProgressing;
     }
 
     private float CalculateXSpacing()
     {
 
         return GraphArea.sizeDelta.x / (GraphValues.Count - 1f);
+    }
+
+    public int GetFinalValue()
+    {
+        return GraphValues[GraphValues.Count - 1];
     }
 }

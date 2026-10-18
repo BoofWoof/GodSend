@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UniqueID: 
   CardName: Extremely Big Bull
-  CardArt: {fileID: 0}
-  TimeCost: 5
-  Description: Raise stock value a lot.
+  CardArt: {fileID: 21300000, guid: 2cf80096516ff8c459f057097affc773, type: 3}
+  TimeCost: 4
+  Description: <delta>
   CardType: 0
   TargetType: 0
   Required: 0

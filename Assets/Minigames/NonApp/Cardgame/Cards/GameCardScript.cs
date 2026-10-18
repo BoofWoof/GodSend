@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -28,6 +30,12 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private bool CardSettled = false;
 
     public bool PlayerCard = true;
+
+    public static Action<bool, GameCardScript> CardPickedUp;
+    public static Action<bool, GameCardScript, CardSlot> CardHoveredPlaySlot;
+
+    public static GameCardScript CurrentHeldCard;
+
     public void Start()
     {
         ThisRec = GetComponent<RectTransform>();
@@ -73,11 +81,22 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         }
     }
 
+    public void OnHoverOverSlot(bool hovered, CardSlot targetSlot)
+    {
+        CardHoveredPlaySlot?.Invoke(hovered && targetSlot.isValidPlaySpace(), this, targetSlot);
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (CardPlaced) return;
 
         if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        CardSlot.SlotHovered += OnHoverOverSlot;
+
+        CurrentHeldCard = this;
+
+        CardPickedUp?.Invoke(true, this);
 
         PickedUp = true;
         Debug.Log($"{CardData.CardName} is picked up.");
@@ -94,6 +113,12 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (!PickedUp) return;
 
         if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        CardSlot.SlotHovered -= OnHoverOverSlot;
+
+        CurrentHeldCard = null;
+
+        CardPickedUp?.Invoke(false, this);
 
         PickedUp = false;
         Debug.Log($"{CardData.CardName} is dropped.");
@@ -125,7 +150,7 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         TimeCost.text = CardData.TimeCost.ToString();
         CardImage.sprite = CardData.CardArt;
         CardType.text = CardData.CardType.ToString();
-        Description.text = CardData.Description;
+        Description.text = ProcessDescription(CardData.Description);
     }
 
     public void ExhaustionUpdate(bool exhausted)
@@ -162,5 +187,34 @@ public class GameCardScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public float GetOngoingValue()
     {
         return (CardData as OngoingCardSO).CalculateGraphChange();
+    }
+
+    public string ProcessDescription(string defaultDescription)
+    {
+        string pattern = @"<([^>]+)>";
+
+        string alteredDescription = Regex.Replace(defaultDescription, pattern, match =>
+        {
+            // Groups[1].Value contains the text inside the brackets
+            string tagContent = match.Groups[1].Value;
+
+            // Conditional logic
+            switch (tagContent)
+            {
+                case "delta":
+                    if (CardData is not OngoingCardSO) return "Error: Invalid keyword/card type pairing.";
+                    OngoingCardSO ongoingCardSO = CardData as OngoingCardSO;
+                    int deltaValue = ongoingCardSO.CalculateGraphChange();
+                    if(deltaValue > 0) return $"<sprite=0>{deltaValue}";
+                    else if(deltaValue < 0) return $"<sprite=1>{-deltaValue}";
+                    else return "<sprite=2>";
+
+                default:
+                    return "";
+            }
+        });
+
+
+        return alteredDescription;
     }
 }

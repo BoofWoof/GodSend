@@ -17,8 +17,8 @@ public class TemporaryCardStorageScript : MonoBehaviour, IPointerEnterHandler, I
     {
         UpdateWaitVisibility();
 
-        if (ReleaseOnRoundEnd) GraphManagerScript.OnRoundEnd += SendToSlot;
-        if (ReleaseOnSettle) GraphManagerScript.OnTimeEnd += SendToSlot;
+        if (ReleaseOnRoundEnd) CardTimeManager.OnRoundEnd += SendToSlot;
+        if (ReleaseOnSettle) CardTimeManager.OnTimeEnd += SendToSlot;
     }
 
     public void UpdateWaitVisibility()
@@ -61,7 +61,7 @@ public class TemporaryCardStorageScript : MonoBehaviour, IPointerEnterHandler, I
         return tempCard;
     }
 
-    public void SendToSlot(int _)
+    public void SendToSlot(int round)
     {
         if (!isCardHeld()) return;
 

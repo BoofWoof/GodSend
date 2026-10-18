@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UniqueID: 
   CardName: Bull
-  CardArt: {fileID: 0}
+  CardArt: {fileID: 21300000, guid: cef94b33fafd66a48a45c794196068e6, type: 3}
   TimeCost: 1
-  Description: Raise stock value a little.
+  Description: <delta>
   CardType: 0
   TargetType: 0
   Required: 0

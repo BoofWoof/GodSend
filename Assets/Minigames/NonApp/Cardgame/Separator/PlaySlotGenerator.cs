@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class PlaySlotGenerator : MonoBehaviour
     private float AreaWidth = 4280;
     private float RemainingWidth;
 
-    public GraphManagerScript GraphManager;
+    public static Action<CardSlot> OnNewSlotAdded;
+    public static Action<PlaySlotGenerator> OnFullSlotGeneration;
 
     public void Start()
     {
@@ -54,7 +56,7 @@ public class PlaySlotGenerator : MonoBehaviour
 
         TargetLayoutGroup.spacing = RemainingWidth / (TotalItems() - 1f);
 
-        GraphManager.UpdateGraph(0);
+        OnFullSlotGeneration?.Invoke(this);
     }
 
     private int TotalItems()
@@ -136,7 +138,7 @@ public class PlaySlotGenerator : MonoBehaviour
 
         RemainingWidth -= ((RectTransform)nsTrans).rect.width;
 
-        GraphManager.AddCardSlot(newSlot.GetComponent<CardSlot>());
+        OnNewSlotAdded?.Invoke(newSlot.GetComponent<CardSlot>());
 
         newSlot.GetComponent<CardSlot>().PlaySlot = true;
 

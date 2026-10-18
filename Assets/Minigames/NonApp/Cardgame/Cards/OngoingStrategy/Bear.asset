@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UniqueID: 
   CardName: Bear
-  CardArt: {fileID: 0}
+  CardArt: {fileID: 21300000, guid: 9a189f3598242c14da44194e186129d1, type: 3}
   TimeCost: 1
-  Description: Lower stock value a little.
+  Description: <delta>
   CardType: 0
   TargetType: 0
   Required: 0
