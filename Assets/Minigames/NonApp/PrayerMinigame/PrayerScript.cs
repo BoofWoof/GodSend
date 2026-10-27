@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Events;
-using static PixelCrushers.AnimatorSaver;
 using static BasicPrayerGroupSO;
 
 public class PrayerResponse
@@ -23,6 +22,8 @@ public class PrayerResponse
     public SpecialPrayerSetSO AssociatedSpecialPrayerSet;
 
     public Transform TopicTarget;
+
+    public BasicPrayerGroupSO BasicPrayerSource = null;
 }
 
 
@@ -71,16 +72,15 @@ public class PrayerScript : MonoBehaviour
     public bool JudgementActive = false;
     public bool JudgementFocus = false;
 
-    public List<VoiceLineSO> PositiveJudgementAudios;
-    public List<int> LastPositiveJudgementIdxs;
-    public int UniquePositivesTillRepeatAllowed;
-    public List<VoiceLineSO> NegativeJudgementAudios;
-    public List<int> LastNegativeJudgementIdxs;
-    public int UniqueNegativesTillRepeatAllowed;
-
     public UnityEvent OnJudgementActivate;
 
     private bool _SpecialPrayerActive = false;
+
+    [Header("Wrong and Right")]
+    public Material NeonGlowMaterial;
+    [ColorUsage(false, true)] public Color CorrectColor = Color.green;
+    [ColorUsage(false, true)] public Color WrongColor = Color.red;
+
 
     public void Awake()
     {
@@ -395,17 +395,9 @@ public class PrayerScript : MonoBehaviour
             RamAngyLevel -= AngerReduction;
             if (RamAngyLevel < 0) RamAngyLevel = 0;
 
-            int RandomIdx = Random.Range(0, PositiveJudgementAudios.Count);
-            if (JudgementActive) {
-                if (!GameStateMonitor.isSpeakingSourceActive())
-                {
-                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", PositiveJudgementAudios[RandomIdx]);
-                } else
-                {
-                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", PositiveJudgementAudios[RandomIdx], false);
-                }
-            } 
-            yield return new WaitForSeconds(PositiveJudgementAudios[RandomIdx].AudioData.length + 0.1f);
+            StartCoroutine(CorrectAnswerMaterialPing(CorrectColor));
+
+            yield return StartCoroutine(SendBasicPrayerVoiceLine(CurrentResponse[answerIdx].BasicPrayerSource.GetResponse()));
         }
         else
         {
@@ -416,17 +408,9 @@ public class PrayerScript : MonoBehaviour
                 yield break;
             }
 
-            int RandomIdx = Random.Range(0, NegativeJudgementAudios.Count);
-            if (JudgementActive) {
-                if (!GameStateMonitor.isSpeakingSourceActive())
-                {
-                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", NegativeJudgementAudios[RandomIdx]);
-                } else
-                {
-                    CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", NegativeJudgementAudios[RandomIdx], false);
-                }
-            }
-            yield return new WaitForSeconds(NegativeJudgementAudios[RandomIdx].AudioData.length + 0.1f);
+            StartCoroutine(CorrectAnswerMaterialPing(WrongColor));
+
+            yield return StartCoroutine(SendBasicPrayerVoiceLine(CurrentResponse[answerIdx].BasicPrayerSource.GetResponse()));
         }
 
 
@@ -525,7 +509,8 @@ public class PrayerScript : MonoBehaviour
                     Prayer = prayerDataGood.Prayer,
                     Author = prayerDataGood.Author,
                     GoodPrayer = true,
-                    SpecialPrayer = false
+                    SpecialPrayer = false,
+                    BasicPrayerSource = prayerDataGood.SourcePrayer
                 };
 
                 prayerResponses.Add(newGoodResponse);
@@ -572,7 +557,8 @@ public class PrayerScript : MonoBehaviour
                 Prayer = prayerDataBad.Prayer,
                 Author = prayerDataBad.Author,
                 GoodPrayer = false,
-                SpecialPrayer = false
+                SpecialPrayer = false,
+                BasicPrayerSource = prayerDataBad.SourcePrayer
             };
 
             prayerResponses.Add(newBadResponse);
@@ -590,24 +576,64 @@ public class PrayerScript : MonoBehaviour
             SubmissionButtons[i].RestartMessage();
         }
     }
+    #endregion
 
-    private List<string> GetRandomUniqueLines(string[] lines, int count)
+    public IEnumerator SendBasicPrayerVoiceLine(string voiceFilePath)
     {
-        // Create a list to hold unique lines
-        HashSet<int> selectedIndices = new HashSet<int>();
-        List<string> result = new List<string>();
+        if (string.IsNullOrEmpty(voiceFilePath)) yield break;
 
-        // Randomly select unique indices
-        while (selectedIndices.Count < count)
+        voiceFilePath = voiceFilePath.CleanResourcePath();
+
+        Debug.Log($"Loading prayer from {voiceFilePath}.");
+
+        ResourceRequest request = Resources.LoadAsync<VoiceLineSO>(voiceFilePath); // Replace GameObject with your asset type
+
+        yield return request;
+
+        if (request.asset == null) yield break;
+
+        Debug.Log($"Asset loaded {request.asset.name}.");
+
+        VoiceLineSO voiceLine = request.asset as VoiceLineSO;
+
+        yield return new WaitForSeconds(0.3f);
+
+        if (JudgementActive)
         {
-            int randomIndex = Random.Range(0, lines.Length);
-            if (selectedIndices.Add(randomIndex)) // Add returns false if already present
+            if (!GameStateMonitor.isSpeakingSourceActive())
             {
-                result.Add(lines[randomIndex]);
+                CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", voiceLine);
+            }
+            else
+            {
+                CharacterSpeechScript.BroadcastSpeechAttempt("MacroAries", voiceLine, false);
             }
         }
 
-        return result;
+        yield return new WaitForSeconds(voiceLine.AudioData.length + 0.1f);
     }
-    #endregion
+
+    public IEnumerator CorrectAnswerMaterialPing(Color targetPingColor)
+    {
+        Color defaultColor = NeonGlowMaterial.GetColor("_EmissionColor");
+
+        NeonGlowMaterial.SetColor("_EmissionColor", targetPingColor);
+        NeonGlowMaterial.SetColor("_BaseColor", targetPingColor);
+
+        float timePassed = 0;
+        float pingPeriod = 4f;
+        while(timePassed < pingPeriod)
+        {
+            timePassed += Time.deltaTime;
+            float progress = timePassed / pingPeriod;
+            Color progressColor = Color.Lerp(targetPingColor, defaultColor, progress);
+            NeonGlowMaterial.SetColor("_EmissionColor", progressColor);
+            NeonGlowMaterial.SetColor("_BaseColor", progressColor);
+            
+            yield return null;
+        }
+
+        NeonGlowMaterial.SetColor("_EmissionColor", defaultColor);
+        NeonGlowMaterial.SetColor("_BaseColor", defaultColor);
+    }
 }

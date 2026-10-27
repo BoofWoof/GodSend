@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: TooFriendly
   m_EditorClassIdentifier: 
   GroupName: Too Friendly
-  GoodPrayer: 0
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TooFriendly/TooFriendsly
+    1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TooFriendly/TooFriendsly
+    2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TooFriendly/TooFriendsly
+    3.asset
   AlwaysAvailable: 'You''re so big! OwO I hope you don''t do anything bad to us!
     U//U @KittyPriest01
 
@@ -42,9 +47,40 @@ MonoBehaviour:
 
     I''ll
     do anything you say or wish! @pleasepleasepleaseple'
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray: []
+  GatedPrayersArray: []
+  PrayerDataList:
+  - Prayer: You're so big! OwO I hope you don't do anything bad to us! U//U
+    Author: KittyPriest01
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I would kiss every inch of your soles if I could reach them!
+    Author: HoofsAreHoly
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'm envious of the crumbs that get to live under your feet please stomp
+      my district next!
+    Author: StompMePlease
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You single? Hmu my number is 081-517 and my address is 'left horn street
+      67'
+    Author: SingleAndDesperateToMingle
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Please please pleasepleeeeeeease show us those hoooooooves
+    Author: Hooflover1
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Great Lord, mighty and cruel, your will is my only law. Crush me, use
+      me- Whatever you choose, I exist to serve you.
+    Author: Shiro
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I keep my home filled with fast food in the faintest hope you can taste
+      it if you eat me next!
+    Author: AMorselOfAMouse
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Your word is my command! Really, anything you do is something I'll follow!
+    Author: yourstocommand
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'll do anything you say or wish!
+    Author: pleasepleasepleaseple
+    SourcePrayer: {fileID: 11400000}

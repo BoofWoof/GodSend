@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Anarchist
   m_EditorClassIdentifier: 
   GroupName: Anarchist
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Anarchist/Anarchist 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Anarchist/Anarchist 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Anarchist/Anarchist 3.asset
   AlwaysAvailable: 'You realize you''re breaking Sozan law, right? @legalTeamster
 
     Hi
@@ -29,8 +32,8 @@ MonoBehaviour:
     Can''t you make the ministry write better sermons?
     Their current stuff is so boring! @Snozefest
 
-    Does the ministry have to
-    decorate everything with horns? It''s kind of bland if you ask me. @hoobodooboo
+    Does the ministry have to decorate
+    everything with horns? It''s kind of bland if you ask me. @hoobodooboo
 
     The
     ministry makes you sound way nicer than you actually are. @ABCDEFG
@@ -55,4 +58,41 @@ MonoBehaviour:
   - FirstToUnlock: 2
     Prayers: PM! Deimos snuck in a prayer! Don't send that one! Keep an eye out!
       Please! Also don't send this one either!! @Milo
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: You realize you're breaking Sozan law, right?
+    Author: legalTeamster
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hi new PM! Sorry this isn't a good prayer to send but keep up the good
+      work! We are with ya!
+    Author: GoodLuckPM
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Please stop breaking the ministry buildings! Our taxes pay for those!
+    Author: IdOntWantToPayMore
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Do you personally choose the PM? Can I be one?
+    Author: IllBeAGoodPM
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Can't you make the ministry write better sermons? Their current stuff
+      is so boring!
+    Author: Snozefest
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Does the ministry have to decorate everything with horns? It's kind of
+      bland if you ask me.
+    Author: hoobodooboo
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: The ministry makes you sound way nicer than you actually are.
+    Author: ABCDEFG
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Wish our pantheon had the same leader turnover rate as the ministry.
+    Author: wasdp
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey do you dictate the ministry tax laws? That sucks dude, you suck.
+      Do better.
+    Author: HateTax
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey, just to let you know you're breaking so many ministry laws!
+    Author: LegalFalcon
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Search www.ministryofficial.soza how 2 pray to Ram?
+    Author: searchwww.minist
+    SourcePrayer: {fileID: 11400000}

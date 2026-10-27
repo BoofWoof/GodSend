@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Validated
   m_EditorClassIdentifier: 
   GroupName: Validated
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Validated/Validated 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Validated/Validated 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Validated/Validated 3.asset
   AlwaysAvailable: 'You''re the type of God I''d get a beer with... if I wouldn''t
     drown in it. If we weren''t so far beneath you, I''d love to be friends! @BadSwimmer
 
@@ -38,8 +40,9 @@ MonoBehaviour:
 
     Lord, thank you for permitting us a chance to be humble!
     You''re worth more than even you know. @Luca'
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

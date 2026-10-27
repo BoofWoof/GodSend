@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Arm
   m_EditorClassIdentifier: 
   GroupName: Arm
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Arm/Arm 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Arm/Arm 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Arm/Arm 3.asset
   AlwaysAvailable: 'What are those rings going into your neck? Can you get rid of
     them? They look painful. @Naturalist
 
@@ -43,39 +46,102 @@ MonoBehaviour:
     Dude
     please grease up that arm it looks rusted and grody. @ImAMechanic
 
-    Wow,
-    you lost a whole arm? that''s just careless. @BiArmBadass
+    Wow, you
+    lost a whole arm? that''s just careless. @BiArmBadass
 
-    Hey, can your
-    tubes go purple? Do we have to make you happy and angry at the same time for
-    that? @DivineDoubter
+    Hey, can your tubes
+    go purple? Do we have to make you happy and angry at the same time for that?
+    @DivineDoubter
 
-    How''d you get that nasty face scar? Can''t you get
-    surgery to remove it? @DanganGrandpa
+    How''d you get that nasty face scar? Can''t you get surgery
+    to remove it? @DanganGrandpa
 
-    How''d you lose your arm? Looks like
-    it hurt. @ConcernedForU
+    How''d you lose your arm? Looks like it hurt.
+    @ConcernedForU
 
-    Did you lose both eyes at the same time or one
-    at a time? @DingoDenial12
+    Did you lose both eyes at the same time or one at a time?
+    @DingoDenial12
 
-    What did you do to need fake horns? How does
-    that even happen? @IHaveREALHornsBTW
+    What did you do to need fake horns? How does that even happen?
+    @IHaveREALHornsBTW
 
-    Did you lose the whole arm or is there
-    something left of it? @FranSandisco
+    Did you lose the whole arm or is there something left
+    of it? @FranSandisco
 
-    Are those your real eyes? They look
-    like implants. @MakingAMapofUrEYES
+    Are those your real eyes? They look like implants.
+    @MakingAMapofUrEYES
 
-    Hey, I''m an eye doctor and those don''t
-    look right. @PunIntended
+    Hey, I''m an eye doctor and those don''t look right.
+    @PunIntended
 
-    I''m willing to bet you deserved all those scars.
-    @WouldScarU20'
+    I''m willing to bet you deserved all those scars. @WouldScarU20'
   DayTwoAvailable: Why don't you get a prettier arm like the cool snake dude? @SlitherSimp
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: What are those rings going into your neck? Can you get rid of them? They
+      look painful.
+    Author: Naturalist
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: If you're all powerful, can't you just fix the weird hook in your horn?
+      Just saying.
+    Author: BeNormal
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Do those tubes have an off switch? The glow keeps me up at nights.
+    Author: RestlessReindeer
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Bald. No job. also no arm?
+    Author: Ramhater
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I can't really blame your arm. I'd ditch you too if I could.
+    Author: fYOU
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I know you don't ever read this but those tubes look ridiculous.
+    Author: HawKING
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey, what's in those neck tubes? Loser juice?
+    Author: hahahah1124442
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Horns aren't supposed to look like that.
+    Author: AntiLope
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: So what purpose do your fake horns serve? Did you headbutt a wall and
+      lose?
+    Author: BiggestAntlers
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Dude please grease up that arm it looks rusted and grody.
+    Author: ImAMechanic
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Wow, you lost a whole arm? that's just careless.
+    Author: BiArmBadass
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey, can your tubes go purple? Do we have to make you happy and angry
+      at the same time for that?
+    Author: DivineDoubter
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: How'd you get that nasty face scar? Can't you get surgery to remove it?
+    Author: DanganGrandpa
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: How'd you lose your arm? Looks like it hurt.
+    Author: ConcernedForU
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Did you lose both eyes at the same time or one at a time?
+    Author: DingoDenial12
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: What did you do to need fake horns? How does that even happen?
+    Author: IHaveREALHornsBTW
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Did you lose the whole arm or is there something left of it?
+    Author: FranSandisco
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Are those your real eyes? They look like implants.
+    Author: MakingAMapofUrEYES
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey, I'm an eye doctor and those don't look right.
+    Author: PunIntended
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'm willing to bet you deserved all those scars.
+    Author: WouldScarU20
+    SourcePrayer: {fileID: 11400000}

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: AntiCorp
   m_EditorClassIdentifier: 
   GroupName: AntiCorp
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/AntiCorp/AntiCorp 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/AntiCorp/AntiCorp 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/AntiCorp/AntiCorp 3.asset
   AlwaysAvailable: "Oh wow four company posters, you must be the god of shills! @SoftKnocksLife\r\nOh
     you're the type who has company logos on his wall. Kind of cringe buddy. @KonoRioDa\r\nFirst
     time we've had a god that's bought and paid for by some company. It sucks \U0001F615
@@ -31,4 +34,43 @@ MonoBehaviour:
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: Oh wow four company posters, you must be the god of shills!
+    Author: SoftKnocksLife
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Oh you're the type who has company logos on his wall. Kind of cringe
+      buddy.
+    Author: KonoRioDa
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: "First time we've had a god that's bought and paid for by some company.
+      It sucks \U0001F615"
+    Author: ShillGodHater1
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: So which one of those companies on your wall are sponsoring you being
+      a massive chode to us?
+    Author: UsuckUsuckUsuck
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Shill!
+    Author: youAREa
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey can I send you a poster from my company for your wall?
+    Author: SozaSousVideOfficial
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: God of corporate branding!
+    Author: GodofROASTS
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I like the bird poster you have on your wall! Go birds or FLOCK or whatever
+      that is!
+    Author: LisMaybeReal
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: "That thing on the poster there that's holding up a whole city\u2013
+      is that your gym goals or something?"
+    Author: Observer12
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: That long guy in the turtleneck in that poster on your wall, is he your
+      boyfriend or something?
+    Author: ILikeMangos23
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: There is a typo in your snake poster!
+    Author: spellCheckWiz
+    SourcePrayer: {fileID: 11400000}

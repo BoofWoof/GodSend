@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Nerd
   m_EditorClassIdentifier: 
   GroupName: Nerd
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Nerd/Nerd 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Nerd/Nerd 2.asset
   AlwaysAvailable: "An arm that huge can probably fit a ton of cool functions in
     it! @GeekSquid\r\nHave you considered any voice activated tech? The kind that
     activates with a cool catchphrase? @GoGoGidget\r\nCan your arm extend? Could
@@ -25,10 +26,10 @@ MonoBehaviour:
     looks like it could carry whole planets! How much horsepower does it have? @HorseWithAPrayerConsole\r\nCan
     you control the lights on your body? It looks really cool during the night! @HeyHowManyLettersCanYouFitH
     \r\nCan your arm do cool tricks? @FidgetFerret\r"
-  DayOneAvailable: 
   DayTwoAvailable: The engravings on the snake's arm give no tactical advantage whatsoever,
     unlike yours. @RotatingOcelot
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray: []
+  GatedPrayersArray: []
+  PrayerDataList: []

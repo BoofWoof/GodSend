@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Vaper
   m_EditorClassIdentifier: 
   GroupName: Vaper
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 2.asset
   AlwaysAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 

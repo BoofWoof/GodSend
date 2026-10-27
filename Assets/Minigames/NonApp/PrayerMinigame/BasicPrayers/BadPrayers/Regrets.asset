@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Regrets
   m_EditorClassIdentifier: 
   GroupName: Regrets
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Regrets/Regrets 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Regrets/Regrets 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Regrets/Regrets 3.asset
   AlwaysAvailable: 'What did you do before becoming a god? @CuriousityBat
 
     What
@@ -38,4 +41,26 @@ MonoBehaviour:
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: What did you do before becoming a god?
+    Author: CuriousityBat
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: What sort of God works at a bar? What did you do before?
+    Author: IworkatABarToo
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You look like the kind of guy who's hurt a lot of people.
+    Author: InexpensiveHeadwear
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You look like you're good at what you do, but what you do isn't very
+      nice.
+    Author: Marveling
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Those scars look like they have a cool backstory, wanna share it?
+    Author: IGotScars2
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'm pretty sure you're a merc, right? Can we hire you to fuck off?
+    Author: PleaseGiveDiscount
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Did you get fired or something? You don't look like you're steadily employed.
+    Author: HowDoUPayRent?
+    SourcePrayer: {fileID: 11400000}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Distraction
   m_EditorClassIdentifier: 
   GroupName: Distraction
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction2.asset
   AlwaysAvailable: "That audio play you put on the radio yesterday was sick! Could
     you put on more? @SozanCinephile \r\nLord, please attend the Soza city annual
     kite flying festival. Your presence and breath will be a great boon to its success!
@@ -28,8 +29,9 @@ MonoBehaviour:
     to capture your splendor in a painting but I keep running out of grey paint trying
     to depict your hugeness. Please smite those who do not carry enough of thine
     divine pigment!! @TheMostBestFan"
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

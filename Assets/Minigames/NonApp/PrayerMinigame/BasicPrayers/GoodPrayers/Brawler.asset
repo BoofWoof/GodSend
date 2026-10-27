@@ -13,28 +13,29 @@ MonoBehaviour:
   m_Name: Brawler
   m_EditorClassIdentifier: 
   GroupName: Brawler
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler2.asset
   AlwaysAvailable: 'Lord, I challenge you to a duel. You vs. me at the top of the
     tallest mountain in the city in one week @TheMightyMite
 
     I double-dog dare
     you to NOT crush our city. @Mochi
 
-    God Ram, God Ram! Those who shun him
-    will be damned! Goooooooo GOD RAM! @Cheery
+    God Ram, God Ram! Those who shun him will
+    be damned! Goooooooo GOD RAM! @Cheery
 
-    You call that a bench press?
-    Get those weights lower, God! @FitNessy
+    You call that a bench press? Get those
+    weights lower, God! @FitNessy
 
-    In a fair fight I could probably
-    take you. @OverComeTheOdds
+    In a fair fight I could probably take you.
+    @OverComeTheOdds
 
-    Easy being tough when you''re mountain sized.
-    Bet I could fold you like laundry if you were me sized. @LaundryFolder4
+    Easy being tough when you''re mountain sized. Bet I could
+    fold you like laundry if you were me sized. @LaundryFolder4
 
-    I''ll
-    fight you with one arm behind my back to make it fair. @ActualJudoMaster
+    I''ll fight
+    you with one arm behind my back to make it fair. @ActualJudoMaster
 
     Take
     away that fancy metal arm and you''re nothing but a lamb! @BAAby
@@ -44,10 +45,10 @@ MonoBehaviour:
 
     I haven''t
     met a sheep I couldn''t beat in arm wrestling yet. @Biceps FOR DAYS'
-  DayOneAvailable: 
   DayTwoAvailable: If you and the world serpent fight, who wins? (I'm betting on
     you BTW, lord!) @GamblingGoose1
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray: []
+  GatedPrayersArray: []
+  PrayerDataList: []

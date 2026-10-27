@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Ego
   m_EditorClassIdentifier: 
   GroupName: Ego
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Ego/Ego1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Ego/Ego2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Ego/Ego3.asset
   AlwaysAvailable: "Can you create a rock so heavy not even you could lift it? I
     doubt it, you're fucking swole, God. @Faithful\r\nI'm obsessed with God's horns.
     The curls are hypnotizing. @Curly\r\nYou're so fucking cool! Wait... can I swear
@@ -50,8 +52,9 @@ MonoBehaviour:
     just now or was that an earthquake? Anyhow thanks for waking me up! My alarm
     clock stopped! @RamAlarm\r\nDo you have any direct commandments we should follow,
     oh great ram god? @DevoutlyYours"
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

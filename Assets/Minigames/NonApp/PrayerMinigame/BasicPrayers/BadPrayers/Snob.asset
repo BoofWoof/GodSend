@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Snob
   m_EditorClassIdentifier: 
   GroupName: Snob
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Snob/Snob 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Snob/Snob 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Snob/Snob 3.asset
   AlwaysAvailable: "u sml nice! @Sniiiiifff\r\nUr a bitch god fuk u @DaKongKroc\r\nThu
     er saetur! Did I spell that correctly? Lmao your language is so weird x3 @Laerir\r\nR
     shep mor blest than other peopl? @coolDUDE999\r\n#prayingForUToDie(smiley emoji)
@@ -32,4 +35,48 @@ MonoBehaviour:
   - FirstToUnlock: 2
     Prayers: Hey! Hih i hai hei hey hai! Pm ! pm! hey pm! It's Deimos! I managed
       to sneke in a prayer, sendi t send it! @AriesFaovuriteLlama
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: u sml nice!
+    Author: Sniiiiifff
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Ur a bitch god fuk u
+    Author: DaKongKroc
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Thu er saetur! Did I spell that correctly? Lmao your language is so weird
+      x3
+    Author: Laerir
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: R shep mor blest than other peopl?
+    Author: coolDUDE999
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: '#prayingForUToDie(smiley emoji)'
+    Author: PrayersComeTrue
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Pls dunt dot his
+    Author: beging
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: B
+    Author: HowDoIErasePrayer?!
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Can u send me us crypto wallet link I want to donate love u gret ram
+    Author: notScam
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Could you make the ministry have a shorter name? I don't even know how
+      to pronounce Agis, Aiges? Ageese?
+    Author: ShrtNme
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: '*Horns emoji* *Eggplant Emojii* *Sweat Emojii*'
+    Author: "Ram\xB0<3\xB0Ram\xB0<3\xB0Ram"
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: How do i get wol like u?
+    Author: growingWOOL
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I think you're way better than Alessandro!
+    Author: Boufe7861
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: c======3
+    Author: AnActualArtist
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Writing preyers is hrd ;-;
+    Author: howDoIDoThis!?
+    SourcePrayer: {fileID: 11400000}

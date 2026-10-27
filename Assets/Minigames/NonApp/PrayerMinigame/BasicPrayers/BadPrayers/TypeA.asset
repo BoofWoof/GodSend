@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: TypeA
   m_EditorClassIdentifier: 
   GroupName: TypeA
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TypeAPersonality/TypeA
+    1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TypeAPersonality/TypeA
+    2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/TypeAPersonality/TypeA
+    3.asset
   AlwaysAvailable: 'Can''t you tell the ministry to make more holidays? Like ones
     where you get the day off and not lame ones where you still gotta work. @geebydeeby
 
@@ -41,4 +47,31 @@ MonoBehaviour:
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: Can't you tell the ministry to make more holidays? Like ones where you
+      get the day off and not lame ones where you still gotta work.
+    Author: geebydeeby
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Seriously dude, get a girlfriend. We don't need to watch you being sad
+      all day.
+    Author: Florence.Nightingale.As.In.The.Bird
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You should go out more. Please. I can't bear seeing more of you.
+    Author: PlatyPUSSCrusher
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Don't you have a job you could be doing?
+    Author: Employed
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You seem stressed, maybe you should go outside?
+    Author: ConcernedCrow
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I think god needs to get out more.
+    Author: GoOutside
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Can't you take it easy on us? Please?
+    Author: Please152
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I keep praying for a cool new hat. Guess what? No cool new hat. Try harder
+      God.
+    Author: FancyPlants
+    SourcePrayer: {fileID: 11400000}

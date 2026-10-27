@@ -1,0 +1,24 @@
+MohoSwitch1
+1 rest
+7 rest
+6 MBP
+9 L
+12 E
+15 MBP
+18 etc
+21 AI
+24 WQ
+27 O
+30 L
+33 etc
+35 AI
+38 etc
+43 AI
+45 etc
+50 AI
+52 etc
+55 AI
+57 etc
+68 E
+73 etc
+80 rest

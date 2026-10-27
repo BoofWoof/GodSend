@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: JustMean
   m_EditorClassIdentifier: 
   GroupName: JustMean
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/JustMean/JustMean 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/JustMean/JustMean 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/JustMean/JustMean 3.asset
   AlwaysAvailable: 'Small eggplant emoji energy. @DuckofLuck
 
     I did the math
@@ -25,13 +28,13 @@ MonoBehaviour:
     A ''god''
     for gooners. @YoupipeHater
 
-    I''m here to see hot gods. This was a waste
-    of time. @MeanYoupiper
+    I''m here to see hot gods. This was a waste of
+    time. @MeanYoupiper
 
     Cringe fetish god. @MeanYoupiper
 
-    Remember
-    when you stubbed your hoof last week? I do, I got video and I''m showing everyone.
+    Remember when
+    you stubbed your hoof last week? I do, I got video and I''m showing everyone.
     Funniest shit ever. @tubeview.com
 
     My insurance doesn''t cover acts of god?
@@ -44,38 +47,106 @@ MonoBehaviour:
     You''re a sadistic
     asshole. Smite me. I don''t care. @ImDone
 
-    No one asked for you, trash.
-    @YoupipeHater
+    No one asked for you, trash. @YoupipeHater
 
-    We can fix him. Nah I don''t wanna. @ShamefulYoupiper
+    We
+    can fix him. Nah I don''t wanna. @ShamefulYoupiper
 
-    Can
-    we get someone else to rule us who isnt a malicious asshole? @NewGodPlease
+    Can we get someone else
+    to rule us who isnt a malicious asshole? @NewGodPlease
 
-    Our
-    previous god could have kicked your ass @OldFaith
+    Our previous god
+    could have kicked your ass @OldFaith
 
-    You didn''t even crush
-    a shitty part of the city, can you do anything right? @BeMineErmine
+    You didn''t even crush a shitty part
+    of the city, can you do anything right? @BeMineErmine
 
-    It''s
-    a shame our plane isn''t big enough for you to choke on. @AngeredWolfX.X
+    It''s a shame our
+    plane isn''t big enough for you to choke on. @AngeredWolfX.X
 
-    Hey
-    so everything was great before you arrived, things suck now and it''s your fault.
-    @dontwannabeunderramrule
+    Hey so everything
+    was great before you arrived, things suck now and it''s your fault. @dontwannabeunderramrule
 
-    This prayer system is stupid and is probably just
-    some AI training scam bullshit. @Ratical
+    This
+    prayer system is stupid and is probably just some AI training scam bullshit.
+    @Ratical
 
-    You''re all bluster! I bet you
-    couldn''t kill a gnat let alone flatten my home! @My neighbor, Rick
+    You''re all bluster! I bet you couldn''t kill a gnat let alone
+    flatten my home! @My neighbor, Rick
 
-    Gods
-    are supposed to be cool and nice, not evil and lame! @crocoDenial'
+    Gods are supposed to be cool and nice,
+    not evil and lame! @crocoDenial'
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: Small eggplant emoji energy.
+    Author: DuckofLuck
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I did the math and I can safely say, in terms of relative inches, I'm
+      bigger.
+    Author: CharlieTheHorse
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'd tell you to eat my ass but your diet already sucks.
+    Author: FedUpFennec
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: A 'god' for gooners.
+    Author: YoupipeHater
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I'm here to see hot gods. This was a waste of time.
+    Author: MeanYoupiper
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Cringe fetish god.
+    Author: MeanYoupiper
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Remember when you stubbed your hoof last week? I do, I got video and
+      I'm showing everyone. Funniest shit ever.
+    Author: tubeview.com
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: My insurance doesn't cover acts of god? You both are evil.
+    Author: BigFunds
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: I used to work in the plane waste disposal facility until you crushed
+      it under your thumb and it was the largest pile of garbage I'd ever seen until
+      you showed up.
+    Author: WasteED
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You're a sadistic asshole. Smite me. I don't care.
+    Author: ImDone
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: No one asked for you, trash.
+    Author: YoupipeHater
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: We can fix him. Nah I don't wanna.
+    Author: ShamefulYoupiper
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Can we get someone else to rule us who isnt a malicious asshole?
+    Author: NewGodPlease
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Our previous god could have kicked your ass
+    Author: OldFaith
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You didn't even crush a shitty part of the city, can you do anything
+      right?
+    Author: BeMineErmine
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: It's a shame our plane isn't big enough for you to choke on.
+    Author: AngeredWolfX.X
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Hey so everything was great before you arrived, things suck now and it's
+      your fault.
+    Author: dontwannabeunderramrule
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: This prayer system is stupid and is probably just some AI training scam
+      bullshit.
+    Author: Ratical
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You're all bluster! I bet you couldn't kill a gnat let alone flatten
+      my home!
+    Author: My neighbor, Rick
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Gods are supposed to be cool and nice, not evil and lame!
+    Author: crocoDenial
+    SourcePrayer: {fileID: 11400000}

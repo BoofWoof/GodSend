@@ -29,6 +29,9 @@ public class BasicPrayerGroupSO : ScriptableObject
     private int CurrentPrayerIdx = -1;
     [SerializeField] private List<PrayerData> PrayerDataList = new();
 
+    private int CurrentResponseIdx = -1;
+
+
     public void ResetPrayerIdx()
     {
         CurrentPrayerIdx = 0;
@@ -109,5 +112,14 @@ public class BasicPrayerGroupSO : ScriptableObject
         CurrentPrayerIdx += 1;
         CurrentPrayerIdx = CurrentPrayerIdx % PrayerDataList.Count;
         return PrayerDataList[CurrentPrayerIdx];
+    }
+
+    public string GetResponse()
+    {
+        if (Responses.Length == 0) return "";
+
+        CurrentResponseIdx += 1;
+        CurrentResponseIdx = CurrentResponseIdx % Responses.Length;
+        return Responses[CurrentResponseIdx];
     }
 }

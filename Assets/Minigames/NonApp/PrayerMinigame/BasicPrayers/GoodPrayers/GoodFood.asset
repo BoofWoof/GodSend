@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GoodFood
   m_EditorClassIdentifier: 
   GroupName: Good Food
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/GoodFood/GoodFood 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/GoodFood/GoodFood 2.asset
   AlwaysAvailable: 'Have you tried wraps with fries in them? You should! They''re
     good! @GondiWrapsOfficialAccount1
 

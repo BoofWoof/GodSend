@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Loss
   m_EditorClassIdentifier: 
   GroupName: Loss
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Loss/Loss 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Loss/Loss 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/BadPrayers/Loss/Loss 3.asset
   AlwaysAvailable: 'You got plenty of space, why not throw a party with all your
     friends? @PariahDude
 
@@ -40,4 +43,24 @@ MonoBehaviour:
   DayFourAvailable: 
   DayFiveAvailable: 
   GatedPrayersArray: []
-  PrayerDataList: []
+  PrayerDataList:
+  - Prayer: You got plenty of space, why not throw a party with all your friends?
+    Author: PariahDude
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Being God looks lonely. Does God not get to have friends?@Mantithists
+    Author: 
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Our pantheon is just two guys? Don't you know any more people, lord?
+    Author: TryMySocialDatingAppPLEASE
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: You really need to find better friends since the ones you have seem to
+      be ghosting you.
+    Author: LikeMe5
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Who do you keep trying to call? If they're not answering it might be
+      time to take a hint, buddy.
+    Author: TheyreNotInterested
+    SourcePrayer: {fileID: 11400000}
+  - Prayer: Did your charming personality drive all your friends away or something?
+    Author: SeriouslyUSuck
+    SourcePrayer: {fileID: 11400000}

@@ -1,0 +1,23 @@
+MohoSwitch1
+1 rest
+5 rest
+4 AI
+20 rest
+22 rest
+21 etc
+24 U
+26 FV
+29 AI
+32 etc
+40 AI
+43 etc
+52 U
+56 rest
+69 rest
+68 etc
+73 U
+77 etc
+82 AI
+86 etc
+91 rest
+96 rest

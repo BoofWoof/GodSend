@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   GroupName: Blue
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Blue/Blue_1.asset
   AlwaysAvailable: 'I love it when your tubes glow blue, everything looks so cool
     in the light! @BlueWoof
 
@@ -24,9 +24,9 @@ MonoBehaviour:
     Have you
     considered adding lights to your other arm as well? I think it would look cool
     with some blue on it~ @BlueFan8851474'
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray: []
+  GatedPrayersArray: []
+  PrayerDataList: []

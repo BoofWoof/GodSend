@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Rebel
   m_EditorClassIdentifier: 
   GroupName: Rebel
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Rebel/Rebel 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Rebel/Rebel 2.asset
   AlwaysAvailable: "Bank employees were fleeing from you so fast that they forgot
     to lock up. Thanks God! @Robin\r\nThis semester of university was canceled due
     to you removing the zip code my university was in. I can finally game! @NewHighScore\r\nYou're
@@ -39,8 +40,9 @@ MonoBehaviour:
     has been silent ever since you flattened half the neighborhood. Thank you so
     much, now I can plant what I want! @Plantipus! \r\nThe new section of the city
     that we built looks so much better than the one you ate! Thank you God! @DeerDiva420"
-  DayOneAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
+  GatedPrayersArray: []
+  PrayerDataList: []

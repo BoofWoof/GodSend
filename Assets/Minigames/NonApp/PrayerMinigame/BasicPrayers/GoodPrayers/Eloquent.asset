@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Eloquent
   m_EditorClassIdentifier: 
   GroupName: Eloquent
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Eloquent/Eloquent 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Eloquent/Eloquent 2.asset
   AlwaysAvailable: "The radiant beauty of the light from your halos is matched only
     by your stunning physique! @JohnFox#99912158\r\nThank you for sharing the bounty
     of your presence, my Lord! You honor us. We are so lucky to bask in your shadow.

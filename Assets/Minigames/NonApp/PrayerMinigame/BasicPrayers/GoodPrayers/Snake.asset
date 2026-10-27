@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Snake
   m_EditorClassIdentifier: 
   GroupName: Snake
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Snake/Snake 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Snake/Snake 2.asset
   AlwaysAvailable: 
-  DayOneAvailable: 
   DayTwoAvailable: "That snake is ludicrously fancy! Is he the god of being a dandy?
     Trying to understand the pantheon better. @AlreadyTaken2\r\nLord, what does the
     other end of the world serpent look like? Trying to win a bet here, I think it\u2019s
@@ -25,4 +25,5 @@ MonoBehaviour:
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray: []
+  GatedPrayersArray: []
+  PrayerDataList: []

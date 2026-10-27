@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Mods
   m_EditorClassIdentifier: 
   GroupName: Mods
-  GoodPrayer: 1
-  Responses: []
+  Responses:
+  - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 2.asset
   AlwaysAvailable: 'The sky used to be so blindingly white. It hurt my eyes. Your
     halos are so much more relaxing. @TanMan
 
@@ -51,12 +52,10 @@ MonoBehaviour:
 
     You can see us with those eyes? Amazing! Wish I
     had eyes that good! (To better observe you, my Lord!) @ObservingRespectfully'
-  DayOneAvailable: 
   DayTwoAvailable: 'Who''s mechanical arms are better, yours or the snake''s? I''m
     kidding, it''s obviously yours! @NotBiasedButGoRam! '
   DayThreeAvailable: 
   DayFourAvailable: 
   DayFiveAvailable: 
-  CharacterTiedPrayersArray:
-  - CharacterName: 
-    Prayers: 
+  GatedPrayersArray: []
+  PrayerDataList: []
