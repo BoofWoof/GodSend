@@ -48,13 +48,28 @@ public class FirstTimeSave : Saver
         }
     }
 
-    public override void ApplyData(string s)
+    [Serializable]
+    public class FirstsSaveData
     {
-        throw new System.NotImplementedException();
+        public List<PossibleFirsts> SavedFirsts;
     }
 
     public override string RecordData()
     {
-        throw new System.NotImplementedException();
+        FirstsSaveData saveData = new FirstsSaveData();
+        saveData.SavedFirsts = new List<PossibleFirsts>(Firsts);
+
+
+        return SaveSystem.Serialize(saveData);
+    }
+
+    public override void ApplyData(string s)
+    {
+        FirstsSaveData firstList = SaveSystem.Deserialize<FirstsSaveData>(s);
+
+        foreach(PossibleFirsts firstEnum in firstList.SavedFirsts)
+        {
+            AddNewFirst(firstEnum);
+        }
     }
 }

@@ -80,6 +80,8 @@ public class PrayerScript : MonoBehaviour
     public Material NeonGlowMaterial;
     [ColorUsage(false, true)] public Color CorrectColor = Color.green;
     [ColorUsage(false, true)] public Color WrongColor = Color.red;
+    public AudioSource GoodPrayerAudio;
+    public AudioSource BadPrayerAudio;
 
 
     public void Awake()
@@ -373,6 +375,18 @@ public class PrayerScript : MonoBehaviour
             RamAngyLevel -= AngerReduction;
             if (RamAngyLevel < 0) RamAngyLevel = 0;
 
+            if (CurrentResponse[answerIdx].GoodPrayer)
+            {
+                int ariesLike = DialogueLua.GetVariable("AriesLike").asInt;
+                DialogueLua.SetVariable("AriesLike", ariesLike + 1);
+                Debug.Log($"Aries Like {ariesLike + 1}.");
+            } else
+            {
+                int ariesSpite = DialogueLua.GetVariable("AriesSpite").asInt;
+                DialogueLua.SetVariable("AriesSpite", ariesSpite + 1);
+                Debug.Log($"Aries Spite {ariesSpite + 1}.");
+            }
+
             yield return instance.StartCoroutine(CurrentResponse[answerIdx].AssociatedSpecialPrayerData.WaitLoadResponseChain());
 
             if (CurrentResponse[answerIdx].AssociatedSpecialPrayerData.SpecialResponseChainVL != null && CurrentResponse[answerIdx].AssociatedSpecialPrayerData.SpecialResponseChainVL.Count > 0)
@@ -395,9 +409,10 @@ public class PrayerScript : MonoBehaviour
             RamAngyLevel -= AngerReduction;
             if (RamAngyLevel < 0) RamAngyLevel = 0;
 
-            StartCoroutine(CorrectAnswerMaterialPing(CorrectColor));
-
             yield return StartCoroutine(SendBasicPrayerVoiceLine(CurrentResponse[answerIdx].BasicPrayerSource.GetResponse()));
+
+            StartCoroutine(CorrectAnswerMaterialPing(CorrectColor));
+            GoodPrayerAudio?.Play();
         }
         else
         {
@@ -408,9 +423,10 @@ public class PrayerScript : MonoBehaviour
                 yield break;
             }
 
-            StartCoroutine(CorrectAnswerMaterialPing(WrongColor));
-
             yield return StartCoroutine(SendBasicPrayerVoiceLine(CurrentResponse[answerIdx].BasicPrayerSource.GetResponse()));
+
+            StartCoroutine(CorrectAnswerMaterialPing(WrongColor));
+            BadPrayerAudio?.Play();
         }
 
 
@@ -610,7 +626,7 @@ public class PrayerScript : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(voiceLine.AudioData.length + 0.1f);
+        yield return new WaitForSeconds(voiceLine.AudioData.length + 0.4f);
     }
 
     public IEnumerator CorrectAnswerMaterialPing(Color targetPingColor)

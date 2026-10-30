@@ -25,7 +25,6 @@ public class SPrayerSubmissionScript : Saver
         base.Awake();
         WaitingForcedPrayers = new List<SpecialPrayerSetSO>();
         WaitingSpecialPrayers = new List<SpecialPrayerData>();
-        SentPrayerIDs = new List<string>();
         Submitted = false;
     }
 

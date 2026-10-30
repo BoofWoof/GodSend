@@ -26,7 +26,11 @@ public class PrayerSaver : Saver
     public override void ApplyData(string s)
     {
         PrayerSaveData saveData = SaveSystem.Deserialize<PrayerSaveData>(s);
-        if (saveData == null) return;
+        if (saveData == null)
+        {
+            SPrayerSubmissionScript.SentPrayerIDs = new List<string>();
+            return;
+        }
         SPrayerSubmissionScript.SentPrayerIDs = saveData.SentPrayerIDs;
         PrayerScript.GoodPrayerCount = saveData.GoodPrayers;
         PrayerScript.BadPrayerCount = saveData.BadPrayers;
