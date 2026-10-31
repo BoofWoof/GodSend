@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class BusySignScript : MonoBehaviour
 {
-    private enum SignMode
+    public enum SignMode
     {
         Leisure = 0,
         Meeting = 90,
@@ -32,6 +32,8 @@ public class BusySignScript : MonoBehaviour
     public UnityEvent StartRotate;
 
     private bool WasDanger = false;
+
+    public static SignMode GlobalCurrentMode = SignMode.Leisure;
 
     public void OnEnable()
     {
@@ -86,6 +88,7 @@ public class BusySignScript : MonoBehaviour
         rotationCoroutine = StartCoroutine(RotationAnimation(newMode, currentMode));
 
         currentMode = newMode;
+        GlobalCurrentMode = newMode;
     }
 
     private IEnumerator RotationAnimation(SignMode newMode, SignMode prevMode)

@@ -19,6 +19,8 @@ public class EndOfDayScript : MonoBehaviour
 
     public AudioSource EndOfDaySound;
 
+    public SpawnPrefab PrefabSpawner;
+
     public void Start()
     {
         StartingTime = Time.time;
@@ -30,12 +32,31 @@ public class EndOfDayScript : MonoBehaviour
         StatScreen.SetActive(false);
     }
 
+    public void SpawnSave()
+    {
+        GameObject spawnedObjects = PrefabSpawner.SpawnObjects()[0];
+        SaveMenuScript saveMenuScript = spawnedObjects.GetComponent<SaveMenuScript>();
+
+        if (saveMenuScript == null) return;
+
+        saveMenuScript.SetCompletitionMenu();
+        saveMenuScript.OnSaveTrigger += GoSceneMenu;
+    }
+    /*
     public void GoSceneNextDay()
     {
         DaytaScript.ExternalSkipStart = false;
         DayInfo.SetDay(DayInfo.CurrentDay + 1);
         SaveSystem.LoadScene("AriesRoom");
     }
+    */
+
+    public void CancelEndDay()
+    {
+        ShutterScript.instance.ActivateShutters();
+        StatScreen.SetActive(false);
+    }
+
     public void GoSceneMenu()
     {
         SaveSystem.LoadScene("MainMenu");

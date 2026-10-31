@@ -9,22 +9,25 @@ using UnityEngine.UI;
 
 public class SaveMenuScript : MonoBehaviour
 {
+    public static int SelectedSaveDay = 1;
+
     public static SaveMenuScript instance;
 
-    private static int _SelectedSaveSlot = -1;
+    private static int _SelectedSaveSlotIdx = -1;
     public int SelectedSaveSlot
     {
-        get { return _SelectedSaveSlot; }
+        get { return _SelectedSaveSlotIdx; }
         set {
-            _SelectedSaveSlot = value; 
+            _SelectedSaveSlotIdx = value; 
             if(value >= 0)
             {
-                if (loadButton != null) loadButton.interactable = !NewSaveSelected;
+                if (loadButton != null) loadButton.interactable = !NewSaveSelected && !SelectedSlot.CompletedFile;
                 if (deleteButton != null) deleteButton.interactable = !NewSaveSelected;
                 SaveSelected = true;
             }
         }
     }
+    public static SaveSlotScript SelectedSlot;
     public static bool NewSaveSelected = false;
     public bool SaveSelected = false;
 
@@ -33,8 +36,6 @@ public class SaveMenuScript : MonoBehaviour
     public bool TrueSaveLoadFalse = true;
 
     public Transform ContentHolder;
-
-    public GameObject SlotPrefab;
 
     public GameObject SaveDataWarning;
 
@@ -45,9 +46,13 @@ public class SaveMenuScript : MonoBehaviour
     public Button loadButton;
     public Button deleteButton;
 
-    public static List<SaveSlotScript> SaveSlotItems = new List<SaveSlotScript>();
-
     public static bool ForceAllowSaves = false;
+
+    public SaveSlotScript[] MenuOwnedSaveSlots;
+
+    private static bool _CompleteSave = false;
+
+    public Action OnSaveTrigger;
 
     [Serializable]
     public class SaveMetadata
@@ -56,17 +61,23 @@ public class SaveMenuScript : MonoBehaviour
         public int Day;
         public float TimePlayed;
         public double Credits;
+        public bool DayComplete = false;
     }
 
     void Start()
     {
         instance = this;
-        SaveSlotItems = new List<SaveSlotScript>();
 
         MainMenu = SceneManager.GetActiveScene().name == "MainMenu";
         if (MainMenu) Destroy(saveButton.gameObject);
 
         Reset();
+    }
+
+    public static void AutoSave()
+    {
+        Debug.Log("Autosaving!!!");
+        Save(0);
     }
 
     public void OnEnable()
@@ -77,6 +88,17 @@ public class SaveMenuScript : MonoBehaviour
     public void OnDisable()
     {
         SaveSystem.saveEnded -= OnSaveEnd;
+        _CompleteSave = false;
+    }
+
+    public void OnDestroy()
+    {
+        instance = null;
+    }
+
+    public void SetCompletitionMenu()
+    {
+        _CompleteSave = true;
     }
     public void Update()
     {
@@ -86,6 +108,12 @@ public class SaveMenuScript : MonoBehaviour
             else ErrorText.text = "Select a save slot to save/load/delete.";
             if (saveButton != null) saveButton.interactable = false;
             return;
+        }
+
+        if (MenuOwnedSaveSlots[SelectedSaveSlot].Autosave)
+        {
+            ErrorText.text = "";
+            saveButton.interactable = false;
         }
 
         if (MainMenu)
@@ -123,8 +151,6 @@ public class SaveMenuScript : MonoBehaviour
 
     public void Reset()
     {
-        DeleteMenuObjects();
-
         SelectedSaveSlot = -1;
 
         if (saveButton != null) saveButton.interactable = false;
@@ -133,15 +159,7 @@ public class SaveMenuScript : MonoBehaviour
         deleteButton.interactable = false;
         SaveSelected = false;
 
-        ShowExistingSaveFiles();
-    }
-
-    public void DeleteMenuObjects()
-    {
-        foreach (Transform child in ContentHolder)
-        {
-            Destroy(child.gameObject);
-        }
+        //ShowExistingSaveFiles();
     }
 
     public static bool SaveFileExists()
@@ -156,6 +174,7 @@ public class SaveMenuScript : MonoBehaviour
         return false;
     }
 
+    /*
     public void ShowExistingSaveFiles()
     {
         int EmptySlot = -1;
@@ -188,39 +207,61 @@ public class SaveMenuScript : MonoBehaviour
                 (RectTransform)ContentHolder.transform
             );
     }
+    */
 
     public void SaveAttempt()
     {
+        if (SelectedSlot != null && SelectedSlot.Autosave) return;
         if (NewSaveSelected)
         {
-            Save();
+            Save(SelectedSaveSlot);
             return;
         }
-
         SaveDataWarning.SetActive(true);
     }
 
-    public void Save()
+    static public void Save(int SaveSlot)
     {
-        Debug.Log($"Saving your game for slot: {SelectedSaveSlot}");
+        Debug.Log($"Saving your game for slot: {SaveSlot}");
 
         SaveMetadata metadata = new SaveMetadata
         {
-            Slot = SelectedSaveSlot,
+            Slot = SaveSlot,
             Day = DayInfo.CurrentDay,
             TimePlayed = EndOfDayScript.GetTimePassed(),
-            Credits = CurrencyData.Credits
+            Credits = CurrencyData.Credits,
+            DayComplete = _CompleteSave
         };
 
         string metaDataSerialized = SaveSystem.Serialize(metadata);
 
-        string path = Application.persistentDataPath + "/slot_" + SelectedSaveSlot + ".meta";
+        string path = Application.persistentDataPath + "/slot_" + SaveSlot + ".meta";
         System.IO.File.WriteAllText(path, metaDataSerialized);
 
-        SaveSystem.SaveToSlot(instance.SelectedSaveSlot);
+        SaveSystem.SaveToSlot(SaveSlot);
 
+        if (instance != null) instance.SaveTriggers();
+    }
+
+    private void SaveTriggers()
+    {
         if (saveButton != null) saveButton.interactable = false;
         deleteButton.interactable = false;
+
+        UpdateAllSaveSlots();
+
+        OnSaveTrigger?.Invoke();
+
+        SaveSelected = false;
+    }
+
+    public void UpdateAllSaveSlots()
+    {
+        foreach (SaveSlotScript saveSlot in MenuOwnedSaveSlots)
+        {
+            saveSlot.UpdateSaveSlot();
+            saveSlot.Reset();
+        }
     }
 
     public void OnSaveEnd()
@@ -267,6 +308,7 @@ public class SaveMenuScript : MonoBehaviour
         }
 
         Reset();
+        UpdateAllSaveSlots();
     }
 
     public static void ToggleForceAllowSaves()

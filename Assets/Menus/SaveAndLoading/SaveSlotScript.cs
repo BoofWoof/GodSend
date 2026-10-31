@@ -7,6 +7,9 @@ public class SaveSlotScript : MonoBehaviour
     public Toggle ToggleDisplay;
     public int SlotID;
 
+    public bool Autosave;
+    public bool CompletedFile;
+
     public bool NewSaveSlot = false;
 
     public TMP_Text Description;
@@ -14,16 +17,23 @@ public class SaveSlotScript : MonoBehaviour
     public void Start()
     {
         Reset();
+        UpdateSaveSlot();
+    }
+
+    public void UpdateSaveSlot()
+    {
+        SetSaveSlot(SlotID);
     }
 
     public void OnClick()
     {
-        foreach(SaveSlotScript saveslot in SaveMenuScript.SaveSlotItems)
+        foreach(SaveSlotScript saveslot in SaveMenuScript.instance.MenuOwnedSaveSlots)
         {
             saveslot.Reset();
         }
         ToggleDisplay.isOn = true;
 
+        SaveMenuScript.SelectedSlot = this;
         SaveMenuScript.NewSaveSelected = NewSaveSlot;
         SaveMenuScript.instance.SelectedSaveSlot = SlotID;
     }
@@ -33,29 +43,51 @@ public class SaveSlotScript : MonoBehaviour
         SlotID = SlotNumber;
 
         SaveMenuScript.SaveMetadata metaData = SaveMenuScript.GetMetaData(SlotNumber);
-        if (metaData == null) return;
+        if (metaData == null)
+        {
+            Description.text =
+                $"{GetSlotName()}\n" +
+                $"No Save";
 
-        Description.text = 
-            $"Save Slot: {metaData.Slot}\n" +
-            $"Day: {metaData.Day}\n" +
+            NewSaveSlot = true;
+
+            RebuildLayouts();
+            return;
+        }
+        NewSaveSlot = false;
+        CompletedFile = metaData.DayComplete;
+
+        if (metaData.DayComplete)
+        {
+            Description.text =
+                $"{GetSlotName()}\n" +
+                $"<b>DAY COMPLETED</b>";
+
+            RebuildLayouts();
+            return;
+        }
+
+        Description.text =
+            $"{GetSlotName()}\n" +
             $"Time Played: {System.TimeSpan.FromSeconds(metaData.TimePlayed).ToString("h\\:mm\\:ss")}\n" +
-            $"Credits: {metaData.Credits}";
+            $"Credits: {GetAssociatedDayValue(metaData)}";
 
         RebuildLayouts();
     }
-    public void SetNewSaveSlot(int SlotNumber)
+
+    private string GetSlotName()
     {
-        SlotID = SlotNumber;
+        if (Autosave) return "AUTOSAVE";
 
-        Description.text =
-            $"<b>NEW</b> Save Slot: {SlotNumber}\n" +
-            $"Day: {DayInfo.CurrentDay}\n" +
-            $"Time Played: {System.TimeSpan.FromSeconds(EndOfDayScript.GetTimePassed()).ToString("h\\:mm\\:ss")}\n" +
-            $"Credits: {CurrencyData.Credits}";
-
-        NewSaveSlot = true;
-
-        RebuildLayouts();
+        return $"SLOT {SlotID}";
+    }
+    public string GetAssociatedDayValue(SaveMenuScript.SaveMetadata metaData)
+    {
+        if(SaveMenuScript.SelectedSaveDay == 1)
+        {
+            return metaData.Credits.ToString();
+        }
+        return "Debug Day";
     }
     public void RebuildLayouts()
     {
@@ -75,15 +107,5 @@ public class SaveSlotScript : MonoBehaviour
     public void Reset()
     {
         ToggleDisplay.isOn = false;
-    }
-
-    public void OnEnable()
-    {
-        SaveMenuScript.SaveSlotItems.Add(this);
-    }
-
-    public void OnDisable()
-    {
-        SaveMenuScript.SaveSlotItems.Remove(this);
     }
 }

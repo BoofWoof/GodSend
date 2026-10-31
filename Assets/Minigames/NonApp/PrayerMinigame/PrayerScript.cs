@@ -5,6 +5,8 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Events;
 using static BasicPrayerGroupSO;
+using Unity.VisualScripting;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class PrayerResponse
 {
@@ -83,6 +85,9 @@ public class PrayerScript : MonoBehaviour
     public AudioSource GoodPrayerAudio;
     public AudioSource BadPrayerAudio;
 
+    private bool AutoSaveCheckActive = false;
+    private float FirstSavePeriod = 30f;
+    private float LaterSavePeriods = 60 * 5f;
 
     public void Awake()
     {
@@ -129,6 +134,8 @@ public class PrayerScript : MonoBehaviour
         GenerateNewPrayers();
 
         OnJudgementActivate?.Invoke();
+
+        StartCoroutine(AutosaveCheck());
     }
 
     public void DeactivateJudgement()
@@ -651,5 +658,44 @@ public class PrayerScript : MonoBehaviour
 
         NeonGlowMaterial.SetColor("_EmissionColor", defaultColor);
         NeonGlowMaterial.SetColor("_BaseColor", defaultColor);
+    }
+
+    public IEnumerator AutosaveCheck()
+    {
+        if (AutoSaveCheckActive) yield break;
+        AutoSaveCheckActive = true;
+
+        float timePassed = 0f;
+        while(timePassed < FirstSavePeriod)
+        {
+            timePassed += Time.deltaTime;
+
+            if (!JudgementActive || BusySignScript.GlobalCurrentMode != BusySignScript.SignMode.Leisure)
+            {
+                AutoSaveCheckActive = false;
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        SaveMenuScript.AutoSave();
+
+        while (true)
+        {
+            timePassed = 0f;
+            while (timePassed < LaterSavePeriods)
+            {
+                timePassed += Time.deltaTime;
+
+                if (!JudgementActive || BusySignScript.GlobalCurrentMode != BusySignScript.SignMode.Leisure)
+                {
+                    AutoSaveCheckActive = false;
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
     }
 }

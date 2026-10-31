@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPrefab : MonoBehaviour
@@ -16,8 +17,10 @@ public class SpawnPrefab : MonoBehaviour
     [SerializeField]
     private Position m_position = Position.ScreenSpaceUI;
 
-    public void Spawn()
+    public List<GameObject> SpawnObjects()
     {
+        List<GameObject> SpawnedObjects = new();
+
         if (m_parent == null) m_parent = this.transform;
         for (int i = 0; i < m_prefabs.Length; i++)
         {
@@ -43,7 +46,14 @@ public class SpawnPrefab : MonoBehaviour
                         instance.transform.localScale = Vector3.one;
                     }
                 }
+
+                SpawnedObjects.Add(instance);
             }
         }
+        return SpawnedObjects;
+    }
+    public void Spawn()
+    {
+        SpawnObjects();
     }
 }

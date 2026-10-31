@@ -68570,7 +68570,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 762.88684}
+    canvasScrollPosition: {x: 4.1237183, y: 619.5879}
     canvasZoom: 0.97
   - id: 25
     fields:
@@ -120906,16 +120906,15 @@ MonoBehaviour:
           <color=#00FFFF>TREAT
           ME LIKE AN ASSISTANT</color>
 
-          <color=yellow>TREAT ME LIKE A
-          TOOL</color>
+          <color=yellow>TREAT ME LIKE A TOOL</color>
 
-          <color=#FF00FF>TREAT ME LIKE A GOD</color>
+          <color=#FF00FF>TREAT
+          ME LIKE A GOD</color>
 
-          <b><color=green>TREAT
-          ME LIKE A COWORKER</color>
+          <b><color=green>TREAT ME LIKE A COWORKER</color>
 
-          <color=#00FFFF>TREAT ME LIKE AN
-          ASSISTANT</color>
+          <color=#00FFFF>TREAT
+          ME LIKE AN ASSISTANT</color>
 
           <color=yellow>TREAT ME LIKE A TOOL</color>
 
