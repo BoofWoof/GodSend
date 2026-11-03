@@ -15,7 +15,7 @@ MonoBehaviour:
   GroupName: Snake
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Snake/Snake 1.asset
-  - Assets/Resources/VoiceLines/StandardPrayers/Snake/Snake 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Snake/Snake 3.asset
   AlwaysAvailable: 
   DayTwoAvailable: "That snake is ludicrously fancy! Is he the god of being a dandy?
     Trying to understand the pantheon better. @AlreadyTaken2\r\nLord, what does the

@@ -202,10 +202,20 @@ public class OverworldPositionScript : MonoBehaviour
         TravelNodeScript targetNodeScript = TravelNodeTracker.Instance.PositionNodes[CurrentStationIdx].GetComponent<TravelNodeScript>();
         Transform targetNode = targetNodeScript.transform;
 
+        connection.AnimationCommand?.Invoke();
+
+        if (connection.WaitBeforeStart > 0)
+        {
+            GestureControl.CharacterAnimator.SetBool("WalkTo", false);
+            yield return new WaitForSeconds(connection.WaitBeforeStart);
+            GestureControl.CharacterAnimator.SetBool("WalkTo", true);
+        }
+
         while (!CharacterMobile)
         {
             yield return null;
         }
+
 
         Vector3 currentRotation = CharacterTransform.rotation.eulerAngles;
 
@@ -233,6 +243,14 @@ public class OverworldPositionScript : MonoBehaviour
                 yield return null;
             }
             CharacterTransform.rotation = finalRotation;
+        }
+
+        connection.AfterAnimationCommand?.Invoke();
+        if(connection.WaitBeforeEnd > 0)
+        {
+            GestureControl.CharacterAnimator.SetBool("WalkTo", false);
+            yield return new WaitForSeconds(connection.WaitBeforeEnd);
+            GestureControl.CharacterAnimator.SetBool("WalkTo", true);
         }
 
         GoTo(connection.TravelNode.SceneID, connection.FlipAngle, connection.ForceAngleOnArrival);

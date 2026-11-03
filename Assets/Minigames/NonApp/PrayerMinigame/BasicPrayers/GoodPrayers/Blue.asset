@@ -15,6 +15,7 @@ MonoBehaviour:
   GroupName: Blue
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Blue/Blue_1.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Blue/Blue_2.asset
   AlwaysAvailable: 'I love it when your tubes glow blue, everything looks so cool
     in the light! @BlueWoof
 

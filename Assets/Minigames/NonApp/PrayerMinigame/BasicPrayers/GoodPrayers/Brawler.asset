@@ -16,6 +16,8 @@ MonoBehaviour:
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler1.asset
   - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler 3.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Brawler/Brawler 4.asset
   AlwaysAvailable: 'Lord, I challenge you to a duel. You vs. me at the top of the
     tallest mountain in the city in one week @TheMightyMite
 

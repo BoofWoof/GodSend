@@ -1,0 +1,3 @@
+0,
+10, Your messages are strange...
+73, But at least they are thought out.

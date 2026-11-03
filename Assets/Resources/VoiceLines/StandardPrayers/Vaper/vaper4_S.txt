@@ -1,0 +1,3 @@
+0,
+8, Venom is a dice roll on if it helps you to remember or forget.
+150, But either way it's a win.

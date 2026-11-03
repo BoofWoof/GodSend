@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fef4ccefb1dff5488338f22eca80251, type: 3}
+  m_Name: Ego 6
+  m_EditorClassIdentifier: 
+  AudioData: {fileID: 8300000, guid: 40bac342a6b961d4682c09f461b894da, type: 3}
+  PhenomeData: {fileID: 4900000, guid: 7cc07e11b79f3dc48842f9863b587198, type: 3}
+  SubtitleData: {fileID: 4900000, guid: 31b22fc9c9d0a594499813734fa4ccd1, type: 3}
+  GestureData: {fileID: 0}
+  FocusLevel: 1
+  PauseBeforeStart: 0
+  PauseAfterEnd: 0
+  SpeakerOverride: 
+  ChainDialoguePath: 

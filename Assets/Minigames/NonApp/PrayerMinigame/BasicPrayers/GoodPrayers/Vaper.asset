@@ -16,6 +16,8 @@ MonoBehaviour:
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 1.asset
   - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 3.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Vaper/Vaper 4.asset
   AlwaysAvailable: 
   DayTwoAvailable: 
   DayThreeAvailable: 

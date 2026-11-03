@@ -16,6 +16,8 @@ MonoBehaviour:
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 1.asset
   - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 3.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Mods/Mods 4.asset
   AlwaysAvailable: 'The sky used to be so blindingly white. It hurt my eyes. Your
     halos are so much more relaxing. @TanMan
 

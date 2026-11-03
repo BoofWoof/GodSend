@@ -16,6 +16,8 @@ MonoBehaviour:
   Responses:
   - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction1.asset
   - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction2.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction 3.asset
+  - Assets/Resources/VoiceLines/StandardPrayers/Distraction/Distraction 4.asset
   AlwaysAvailable: "That audio play you put on the radio yesterday was sick! Could
     you put on more? @SozanCinephile \r\nLord, please attend the Soza city annual
     kite flying festival. Your presence and breath will be a great boon to its success!

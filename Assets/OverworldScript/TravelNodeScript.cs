@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct TravelNodeConnection
@@ -7,7 +8,10 @@ public struct TravelNodeConnection
     public TravelNodeScript TravelNode;
     public bool ExitWithAnimation;
     public bool EnterWithAnimation;
-    public string AnimationCommand;
+    public float WaitBeforeStart;
+    public UnityEvent AnimationCommand;
+    public float WaitBeforeEnd;
+    public UnityEvent AfterAnimationCommand;
     public bool ForceAngleOnArrival;
     public bool FlipAngle;
 }
