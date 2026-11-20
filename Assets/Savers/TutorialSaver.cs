@@ -81,6 +81,8 @@ public class TutorialSaver : Saver
     {
         AllTutorialSaveData loadedData = SaveSystem.Deserialize<AllTutorialSaveData>(s);
 
+        if (loadedData == null) return;
+
         foreach(TutorialSaveData saveData in loadedData.TutorialItemSaveData)
         {
             TutorialScreenScript targetScreenScript = (TutorialScreenScript)UniqueIDScript.GetScriptByID(saveData.AssociatedID);

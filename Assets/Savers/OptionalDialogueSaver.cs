@@ -36,6 +36,8 @@ public class OptionalDialogueSaver : Saver
     {
         OptionalDialogueSaveData loadedData = SaveSystem.Deserialize<OptionalDialogueSaveData>(s);
 
+        if (loadedData == null) return;
+
         foreach (string dictKey in OCUnlockTriggerScript.OCUnlockDict.Keys)
         {
             if (loadedData.UnlockedOCList.Contains(dictKey)) OCUnlockTriggerScript.OCUnlockDict[dictKey].Release();

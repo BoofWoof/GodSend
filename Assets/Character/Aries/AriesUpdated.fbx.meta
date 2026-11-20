@@ -62,6 +62,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Shirt.001
+    second: {fileID: 2100000, guid: 78054197251e81148bda404868edc304, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Shirt.003
     second: {fileID: 2100000, guid: 78054197251e81148bda404868edc304, type: 2}
   - first:

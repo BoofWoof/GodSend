@@ -20,7 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _RimFoamSpeed
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -70,21 +70,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_17E53C12: 300
+    - Vector1_17E53C12: 80
     - Vector1_244B0600: 0.5
     - Vector1_34CF798A: 1.75
-    - Vector1_36E8227: 0.384
-    - Vector1_3D886DA1: 0.47
-    - Vector1_46E42935: 0.251
-    - Vector1_47683D42: 0.78
-    - Vector1_A0EAD698: 0.5
-    - Vector1_A6A0BC26: 1
+    - Vector1_36E8227: 0.38
+    - Vector1_3D886DA1: 0.786
+    - Vector1_46E42935: 0.294
+    - Vector1_47683D42: 0.763
+    - Vector1_A0EAD698: 0.35
+    - Vector1_A6A0BC26: 0.5
     - Vector1_B9F56378: 0.14
-    - Vector1_C360A163: 0.46
+    - Vector1_C360A163: 0.44
     - Vector1_DF445019: 1.5
     - Vector1_E03AB928: 0.05
-    - Vector1_E5C51606: 100
-    - Vector1_F38B44AA: 0.4
+    - Vector1_E5C51606: 1000
+    - Vector1_F38B44AA: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -100,10 +100,10 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimFoamAmount: 0.002
-    - _RimFoamBiggening: 6.12
-    - _RimFoamCutout: 1.1
-    - _RimFoamSpeed: 0.1
+    - _RimFoamAmount: 0.02
+    - _RimFoamBiggening: 50
+    - _RimFoamCutout: 1
+    - _RimFoamSpeed: 0.3
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -115,8 +115,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_7D9A58EC: {r: 0.016019935, g: 0.15898076, b: 0.2264151, a: 1}
-    - Color_F01C36BF: {r: 0.11764705, g: 0.83008593, b: 0.93333334, a: 0.12156863}
+    - Color_7D9A58EC: {r: 0.08232467, g: 0.34911758, b: 0.4716981, a: 1}
+    - Color_F01C36BF: {r: 0.48584908, g: 0.9357311, b: 1, a: 0.12156863}
     - Vector2_37B21477: {r: 0.3, g: 0.3, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

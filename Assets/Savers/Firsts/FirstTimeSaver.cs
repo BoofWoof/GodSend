@@ -67,6 +67,8 @@ public class FirstTimeSave : Saver
     {
         FirstsSaveData firstList = SaveSystem.Deserialize<FirstsSaveData>(s);
 
+        if (firstList == null) return;
+
         foreach(PossibleFirsts firstEnum in firstList.SavedFirsts)
         {
             AddNewFirst(firstEnum);

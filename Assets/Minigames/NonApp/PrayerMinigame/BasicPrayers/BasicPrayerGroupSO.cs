@@ -40,6 +40,7 @@ public class BasicPrayerGroupSO : ScriptableObject
     [ContextMenu("Prepare List")]
     public void PrepareGroup()
     {
+        ResetPrayerIdx();
         CreatePrayerList();
 
         FirstTimeSave.OnNewFirst += OnNewFirst;

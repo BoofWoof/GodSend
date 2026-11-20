@@ -38,27 +38,27 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CloudColorSwapRate: 1.03
-    - _CloudWhite: 0.31
+    - _CloudColorSwapRate: 2.18
+    - _CloudWhite: 1.94
     - _ColorOffset: -0.3
     - _DistanceFactor: 0.6
     - _FalloffOffset: 2.55
-    - _FalloffRate: 2.12
-    - _GlowFalloff: 0.86
-    - _GlowOffset: -0.1
-    - _MaxAlpha: 1
+    - _FalloffRate: -2.99
+    - _GlowFalloff: 1.4
+    - _GlowOffset: 0.14
+    - _MaxAlpha: 0.97
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotationSpeed: 0.03
-    - _RoundingStrength: 15
+    - _RotationSpeed: 0.01
+    - _RoundingStrength: 36.55
     - _TimeScale: 0.01
     - _ViewOpacityBias: 0.1
-    - _ViewOpacityFalloff: 0.5
+    - _ViewOpacityFalloff: 0.2
     - _ViewOpacityFalloff2: 0.1
     m_Colors:
-    - _CloudColor: {r: 1, g: 1, b: 1, a: 0.7529412}
-    - _CloudColor2: {r: 0.59206176, g: 0.5578942, b: 0.5943396, a: 0.8}
-    - _GlowColor: {r: 0.5566038, g: 0.4323065, b: 0.07088822, a: 1}
+    - _CloudColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudColor2: {r: 0.59206176, g: 0.5578942, b: 0.5943396, a: 1}
+    - _GlowColor: {r: 0.8679245, g: 0.65979165, b: 0.061409745, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6166218308349766600

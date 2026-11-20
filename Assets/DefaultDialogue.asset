@@ -68570,7 +68570,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4.1237183, y: 619.5879}
+    canvasScrollPosition: {x: 0, y: 3321.6494}
     canvasZoom: 0.97
   - id: 25
     fields:
@@ -80337,7 +80337,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("Comic1Continue")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -80715,14 +80715,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("Comic1Continue")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
-        y: 1310
+        x: 78.68422
+        y: 1307.3684
         width: 160
         height: 30
     - id: 14
@@ -80904,14 +80904,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("Comic1Continue")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 80
-        y: 1562
+        y: 1559.3683
         width: 160
         height: 30
     - id: 17
@@ -81099,7 +81099,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
+        x: 81.31578
         y: 1814
         width: 160
         height: 30
@@ -81156,14 +81156,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: BroadcastActivate("Comic1Continue")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 78.82353
-        y: 1897.9009
+        y: 1895.2693
         width: 160
         height: 30
     - id: 22
@@ -81415,18 +81415,18 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: UnlockPortrait("Delivery Retold")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 107.770874
-        y: 2005.7959
+        x: 84.086655
+        y: 1999.217
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 1597.3683}
+    canvasScrollPosition: {x: 0, y: 1435.5255}
     canvasZoom: 0.7600003
   - id: 32
     fields:
