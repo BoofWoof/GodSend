@@ -50,6 +50,7 @@ public class PlayerCam : MonoBehaviour
         PhonePositionScript.PhoneToggled += ClearScreenPointSelection;
 
     }
+
     private void RegisterInputActions()
     {
         InputManager.PlayerInputs.Overworld.Camera.performed += context => CameraInput = context.ReadValue<Vector2>();
@@ -84,39 +85,41 @@ public class PlayerCam : MonoBehaviour
             PhoneShiftAudioSource.clip = RaisePhoneClip;
             PhoneShiftAudioSource.Play();
             ScreenMask.StartScreen();
+            HudScript.instance.SetShiftOverlay(false);
         }
         else
         {
             PhoneShiftAudioSource.clip = LowerPhoneClip;
             PhoneShiftAudioSource.Play();
             ScreenMask.ShutDownScreen();
+            HudScript.instance.SetShiftOverlay(ShiftToggleActive);
         }
     }
     public void SetSpeed(InputAction.CallbackContext context)
     {
-        if (MenuTrigger.GetPaused()) return;
         if (context.performed)
         {
+            if (MenuTrigger.GetPaused() || PhonePositionScript.raised) return;
             ShiftToggleActive = !ShiftToggleActive;
 
             SlowModeMultiplier = 0.2f;
             if (!ShiftToggleActive)
             {
-                CursorStateControl.ActiveCursorController.ReleaseCursor();
+                CursorStateControl.ActiveCursorController.ReleaseCursor(gameObject.GetInstanceID());
             }
         }
         if (context.canceled)
         {
             if (ShiftToggleActive)
             {
-                CursorStateControl.ActiveCursorController.RequestCursor();
+                CursorStateControl.ActiveCursorController.RequestCursor(gameObject.GetInstanceID());
             } else
             {
                 SlowModeMultiplier = 1f;
             }
         }
 
-        HudScript.instance.SetShiftOverlay(ShiftToggleActive);
+        HudScript.instance.SetShiftOverlay(ShiftToggleActive && !PhonePositionScript.raised);
     }
 
     public void OnApplicationFocus(bool focus)

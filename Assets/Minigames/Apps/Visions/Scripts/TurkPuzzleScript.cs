@@ -295,6 +295,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public void EndChallenge()
     {
+        if (ActiveChallenge == null) return;
         if (BlessingShopWasOn) BlessingShop.SetActive(true);
         if (PromotionSwitcherWasOn) PromotionSwitcher.SetActive(true);
 
@@ -844,6 +845,7 @@ public class TurkPuzzleScript : MonoBehaviour
 
     public IEnumerator WinCutscene()
     {
+        PieceHolderScript.PickupEnabled = false;
         ClearFakePieces();
 
         PieceHolder.SetActive(false);
@@ -887,7 +889,6 @@ public class TurkPuzzleScript : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(PuzzleEarningsText.transform.parent.GetComponent<RectTransform>());
 
 
-        PieceHolderScript.PickupEnabled = false;
         Win.Play();
 
         Debug.Log("Turk Puzzle Complete!");

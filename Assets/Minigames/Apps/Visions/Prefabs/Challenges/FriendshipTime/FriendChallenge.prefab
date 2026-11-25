@@ -70023,18 +70023,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2213561324370485971}
-        m_TargetAssemblyTypeName: UnlockPosterScript, Assembly-CSharp
-        m_MethodName: UnlockPoster
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnIncorrectSolution:
     m_PersistentCalls:
       m_Calls: []
@@ -75107,6 +75095,18 @@ MonoBehaviour:
         - m_Target: {fileID: 9096645470636635316}
           m_TargetAssemblyTypeName: SteamAchievementUnlock, Assembly-CSharp
           m_MethodName: UnlockSteamAchievement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2213561324370485971}
+          m_TargetAssemblyTypeName: UnlockPosterScript, Assembly-CSharp
+          m_MethodName: UnlockPoster
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

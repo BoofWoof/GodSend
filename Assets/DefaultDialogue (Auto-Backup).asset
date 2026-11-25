@@ -10149,8 +10149,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: In contrast, if prayers guilt him for his divine actions, get... too
-          freindly, or are terribly spelt, he tends to get upset.
+        value: In contrast, if prayers guilt him for his divine actions, get too...
+          friendly, or are terribly spelt, he tends to get upset.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10770,7 +10770,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 2569.4482}
+    canvasScrollPosition: {x: 0, y: 1723.1804}
     canvasZoom: 0.6700006
   - id: 8
     fields:
@@ -12815,7 +12815,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 15.625, y: 1332.8118}
+    canvasScrollPosition: {x: 0, y: 1314.0618}
     canvasZoom: 0.6400004
   - id: 11
     fields:
@@ -42347,10 +42347,10 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: 'You know what your job is, right? And you''re willing to say that
-          so confidentally?
+          so confidently?
 
 
-          Maybe you''re just joke!<laughing>'
+          Maybe you''re just joking!<laughing>'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -42847,7 +42847,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 5960
-        y: 55
+        y: 53.68422
         width: 160
         height: 30
     - id: 85
@@ -43355,7 +43355,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 6678.684
+        x: 6677.3687
         y: 155
         width: 160
         height: 30
@@ -44795,7 +44795,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 7760
-        y: 155
+        y: 153.68423
         width: 160
         height: 30
     - id: 116
@@ -45922,7 +45922,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Well you can't excpet to outrank a GOD, sadly.
+        value: Well you can't expect to outrank a GOD, sadly.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -46471,8 +46471,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 9293.421
-        y: 193.15787
+        x: 9327.632
+        y: 161.57892
         width: 160
         height: 30
     - id: 142
@@ -46597,8 +46597,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 9920
-        y: 230
+        x: 9909.474
+        y: 231.3158
         width: 160
         height: 30
     - id: 144
@@ -47070,7 +47070,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 9519.21
-        y: 91.84213
+        y: 90.52635
         width: 160
         height: 30
     - id: 151
@@ -47258,8 +47258,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 9738.685
-        y: 230
+        x: 9718.948
+        y: 251.05261
         width: 160
         height: 30
     - id: 154
@@ -51235,7 +51235,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 13219.761, y: 3.9473267}
+    canvasScrollPosition: {x: 7328.9824, y: 0}
     canvasZoom: 0.7600003
   - id: 22
     fields:
@@ -106745,7 +106745,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Fine. I'm faily busy right now, but I can spare a minute...
+        value: Fine. I'm fairly busy right now, but I can spare a minute...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -113138,7 +113138,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4971.5864, y: 2307.4517}
+    canvasScrollPosition: {x: 968.3087, y: 0}
     canvasZoom: 0.6100002
   - id: 46
     fields:

@@ -33,7 +33,7 @@ public class HandScript : MonoBehaviour
         }
 
         SpawnedObject = Instantiate(PropManager.instance.PropList[ID]);
-        SpawnedObject.transform.localScale = Vector3.one;
+        //SpawnedObject.transform.localScale = Vector3.one;
         SpawnedObject.transform.parent = transform;
         SpawnedObject.transform.localPosition = Vector3.zero;
         SpawnedObject.transform.localRotation = Quaternion.identity;

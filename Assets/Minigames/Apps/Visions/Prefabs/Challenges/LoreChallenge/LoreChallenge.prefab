@@ -453220,11 +453220,14 @@ MonoBehaviour:
   TargetText: {fileID: 16098351388852271}
   PageCount: {fileID: 3240656791194063088}
   TextArray:
-  - "Back before all four megacorps rose to prominence, a <color=#0DBDBF><b>disabled
-    bird, <color=#87F8FA>Arkae</color>, glanced up at the sky and yearned to explore
-    it</b></color>. He would see his friends, his family, and even his beloved wife
-    live his dream... but he remained firmly planted to the ground. \r\n\r\nIt was
-    isolating..."
+  - 'Back before all four megacorps rose to prominence, a disabled bird, <color=#87F8FA>Arkae</color>,
+    glanced up at the sky and yearned to explore it. <color=#0DBDBF><b>He would see
+    his friends, his family, and even his beloved wife live his dream... but he remained
+    firmly planted to the ground.</b></color>
+
+    
+
+    It was isolating...'
   - 'And yet, when he stared down in despair, what looked back at him were his two
     functioning hands. He realized that, while his wings may be broken, the rest
     of himself was not.
@@ -453260,10 +453263,10 @@ MonoBehaviour:
 
     Some say that
     the loss broke him, driving him insane. However, us believers know better. We
-    know it gave him both resolve and truth. He was sure that <color=#0DBDBF><b>heaven
-    had to be just a little bit higher, and that once he found it, that he could
-    see his wife again</b></color>.'
-  - He was quick to monitize his invention, forming a monopoly over the pollutant-forbidden
+    know it gave him clarity beyond measure. <color=#0DBDBF><b>Through his telescope,
+    he could see that heaven was just a little bit higher, and he knew that if he
+    got there, that he could see his wife again</b></color>.'
+  - He was quick to monetize his invention, forming a monopoly over the pollutant-forbidden
     sky. His business grew quickly, and he invested every last dollar he earned to
     soar even higher! And amongst his new employees, <color=#0DBDBF><b>he promoted
     his four most trusted engineers to be his apprentices</b></color>.

@@ -5,8 +5,6 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Events;
 using static BasicPrayerGroupSO;
-using Unity.VisualScripting;
-using UnityEngine.Rendering.Universal.Internal;
 
 public class PrayerResponse
 {
@@ -82,6 +80,8 @@ public class PrayerScript : MonoBehaviour
     public Material NeonGlowMaterial;
     [ColorUsage(false, true)] public Color CorrectColor = Color.green;
     [ColorUsage(false, true)] public Color WrongColor = Color.red;
+    [ColorUsage(false, true)] public Color DefaultColor = Color.cyan;
+
     public AudioSource GoodPrayerAudio;
     public AudioSource BadPrayerAudio;
 
@@ -91,6 +91,9 @@ public class PrayerScript : MonoBehaviour
 
     public void Awake()
     {
+        NeonGlowMaterial.SetColor("_EmissionColor", DefaultColor);
+        NeonGlowMaterial.SetColor("_BaseColor", DefaultColor);
+
         instance = this;
 
         GoodPrayerManager.PrepareLists();
@@ -327,6 +330,7 @@ public class PrayerScript : MonoBehaviour
     public void OnConversationEnd(Transform actor)
     {
         if (!ConversationManagerScript.isMacroConvo) return;
+        GameStateMonitor.ActivePrayer = false;
         StoryMode = false;
         GenerateNewPrayers();
         MusicSelectorScript.SetOverworldSong(1);

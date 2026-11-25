@@ -1,25 +1,24 @@
-using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class CursorStateControl : MonoBehaviour
 {
     public static CursorStateControl ActiveCursorController;
 
-    private static int _CursorRequest;
+    private static List<int> _CursorRequest = new();
 
-    public void RequestCursor()
+    public void RequestCursor(int requesterID)
     {
         Debug.Log("Requesting Cursor");
-        _CursorRequest++;
+        if(!_CursorRequest.Contains(requesterID)) _CursorRequest.Add(requesterID);
         ShowMouse();
     }
 
-    public void ReleaseCursor()
+    public void ReleaseCursor(int requesterID)
     {
         Debug.Log("Releasing Cursor");
-        _CursorRequest--;
-        if(_CursorRequest == 0)
+        if (_CursorRequest.Contains(requesterID)) _CursorRequest.Remove(requesterID);
+        if (_CursorRequest.Count == 0)
         {
             HideMouse();
         }
@@ -27,7 +26,7 @@ public class CursorStateControl : MonoBehaviour
 
     public static bool isCursorActive()
     {
-        return _CursorRequest > 0;
+        return _CursorRequest.Count > 0;
     }
 
     public void ShowMouse()
@@ -52,7 +51,7 @@ public class CursorStateControl : MonoBehaviour
 
         PhonePositionScript.PhoneToggled += PhoneToggle;
 
-        _CursorRequest = 0;
+        _CursorRequest = new();
     }
 
     private void OnDestroy()
@@ -62,12 +61,13 @@ public class CursorStateControl : MonoBehaviour
 
     public void PhoneToggle(bool phoneUp)
     {
+        //1337 is just a number to give the phone a unique number.
         if (phoneUp)
         {
-            RequestCursor();
+            RequestCursor(1337);
         } else
         {
-            ReleaseCursor();
+            ReleaseCursor(1337);
         }
     }
 }

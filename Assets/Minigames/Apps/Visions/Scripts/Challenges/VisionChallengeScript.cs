@@ -194,6 +194,7 @@ public class VisionChallengeScript : MonoBehaviour
 
     public IEnumerator OnWin()
     {
+        PieceHolderScript.PickupEnabled = false;
         OnCorrectSolution?.Invoke();
         yield return TurkPuzzleScript.instance.StartCoroutine(TurkPuzzleScript.instance.RevealShine(CorrectPieceColor, ColorSwapPeriod));
 
@@ -205,6 +206,7 @@ public class VisionChallengeScript : MonoBehaviour
 
         yield return new WaitForSeconds(ColorHoldPeriod);
         AfterCorrectColorSwap?.Invoke();
+        PieceHolderScript.PickupEnabled = true;
     }
 
     public void StartNewChallenge(GameObject challenge)

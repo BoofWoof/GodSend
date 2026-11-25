@@ -92,7 +92,7 @@ public class MenuTrigger : MonoBehaviour
         if (!CursorRequestActive)
         {
             CursorRequestActive = true;
-            CursorStateControl.ActiveCursorController.RequestCursor();
+            CursorStateControl.ActiveCursorController.RequestCursor(gameObject.GetInstanceID());
         }
     }
 
@@ -108,7 +108,7 @@ public class MenuTrigger : MonoBehaviour
         {
             Debug.Log("Pausing and locking cursor.");
             CursorRequestActive = true;
-            CursorStateControl.ActiveCursorController.RequestCursor();
+            CursorStateControl.ActiveCursorController.RequestCursor(gameObject.GetInstanceID());
         }
     }
 
@@ -124,7 +124,7 @@ public class MenuTrigger : MonoBehaviour
         {
             Debug.Log("Unpausing and unlocking cursor.");
             CursorRequestActive = false;
-            CursorStateControl.ActiveCursorController.ReleaseCursor();
+            CursorStateControl.ActiveCursorController.ReleaseCursor(gameObject.GetInstanceID());
         }
     }
 }

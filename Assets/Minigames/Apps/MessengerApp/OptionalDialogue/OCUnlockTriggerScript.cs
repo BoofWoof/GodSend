@@ -28,6 +28,8 @@ public class OCUnlockTriggerScript : MonoBehaviour
 
     public bool AdvertiseUnlock = false;
 
+    private bool Subscribed = false;
+
     public static void UnlockOCByName(string ocName)
     {
         Debug.Log(ocName);
@@ -42,8 +44,9 @@ public class OCUnlockTriggerScript : MonoBehaviour
     {
         if (string.IsNullOrEmpty(OCName)) OCName = name;
 
-        ConversationManagerScript.OnConversationEndEvent += OnConversationEnd;
-        if(!string.IsNullOrEmpty(OCName) && !OCUnlockDict.ContainsKey(OCName.ToLower())) OCUnlockDict.Add(OCName.ToLower(), this);
+        if(!Subscribed) ConversationManagerScript.OnConversationEndEvent += OnConversationEnd;
+        Subscribed = true;
+        if (!string.IsNullOrEmpty(OCName) && !OCUnlockDict.ContainsKey(OCName.ToLower())) OCUnlockDict.Add(OCName.ToLower(), this);
     }
 
     public void CheckAutoRelease()
@@ -53,7 +56,8 @@ public class OCUnlockTriggerScript : MonoBehaviour
 
     public virtual void OnDisable()
     {
-        ConversationManagerScript.OnConversationEndEvent -= OnConversationEnd;
+        if (Subscribed) ConversationManagerScript.OnConversationEndEvent -= OnConversationEnd;
+        Subscribed = false;
         if (!string.IsNullOrEmpty(OCName)) OCUnlockDict.Remove(OCName.ToLower());
     }
     public void Release()
