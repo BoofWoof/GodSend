@@ -390,12 +390,12 @@ public class PrayerScript : MonoBehaviour
             {
                 int ariesLike = DialogueLua.GetVariable("AriesLike").asInt;
                 DialogueLua.SetVariable("AriesLike", ariesLike + 1);
-                Debug.Log($"Aries Like {ariesLike + 1}.");
+                Debug.Log($"Aries Like {DialogueLua.GetVariable("AriesLike")}.");
             } else
             {
                 int ariesSpite = DialogueLua.GetVariable("AriesSpite").asInt;
                 DialogueLua.SetVariable("AriesSpite", ariesSpite + 1);
-                Debug.Log($"Aries Spite {ariesSpite + 1}.");
+                Debug.Log($"Aries Spite {DialogueLua.GetVariable("AriesSpite")}.");
             }
 
             yield return instance.StartCoroutine(CurrentResponse[answerIdx].AssociatedSpecialPrayerData.WaitLoadResponseChain());
